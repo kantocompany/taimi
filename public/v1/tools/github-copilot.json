@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.com",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 10
+  },
+  "tool": {
+    "slug": "github-copilot",
+    "name": "GitHub Copilot",
+    "vendor": {
+      "name": "Microsoft / GitHub",
+      "hq_country": "US",
+      "eu_based": false,
+      "pricing_url": "https://github.com/features/copilot/plans"
+    },
+    "plans": [
+      {
+        "id": "copilot-free",
+        "name": "Free",
+        "category": "free",
+        "base_price": {
+          "amount": 0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": 50,
+          "tokens_included": null,
+          "notes": "50 premium req/mo"
+        },
+        "overage": null
+      },
+      {
+        "id": "copilot-pro",
+        "name": "Pro",
+        "category": "individual",
+        "base_price": {
+          "amount": 10.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": 300,
+          "tokens_included": null,
+          "notes": "300 premium requests"
+        },
+        "overage": {
+          "unit": "request",
+          "price_per_unit": 0.04,
+          "notes": "$0.04/req beyond limit"
+        }
+      },
+      {
+        "id": "copilot-pro-plus",
+        "name": "Pro+",
+        "category": "individual",
+        "base_price": {
+          "amount": 39.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": 1500,
+          "tokens_included": null,
+          "notes": "1,500 premium requests"
+        },
+        "overage": {
+          "unit": "request",
+          "price_per_unit": 0.04,
+          "notes": "$0.04/req beyond limit"
+        }
+      },
+      {
+        "id": "copilot-business",
+        "name": "Business",
+        "category": "team",
+        "base_price": {
+          "amount": 19.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Org management"
+        },
+        "overage": null
+      },
+      {
+        "id": "copilot-enterprise",
+        "name": "Enterprise",
+        "category": "enterprise",
+        "base_price": {
+          "amount": 39.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "IP indemnity, SSO, audit logs"
+        },
+        "overage": null
+      }
+    ],
+    "capabilities": {
+      "autonomy_level": "completions_to_agent",
+      "ide_type": "extension",
+      "model_choice": true,
+      "self_hosted": false,
+      "fedramp": false,
+      "eu_data_residency": true,
+      "soc2": true,
+      "on_premise": false
+    },
+    "benchmarks": {
+      "swe_bench_pro": null,
+      "measured_at": null
+    }
+  }
+}

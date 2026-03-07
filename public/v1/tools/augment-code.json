@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.com",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 10
+  },
+  "tool": {
+    "slug": "augment-code",
+    "name": "Augment Code",
+    "vendor": {
+      "name": "Augment",
+      "hq_country": "US",
+      "eu_based": false,
+      "pricing_url": "https://www.augmentcode.com/pricing"
+    },
+    "plans": [
+      {
+        "id": "augment-individual",
+        "name": "Individual",
+        "category": "individual",
+        "base_price": {
+          "amount": 50.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Context Engine access"
+        },
+        "overage": null
+      },
+      {
+        "id": "augment-teams",
+        "name": "Teams",
+        "category": "team",
+        "base_price": {
+          "amount": 50.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Full codebase indexing, $50-200/seat"
+        },
+        "overage": null
+      }
+    ],
+    "capabilities": {
+      "autonomy_level": "interactive_to_autonomous",
+      "ide_type": "extension",
+      "model_choice": false,
+      "self_hosted": false,
+      "fedramp": false,
+      "eu_data_residency": false,
+      "soc2": true,
+      "on_premise": false
+    },
+    "benchmarks": {
+      "swe_bench_pro": 51.8,
+      "measured_at": "2026-02-01"
+    }
+  }
+}

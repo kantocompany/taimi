@@ -1,0 +1,520 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.com",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 10
+  },
+  "tools": [
+    {
+      "slug": "claude-code",
+      "name": "Claude Code",
+      "vendor": {
+        "name": "Anthropic",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://www.anthropic.com/pricing"
+      },
+      "plans": [
+        {
+          "id": "claude-code-pro",
+          "name": "Pro",
+          "category": "individual",
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Sonnet-powered, rate-limited" },
+          "overage": null
+        },
+        {
+          "id": "claude-code-max5",
+          "name": "Max 5x",
+          "category": "individual",
+          "base_price": { "amount": 100.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Opus access" },
+          "overage": null
+        },
+        {
+          "id": "claude-code-max20",
+          "name": "Max 20x",
+          "category": "individual",
+          "base_price": { "amount": 200.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Full Opus 4.6" },
+          "overage": null
+        },
+        {
+          "id": "claude-code-teams",
+          "name": "Teams",
+          "category": "team",
+          "base_price": { "amount": 25.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Tiered $25-150/seat by usage" },
+          "overage": null
+        },
+        {
+          "id": "claude-code-api",
+          "name": "API",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "token",
+            "input_per_million": 3.00,
+            "output_per_million": 15.00,
+            "model": "claude-sonnet-4-5 / claude-opus-4-6",
+            "notes": "Sonnet $3/$15, Opus higher"
+          }
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "terminal",
+        "model_choice": false,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": true,
+        "soc2": true,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": 45.9, "measured_at": "2026-02-01" }
+    },
+    {
+      "slug": "cursor",
+      "name": "Cursor",
+      "vendor": {
+        "name": "Anysphere",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://cursor.com/pricing"
+      },
+      "plans": [
+        {
+          "id": "cursor-hobby",
+          "name": "Hobby",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Limited completions" },
+          "overage": null
+        },
+        {
+          "id": "cursor-pro",
+          "name": "Pro",
+          "category": "individual",
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": 500, "tokens_included": null, "notes": "500 premium requests" },
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "API rates, credits = $ spent on sub" }
+        },
+        {
+          "id": "cursor-pro-plus",
+          "name": "Pro+",
+          "category": "individual",
+          "base_price": { "amount": 60.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": 1500, "tokens_included": null, "notes": "3x premium usage" },
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "API rates" }
+        },
+        {
+          "id": "cursor-ultra",
+          "name": "Ultra",
+          "category": "individual",
+          "base_price": { "amount": 200.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": 10000, "tokens_included": null, "notes": "20x premium usage" },
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "API rates" }
+        },
+        {
+          "id": "cursor-business",
+          "name": "Business",
+          "category": "team",
+          "base_price": { "amount": 40.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Privacy Mode default" },
+          "overage": null
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "interactive_to_autonomous",
+        "ide_type": "ide",
+        "model_choice": true,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": false,
+        "soc2": true,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": null, "measured_at": null }
+    },
+    {
+      "slug": "github-copilot",
+      "name": "GitHub Copilot",
+      "vendor": {
+        "name": "Microsoft / GitHub",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://github.com/features/copilot/plans"
+      },
+      "plans": [
+        {
+          "id": "copilot-free",
+          "name": "Free",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": 50, "tokens_included": null, "notes": "50 premium req/mo" },
+          "overage": null
+        },
+        {
+          "id": "copilot-pro",
+          "name": "Pro",
+          "category": "individual",
+          "base_price": { "amount": 10.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": 300, "tokens_included": null, "notes": "300 premium requests" },
+          "overage": { "unit": "request", "price_per_unit": 0.04, "notes": "$0.04/req beyond limit" }
+        },
+        {
+          "id": "copilot-pro-plus",
+          "name": "Pro+",
+          "category": "individual",
+          "base_price": { "amount": 39.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": 1500, "tokens_included": null, "notes": "1,500 premium requests" },
+          "overage": { "unit": "request", "price_per_unit": 0.04, "notes": "$0.04/req beyond limit" }
+        },
+        {
+          "id": "copilot-business",
+          "name": "Business",
+          "category": "team",
+          "base_price": { "amount": 19.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Org management" },
+          "overage": null
+        },
+        {
+          "id": "copilot-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "base_price": { "amount": 39.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "IP indemnity, SSO, audit logs" },
+          "overage": null
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "completions_to_agent",
+        "ide_type": "extension",
+        "model_choice": true,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": true,
+        "soc2": true,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": null, "measured_at": null }
+    },
+    {
+      "slug": "openai-codex",
+      "name": "OpenAI Codex",
+      "vendor": {
+        "name": "OpenAI",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://openai.com/api/pricing/"
+      },
+      "plans": [
+        {
+          "id": "codex-plus",
+          "name": "Plus",
+          "category": "individual",
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Bundled with ChatGPT Plus" },
+          "overage": null
+        },
+        {
+          "id": "codex-pro",
+          "name": "Pro",
+          "category": "individual",
+          "base_price": { "amount": 200.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Full model access" },
+          "overage": null
+        },
+        {
+          "id": "codex-team",
+          "name": "Team",
+          "category": "team",
+          "base_price": { "amount": 25.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "ChatGPT Team bundle" },
+          "overage": null
+        },
+        {
+          "id": "codex-api",
+          "name": "API",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "token",
+            "input_per_million": 2.00,
+            "output_per_million": 8.00,
+            "model": "gpt-4o / o3",
+            "notes": "GPT-4o to o3 output range"
+          }
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "cloud_sandbox",
+        "model_choice": false,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": false,
+        "soc2": true,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": 48.2, "measured_at": "2026-02-01" }
+    },
+    {
+      "slug": "mistral-vibe",
+      "name": "Mistral Vibe",
+      "vendor": {
+        "name": "Mistral AI",
+        "hq_country": "FR",
+        "eu_based": true,
+        "pricing_url": "https://mistral.ai/pricing"
+      },
+      "plans": [
+        {
+          "id": "mistral-experiment",
+          "name": "Experiment",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Free API in Mistral Studio" },
+          "overage": null
+        },
+        {
+          "id": "mistral-pro",
+          "name": "Le Chat Pro",
+          "category": "individual",
+          "base_price": { "amount": 14.99, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Vibe CLI + Devstral 2, PAYG beyond" },
+          "overage": { "unit": "token", "input_per_million": 0.40, "output_per_million": 2.00, "model": "devstral-2", "notes": "API rates after included usage" }
+        },
+        {
+          "id": "mistral-team",
+          "name": "Le Chat Team",
+          "category": "team",
+          "base_price": { "amount": 24.99, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Admin, priority support" },
+          "overage": { "unit": "token", "input_per_million": 0.40, "output_per_million": 2.00, "model": "devstral-2", "notes": "API rates after included usage" }
+        },
+        {
+          "id": "mistral-api-devstral2",
+          "name": "Devstral 2 API",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": { "unit": "token", "input_per_million": 0.40, "output_per_million": 2.00, "model": "devstral-2", "notes": "123B param, 256K context" }
+        },
+        {
+          "id": "mistral-api-devstral-small",
+          "name": "Devstral Small 2 API",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": { "unit": "token", "input_per_million": 0.10, "output_per_million": 0.30, "model": "devstral-small-2", "notes": "24B param, self-hostable, Apache 2.0" }
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "terminal",
+        "model_choice": false,
+        "self_hosted": true,
+        "fedramp": false,
+        "eu_data_residency": true,
+        "soc2": true,
+        "on_premise": true
+      },
+      "benchmarks": { "swe_bench_verified": 72.2, "measured_at": "2026-01-01" }
+    },
+    {
+      "slug": "windsurf",
+      "name": "Windsurf",
+      "vendor": {
+        "name": "Cognition AI",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://windsurf.com/pricing"
+      },
+      "plans": [
+        {
+          "id": "windsurf-free",
+          "name": "Free",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Limited credits" },
+          "overage": null
+        },
+        {
+          "id": "windsurf-pro",
+          "name": "Pro",
+          "category": "individual",
+          "base_price": { "amount": 15.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": 500, "tokens_included": null, "notes": "500 flow credits" },
+          "overage": null
+        },
+        {
+          "id": "windsurf-teams",
+          "name": "Teams",
+          "category": "team",
+          "base_price": { "amount": 30.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Self-hosted option" },
+          "overage": null
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "interactive_to_autonomous",
+        "ide_type": "ide",
+        "model_choice": true,
+        "self_hosted": true,
+        "fedramp": true,
+        "eu_data_residency": true,
+        "soc2": true,
+        "on_premise": true
+      },
+      "benchmarks": { "swe_bench_verified": 78.0, "measured_at": "2026-03-01" }
+    },
+    {
+      "slug": "devin",
+      "name": "Devin",
+      "vendor": {
+        "name": "Cognition AI",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://devin.ai/pricing"
+      },
+      "plans": [
+        {
+          "id": "devin-core",
+          "name": "Core",
+          "category": "individual",
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Pay-per-ACU beyond base" },
+          "overage": { "unit": "acu", "price_per_unit": 2.25, "notes": "Agent Compute Unit, ~minutes of agent work" }
+        },
+        {
+          "id": "devin-team",
+          "name": "Team",
+          "category": "team",
+          "base_price": { "amount": 500.00, "period": "monthly", "per": "flat" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "250 ACUs included, flat team price" },
+          "overage": { "unit": "acu", "price_per_unit": 2.25, "notes": "Per ACU beyond 250" }
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "autonomous_agent",
+        "model_choice": false,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": false,
+        "soc2": true,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": null, "measured_at": null }
+    },
+    {
+      "slug": "augment-code",
+      "name": "Augment Code",
+      "vendor": {
+        "name": "Augment",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://www.augmentcode.com/pricing"
+      },
+      "plans": [
+        {
+          "id": "augment-individual",
+          "name": "Individual",
+          "category": "individual",
+          "base_price": { "amount": 50.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Context Engine access" },
+          "overage": null
+        },
+        {
+          "id": "augment-teams",
+          "name": "Teams",
+          "category": "team",
+          "base_price": { "amount": 50.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Full codebase indexing, $50-200/seat" },
+          "overage": null
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "interactive_to_autonomous",
+        "ide_type": "extension",
+        "model_choice": false,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": false,
+        "soc2": true,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": 51.8, "measured_at": "2026-02-01" }
+    },
+    {
+      "slug": "cline",
+      "name": "Cline",
+      "vendor": {
+        "name": "Open Source Community",
+        "hq_country": null,
+        "eu_based": false,
+        "pricing_url": "https://cline.bot"
+      },
+      "plans": [
+        {
+          "id": "cline-free",
+          "name": "Free (BYOK)",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Bring your own API key, any provider" },
+          "overage": { "unit": "token", "price_per_unit": null, "notes": "Cost depends on chosen LLM provider" }
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "extension",
+        "model_choice": true,
+        "self_hosted": true,
+        "fedramp": false,
+        "eu_data_residency": true,
+        "soc2": false,
+        "on_premise": true
+      },
+      "benchmarks": { "swe_bench_pro": null, "measured_at": null }
+    },
+    {
+      "slug": "google-antigravity",
+      "name": "Google Antigravity",
+      "vendor": {
+        "name": "Google",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/"
+      },
+      "plans": [
+        {
+          "id": "antigravity-preview",
+          "name": "Public Preview",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "100% free during preview, enterprise TBA" },
+          "overage": null
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "ide",
+        "model_choice": true,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": false,
+        "soc2": false,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": null, "measured_at": null }
+    }
+  ]
+}

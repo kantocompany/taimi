@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.com",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 10
+  },
+  "tool": {
+    "slug": "openai-codex",
+    "name": "OpenAI Codex",
+    "vendor": {
+      "name": "OpenAI",
+      "hq_country": "US",
+      "eu_based": false,
+      "pricing_url": "https://openai.com/api/pricing/"
+    },
+    "plans": [
+      {
+        "id": "codex-plus",
+        "name": "Plus",
+        "category": "individual",
+        "base_price": {
+          "amount": 20.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Bundled with ChatGPT Plus"
+        },
+        "overage": null
+      },
+      {
+        "id": "codex-pro",
+        "name": "Pro",
+        "category": "individual",
+        "base_price": {
+          "amount": 200.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Full model access"
+        },
+        "overage": null
+      },
+      {
+        "id": "codex-team",
+        "name": "Team",
+        "category": "team",
+        "base_price": {
+          "amount": 25.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "ChatGPT Team bundle"
+        },
+        "overage": null
+      },
+      {
+        "id": "codex-api",
+        "name": "API",
+        "category": "usage",
+        "base_price": null,
+        "includes": null,
+        "overage": {
+          "unit": "token",
+          "input_per_million": 2.0,
+          "output_per_million": 8.0,
+          "model": "gpt-4o / o3",
+          "notes": "GPT-4o to o3 output range"
+        }
+      }
+    ],
+    "capabilities": {
+      "autonomy_level": "full",
+      "ide_type": "cloud_sandbox",
+      "model_choice": false,
+      "self_hosted": false,
+      "fedramp": false,
+      "eu_data_residency": false,
+      "soc2": true,
+      "on_premise": false
+    },
+    "benchmarks": {
+      "swe_bench_pro": 48.2,
+      "measured_at": "2026-02-01"
+    }
+  }
+}

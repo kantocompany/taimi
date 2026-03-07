@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.com",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 10
+  },
+  "tool": {
+    "slug": "devin",
+    "name": "Devin",
+    "vendor": {
+      "name": "Cognition AI",
+      "hq_country": "US",
+      "eu_based": false,
+      "pricing_url": "https://devin.ai/pricing"
+    },
+    "plans": [
+      {
+        "id": "devin-core",
+        "name": "Core",
+        "category": "individual",
+        "base_price": {
+          "amount": 20.0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Pay-per-ACU beyond base"
+        },
+        "overage": {
+          "unit": "acu",
+          "price_per_unit": 2.25,
+          "notes": "Agent Compute Unit, ~minutes of agent work"
+        }
+      },
+      {
+        "id": "devin-team",
+        "name": "Team",
+        "category": "team",
+        "base_price": {
+          "amount": 500.0,
+          "period": "monthly",
+          "per": "flat"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "250 ACUs included, flat team price"
+        },
+        "overage": {
+          "unit": "acu",
+          "price_per_unit": 2.25,
+          "notes": "Per ACU beyond 250"
+        }
+      }
+    ],
+    "capabilities": {
+      "autonomy_level": "full",
+      "ide_type": "autonomous_agent",
+      "model_choice": false,
+      "self_hosted": false,
+      "fedramp": false,
+      "eu_data_residency": false,
+      "soc2": true,
+      "on_premise": false
+    },
+    "benchmarks": {
+      "swe_bench_pro": null,
+      "measured_at": null
+    }
+  }
+}

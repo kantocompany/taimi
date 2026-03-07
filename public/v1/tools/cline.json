@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.com",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 10
+  },
+  "tool": {
+    "slug": "cline",
+    "name": "Cline",
+    "vendor": {
+      "name": "Open Source Community",
+      "hq_country": null,
+      "eu_based": false,
+      "pricing_url": "https://cline.bot"
+    },
+    "plans": [
+      {
+        "id": "cline-free",
+        "name": "Free (BYOK)",
+        "category": "free",
+        "base_price": {
+          "amount": 0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Bring your own API key, any provider"
+        },
+        "overage": {
+          "unit": "token",
+          "price_per_unit": null,
+          "notes": "Cost depends on chosen LLM provider"
+        }
+      }
+    ],
+    "capabilities": {
+      "autonomy_level": "full",
+      "ide_type": "extension",
+      "model_choice": true,
+      "self_hosted": true,
+      "fedramp": false,
+      "eu_data_residency": true,
+      "soc2": false,
+      "on_premise": true
+    },
+    "benchmarks": {
+      "swe_bench_pro": null,
+      "measured_at": null
+    }
+  }
+}

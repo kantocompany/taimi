@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.com",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 10
+  },
+  "tool": {
+    "slug": "mistral-vibe",
+    "name": "Mistral Vibe",
+    "vendor": {
+      "name": "Mistral AI",
+      "hq_country": "FR",
+      "eu_based": true,
+      "pricing_url": "https://mistral.ai/pricing"
+    },
+    "plans": [
+      {
+        "id": "mistral-experiment",
+        "name": "Experiment",
+        "category": "free",
+        "base_price": {
+          "amount": 0,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Free API in Mistral Studio"
+        },
+        "overage": null
+      },
+      {
+        "id": "mistral-pro",
+        "name": "Le Chat Pro",
+        "category": "individual",
+        "base_price": {
+          "amount": 14.99,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Vibe CLI + Devstral 2, PAYG beyond"
+        },
+        "overage": {
+          "unit": "token",
+          "input_per_million": 0.4,
+          "output_per_million": 2.0,
+          "model": "devstral-2",
+          "notes": "API rates after included usage"
+        }
+      },
+      {
+        "id": "mistral-team",
+        "name": "Le Chat Team",
+        "category": "team",
+        "base_price": {
+          "amount": 24.99,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Admin, priority support"
+        },
+        "overage": {
+          "unit": "token",
+          "input_per_million": 0.4,
+          "output_per_million": 2.0,
+          "model": "devstral-2",
+          "notes": "API rates after included usage"
+        }
+      },
+      {
+        "id": "mistral-api-devstral2",
+        "name": "Devstral 2 API",
+        "category": "usage",
+        "base_price": null,
+        "includes": null,
+        "overage": {
+          "unit": "token",
+          "input_per_million": 0.4,
+          "output_per_million": 2.0,
+          "model": "devstral-2",
+          "notes": "123B param, 256K context"
+        }
+      },
+      {
+        "id": "mistral-api-devstral-small",
+        "name": "Devstral Small 2 API",
+        "category": "usage",
+        "base_price": null,
+        "includes": null,
+        "overage": {
+          "unit": "token",
+          "input_per_million": 0.1,
+          "output_per_million": 0.3,
+          "model": "devstral-small-2",
+          "notes": "24B param, self-hostable, Apache 2.0"
+        }
+      }
+    ],
+    "capabilities": {
+      "autonomy_level": "full",
+      "ide_type": "terminal",
+      "model_choice": false,
+      "self_hosted": true,
+      "fedramp": false,
+      "eu_data_residency": true,
+      "soc2": true,
+      "on_premise": true
+    },
+    "benchmarks": {
+      "swe_bench_verified": 72.2,
+      "measured_at": "2026-01-01"
+    }
+  }
+}

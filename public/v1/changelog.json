@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "version": "2026-03-05",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "source": "https://taimi.com"
+  },
+  "changes": [
+    {
+      "date": "2026-03-05",
+      "tool": "all",
+      "type": "initial_release",
+      "description": "Initial dataset with 10 agentic coding tools",
+      "details": null
+    },
+    {
+      "date": "2026-02-25",
+      "tool": "github-copilot",
+      "type": "feature",
+      "description": "Copilot CLI reached general availability",
+      "details": { "source": "https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available/" }
+    },
+    {
+      "date": "2026-01-27",
+      "tool": "mistral-vibe",
+      "type": "pricing_change",
+      "description": "Mistral Vibe 2.0 moved from free to paid Le Chat Pro/Team plans",
+      "details": {
+        "plan": "Le Chat Pro",
+        "old_value": 0,
+        "new_value": 14.99,
+        "source": "https://mistral.ai/news/mistral-vibe-2-0"
+      }
+    },
+    {
+      "date": "2026-01-27",
+      "tool": "mistral-vibe",
+      "type": "pricing_change",
+      "description": "Devstral 2 API moved from free to paid access",
+      "details": {
+        "plan": "Devstral 2 API",
+        "old_value": { "input_per_million": 0, "output_per_million": 0 },
+        "new_value": { "input_per_million": 0.40, "output_per_million": 2.00 },
+        "source": "https://mistral.ai/news/mistral-vibe-2-0"
+      }
+    },
+    {
+      "date": "2026-01-15",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "Cursor introduced Pro+ ($60) and Ultra ($200) tiers",
+      "details": {
+        "plan": "Pro+",
+        "old_value": null,
+        "new_value": 60.00,
+        "source": "https://cursor.com/pricing"
+      }
+    }
+  ]
+}
