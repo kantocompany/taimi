@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-05",
-    "updated_at": "2026-03-05T14:00:00Z",
+    "version": "2026-03-07",
+    "updated_at": "2026-03-07T14:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -40,7 +40,7 @@
         "name": "Pro",
         "category": "individual",
         "base_price": {
-          "amount": 15.0,
+          "amount": 15.00,
           "period": "monthly",
           "per": "user"
         },
@@ -56,7 +56,7 @@
         "name": "Teams",
         "category": "team",
         "base_price": {
-          "amount": 30.0,
+          "amount": 30.00,
           "period": "monthly",
           "per": "user"
         },

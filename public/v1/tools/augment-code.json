@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-05",
-    "updated_at": "2026-03-05T14:00:00Z",
+    "version": "2026-03-07",
+    "updated_at": "2026-03-07T14:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -20,34 +20,70 @@
     },
     "plans": [
       {
-        "id": "augment-individual",
-        "name": "Individual",
+        "id": "augment-indie",
+        "name": "Indie",
         "category": "individual",
         "base_price": {
-          "amount": 50.0,
+          "amount": 20.00,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Context Engine access"
+          "notes": "40K credits, 1 user, Context Engine"
+        },
+        "overage": {
+          "unit": "request",
+          "price_per_unit": null,
+          "notes": "Auto top-up $15/24K credits"
+        }
+      },
+      {
+        "id": "augment-standard",
+        "name": "Standard",
+        "category": "team",
+        "base_price": {
+          "amount": 60.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "130K credits, up to 20 users, analytics"
+        },
+        "overage": {
+          "unit": "request",
+          "price_per_unit": null,
+          "notes": "Auto top-up credits"
+        }
+      },
+      {
+        "id": "augment-max",
+        "name": "Max",
+        "category": "team",
+        "base_price": {
+          "amount": 200.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "450K credits, up to 20 users"
         },
         "overage": null
       },
       {
-        "id": "augment-teams",
-        "name": "Teams",
-        "category": "team",
-        "base_price": {
-          "amount": 50.0,
-          "period": "monthly",
-          "per": "user"
-        },
+        "id": "augment-enterprise",
+        "name": "Enterprise",
+        "category": "enterprise",
+        "base_price": null,
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Full codebase indexing, $50-200/seat"
+          "notes": "Custom credits, SSO, SCIM, SIEM, data residency"
         },
         "overage": null
       }

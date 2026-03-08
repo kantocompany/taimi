@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-05",
-    "updated_at": "2026-03-05T14:00:00Z",
+    "version": "2026-03-07",
+    "updated_at": "2026-03-07T14:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -31,13 +31,45 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Bring your own API key, any provider"
+          "notes": "VS Code extension, BYOK, any provider"
         },
         "overage": {
           "unit": "token",
           "price_per_unit": null,
           "notes": "Cost depends on chosen LLM provider"
         }
+      },
+      {
+        "id": "cline-teams",
+        "name": "Teams",
+        "category": "team",
+        "base_price": {
+          "amount": 20.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "JetBrains, centralized billing, RBAC, first 10 seats free"
+        },
+        "overage": {
+          "unit": "token",
+          "price_per_unit": null,
+          "notes": "Cost depends on chosen LLM provider"
+        }
+      },
+      {
+        "id": "cline-enterprise",
+        "name": "Enterprise",
+        "category": "enterprise",
+        "base_price": null,
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "SSO, SLA, dedicated support"
+        },
+        "overage": null
       }
     ],
     "capabilities": {

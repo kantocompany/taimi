@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-05",
-    "updated_at": "2026-03-05T14:00:00Z",
+    "version": "2026-03-07",
+    "updated_at": "2026-03-07T14:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -17,7 +17,7 @@
         "name": "Anthropic",
         "hq_country": "US",
         "eu_based": false,
-        "pricing_url": "https://www.anthropic.com/pricing"
+        "pricing_url": "https://claude.com/pricing"
       },
       "plans": [
         {
@@ -62,8 +62,8 @@
             "unit": "token",
             "input_per_million": 3.00,
             "output_per_million": 15.00,
-            "model": "claude-sonnet-4-5 / claude-opus-4-6",
-            "notes": "Sonnet $3/$15, Opus higher"
+            "model": "claude-sonnet-4-6 / claude-opus-4-6",
+            "notes": "Sonnet 4.6 $3/$15, Opus 4.6 $5/$25"
           }
         }
       ],
@@ -157,7 +157,7 @@
           "name": "Free",
           "category": "free",
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": 50, "tokens_included": null, "notes": "50 premium req/mo" },
+          "includes": { "premium_requests": 50, "tokens_included": null, "notes": "50 chat req/mo, 2K completions" },
           "overage": null
         },
         {
@@ -189,7 +189,7 @@
           "name": "Enterprise",
           "category": "enterprise",
           "base_price": { "amount": 39.00, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "IP indemnity, SSO, audit logs" },
+          "includes": { "premium_requests": 1000, "tokens_included": null, "notes": "1K premium req/user, IP indemnity, SSO" },
           "overage": null
         }
       ],
@@ -212,7 +212,7 @@
         "name": "OpenAI",
         "hq_country": "US",
         "eu_based": false,
-        "pricing_url": "https://openai.com/api/pricing/"
+        "pricing_url": "https://openai.com/pricing"
       },
       "plans": [
         {
@@ -400,7 +400,7 @@
           "category": "team",
           "base_price": { "amount": 500.00, "period": "monthly", "per": "flat" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "250 ACUs included, flat team price" },
-          "overage": { "unit": "acu", "price_per_unit": 2.25, "notes": "Per ACU beyond 250" }
+          "overage": { "unit": "acu", "price_per_unit": 2.00, "notes": "Per ACU beyond 250" }
         }
       ],
       "capabilities": {
@@ -426,19 +426,35 @@
       },
       "plans": [
         {
-          "id": "augment-individual",
-          "name": "Individual",
+          "id": "augment-indie",
+          "name": "Indie",
           "category": "individual",
-          "base_price": { "amount": 50.00, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Context Engine access" },
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "40K credits, 1 user, Context Engine" },
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "Auto top-up $15/24K credits" }
+        },
+        {
+          "id": "augment-standard",
+          "name": "Standard",
+          "category": "team",
+          "base_price": { "amount": 60.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "130K credits, up to 20 users, analytics" },
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "Auto top-up credits" }
+        },
+        {
+          "id": "augment-max",
+          "name": "Max",
+          "category": "team",
+          "base_price": { "amount": 200.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "450K credits, up to 20 users" },
           "overage": null
         },
         {
-          "id": "augment-teams",
-          "name": "Teams",
-          "category": "team",
-          "base_price": { "amount": 50.00, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Full codebase indexing, $50-200/seat" },
+          "id": "augment-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "base_price": null,
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Custom credits, SSO, SCIM, SIEM, data residency" },
           "overage": null
         }
       ],
@@ -469,8 +485,24 @@
           "name": "Free (BYOK)",
           "category": "free",
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Bring your own API key, any provider" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "VS Code extension, BYOK, any provider" },
           "overage": { "unit": "token", "price_per_unit": null, "notes": "Cost depends on chosen LLM provider" }
+        },
+        {
+          "id": "cline-teams",
+          "name": "Teams",
+          "category": "team",
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "JetBrains, centralized billing, RBAC, first 10 seats free" },
+          "overage": { "unit": "token", "price_per_unit": null, "notes": "Cost depends on chosen LLM provider" }
+        },
+        {
+          "id": "cline-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "base_price": null,
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "SSO, SLA, dedicated support" },
+          "overage": null
         }
       ],
       "capabilities": {

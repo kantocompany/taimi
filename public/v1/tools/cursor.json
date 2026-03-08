@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-05",
-    "updated_at": "2026-03-05T14:00:00Z",
+    "version": "2026-03-07",
+    "updated_at": "2026-03-07T14:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -40,7 +40,7 @@
         "name": "Pro",
         "category": "individual",
         "base_price": {
-          "amount": 20.0,
+          "amount": 20.00,
           "period": "monthly",
           "per": "user"
         },
@@ -60,7 +60,7 @@
         "name": "Pro+",
         "category": "individual",
         "base_price": {
-          "amount": 60.0,
+          "amount": 60.00,
           "period": "monthly",
           "per": "user"
         },
@@ -80,7 +80,7 @@
         "name": "Ultra",
         "category": "individual",
         "base_price": {
-          "amount": 200.0,
+          "amount": 200.00,
           "period": "monthly",
           "per": "user"
         },
@@ -100,7 +100,7 @@
         "name": "Business",
         "category": "team",
         "base_price": {
-          "amount": 40.0,
+          "amount": 40.00,
           "period": "monthly",
           "per": "user"
         },

@@ -1,10 +1,58 @@
 {
   "meta": {
-    "version": "2026-03-05",
-    "updated_at": "2026-03-05T14:00:00Z",
+    "version": "2026-03-07",
+    "updated_at": "2026-03-07T14:00:00Z",
     "source": "https://taimi.com"
   },
   "changes": [
+    {
+      "date": "2026-03-07",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "Augment Code restructured plans: Individual $50 replaced by Indie $20, Standard $60, Max $200",
+      "details": {
+        "old_plans": ["Individual $50/mo", "Teams $50-200/seat"],
+        "new_plans": ["Indie $20/mo", "Standard $60/seat", "Max $200/seat", "Enterprise custom"],
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-07",
+      "tool": "cline",
+      "type": "feature",
+      "description": "Cline launched paid Teams ($20/seat) and Enterprise plans alongside free OSS tier",
+      "details": {
+        "plan": "Teams",
+        "old_value": null,
+        "new_value": 20.00,
+        "source": "https://cline.bot/pricing"
+      }
+    },
+    {
+      "date": "2026-03-07",
+      "tool": "devin",
+      "type": "pricing_change",
+      "description": "Devin Team plan ACU overage reduced from $2.25 to $2.00",
+      "details": {
+        "plan": "Team",
+        "field": "overage.price_per_unit",
+        "old_value": 2.25,
+        "new_value": 2.00,
+        "source": "https://devin.ai/pricing"
+      }
+    },
+    {
+      "date": "2026-03-07",
+      "tool": "claude-code",
+      "type": "feature",
+      "description": "Updated pricing URL (anthropic.com/pricing now redirects to claude.com/pricing), corrected Opus 4.6 output pricing to $25/M, updated model references to Sonnet 4.6",
+      "details": {
+        "old_url": "https://www.anthropic.com/pricing",
+        "new_url": "https://claude.com/pricing",
+        "opus_output_corrected": "$25/M (was listed as $15/M)",
+        "source": "https://platform.claude.com/docs/en/docs/about-claude/models"
+      }
+    },
     {
       "date": "2026-03-05",
       "tool": "all",

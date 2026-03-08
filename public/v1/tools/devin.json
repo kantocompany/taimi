@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-05",
-    "updated_at": "2026-03-05T14:00:00Z",
+    "version": "2026-03-07",
+    "updated_at": "2026-03-07T14:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -24,7 +24,7 @@
         "name": "Core",
         "category": "individual",
         "base_price": {
-          "amount": 20.0,
+          "amount": 20.00,
           "period": "monthly",
           "per": "user"
         },
@@ -44,7 +44,7 @@
         "name": "Team",
         "category": "team",
         "base_price": {
-          "amount": 500.0,
+          "amount": 500.00,
           "period": "monthly",
           "per": "flat"
         },
@@ -55,7 +55,7 @@
         },
         "overage": {
           "unit": "acu",
-          "price_per_unit": 2.25,
+          "price_per_unit": 2.00,
           "notes": "Per ACU beyond 250"
         }
       }
