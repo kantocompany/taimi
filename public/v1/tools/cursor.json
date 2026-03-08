@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2026-03-08",
-    "updated_at": "2026-03-08T10:00:00Z",
+    "updated_at": "2026-03-08T18:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -97,7 +97,7 @@
       },
       {
         "id": "cursor-business",
-        "name": "Business",
+        "name": "Teams",
         "category": "team",
         "base_price": {
           "amount": 40.00,
@@ -107,7 +107,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Privacy Mode default"
+          "notes": "Shared chats, rules, privacy mode, RBAC"
         },
         "overage": null
       },
