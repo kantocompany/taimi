@@ -59,11 +59,12 @@ For each tool currently in tools.json:
 
 ### Part C — Document findings
 
-Write a "Market scan" section in the update cycle document (`docs/YYYY-MM-DD-changes.md`):
+Create `docs/YYYY-MM-DD-changes.md` as a **working document** during the cycle. Do not commit — it is gitignored.
 
 - List all candidates found and whether they met criteria
 - List any existing tools flagged for removal/update
 - Note which searches were run and top results
+- Track price verification status per vendor
 
 ## Price verification escalation
 
