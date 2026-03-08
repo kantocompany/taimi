@@ -85,25 +85,19 @@ The pink warning at the top of the matrix explicitly states that tokens, request
 
 ## What's next (future roadmap)
 
+### Done: AI-assisted updates (v2)
+
+Implemented. The agent reads `docs/update-runbook.md` and executes a full update cycle: market scan (5 structured searches for new tools + health check of existing tools), price verification (6-step escalation with fallbacks for bot-blocked sites), and observations review. See `docs/update-runbook.md` for the full process.
+
+The runbook is a protected file — the agent reads it but cannot modify it (enforced via Claude Code hooks and permission rules in CI).
+
+### In progress: CI/CD pipeline
+
+Weekly cron trigger runs the agent via API key. Agent commits changes and creates a PR for human review.
+
 ### v1.1: Template-driven HTML generation
 
-Make index.html generated from tools.json via a simple script (could be a 50-line Python/Node script). This eliminates the manual sync between JSON data and HTML, making updates a single-file edit.
-
-### v1.2: GitHub Actions CI/CD
-
-- On push to main: validate JSON schema, regenerate individual tool files from tools.json, regenerate index.html from template, deploy to object storage
-- On schedule (weekly): optional AI-assisted price check that opens a PR if changes detected
-
-### v2: AI-assisted updates
-
-A GitHub Action that runs weekly:
-1. Claude Code reads current tools.json
-2. Web-searches each vendor's pricing page
-3. Compares findings against current values
-4. If deltas found: updates JSON, adds changelog entries, opens a PR
-5. Human reviews and merges (never auto-commit — wrong prices destroy trust)
-
-The hybrid approach: a deterministic script handles machine-readable sources (LiteLLM JSON for token prices, OpenRouter API), while the AI agent handles subscription tiers that require reading marketing pages.
+Make index.html generated from tools.json via a simple script. This eliminates the manual sync between JSON data and HTML, making updates a single-file edit.
 
 ### v2.1: MCP server
 
@@ -115,7 +109,7 @@ Move beyond "what does it cost" to "what do you get per dollar." Track cost-per-
 
 ### Ongoing: expand tool coverage
 
-Current candidates for addition: Amazon Q Developer, JetBrains AI, Tabnine, Qodo, Replit, Aider, Kilo Code. Prioritize tools that have meaningful agentic capabilities (not just autocomplete) and transparent pricing.
+The market scan process in the runbook handles this automatically. Current candidates to watch: Amazon Q Developer, JetBrains AI, Tabnine, Qodo, Replit, Aider, Kilo Code. Inclusion criteria are defined in the runbook.
 
 ## What this project is NOT
 

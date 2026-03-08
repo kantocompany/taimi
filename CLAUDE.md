@@ -52,6 +52,14 @@ any change ──→ changelog.json     (append-only log)
 5. Add row to `public/index.html`
 6. Add changelog entry with type `new_tool`
 
+## Updating prices
+
+Follow `docs/update-runbook.md` for the verification process. Never skip verification.
+
+## Protected files
+
+- `docs/update-runbook.md` — governs automated update cycles. Read for guidance, never modify. Enforced via hooks and permission rules in CI.
+
 ## Style notes
 
 The project values compactness over verbosity. Don't over-document. Don't add abstraction layers unless they solve a real problem. The entire "API" is static JSON files — that's a feature, not a limitation.

@@ -1,10 +1,46 @@
 {
   "meta": {
-    "version": "2026-03-07",
-    "updated_at": "2026-03-07T14:00:00Z",
+    "version": "2026-03-08",
+    "updated_at": "2026-03-08T10:00:00Z",
     "source": "https://taimi.com"
   },
   "changes": [
+    {
+      "date": "2026-03-08",
+      "tool": "google-antigravity",
+      "type": "feature",
+      "description": "Updated pricing_url from blog post to dedicated pricing page",
+      "details": {
+        "field": "vendor.pricing_url",
+        "old_value": "https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/",
+        "new_value": "https://antigravity.google/pricing",
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-03-08",
+      "tool": "cursor",
+      "type": "feature",
+      "description": "Added Enterprise plan: custom pricing, pooled usage, SCIM, audit logs",
+      "details": {
+        "plan": "Enterprise",
+        "old_value": null,
+        "new_value": "custom",
+        "source": "https://cursor.com/enterprise"
+      }
+    },
+    {
+      "date": "2026-03-08",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "Verified API pricing via developers.openai.com: models updated to o3/gpt-5.4, output corrected to $8-15/M",
+      "details": {
+        "field": "overage",
+        "old_value": { "model": "gpt-4o / o3", "output_per_million": 8.00 },
+        "new_value": { "model": "o3 / gpt-5.4", "output_per_million": 15.00 },
+        "source": "https://developers.openai.com/docs/pricing"
+      }
+    },
     {
       "date": "2026-03-07",
       "tool": "augment-code",

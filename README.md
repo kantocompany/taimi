@@ -2,7 +2,7 @@
 
 A free, open pricing comparison for agentic AI coding tools. One page, one API, updated regularly.
 
-Curated by [Kanto Company](https://www.kantocompany.com/) — a sustainability-focused cloud consultancy based in Finland.
+Curated by [Kanto Company](https://www.kantocompany.com/) — Green Lean technology consultancy · Helsinki & Tampere.
 
 ## Why this exists
 
@@ -56,14 +56,21 @@ public/
     ├── changelog.json         # Price change history
     └── tools/
         └── {slug}.json        # Individual tool files (derived from tools.json)
+docs/
+├── update-runbook.md          # Automated update process (protected, read-only for agents)
 ```
 
 ## Updating data
 
-1. Edit `public/v1/tools.json`
-2. Add entry to `public/v1/changelog.json`
-3. Regenerate individual tool files and `index.html` (see docs/design-decisions.md)
-4. Commit, push, deploy
+Automated weekly updates follow `docs/update-runbook.md` — market scan, price verification, observations review.
+
+To simulate an update cycle locally:
+
+```bash
+claude "Read docs/update-runbook.md and execute a full update cycle. Commit all changes and create a PR."
+```
+
+Manual updates: edit `public/v1/tools.json`, update `changelog.json`, regenerate individual tool files and `index.html`.
 
 ## Hosting
 
