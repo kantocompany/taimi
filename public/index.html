@@ -102,6 +102,28 @@
     }
     .warning strong { color: #fbb6ce; }
 
+    .warning-platform {
+      padding: 10px 16px;
+      background: rgba(251, 191, 36, 0.06);
+      border: 1px solid rgba(251, 191, 36, 0.15);
+      border-radius: 6px;
+      font-size: 12px;
+      color: #fcd34d;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .warning-platform strong { color: #fde68a; }
+
+    .platform-badge {
+      font-size: 8px;
+      font-weight: 700;
+      color: #fcd34d;
+      vertical-align: super;
+      letter-spacing: 0.03em;
+      margin-left: 3px;
+      opacity: 0.7;
+    }
+
     /* Matrix */
     .matrix {
       width: 100%;
@@ -429,6 +451,10 @@
       Click any price block to visit official pricing.
     </div>
 
+    <div class="warning-platform">
+      <strong>Platform plans<sup>P</sup>:</strong> Claude Code, OpenAI Codex, and Mistral Vibe subscription prices include their full platforms (Claude.ai, ChatGPT, Le Chat) — not just the coding tool. API/usage plans are standalone.
+    </div>
+
     <!-- Scroll hint for mobile -->
     <div class="scroll-hint">← scroll horizontally →</div>
 
@@ -452,12 +478,12 @@
         </div>
         <div class="cell"><div class="empty-cell">—</div></div>
         <div class="cell">
-          <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Pro</span><span class="tier-price">$20/mo</span></div><div class="tier-notes">Sonnet-powered</div></a>
-          <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Max 5×</span><span class="tier-price">$100/mo</span></div><div class="tier-notes">Opus access</div></a>
-          <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Max 20×</span><span class="tier-price">$200/mo</span></div><div class="tier-notes">Full Opus 4.6</div></a>
+          <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Pro<span class="platform-badge">P</span></span><span class="tier-price">$20/mo</span></div><div class="tier-notes">Sonnet-powered</div></a>
+          <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Max 5×<span class="platform-badge">P</span></span><span class="tier-price">$100/mo</span></div><div class="tier-notes">Opus access</div></a>
+          <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Max 20×<span class="platform-badge">P</span></span><span class="tier-price">$200/mo</span></div><div class="tier-notes">Full Opus 4.6</div></a>
         </div>
         <div class="cell">
-          <a class="price-block pb-team" href="https://claude.com/pricing#team-&-enterprise" target="_blank"><div class="tier-row"><span class="tier-name">Teams</span><span class="tier-price">$25–150/seat</span></div><div class="tier-notes">Tiered by usage</div></a>
+          <a class="price-block pb-team" href="https://claude.com/pricing#team-&-enterprise" target="_blank"><div class="tier-row"><span class="tier-name">Teams<span class="platform-badge">P</span></span><span class="tier-price">$25–150/seat</span></div><div class="tier-notes">Tiered by usage</div></a>
         </div>
         <div class="cell">
           <a class="price-block pb-usage" href="https://claude.com/pricing#api" target="_blank"><div class="tier-row"><span class="tier-name">API tokens</span><span class="tier-price">$3–25/M out</span></div><div class="tier-notes">Sonnet 4.6 $3/$15, Opus 4.6 $5/$25</div><div class="tier-unit">per M tokens</div></a>
@@ -522,11 +548,11 @@
         </div>
         <div class="cell"><div class="empty-cell">—</div></div>
         <div class="cell">
-          <a class="price-block pb-individual" href="https://openai.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Plus</span><span class="tier-price">$20/mo</span></div><div class="tier-notes">Bundled ChatGPT</div></a>
-          <a class="price-block pb-individual" href="https://openai.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Pro</span><span class="tier-price">$200/mo</span></div><div class="tier-notes">Full model access</div></a>
+          <a class="price-block pb-individual" href="https://openai.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Plus<span class="platform-badge">P</span></span><span class="tier-price">$20/mo</span></div><div class="tier-notes">Bundled ChatGPT</div></a>
+          <a class="price-block pb-individual" href="https://openai.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Pro<span class="platform-badge">P</span></span><span class="tier-price">$200/mo</span></div><div class="tier-notes">Full model access</div></a>
         </div>
         <div class="cell">
-          <a class="price-block pb-team" href="https://openai.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Team</span><span class="tier-price">$25/seat</span></div><div class="tier-notes">$25 annual / $30 monthly</div></a>
+          <a class="price-block pb-team" href="https://openai.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Team<span class="platform-badge">P</span></span><span class="tier-price">$25/seat</span></div><div class="tier-notes">$25 annual / $30 monthly</div></a>
         </div>
         <div class="cell">
           <a class="price-block pb-usage" href="https://openai.com/pricing" target="_blank"><div class="tier-row"><span class="tier-name">API tokens</span><span class="tier-price">$2–15/M out</span></div><div class="tier-notes">o3 $2/$8, gpt-5.4 $2.50/$15</div><div class="tier-unit">per M tokens</div></a>
@@ -543,13 +569,13 @@
           <a class="vendor-link" href="https://mistral.ai/pricing" target="_blank">↗ official pricing</a>
         </div>
         <div class="cell" style="background: rgba(170,255,0,0.02);">
-          <a class="price-block pb-free" href="https://mistral.ai/pricing" target="_blank"><div class="tier-name">Experiment</div><div class="tier-notes">Free API in Mistral Studio</div></a>
+          <a class="price-block pb-free" href="https://mistral.ai/pricing" target="_blank"><div class="tier-name">Experiment<span class="platform-badge">P</span></div><div class="tier-notes">Free API in Mistral Studio</div></a>
         </div>
         <div class="cell" style="background: rgba(170,255,0,0.02);">
-          <a class="price-block pb-individual" href="https://mistral.ai/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Le Chat Pro</span><span class="tier-price">$14.99/mo</span></div><div class="tier-notes">Vibe CLI + Devstral 2</div></a>
+          <a class="price-block pb-individual" href="https://mistral.ai/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Le Chat Pro<span class="platform-badge">P</span></span><span class="tier-price">$14.99/mo</span></div><div class="tier-notes">Vibe CLI + Devstral 2</div></a>
         </div>
         <div class="cell" style="background: rgba(170,255,0,0.02);">
-          <a class="price-block pb-team" href="https://mistral.ai/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Le Chat Team</span><span class="tier-price">$24.99/seat</span></div><div class="tier-notes">Admin, priority support</div></a>
+          <a class="price-block pb-team" href="https://mistral.ai/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Le Chat Team<span class="platform-badge">P</span></span><span class="tier-price">$24.99/seat</span></div><div class="tier-notes">Admin, priority support</div></a>
         </div>
         <div class="cell" style="background: rgba(170,255,0,0.02);">
           <a class="price-block pb-usage" href="https://mistral.ai/pricing" target="_blank"><div class="tier-row"><span class="tier-name">Devstral 2</span><span class="tier-price">$0.40/$2.00/M</span></div><div class="tier-notes">Input / output tokens</div><div class="tier-unit">per M tokens</div></a>
@@ -665,8 +691,8 @@
         <li>Team seat costs range <strong>10×</strong> from $19 (Copilot Business) to $200 (Augment Max).</li>
         <li><strong>Usage-based is apples to oranges:</strong> Copilot charges per request ($0.04), Anthropic/OpenAI/Mistral per token, Devin per ACU. No standard metering unit exists.</li>
         <li>Mistral's Devstral 2 output tokens ($2.00/M) are <strong>~12× cheaper</strong> than Claude Opus 4.6 output ($25/M).</li>
-        <li><strong>Cline</strong> offers zero vendor lock-in (BYOK) and now has paid Teams ($20/seat) alongside the free OSS tier.</li>
-        <li>On-prem enterprise: <strong>Windsurf</strong> (FedRAMP), <strong>Mistral</strong> (EU data, fine-tune), and <strong>Cline</strong> (self-hosted by design).</li>
+        <li><strong>Platform bundling<sup>P</sup>:</strong> Claude Code, Codex, and Vibe subscription plans include their full platforms (Claude.ai, ChatGPT, Le Chat). Their individual prices aren't directly comparable to standalone tools like Cursor or Windsurf.</li>
+        <li>On-prem enterprise: <strong>Windsurf</strong> (FedRAMP), <strong>Mistral</strong> (EU data, fine-tune), and <strong>Cline</strong> (self-hosted by design, BYOK).</li>
       </ul>
     </div>
 
@@ -676,7 +702,7 @@
         Curated by <a href="https://www.kantocompany.com/" target="_blank">Kanto Company</a> — Green Lean technology consultancy · Helsinki & Tampere
       </div>
       <div class="right">
-        Last updated: 8 March 2026 · Data sourced from official vendor pricing pages
+        Last updated: 9 March 2026 · Data sourced from official vendor pricing pages
       </div>
     </div>
 

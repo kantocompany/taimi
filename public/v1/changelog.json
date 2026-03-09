@@ -1,10 +1,21 @@
 {
   "meta": {
-    "version": "2026-03-08",
-    "updated_at": "2026-03-08T18:00:00Z",
+    "version": "2026-03-09",
+    "updated_at": "2026-03-09T12:00:00Z",
     "source": "https://taimi.com"
   },
   "changes": [
+    {
+      "date": "2026-03-09",
+      "tool": "all",
+      "type": "feature",
+      "description": "Added platform bundling metadata: optional platform field at tool level, platform_plan flag at plan level for Claude Code, OpenAI Codex, Mistral Vibe",
+      "details": {
+        "fields_added": ["tool.platform", "plan.platform_plan"],
+        "affected_tools": ["claude-code", "openai-codex", "mistral-vibe"],
+        "breaking": false
+      }
+    },
     {
       "date": "2026-03-08",
       "tool": "cursor",

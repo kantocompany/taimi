@@ -1,116 +1,118 @@
 {
-  "meta": {
-    "version": "2026-03-07",
-    "updated_at": "2026-03-07T14:00:00Z",
-    "currency": "USD",
-    "schema_version": "1.0",
-    "source": "https://taimi.com",
-    "maintainer": "Kanto Company",
-    "license": "CC BY 4.0",
-    "tool_count": 10
+  "slug": "claude-code",
+  "name": "Claude Code",
+  "vendor": {
+    "name": "Anthropic",
+    "hq_country": "US",
+    "eu_based": false,
+    "pricing_url": "https://claude.com/pricing"
   },
-  "tool": {
-    "slug": "claude-code",
-    "name": "Claude Code",
-    "vendor": {
-      "name": "Anthropic",
-      "hq_country": "US",
-      "eu_based": false,
-      "pricing_url": "https://claude.com/pricing"
-    },
-    "plans": [
-      {
-        "id": "claude-code-pro",
-        "name": "Pro",
-        "category": "individual",
-        "base_price": {
-          "amount": 20.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Sonnet-powered, rate-limited"
-        },
-        "overage": null
-      },
-      {
-        "id": "claude-code-max5",
-        "name": "Max 5x",
-        "category": "individual",
-        "base_price": {
-          "amount": 100.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Opus access"
-        },
-        "overage": null
-      },
-      {
-        "id": "claude-code-max20",
-        "name": "Max 20x",
-        "category": "individual",
-        "base_price": {
-          "amount": 200.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Full Opus 4.6"
-        },
-        "overage": null
-      },
-      {
-        "id": "claude-code-teams",
-        "name": "Teams",
-        "category": "team",
-        "base_price": {
-          "amount": 25.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Tiered $25-150/seat by usage"
-        },
-        "overage": null
-      },
-      {
-        "id": "claude-code-api",
-        "name": "API",
-        "category": "usage",
-        "base_price": null,
-        "includes": null,
-        "overage": {
-          "unit": "token",
-          "input_per_million": 3.00,
-          "output_per_million": 15.00,
-          "model": "claude-sonnet-4-6 / claude-opus-4-6",
-          "notes": "Sonnet 4.6 $3/$15, Opus 4.6 $5/$25"
-        }
-      }
+  "platform": {
+    "name": "Anthropic",
+    "bundled_with": [
+      "Claude.ai web/desktop",
+      "Cowork",
+      "Research",
+      "Projects"
     ],
-    "capabilities": {
-      "autonomy_level": "full",
-      "ide_type": "terminal",
-      "model_choice": false,
-      "self_hosted": false,
-      "fedramp": false,
-      "eu_data_residency": true,
-      "soc2": true,
-      "on_premise": false
+    "note": "Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use"
+  },
+  "plans": [
+    {
+      "id": "claude-code-pro",
+      "name": "Pro",
+      "category": "individual",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 20.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Sonnet-powered, rate-limited"
+      },
+      "overage": null
     },
-    "benchmarks": {
-      "swe_bench_pro": 45.9,
-      "measured_at": "2026-02-01"
+    {
+      "id": "claude-code-max5",
+      "name": "Max 5x",
+      "category": "individual",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 100.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Opus access"
+      },
+      "overage": null
+    },
+    {
+      "id": "claude-code-max20",
+      "name": "Max 20x",
+      "category": "individual",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 200.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Full Opus 4.6"
+      },
+      "overage": null
+    },
+    {
+      "id": "claude-code-teams",
+      "name": "Teams",
+      "category": "team",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 25.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Tiered $25-150/seat by usage"
+      },
+      "overage": null
+    },
+    {
+      "id": "claude-code-api",
+      "name": "API",
+      "category": "usage",
+      "base_price": null,
+      "includes": null,
+      "overage": {
+        "unit": "token",
+        "input_per_million": 3.00,
+        "output_per_million": 15.00,
+        "model": "claude-sonnet-4-6 / claude-opus-4-6",
+        "notes": "Sonnet 4.6 $3/$15, Opus 4.6 $5/$25"
+      }
     }
+  ],
+  "capabilities": {
+    "autonomy_level": "full",
+    "ide_type": "terminal",
+    "model_choice": false,
+    "self_hosted": false,
+    "fedramp": false,
+    "eu_data_residency": true,
+    "soc2": true,
+    "on_premise": false
+  },
+  "benchmarks": {
+    "swe_bench_pro": 45.9,
+    "measured_at": "2026-02-01"
   }
 }

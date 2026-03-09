@@ -43,6 +43,15 @@ any change ──→ changelog.json     (append-only log)
 
 `token`, `request`, `acu`
 
+## Platform bundling (optional fields)
+
+Some tools are features within broader platform subscriptions (e.g., Claude Code is part of the Anthropic platform alongside Claude.ai, Cowork, etc.). Two optional fields express this:
+
+- **`tool.platform`** — object with `name`, `bundled_with[]`, and optional `note`. Absent = standalone tool.
+- **`plan.platform_plan`** — boolean. `true` = this plan is a platform subscription covering more than just the coding tool. Absent = standalone pricing.
+
+In index.html, platform plans are marked with a superscript `P` badge and explained in the amber warning banner.
+
 ## Adding a new tool
 
 1. Add entry to `tools` array in `public/v1/tools.json`

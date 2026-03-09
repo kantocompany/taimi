@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2026-03-08",
-    "updated_at": "2026-03-08T18:00:00Z",
+    "updated_at": "2026-03-09T12:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
@@ -19,11 +19,17 @@
         "eu_based": false,
         "pricing_url": "https://claude.com/pricing"
       },
+      "platform": {
+        "name": "Anthropic",
+        "bundled_with": ["Claude.ai web/desktop", "Cowork", "Research", "Projects"],
+        "note": "Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use"
+      },
       "plans": [
         {
           "id": "claude-code-pro",
           "name": "Pro",
           "category": "individual",
+          "platform_plan": true,
           "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Sonnet-powered, rate-limited" },
           "overage": null
@@ -32,6 +38,7 @@
           "id": "claude-code-max5",
           "name": "Max 5x",
           "category": "individual",
+          "platform_plan": true,
           "base_price": { "amount": 100.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Opus access" },
           "overage": null
@@ -40,6 +47,7 @@
           "id": "claude-code-max20",
           "name": "Max 20x",
           "category": "individual",
+          "platform_plan": true,
           "base_price": { "amount": 200.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Full Opus 4.6" },
           "overage": null
@@ -48,6 +56,7 @@
           "id": "claude-code-teams",
           "name": "Teams",
           "category": "team",
+          "platform_plan": true,
           "base_price": { "amount": 25.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Tiered $25-150/seat by usage" },
           "overage": null
@@ -222,11 +231,17 @@
         "eu_based": false,
         "pricing_url": "https://openai.com/pricing"
       },
+      "platform": {
+        "name": "ChatGPT",
+        "bundled_with": ["ChatGPT web/mobile", "DALL-E", "Sora", "research tools", "custom GPTs"],
+        "note": "Plus/Pro/Team are ChatGPT subscriptions; API plan is standalone pay-per-use"
+      },
       "plans": [
         {
           "id": "codex-plus",
           "name": "Plus",
           "category": "individual",
+          "platform_plan": true,
           "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Bundled with ChatGPT Plus" },
           "overage": null
@@ -235,6 +250,7 @@
           "id": "codex-pro",
           "name": "Pro",
           "category": "individual",
+          "platform_plan": true,
           "base_price": { "amount": 200.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Full model access" },
           "overage": null
@@ -243,6 +259,7 @@
           "id": "codex-team",
           "name": "Team",
           "category": "team",
+          "platform_plan": true,
           "base_price": { "amount": 25.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "$25 annual / $30 monthly" },
           "overage": null
@@ -283,11 +300,17 @@
         "eu_based": true,
         "pricing_url": "https://mistral.ai/pricing"
       },
+      "platform": {
+        "name": "Le Chat",
+        "bundled_with": ["Le Chat web/desktop"],
+        "note": "Le Chat Pro/Team include Vibe CLI; API plans are standalone"
+      },
       "plans": [
         {
           "id": "mistral-experiment",
           "name": "Experiment",
           "category": "free",
+          "platform_plan": true,
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Free API in Mistral Studio" },
           "overage": null
@@ -296,6 +319,7 @@
           "id": "mistral-pro",
           "name": "Le Chat Pro",
           "category": "individual",
+          "platform_plan": true,
           "base_price": { "amount": 14.99, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Vibe CLI + Devstral 2, PAYG beyond" },
           "overage": { "unit": "token", "input_per_million": 0.40, "output_per_million": 2.00, "model": "devstral-2", "notes": "API rates after included usage" }
@@ -304,6 +328,7 @@
           "id": "mistral-team",
           "name": "Le Chat Team",
           "category": "team",
+          "platform_plan": true,
           "base_price": { "amount": 24.99, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Admin, priority support" },
           "overage": { "unit": "token", "input_per_million": 0.40, "output_per_million": 2.00, "model": "devstral-2", "notes": "API rates after included usage" }
