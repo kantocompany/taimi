@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "2026-03-08",
-    "updated_at": "2026-03-09T12:00:00Z",
+    "version": "2026-03-11",
+    "updated_at": "2026-03-11T12:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
-    "tool_count": 10
+    "tool_count": 11
   },
   "tools": [
     {
@@ -53,12 +53,21 @@
           "overage": null
         },
         {
-          "id": "claude-code-teams",
-          "name": "Teams",
+          "id": "claude-code-teams-standard",
+          "name": "Teams Standard",
           "category": "team",
           "platform_plan": true,
           "base_price": { "amount": 25.00, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Tiered $25-150/seat by usage" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Standard seat, min 5 members, admin controls" },
+          "overage": null
+        },
+        {
+          "id": "claude-code-teams-premium",
+          "name": "Teams Premium",
+          "category": "team",
+          "platform_plan": true,
+          "base_price": { "amount": 150.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Premium seat, Claude Code access, early features" },
           "overage": null
         },
         {
@@ -488,7 +497,7 @@
           "category": "team",
           "base_price": { "amount": 200.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "450K credits, up to 20 users" },
-          "overage": null
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "$15/24K credits top-up" }
         },
         {
           "id": "augment-enterprise",
@@ -585,6 +594,53 @@
         "fedramp": false,
         "eu_data_residency": false,
         "soc2": false,
+        "on_premise": false
+      },
+      "benchmarks": { "swe_bench_pro": null, "measured_at": null }
+    },
+    {
+      "slug": "replit",
+      "name": "Replit",
+      "vendor": {
+        "name": "Replit",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://replit.com/pricing"
+      },
+      "plans": [
+        {
+          "id": "replit-starter",
+          "name": "Starter",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Limited daily Agent credits, 1 published app" },
+          "overage": null
+        },
+        {
+          "id": "replit-core",
+          "name": "Core",
+          "category": "individual",
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "$25/mo credits included, full Agent access, 5 collaborators" },
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "Effort-based pricing per Agent task" }
+        },
+        {
+          "id": "replit-pro",
+          "name": "Pro",
+          "category": "team",
+          "base_price": { "amount": 100.00, "period": "monthly", "per": "flat" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "$100/mo credits, up to 15 builders, priority support" },
+          "overage": { "unit": "request", "price_per_unit": null, "notes": "Effort-based pricing per Agent task" }
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "cloud_ide",
+        "model_choice": false,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": false,
+        "soc2": true,
         "on_premise": false
       },
       "benchmarks": { "swe_bench_pro": null, "measured_at": null }

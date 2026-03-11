@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "2026-03-07",
-    "updated_at": "2026-03-07T14:00:00Z",
+    "version": "2026-03-11",
+    "updated_at": "2026-03-11T12:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.com",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
-    "tool_count": 10
+    "tool_count": 11
   },
   "tool": {
     "slug": "augment-code",
@@ -73,7 +73,7 @@
           "tokens_included": null,
           "notes": "450K credits, up to 20 users"
         },
-        "overage": null
+        "overage": { "unit": "request", "price_per_unit": null, "notes": "$15/24K credits top-up" }
       },
       {
         "id": "augment-enterprise",

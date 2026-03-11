@@ -1,10 +1,45 @@
 {
   "meta": {
-    "version": "2026-03-09",
-    "updated_at": "2026-03-09T12:00:00Z",
+    "version": "2026-03-11",
+    "updated_at": "2026-03-11T12:00:00Z",
     "source": "https://taimi.com"
   },
   "changes": [
+    {
+      "date": "2026-03-11",
+      "tool": "replit",
+      "type": "new_tool",
+      "description": "Added Replit: browser-based agentic coding platform with Agent 3. Starter (free), Core ($20/mo), Pro ($100/mo flat for 15 builders)",
+      "details": {
+        "plans": ["Starter $0", "Core $20/mo", "Pro $100/mo flat"],
+        "source": "https://replit.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-11",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "Claude Teams plan split into Standard ($25/seat) and Premium ($150/seat) tiers. Premium seat includes Claude Code access.",
+      "details": {
+        "plan": "Teams",
+        "old_value": "Teams $25-150/seat (single plan)",
+        "new_value": "Teams Standard $25/seat + Teams Premium $150/seat",
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-11",
+      "tool": "augment-code",
+      "type": "feature",
+      "description": "Augment Code Max plan now has overage top-up: $15/24K credits. Previously listed as no overage.",
+      "details": {
+        "plan": "Max",
+        "field": "overage",
+        "old_value": null,
+        "new_value": "$15/24K credits top-up",
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
     {
       "date": "2026-03-09",
       "tool": "all",
