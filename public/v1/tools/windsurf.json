@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "2026-03-07",
-    "updated_at": "2026-03-07T14:00:00Z",
+    "version": "2026-03-12",
+    "updated_at": "2026-03-12T12:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
-    "source": "https://taimi.com",
+    "source": "https://taimi.market",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
-    "tool_count": 10
+    "tool_count": 12
   },
   "tool": {
     "slug": "windsurf",
@@ -64,6 +64,18 @@
           "premium_requests": null,
           "tokens_included": null,
           "notes": "Self-hosted option"
+        },
+        "overage": null
+      },
+      {
+        "id": "windsurf-enterprise",
+        "name": "Enterprise",
+        "category": "enterprise",
+        "base_price": null,
+        "includes": {
+          "premium_requests": 1000,
+          "tokens_included": null,
+          "notes": "1,000 credits/user/mo, FedRAMP High, on-prem, EU data residency"
         },
         "overage": null
       }

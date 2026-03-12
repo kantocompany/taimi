@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "2026-03-11",
-    "updated_at": "2026-03-11T12:00:00Z",
+    "version": "2026-03-12",
+    "updated_at": "2026-03-12T12:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
-    "source": "https://taimi.com",
+    "source": "https://taimi.market",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
-    "tool_count": 11
+    "tool_count": 12
   },
   "tools": [
     {
@@ -404,6 +404,14 @@
           "base_price": { "amount": 30.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "Self-hosted option" },
           "overage": null
+        },
+        {
+          "id": "windsurf-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "base_price": null,
+          "includes": { "premium_requests": 1000, "tokens_included": null, "notes": "1,000 credits/user/mo, FedRAMP High, on-prem, EU data residency" },
+          "overage": null
         }
       ],
       "capabilities": {
@@ -568,6 +576,37 @@
       "benchmarks": { "swe_bench_pro": null, "measured_at": null }
     },
     {
+      "slug": "aider",
+      "name": "Aider",
+      "vendor": {
+        "name": "Aider AI (Open Source)",
+        "hq_country": null,
+        "eu_based": false,
+        "pricing_url": "https://aider.chat"
+      },
+      "plans": [
+        {
+          "id": "aider-free",
+          "name": "Free (BYOK)",
+          "category": "free",
+          "base_price": { "amount": 0, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Terminal agent, BYOK, any LLM provider, 100+ languages" },
+          "overage": { "unit": "token", "price_per_unit": null, "notes": "Cost depends on chosen LLM provider" }
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "full",
+        "ide_type": "terminal",
+        "model_choice": true,
+        "self_hosted": true,
+        "fedramp": false,
+        "eu_data_residency": true,
+        "soc2": false,
+        "on_premise": true
+      },
+      "benchmarks": { "swe_bench_pro": null, "measured_at": null }
+    },
+    {
       "slug": "google-antigravity",
       "name": "Google Antigravity",
       "vendor": {
@@ -582,7 +621,7 @@
           "name": "Public Preview",
           "category": "free",
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "100% free during preview, enterprise TBA" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA" },
           "overage": null
         }
       ],
@@ -631,6 +670,14 @@
           "base_price": { "amount": 100.00, "period": "monthly", "per": "flat" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "$100/mo credits, up to 15 builders, priority support" },
           "overage": { "unit": "request", "price_per_unit": null, "notes": "Effort-based pricing per Agent task" }
+        },
+        {
+          "id": "replit-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "base_price": null,
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Custom pricing, dedicated support, advanced security" },
+          "overage": null
         }
       ],
       "capabilities": {

@@ -10,18 +10,18 @@
     "tool_count": 12
   },
   "tool": {
-    "slug": "google-antigravity",
-    "name": "Google Antigravity",
+    "slug": "aider",
+    "name": "Aider",
     "vendor": {
-      "name": "Google",
-      "hq_country": "US",
+      "name": "Aider AI (Open Source)",
+      "hq_country": null,
       "eu_based": false,
-      "pricing_url": "https://antigravity.google/pricing"
+      "pricing_url": "https://aider.chat"
     },
     "plans": [
       {
-        "id": "antigravity-preview",
-        "name": "Public Preview",
+        "id": "aider-free",
+        "name": "Free (BYOK)",
         "category": "free",
         "base_price": {
           "amount": 0,
@@ -31,20 +31,24 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA"
+          "notes": "Terminal agent, BYOK, any LLM provider, 100+ languages"
         },
-        "overage": null
+        "overage": {
+          "unit": "token",
+          "price_per_unit": null,
+          "notes": "Cost depends on chosen LLM provider"
+        }
       }
     ],
     "capabilities": {
       "autonomy_level": "full",
-      "ide_type": "ide",
+      "ide_type": "terminal",
       "model_choice": true,
-      "self_hosted": false,
+      "self_hosted": true,
       "fedramp": false,
-      "eu_data_residency": false,
+      "eu_data_residency": true,
       "soc2": false,
-      "on_premise": false
+      "on_premise": true
     },
     "benchmarks": {
       "swe_bench_pro": null,

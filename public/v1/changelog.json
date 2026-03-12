@@ -1,10 +1,56 @@
 {
   "meta": {
-    "version": "2026-03-11",
-    "updated_at": "2026-03-11T12:00:00Z",
-    "source": "https://taimi.com"
+    "version": "2026-03-12",
+    "updated_at": "2026-03-12T12:00:00Z",
+    "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-12",
+      "tool": "aider",
+      "type": "new_tool",
+      "description": "Added Aider: open-source terminal-based AI pair programming agent (BYOK). 41K+ GitHub stars, supports 100+ languages, any LLM provider.",
+      "details": {
+        "plans": ["Free (BYOK) $0"],
+        "source": "https://aider.chat"
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "tool": "windsurf",
+      "type": "feature",
+      "description": "Added Windsurf Enterprise plan: custom pricing, 1,000 credits/user/mo, FedRAMP High, on-prem, EU data residency",
+      "details": {
+        "plan": "Enterprise",
+        "old_value": null,
+        "new_value": "custom",
+        "source": "https://windsurf.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "tool": "replit",
+      "type": "feature",
+      "description": "Added Replit Enterprise plan: custom pricing, dedicated support, advanced security",
+      "details": {
+        "plan": "Enterprise",
+        "old_value": null,
+        "new_value": "custom",
+        "source": "https://replit.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "tool": "google-antigravity",
+      "type": "feature",
+      "description": "Updated Antigravity notes: no longer just free preview — formal Individual plan at $0/mo with credit add-ons available ($24.99/2,500 credits). Developer/Team/Org tiers TBA.",
+      "details": {
+        "field": "notes",
+        "old_value": "100% free during preview, enterprise TBA",
+        "new_value": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA",
+        "source": "https://antigravity.google/pricing"
+      }
+    },
     {
       "date": "2026-03-11",
       "tool": "replit",
