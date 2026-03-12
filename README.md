@@ -16,7 +16,9 @@ No single resource compiles agentic coding tool pricing in one place. Developers
 
 ## Live page
 
-TODO
+Hosted on GitHub Pages. Deployed automatically on push to `main` via GitHub Actions.
+
+URL: TODO (pending custom domain setup)
 
 ## API
 
@@ -74,7 +76,11 @@ Manual updates: edit `public/v1/tools.json`, update `changelog.json`, regenerate
 
 ## Hosting
 
-TODO
+GitHub Pages, deployed from `public/` via GitHub Actions (`.github/workflows/deploy.yml`).
+
+- **Deploy trigger:** push to `main` or manual `workflow_dispatch`
+- **Custom domain:** configure in repo Settings > Pages once DNS is ready
+- **CORS:** enabled by default on public GitHub Pages (`Access-Control-Allow-Origin: *`)
 
 ## License
 
