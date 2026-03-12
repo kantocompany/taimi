@@ -123,6 +123,14 @@ The "Key observations" section in `public/index.html` is editorial analysis — 
 4. If a new tool was added or a major price shift occurred, consider adding or replacing an observation to highlight it
 5. Keep the total to 5–6 bullet points — concise, not comprehensive
 
+## Schema validation
+
+Run after all data changes, before committing.
+
+1. Generate individual tool files: `./scripts/generate-tool-files.sh`
+2. Validate all files: `./scripts/validate.sh`
+3. Do not commit if validation fails. Fix issues and re-run.
+
 ## Known alternate URLs
 
 Vendors whose primary pricing URL blocks automated fetchers. Updated as new blocks are discovered.

@@ -1,102 +1,114 @@
 {
-  "slug": "openai-codex",
-  "name": "OpenAI Codex",
-  "vendor": {
-    "name": "OpenAI",
-    "hq_country": "US",
-    "eu_based": false,
-    "pricing_url": "https://openai.com/pricing"
+  "meta": {
+    "version": "2026-03-12",
+    "updated_at": "2026-03-12T12:00:00Z",
+    "currency": "USD",
+    "schema_version": "1.0",
+    "source": "https://taimi.market",
+    "maintainer": "Kanto Company",
+    "license": "CC BY 4.0",
+    "tool_count": 12
   },
-  "platform": {
-    "name": "ChatGPT",
-    "bundled_with": [
-      "ChatGPT web/mobile",
-      "DALL-E",
-      "Sora",
-      "research tools",
-      "custom GPTs"
-    ],
-    "note": "Plus/Pro/Team are ChatGPT subscriptions; API plan is standalone pay-per-use"
-  },
-  "plans": [
-    {
-      "id": "codex-plus",
-      "name": "Plus",
-      "category": "individual",
-      "platform_plan": true,
-      "base_price": {
-        "amount": 20.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "Bundled with ChatGPT Plus"
-      },
-      "overage": null
+  "tool": {
+    "slug": "openai-codex",
+    "name": "OpenAI Codex",
+    "vendor": {
+      "name": "OpenAI",
+      "hq_country": "US",
+      "eu_based": false,
+      "pricing_url": "https://openai.com/pricing"
     },
-    {
-      "id": "codex-pro",
-      "name": "Pro",
-      "category": "individual",
-      "platform_plan": true,
-      "base_price": {
-        "amount": 200.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "Full model access"
-      },
-      "overage": null
+    "platform": {
+      "name": "ChatGPT",
+      "bundled_with": [
+        "ChatGPT web/mobile",
+        "DALL-E",
+        "Sora",
+        "research tools",
+        "custom GPTs"
+      ],
+      "note": "Plus/Pro/Team are ChatGPT subscriptions; API plan is standalone pay-per-use"
     },
-    {
-      "id": "codex-team",
-      "name": "Team",
-      "category": "team",
-      "platform_plan": true,
-      "base_price": {
-        "amount": 25.00,
-        "period": "monthly",
-        "per": "user"
+    "plans": [
+      {
+        "id": "codex-plus",
+        "name": "Plus",
+        "category": "individual",
+        "platform_plan": true,
+        "base_price": {
+          "amount": 20.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Bundled with ChatGPT Plus"
+        },
+        "overage": null
       },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "$25 annual / $30 monthly"
+      {
+        "id": "codex-pro",
+        "name": "Pro",
+        "category": "individual",
+        "platform_plan": true,
+        "base_price": {
+          "amount": 200.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Full model access"
+        },
+        "overage": null
       },
-      "overage": null
-    },
-    {
-      "id": "codex-api",
-      "name": "API",
-      "category": "usage",
-      "base_price": null,
-      "includes": null,
-      "overage": {
-        "unit": "token",
-        "input_per_million": 2.00,
-        "output_per_million": 15.00,
-        "model": "o3 / gpt-5.4",
-        "notes": "o3 $2/$8, gpt-5.4 $2.50/$15"
+      {
+        "id": "codex-team",
+        "name": "Team",
+        "category": "team",
+        "platform_plan": true,
+        "base_price": {
+          "amount": 25.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "$25 annual / $30 monthly"
+        },
+        "overage": null
+      },
+      {
+        "id": "codex-api",
+        "name": "API",
+        "category": "usage",
+        "base_price": null,
+        "includes": null,
+        "overage": {
+          "unit": "token",
+          "input_per_million": 2.00,
+          "output_per_million": 15.00,
+          "model": "o3 / gpt-5.4",
+          "notes": "o3 $2/$8, gpt-5.4 $2.50/$15"
+        }
       }
+    ],
+    "capabilities": {
+      "autonomy_level": "full",
+      "ide_type": "cloud_sandbox",
+      "model_choice": false,
+      "self_hosted": false,
+      "fedramp": false,
+      "eu_data_residency": false,
+      "soc2": true,
+      "on_premise": false
+    },
+    "benchmarks": {
+      "swe_bench_pro": 48.2,
+      "measured_at": "2026-02-01"
     }
-  ],
-  "capabilities": {
-    "autonomy_level": "full",
-    "ide_type": "cloud_sandbox",
-    "model_choice": false,
-    "self_hosted": false,
-    "fedramp": false,
-    "eu_data_residency": false,
-    "soc2": true,
-    "on_premise": false
-  },
-  "benchmarks": {
-    "swe_bench_pro": 48.2,
-    "measured_at": "2026-02-01"
   }
 }

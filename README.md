@@ -26,13 +26,13 @@ Static JSON — no auth required, CORS enabled, CC BY 4.0 licensed.
 
 ```bash
 # All tools
-curl https://taimi.com/v1/tools.json
+curl https://taimi.market/v1/tools.json
 
 # Single tool
-curl https://taimi.com/v1/tools/mistral-vibe.json
+curl https://taimi.market/v1/tools/mistral-vibe.json
 
 # Price change log
-curl https://taimi.com/v1/changelog.json
+curl https://taimi.market/v1/changelog.json
 ```
 
 Example queries with jq:
