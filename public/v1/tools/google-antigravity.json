@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-12",
-    "updated_at": "2026-03-12T12:00:00Z",
+    "version": "2026-03-13",
+    "updated_at": "2026-03-13T12:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA"
+          "notes": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12"
         },
         "overage": null
       }

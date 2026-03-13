@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-12",
-    "updated_at": "2026-03-12T12:00:00Z",
+    "version": "2026-03-13",
+    "updated_at": "2026-03-13T12:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -115,8 +115,8 @@
         "overage": null
       },
       {
-        "id": "claude-code-api",
-        "name": "API",
+        "id": "claude-code-api-sonnet",
+        "name": "API (Sonnet 4.6)",
         "category": "usage",
         "base_price": null,
         "includes": null,
@@ -124,8 +124,22 @@
           "unit": "token",
           "input_per_million": 3.00,
           "output_per_million": 15.00,
-          "model": "claude-sonnet-4-6 / claude-opus-4-6",
-          "notes": "Sonnet 4.6 $3/$15, Opus 4.6 $5/$25"
+          "model": "claude-sonnet-4-6",
+          "notes": "Default model for Pro/Teams Standard"
+        }
+      },
+      {
+        "id": "claude-code-api-opus",
+        "name": "API (Opus 4.6)",
+        "category": "usage",
+        "base_price": null,
+        "includes": null,
+        "overage": {
+          "unit": "token",
+          "input_per_million": 5.00,
+          "output_per_million": 25.00,
+          "model": "claude-opus-4-6",
+          "notes": "Available on Max/Teams Premium plans"
         }
       }
     ],

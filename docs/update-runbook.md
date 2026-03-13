@@ -1,6 +1,6 @@
 # Update Runbook
 
-Weekly procedure for keeping the tool list relevant and prices accurate. The AI agent must follow this runbook during every update cycle in order: build context → market scan → price verification → observations review.
+Weekly procedure for keeping the tool list relevant and prices accurate. The AI agent must follow this runbook during every update cycle in order: build context → market scan → price verification → representation review → observations review.
 
 ## Build context
 
@@ -107,6 +107,14 @@ All methods failed. Do NOT silently keep stale data.
 - Add changelog entry with `type: "unverified"`
 - Log which methods were attempted and what failed
 - Flag in the update cycle document (e.g., `docs/YYYY-MM-DD-changes.md`)
+
+## Representation review
+
+1. Annual vs monthly — If the vendor shows both, are we showing monthly? If annual, does the notes field say so? (Convention: always show monthly price; note annual discount if significant.)
+2. Overage field fitness — Does the overage object capture what an API consumer would need? If a tool has multiple models at different price points (e.g., Claude Code Sonnet vs Opus), can a consumer parsing output_per_million get a correct answer? If not, flag for schema restructure (split plans, add fields, or at minimum make notes unambiguous).
+3. Temporal state — Is there a promo, beta, or sunset happening within 30 days? If yes, add a dated note: "Free through 2026-03-31, then $20/seat". If pricing is in active flux or community controversy, note it: "⚠ Pricing in flux as of 2026-03-12".
+4. Terminology drift — Does the vendor still use the same language we do? If they renamed "premium requests" to "credits," update even if the underlying mechanic is identical. Our notes should match what a user sees on the vendor's page.
+5. Platform bundling clarity — For platform plans, would a reader understand what they're actually buying? If the plan name or notes could mislead someone into thinking the price is for the coding tool alone, clarify.
 
 ## Observations review
 

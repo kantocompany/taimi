@@ -8,17 +8,9 @@ Curated by [Kanto Company](https://www.kantocompany.com/) — Green Lean technol
 
 No single resource compiles agentic coding tool pricing in one place. Developers and procurement teams assemble data from 5+ vendor pages to compare tools with fundamentally different pricing models (flat subscriptions, token-based, request-based, agent compute units). This project aims to fix that.
 
-## What's included
-
-**10 tools tracked:** Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Mistral Vibe, Windsurf, Devin, Augment Code, Cline, Google Antigravity.
-
-**Dimensions per tool:** free tier, individual plans, team/seat pricing, usage-based (PAYG), enterprise options, vendor HQ/EU status, capabilities, and benchmarks.
-
 ## Live page
 
-Hosted on GitHub Pages. Deployed automatically on push to `main` via GitHub Actions.
-
-URL: TODO (pending custom domain setup)
+https://taimi.market
 
 ## API
 
@@ -39,13 +31,13 @@ Example queries with jq:
 
 ```bash
 # EU-based vendors only
-curl -s .../v1/tools.json | jq '.tools[] | select(.vendor.eu_based == true) | .name'
+curl -s https://taimi.market/v1/tools.json | jq '.tools[] | select(.vendor.eu_based == true) | .name'
 
 # Cheapest individual plans
-curl -s .../v1/tools.json | jq '[.tools[].plans[] | select(.category == "individual") | {tool: .id, price: .base_price.amount}] | sort_by(.price)'
+curl -s https://taimi.market/v1/tools.json | jq '[.tools[].plans[] | select(.category == "individual") | {tool: .id, price: .base_price.amount}] | sort_by(.price)'
 
 # Tools with self-hosted option
-curl -s .../v1/tools.json | jq '[.tools[] | select(.capabilities.on_premise == true) | .name]'
+curl -s https://taimi.market/v1/tools.json | jq '[.tools[] | select(.capabilities.on_premise == true) | .name]'
 ```
 
 ## Project structure
@@ -58,8 +50,13 @@ public/
     ├── changelog.json         # Price change history
     └── tools/
         └── {slug}.json        # Individual tool files (derived from tools.json)
+scripts/
+├── generate-tool-files.sh     # Generate {slug}.json files from tools.json
+├── validate.sh                # Consistency checks across all data files
 docs/
 ├── update-runbook.md          # Automated update process (protected, read-only for agents)
+├── design-decisions.md        # Architecture rationale and roadmap
+├── focus-analysis.md          # FOCUS spec evaluation
 ```
 
 ## Updating data
@@ -79,7 +76,7 @@ Manual updates: edit `public/v1/tools.json`, update `changelog.json`, regenerate
 GitHub Pages, deployed from `public/` via GitHub Actions (`.github/workflows/deploy.yml`).
 
 - **Deploy trigger:** push to `main` or manual `workflow_dispatch`
-- **Custom domain:** configure in repo Settings > Pages once DNS is ready
+- **Domain:** taimi.market
 - **CORS:** enabled by default on public GitHub Pages (`Access-Control-Allow-Origin: *`)
 
 ## License

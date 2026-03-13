@@ -1,10 +1,72 @@
 {
   "meta": {
-    "version": "2026-03-12",
-    "updated_at": "2026-03-12T12:00:00Z",
+    "version": "2026-03-13",
+    "updated_at": "2026-03-13T12:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-13",
+      "tool": "claude-code",
+      "type": "feature",
+      "description": "Split API usage plan into separate Sonnet 4.6 ($3/$15/M) and Opus 4.6 ($5/$25/M) entries. Previously a single plan with Sonnet pricing in the overage field and both models in notes — misleading for API consumers.",
+      "details": {
+        "old_plan": "claude-code-api (output_per_million: 15.00, notes mentioned both)",
+        "new_plans": ["claude-code-api-sonnet ($3/$15/M)", "claude-code-api-opus ($5/$25/M)"],
+        "source": "https://platform.claude.com/docs/en/docs/about-claude/models"
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "tool": "replit",
+      "type": "pricing_change",
+      "description": "Replit Core corrected from $20/mo to $25/mo (monthly billing). $20/mo is annual billing price. Convention: show monthly price, note annual discount.",
+      "details": {
+        "plan": "Core",
+        "field": "base_price.amount",
+        "old_value": 20.00,
+        "new_value": 25.00,
+        "source": "https://replit.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "tool": "cline",
+      "type": "feature",
+      "description": "Added temporal note: Teams $0/mo promotional pricing ends 2026-03-31",
+      "details": {
+        "plan": "Teams",
+        "field": "notes",
+        "old_value": "JetBrains, centralized billing, RBAC, first 10 seats free",
+        "new_value": "JetBrains, centralized billing, RBAC, first 10 seats free. $0/mo promo ends 2026-03-31",
+        "source": "https://cline.bot/pricing"
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "tool": "google-antigravity",
+      "type": "feature",
+      "description": "Added pricing flux warning. Users reporting opaque pricing changes as of March 2026.",
+      "details": {
+        "plan": "Public Preview",
+        "field": "notes",
+        "old_value": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA",
+        "new_value": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12",
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "tool": "cursor",
+      "type": "feature",
+      "description": "Updated terminology from 'premium requests' to current Cursor language: Agent requests, Tab completions, usage multipliers (3×/20×). Removed stale numeric request counts.",
+      "details": {
+        "field": "includes/overage across plans",
+        "old_terminology": "500/1500/10000 premium requests, API rates overage",
+        "new_terminology": "Extended Agent limits, 3×/20× usage on all models, no explicit overage",
+        "source": "https://cursor.com/pricing"
+      }
+    },
     {
       "date": "2026-03-12",
       "tool": "aider",
