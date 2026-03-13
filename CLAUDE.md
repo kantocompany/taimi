@@ -2,7 +2,7 @@
 
 ## Project
 
-Taimi - AI Agent Market — a free, open pricing comparison page and JSON API for agentic AI coding tools. Curated by Kanto Company.
+Taimi — The AI Market Intelligence — a free, open pricing comparison page and JSON API for agentic AI coding tools. Curated by Kanto Company.
 
 ## Architecture
 

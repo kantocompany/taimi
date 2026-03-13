@@ -1,4 +1,4 @@
-# Taimi - AI Agent Market
+# Taimi — The AI Market Intelligence
 
 A free, open pricing comparison for agentic AI coding tools. One page, one API, updated regularly.
 
