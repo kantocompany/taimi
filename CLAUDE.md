@@ -58,7 +58,7 @@ In index.html, platform plans are marked with a superscript `P` badge and explai
 2. Increment `meta.tool_count`
 3. Update `meta.updated_at`
 4. Generate `public/v1/tools/{slug}.json`
-5. Add row to `public/index.html`
+5. Add row to `public/index.html`. Use 🇪🇺 flag and "EU-based vendor" notation for `eu_based: true` vendors, country flag otherwise.
 6. Add changelog entry with type `new_tool`
 
 ## Updating prices
