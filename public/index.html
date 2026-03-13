@@ -421,6 +421,24 @@
       .site-footer .left, .site-footer .right { font-size: 11px; }
     }
 
+    /* Sortable headers */
+    .sortable {
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.12s;
+    }
+    .sortable:hover {
+      color: var(--kanto-text) !important;
+    }
+    .sort-arrow {
+      font-size: 9px;
+      opacity: 0.6;
+      transition: opacity 0.12s;
+    }
+    .sortable.active .sort-arrow {
+      opacity: 1;
+    }
+
     @media (max-width: 480px) {
       .container { padding: 16px 12px 32px; }
       .header-left h1 { font-size: 18px; }
@@ -462,15 +480,16 @@
     <div class="matrix">
       <div class="matrix-grid">
 
-        <!-- Column headers -->
-        <div class="col-header h-vendor">Vendor</div>
+        <!-- Column headers (sortable) -->
+        <div class="col-header h-vendor sortable" data-sort="name">Vendor <span class="sort-arrow">⇅</span></div>
         <div class="col-header h-free">Free Tier</div>
-        <div class="col-header h-individual">Individual</div>
-        <div class="col-header h-team">Team / Seat</div>
+        <div class="col-header h-individual sortable" data-sort="individual">Individual <span class="sort-arrow">⇅</span></div>
+        <div class="col-header h-team sortable" data-sort="team">Team / Seat <span class="sort-arrow">⇅</span></div>
         <div class="col-header h-usage">Usage-Based (PAYG)</div>
         <div class="col-header h-enterprise">Enterprise</div>
 
         <!-- ============ Claude Code ============ -->
+        <div class="row" data-name="claude-code" data-individual="20" data-team="25" data-free="9999" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Claude Code</span></div>
           <div class="vendor-parent">Anthropic</div>
@@ -493,8 +512,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://claude.com/pricing#team-&-enterprise" target="_blank" rel="noopener"><span class="tier-name">✓ Custom, Bedrock/Vertex deploy</span></a>
         </div>
+        </div>
 
         <!-- ============ Cursor ============ -->
+        <div class="row" data-name="cursor" data-individual="20" data-team="40" data-free="0" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Cursor</span></div>
           <div class="vendor-parent">Anysphere</div>
@@ -517,8 +538,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://cursor.com/pricing#business" target="_blank" rel="noopener"><span class="tier-name">✓ Custom, pooled usage, SCIM, audit logs</span></a>
         </div>
+        </div>
 
         <!-- ============ GitHub Copilot ============ -->
+        <div class="row" data-name="github-copilot" data-individual="10" data-team="19" data-free="0" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">GitHub Copilot</span></div>
           <div class="vendor-parent">Microsoft / GitHub</div>
@@ -541,8 +564,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://github.com/features/copilot/plans#Enterprise" target="_blank" rel="noopener"><span class="tier-name">✓ $39/seat, 1K req/user, SSO</span></a>
         </div>
+        </div>
 
         <!-- ============ OpenAI Codex ============ -->
+        <div class="row" data-name="openai-codex" data-individual="20" data-team="25" data-free="9999" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">OpenAI Codex</span></div>
           <div class="vendor-parent">OpenAI</div>
@@ -562,8 +587,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://openai.com/pricing" target="_blank" rel="noopener"><span class="tier-name">✓ Custom, evolving model</span></a>
         </div>
+        </div>
 
         <!-- ============ Mistral Vibe (EU) ============ -->
+        <div class="row" data-name="mistral-vibe" data-individual="14.99" data-team="24.99" data-free="0" data-enterprise="1" data-eu="1">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇪🇺</span><span class="name">Mistral Vibe</span></div>
           <div class="vendor-parent">Mistral AI</div>
@@ -586,8 +613,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://mistral.ai/pricing" target="_blank" rel="noopener"><span class="tier-name">✓ On-prem, fine-tune, EU data</span></a>
         </div>
+        </div>
 
         <!-- ============ Windsurf ============ -->
+        <div class="row" data-name="windsurf" data-individual="15" data-team="30" data-free="0" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Windsurf</span></div>
           <div class="vendor-parent">Cognition AI</div>
@@ -606,8 +635,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://windsurf.com/pricing" target="_blank" rel="noopener"><span class="tier-name">✓ FedRAMP High, on-prem, EU</span></a>
         </div>
+        </div>
 
         <!-- ============ Devin ============ -->
+        <div class="row" data-name="devin" data-individual="20" data-team="500" data-free="9999" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Devin</span></div>
           <div class="vendor-parent">Cognition AI</div>
@@ -626,8 +657,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://devin.ai/pricing" target="_blank" rel="noopener"><span class="tier-name">✓ VPC deploy, SAML/OIDC SSO, teamspace</span></a>
         </div>
+        </div>
 
         <!-- ============ Augment Code ============ -->
+        <div class="row" data-name="augment-code" data-individual="20" data-team="60" data-free="9999" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Augment Code</span></div>
           <div class="vendor-parent">Augment</div>
@@ -645,8 +678,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://www.augmentcode.com/pricing" target="_blank" rel="noopener"><span class="tier-name">✓ Custom, SSO, SCIM, data residency</span></a>
         </div>
+        </div>
 
         <!-- ============ Cline ============ -->
+        <div class="row" data-name="cline" data-individual="9999" data-team="20" data-free="0" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🌐</span><span class="name">Cline</span></div>
           <div class="vendor-parent">Open Source (Apache 2.0)</div>
@@ -665,8 +700,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://cline.bot/pricing" target="_blank" rel="noopener"><span class="tier-name">✓ SSO, SLA, dedicated support</span></a>
         </div>
+        </div>
 
         <!-- ============ Google Antigravity ============ -->
+        <div class="row" data-name="google-antigravity" data-individual="9999" data-team="9999" data-free="0" data-enterprise="0" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Google Antigravity</span></div>
           <div class="vendor-parent">Google</div>
@@ -681,8 +718,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise-no" href="https://antigravity.google/pricing" target="_blank" rel="noopener"><span class="tier-name">— Enterprise tier TBA</span></a>
         </div>
+        </div>
 
         <!-- ============ Replit ============ -->
+        <div class="row" data-name="replit" data-individual="25" data-team="100" data-free="0" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Replit</span></div>
           <div class="vendor-parent">Replit</div>
@@ -703,8 +742,10 @@
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://replit.com/pricing" target="_blank" rel="noopener"><span class="tier-name">✓ Custom, dedicated support</span></a>
         </div>
+        </div>
 
         <!-- ============ Aider ============ -->
+        <div class="row" data-name="aider" data-individual="9999" data-team="9999" data-free="0" data-enterprise="0" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🌐</span><span class="name">Aider</span></div>
           <div class="vendor-parent">Open Source (Apache 2.0)</div>
@@ -719,6 +760,7 @@
           <a class="price-block pb-usage" href="https://aider.chat" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">BYOK</span><span class="tier-price">Your API costs</span></div><div class="tier-notes">Any LLM provider</div><div class="tier-unit">varies by provider</div></a>
         </div>
         <div class="cell"><div class="empty-cell">—</div></div>
+        </div>
 
       </div><!-- /matrix-grid -->
     </div><!-- /matrix -->
@@ -747,5 +789,54 @@
     </div>
 
   </div><!-- /container -->
+
+  <script>
+  (function() {
+    const grid = document.querySelector('.matrix-grid');
+    const headers = grid.querySelectorAll('.sortable');
+    let currentSort = null;
+    let ascending = true;
+
+    headers.forEach(function(header) {
+      header.addEventListener('click', function() {
+        const key = this.dataset.sort;
+        if (currentSort === key) {
+          ascending = !ascending;
+        } else {
+          currentSort = key;
+          ascending = true;
+        }
+
+        headers.forEach(function(h) {
+          h.classList.remove('active');
+          h.querySelector('.sort-arrow').textContent = '⇅';
+        });
+        this.classList.add('active');
+        this.querySelector('.sort-arrow').textContent = ascending ? ' ▲' : ' ▼';
+
+        var rows = Array.from(grid.querySelectorAll('.row'));
+        rows.sort(function(a, b) {
+          if (key === 'name') {
+            var va = a.dataset.name;
+            var vb = b.dataset.name;
+            return ascending ? va.localeCompare(vb) : vb.localeCompare(va);
+          }
+          if (key === 'enterprise') {
+            var va = parseFloat(a.dataset[key]);
+            var vb = parseFloat(b.dataset[key]);
+            return ascending ? vb - va : va - vb;
+          }
+          var va = parseFloat(a.dataset[key]);
+          var vb = parseFloat(b.dataset[key]);
+          if (va === 9999 && vb === 9999) return 0;
+          if (va === 9999) return 1;
+          if (vb === 9999) return -1;
+          return ascending ? va - vb : vb - va;
+        });
+        rows.forEach(function(row) { grid.appendChild(row); });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

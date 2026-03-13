@@ -115,6 +115,7 @@ All methods failed. Do NOT silently keep stale data.
 3. Temporal state — Is there a promo, beta, or sunset happening within 30 days? If yes, add a dated note: "Free through 2026-03-31, then $20/seat". If pricing is in active flux or community controversy, note it: "⚠ Pricing in flux as of 2026-03-12".
 4. Terminology drift — Does the vendor still use the same language we do? If they renamed "premium requests" to "credits," update even if the underlying mechanic is identical. Our notes should match what a user sees on the vendor's page.
 5. Platform bundling clarity — For platform plans, would a reader understand what they're actually buying? If the plan name or notes could mislead someone into thinking the price is for the coding tool alone, clarify.
+6. Sort attributes — When prices change in index.html, verify that data-* sort attributes on the row wrapper match the updated values.
 
 ## Observations review
 
