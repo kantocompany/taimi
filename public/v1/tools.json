@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2026-03-13",
-    "updated_at": "2026-03-13T12:00:00Z",
+    "updated_at": "2026-03-13T18:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -331,7 +331,7 @@
       "plans": [
         {
           "id": "mistral-experiment",
-          "name": "Experiment",
+          "name": "Free",
           "category": "free",
           "platform_plan": true,
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
@@ -400,7 +400,7 @@
           "name": "Free",
           "category": "free",
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Limited credits" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "25 prompt credits" },
           "overage": null
         },
         {
@@ -408,7 +408,7 @@
           "name": "Pro",
           "category": "individual",
           "base_price": { "amount": 15.00, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": 500, "tokens_included": null, "notes": "500 flow credits" },
+          "includes": { "premium_requests": 500, "tokens_included": null, "notes": "500 prompt credits" },
           "overage": null
         },
         {
@@ -424,7 +424,7 @@
           "name": "Enterprise",
           "category": "enterprise",
           "base_price": null,
-          "includes": { "premium_requests": 1000, "tokens_included": null, "notes": "1,000 credits/user/mo, FedRAMP High, on-prem, EU data residency" },
+          "includes": { "premium_requests": 1000, "tokens_included": null, "notes": "1,000 prompt credits/user/mo, FedRAMP High, on-prem, EU data residency" },
           "overage": null
         }
       ],
@@ -629,13 +629,36 @@
         "eu_based": false,
         "pricing_url": "https://antigravity.google/pricing"
       },
+      "platform": {
+        "name": "Google AI",
+        "bundled_with": ["Gemini", "Google One AI Premium", "NotebookLM Plus"],
+        "note": "AI Pro/Ultra are Google-wide subscriptions; Free tier and credit add-ons are standalone"
+      },
       "plans": [
         {
-          "id": "antigravity-preview",
-          "name": "Public Preview",
+          "id": "antigravity-free",
+          "name": "Free",
           "category": "free",
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "Individual $0/mo, credit add-ons available ($24.99/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12" },
+          "overage": null
+        },
+        {
+          "id": "antigravity-ai-pro",
+          "name": "AI Pro",
+          "category": "individual",
+          "platform_plan": true,
+          "base_price": { "amount": 19.99, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "1,000 AI credits/mo, 2TB storage, Gemini 2.5 Pro, higher rate limits" },
+          "overage": null
+        },
+        {
+          "id": "antigravity-ai-ultra",
+          "name": "AI Ultra",
+          "category": "individual",
+          "platform_plan": true,
+          "base_price": { "amount": 249.99, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "25,000 AI credits/mo, 30TB storage, Gemini 2.5 Ultra, priority access" },
           "overage": null
         }
       ],

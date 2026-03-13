@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2026-03-13",
-    "updated_at": "2026-03-13T12:00:00Z",
+    "updated_at": "2026-03-13T18:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -28,7 +28,7 @@
     "plans": [
       {
         "id": "mistral-experiment",
-        "name": "Experiment",
+        "name": "Free",
         "category": "free",
         "platform_plan": true,
         "base_price": {

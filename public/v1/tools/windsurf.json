@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2026-03-13",
-    "updated_at": "2026-03-13T12:00:00Z",
+    "updated_at": "2026-03-13T18:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Limited credits"
+          "notes": "25 prompt credits"
         },
         "overage": null
       },
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 500,
           "tokens_included": null,
-          "notes": "500 flow credits"
+          "notes": "500 prompt credits"
         },
         "overage": null
       },
@@ -75,7 +75,7 @@
         "includes": {
           "premium_requests": 1000,
           "tokens_included": null,
-          "notes": "1,000 credits/user/mo, FedRAMP High, on-prem, EU data residency"
+          "notes": "1,000 prompt credits/user/mo, FedRAMP High, on-prem, EU data residency"
         },
         "overage": null
       }

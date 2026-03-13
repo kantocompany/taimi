@@ -1,10 +1,47 @@
 {
   "meta": {
     "version": "2026-03-13",
-    "updated_at": "2026-03-13T12:00:00Z",
+    "updated_at": "2026-03-13T18:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-13",
+      "tool": "google-antigravity",
+      "type": "feature",
+      "description": "Added platform field and Google AI subscription tiers. AI Pro ($19.99/mo) and AI Ultra ($249.99/mo) as platform plans with platform_plan: true. Renamed plan from Public Preview to Free. Updated credit pack pricing to $25/2,500.",
+      "details": {
+        "new_plans": ["antigravity-ai-pro ($19.99/mo)", "antigravity-ai-ultra ($249.99/mo)"],
+        "platform_added": true,
+        "renamed": "Public Preview → Free",
+        "source": "https://antigravity.google/pricing, https://one.google.com/about/google-ai-plans/"
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "tool": "windsurf",
+      "type": "feature",
+      "description": "Updated terminology: 'flow credits' → 'prompt credits' across all plans. Free tier now shows '25 prompt credits'.",
+      "details": {
+        "field": "includes.notes across plans",
+        "old_terminology": "flow credits, Limited credits",
+        "new_terminology": "prompt credits, 25 prompt credits",
+        "source": "https://windsurf.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "tool": "mistral-vibe",
+      "type": "feature",
+      "description": "Renamed free tier plan from 'Experiment' to 'Free' to match current vendor terminology on mistral.ai/pricing.",
+      "details": {
+        "plan": "mistral-experiment",
+        "field": "name",
+        "old_value": "Experiment",
+        "new_value": "Free",
+        "source": "https://mistral.ai/pricing"
+      }
+    },
     {
       "date": "2026-03-13",
       "tool": "claude-code",
