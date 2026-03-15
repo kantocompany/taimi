@@ -1,0 +1,44 @@
+name: Validate Data
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "public/v1/**"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Generate tool files
+        run: ./scripts/generate-tool-files.sh
+
+      - name: Check for drift
+        run: |
+          if ! git diff --quiet public/v1/tools/; then
+            echo "::error::Generated tool files are out of sync with tools.json"
+            git diff --stat public/v1/tools/
+            exit 1
+          fi
+
+      - name: Run validation
+        run: ./scripts/validate.sh
+
+      - name: Comment on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "## Validation Failed
+
+          Check the Actions log for details. Common fixes:
+          - Run \`./scripts/generate-tool-files.sh\` to regenerate per-tool files
+          - Check \`meta.tool_count\` matches actual tool count
+          - Ensure \`changelog.json\` is valid JSON
+          - Verify all tools have \`pricing_url\` set"
