@@ -54,19 +54,28 @@ scripts/
 ├── generate-tool-files.sh     # Generate {slug}.json files from tools.json
 ├── validate.sh                # Consistency checks across all data files
 docs/
-├── update-runbook.md          # Automated update process (protected, read-only for agents)
+├── price-update.md            # Daily price verification runbook (protected)
+├── market-update.md           # Weekly market update runbook (protected)
+├── automated-update.md        # CI/CD architecture and spend estimates
 ├── design-decisions.md        # Architecture rationale and roadmap
 ├── focus-analysis.md          # FOCUS spec evaluation
 ```
 
 ## Updating data
 
-Automated weekly updates follow `docs/update-runbook.md` — market scan, price verification, observations review.
+Two automated workflows keep data current:
 
-To simulate an update cycle locally:
+- **Daily:** Price verification via `docs/price-update.md`
+- **Weekly:** Market scan, health checks, editorial review via `docs/market-update.md`
+
+To run locally:
 
 ```bash
-claude "Read docs/update-runbook.md and execute a full update cycle. Commit all changes and create a PR."
+# Price check
+claude "Read docs/price-update.md and execute the price verification process."
+
+# Full market update
+claude "Read docs/market-update.md and execute the market update process."
 ```
 
 Manual updates: edit `public/v1/tools.json`, update `changelog.json`, regenerate individual tool files and `index.html`.

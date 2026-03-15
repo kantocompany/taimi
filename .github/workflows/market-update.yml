@@ -1,12 +1,12 @@
-name: Daily Update
+name: Market Update
 
 on:
   schedule:
-    - cron: "0 5 * * *" # 05:00 UTC (07:00/08:00 Helsinki)
+    - cron: "0 2 * * 0" # 02:00 UTC Sundays
   workflow_dispatch:
 
 concurrency:
-  group: taimi-update
+  group: taimi-market-update
   cancel-in-progress: false
 
 permissions:
@@ -22,14 +22,14 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Check for existing update PR
+      - name: Check for existing market-update PR
         id: check-pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          open_prs=$(gh pr list --label automated-update --state open --json number --jq 'length')
+          open_prs=$(gh pr list --label market-update --state open --json number --jq 'length')
           if [ "$open_prs" -gt 0 ]; then
-            echo "::notice::Open automated-update PR exists. Skipping."
+            echo "::notice::Open market-update PR exists. Skipping."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -40,8 +40,8 @@ jobs:
       - name: Create update branch
         if: ${{ !steps.check-pr.outputs.skip }}
         run: |
-          git checkout -B "automated-update/${{ env.DATE }}"
-          echo "BRANCH=automated-update/${{ env.DATE }}" >> "$GITHUB_ENV"
+          git checkout -B "market-update/${{ env.DATE }}"
+          echo "BRANCH=market-update/${{ env.DATE }}" >> "$GITHUB_ENV"
 
       - name: Run Claude Code agent
         if: ${{ !steps.check-pr.outputs.skip }}
@@ -50,14 +50,13 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           show_full_output: true
           prompt: |
-            Today is ${{ env.DATE }}. Read docs/update-runbook.md and execute a full update cycle. Do not commit or push — the workflow handles git operations.
+            Today is ${{ env.DATE }}. Read docs/market-update.md and execute the full market update process. Do not commit or push — the workflow handles git operations.
           claude_args: |
             --model claude-sonnet-4-6
             --max-turns 30
             --max-budget-usd 5
             --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(./scripts/*),Bash(jq *),Bash(git diff *),Bash(git status),Bash(git log *)"
             --disallowedTools "Bash(rm *),Bash(curl *),Bash(wget *),Bash(npm *),Bash(pip *),Bash(sudo *)"
-            --verbose
 
       - name: Post-agent validation
         if: ${{ !steps.check-pr.outputs.skip }}
@@ -82,7 +81,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: automated pricing update ${{ env.DATE }}"
+          git commit -m "chore: market update ${{ env.DATE }}"
           git push -u origin "$BRANCH"
 
       - name: Create pull request
@@ -91,19 +90,19 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
-            --title "Automated pricing update ${{ env.DATE }}" \
-            --label "automated-update" \
-            --body "## Automated Update
+            --title "Market update ${{ env.DATE }}" \
+            --label "market-update" \
+            --body "## Market Update
 
-          Created by the daily update workflow running Claude Code agent against the [update runbook](docs/update-runbook.md).
+          Created by the weekly market-update workflow running Claude Code agent against [market-update.md](docs/market-update.md).
 
           ### Review checklist
           - [ ] Only \`public/\` files changed
-          - [ ] \`changelog.json\` has entries with source URLs
-          - [ ] Price changes verified against vendor pricing pages
+          - [ ] New tools meet inclusion criteria (3+ search hits, 30+ days public, public pricing)
+          - [ ] Removed/archived tools confirmed against official sources
+          - [ ] Observations in index.html are factually correct
+          - [ ] \`changelog.json\` has entries for all changes
           - [ ] \`validate.sh\` passed (check Actions log)
-          - [ ] Observations in index.html still factually correct
-          - [ ] No UNVERIFIED markers left unaddressed
 
           ### Cost
           Check the Claude Code step log for actual token usage.

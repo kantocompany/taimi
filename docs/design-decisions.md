@@ -87,13 +87,15 @@ The pink warning at the top of the matrix explicitly states that tokens, request
 
 ### Done: AI-assisted updates (v2)
 
-Implemented. The agent reads `docs/update-runbook.md` and executes a full update cycle: market scan (5 structured searches for new tools + health check of existing tools), price verification (6-step escalation with fallbacks for bot-blocked sites), and observations review. See `docs/update-runbook.md` for the full process.
+Two runbooks govern automated updates:
+- `docs/price-update.md` — daily price verification (6-step escalation with fallbacks for bot-blocked sites)
+- `docs/market-update.md` — weekly market scan (new tools, health checks, editorial review)
 
-The runbook is a protected file — the agent reads it but cannot modify it (enforced via Claude Code hooks and permission rules in CI).
+Both are protected files — agents read them but cannot modify them.
 
-### In progress: CI/CD pipeline
+### Done: CI/CD pipeline
 
-Weekly cron trigger runs the agent via API key. Agent commits changes and creates a PR for human review.
+Two GitHub Actions workflows run the agent via API key. Daily price checks (`price-update.yml`) and weekly market scans (`market-update.yml`) each create a PR for human review. See `docs/automated-update.md` for architecture details.
 
 ### v1.1: Template-driven HTML generation
 
@@ -107,9 +109,9 @@ Expose the pricing data as an MCP server so Claude Code, Cursor, and other AI to
 
 Move beyond "what does it cost" to "what do you get per dollar." Track cost-per-task, tokens-per-outcome, benchmark scores normalized by price. The moment you can show "Claude Code solves SWE-bench problems at $X per solve vs Codex at $Y" — that's the signal procurement teams will pay attention to.
 
-### Ongoing: expand tool coverage
+### Ongoing: curate tool coverage
 
-The market scan process in the runbook handles this automatically. Current candidates to watch: Amazon Q Developer, JetBrains AI, Tabnine, Qodo, Replit, Aider, Kilo Code. Inclusion criteria are defined in the runbook.
+The weekly market update (`docs/market-update.md`) handles tool discovery and health checks automatically. The tool list is capped at 12 — when a stronger contender emerges, the weakest-ranked tool is archived. Ranking criteria and archival process are defined in the market update runbook.
 
 ## What this project is NOT
 

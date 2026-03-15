@@ -52,22 +52,29 @@ Some tools are features within broader platform subscriptions (e.g., Claude Code
 
 In index.html, platform plans are marked with a superscript `P` badge and explained in the amber warning banner.
 
+## Tool cap
+
+Maximum **12 tools** in `tools.json`. When adding a new tool at cap, archive the lowest-ranked existing tool. See `docs/market-update.md` for ranking criteria and archival process.
+
 ## Adding a new tool
 
-1. Add entry to `tools` array in `public/v1/tools.json`
-2. Increment `meta.tool_count`
-3. Update `meta.updated_at`
-4. Generate `public/v1/tools/{slug}.json`
-5. Add row to `public/index.html`. Use 🇪🇺 flag and "EU-based vendor" notation for `eu_based: true` vendors, country flag otherwise.
-6. Add changelog entry with type `new_tool`
+1. Check tool cap — if at 12, identify a tool to archive first
+2. Add entry to `tools` array in `public/v1/tools.json`
+3. Increment `meta.tool_count`
+4. Update `meta.updated_at`
+5. Generate `public/v1/tools/{slug}.json`
+6. Add row to `public/index.html`. Use 🇪🇺 flag and "EU-based vendor" notation for `eu_based: true` vendors, country flag otherwise.
+7. Add changelog entry with type `new_tool`
 
-## Updating prices
+## Updating data
 
-Follow `docs/update-runbook.md` for the verification process. Never skip verification.
+- **Prices:** Follow `docs/price-update.md` for the verification process. Never skip verification.
+- **Tools (add/remove/health checks):** Follow `docs/market-update.md` for market scan and editorial review.
 
 ## Protected files
 
-- `docs/update-runbook.md` — governs automated update cycles. Read for guidance, never modify. Enforced via hooks and permission rules in CI.
+- `docs/price-update.md` — governs daily automated price verification. Read for guidance, never modify.
+- `docs/market-update.md` — governs weekly market updates. Read for guidance, never modify.
 
 ## Style notes
 
