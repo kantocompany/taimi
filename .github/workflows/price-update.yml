@@ -55,7 +55,7 @@ jobs:
             --model claude-sonnet-4-6
             --max-turns 25
             --max-budget-usd 3
-            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(./scripts/*),Bash(jq *),Bash(git diff *),Bash(git status),Bash(git log *)"
+            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(./scripts/*),Bash(bash scripts/*),Bash(bash ./scripts/*),Bash(jq *),Bash(git diff*),Bash(git status*),Bash(git log*)"
             --disallowedTools "Bash(rm *),Bash(curl *),Bash(wget *),Bash(npm *),Bash(pip *),Bash(sudo *)"
 
       - name: Post-agent validation
