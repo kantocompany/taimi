@@ -102,9 +102,10 @@ Create `docs/YYYY-MM-DD-changes.md` as a **working document** during the cycle. 
 1. **Annual vs monthly** — If the vendor shows both, are we showing monthly? If annual, does the notes field say so? (Convention: always show monthly price; note annual discount if significant.)
 2. **Overage field fitness** — Does the overage object capture what an API consumer would need? If a tool has multiple models at different price points (e.g., Claude Code Sonnet vs Opus), can a consumer parsing output_per_million get a correct answer? If not, flag for schema restructure (split plans, add fields, or at minimum make notes unambiguous).
 3. **Temporal state** — Is there a promo, beta, or sunset happening within 30 days? If yes, add a dated note: "Free through 2026-03-31, then $20/seat". If pricing is in active flux or community controversy, note it.
-4. **Terminology drift** — Does the vendor still use the same language we do? If they renamed "premium requests" to "credits," update even if the underlying mechanic is identical. Our notes should match what a user sees on the vendor's page.
-5. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying? If the plan name or notes could mislead someone into thinking the price is for the coding tool alone, clarify.
-6. **Sort attributes** — When prices change in index.html, verify that `data-*` sort attributes on the row wrapper match the updated values.
+4. **Terminology drift** — Does the vendor still use the same language we do? If they renamed a plan or feature (e.g., "Team" → "Business", "premium requests" → "credits"), update even if the underlying mechanic is identical. Our plan names and notes should match what a user sees on the vendor's page.
+5. **Missing or removed plans** — Has the vendor added new plan tiers or removed existing ones since our last update? Compare the plans in tools.json against the vendor's current pricing page. Add new plans, remove discontinued ones.
+6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying? If the plan name or notes could mislead someone into thinking the price is for the coding tool alone, clarify.
+7. **Sort attributes** — When prices change in index.html, verify that `data-*` sort attributes on the row wrapper match the updated values.
 
 ## Observations review
 
