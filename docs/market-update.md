@@ -107,6 +107,16 @@ Create `docs/YYYY-MM-DD-changes.md` as a **working document** during the cycle. 
 6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying? If the plan name or notes could mislead someone into thinking the price is for the coding tool alone, clarify.
 7. **Sort attributes** — When prices change in index.html, verify that `data-*` sort attributes on the row wrapper match the updated values.
 
+## Decision rules
+
+These rules are mandatory. Do not rationalize exceptions.
+
+1. **Finding → edit immediately.** When the market scan or representation review reveals a change (new tool qualifies, tool dead, plan renamed, plan added/removed, terminology drift), edit tools.json and index.html right away. Do not just note it — apply it.
+
+2. **When in doubt, make the change.** A human reviewer will check the PR. False positives (unnecessary changes flagged for review) are far better than false negatives (stale data kept silently).
+
+3. **Never skip a finding silently.** If you identify something that looks wrong but decide not to change it, you must add a note to the relevant plan's `notes` field explaining why.
+
 ## Observations review
 
 Run as the **last step**, after all data changes are complete.

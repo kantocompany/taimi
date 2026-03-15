@@ -73,6 +73,22 @@ For each vendor, you must be in one of two states:
 
 There is no third state. "I fetched the page and it looked fine" without extracting dollar amounts is not verification.
 
+## Decision rules
+
+These rules are mandatory. Do not rationalize exceptions.
+
+1. **Price mismatch → edit immediately.** If your verified price differs from tools.json by any amount, update tools.json. Do not explain away the difference. Do not assume the vendor page is wrong. The vendor's current pricing page is the authority.
+
+2. **Missing plan → add it.** If the vendor's pricing page shows a plan tier that does not exist in tools.json, add it. Follow the schema in existing plans for structure.
+
+3. **Removed plan → remove it.** If a plan tier in tools.json no longer appears on the vendor's pricing page, remove it from tools.json.
+
+4. **Renamed plan → update it.** If a vendor renamed a plan (e.g., "Team" → "Business"), update the plan name and slug in tools.json.
+
+5. **When in doubt, make the change.** If you are 80%+ confident a price or plan has changed based on your sources, edit tools.json. A human reviewer will check the PR. False positives (unnecessary changes flagged for review) are far better than false negatives (stale data kept silently).
+
+6. **Never skip a discrepancy silently.** If you notice something different but decide not to change it, you must add a note to the plan's `notes` field explaining why (e.g., "Vendor shows $X but this may be annual billing; kept monthly rate of $Y").
+
 ## Post-verification
 
 If any prices changed:
