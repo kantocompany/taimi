@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-13",
-    "updated_at": "2026-03-13T18:00:00Z",
+    "version": "2026-03-15",
+    "updated_at": "2026-03-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -640,7 +640,7 @@
           "name": "Free",
           "category": "free",
           "base_price": { "amount": 0, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA" },
           "overage": null
         },
         {
@@ -648,7 +648,7 @@
           "name": "AI Pro",
           "category": "individual",
           "platform_plan": true,
-          "base_price": { "amount": 19.99, "period": "monthly", "per": "user" },
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
           "includes": { "premium_requests": null, "tokens_included": null, "notes": "1,000 AI credits/mo, 2TB storage, Gemini 2.5 Pro, higher rate limits" },
           "overage": null
         },
@@ -696,8 +696,8 @@
           "id": "replit-core",
           "name": "Core",
           "category": "individual",
-          "base_price": { "amount": 25.00, "period": "monthly", "per": "user" },
-          "includes": { "premium_requests": null, "tokens_included": null, "notes": "$25/mo credits included, full Agent access, 5 collaborators. $20/mo on annual billing" },
+          "base_price": { "amount": 20.00, "period": "monthly", "per": "user" },
+          "includes": { "premium_requests": null, "tokens_included": null, "notes": "$25/mo credits included, full Agent access, 5 collaborators" },
           "overage": { "unit": "request", "price_per_unit": null, "notes": "Effort-based pricing per Agent task" }
         },
         {

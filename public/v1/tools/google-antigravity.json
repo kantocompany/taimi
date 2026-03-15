@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-13",
-    "updated_at": "2026-03-13T18:00:00Z",
+    "version": "2026-03-15",
+    "updated_at": "2026-03-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -40,7 +40,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12"
+          "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA"
         },
         "overage": null
       },
@@ -50,7 +50,7 @@
         "category": "individual",
         "platform_plan": true,
         "base_price": {
-          "amount": 19.99,
+          "amount": 20.00,
           "period": "monthly",
           "per": "user"
         },

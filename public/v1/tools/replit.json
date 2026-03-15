@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-13",
-    "updated_at": "2026-03-13T18:00:00Z",
+    "version": "2026-03-15",
+    "updated_at": "2026-03-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -40,14 +40,14 @@
         "name": "Core",
         "category": "individual",
         "base_price": {
-          "amount": 25.00,
+          "amount": 20.00,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$25/mo credits included, full Agent access, 5 collaborators. $20/mo on annual billing"
+          "notes": "$25/mo credits included, full Agent access, 5 collaborators"
         },
         "overage": {
           "unit": "request",

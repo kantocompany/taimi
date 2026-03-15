@@ -1,10 +1,37 @@
 {
   "meta": {
-    "version": "2026-03-13",
-    "updated_at": "2026-03-13T18:00:00Z",
+    "version": "2026-03-15",
+    "updated_at": "2026-03-15T00:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-15",
+      "tool": "replit",
+      "type": "pricing_change",
+      "description": "Replit Core monthly price dropped from $25 to $20. Effective Feb 25, 2026 for all subscribers. Plan still includes $25/mo in usage credits. Note: the 2026-03-13 entry that 'corrected' Core to $25 was wrong — $20 was the new monthly price, not just the annual rate.",
+      "details": {
+        "plan": "replit-core",
+        "field": "base_price.amount",
+        "old_value": 25.00,
+        "new_value": 20.00,
+        "source": "https://blog.replit.com/pro-plan"
+      }
+    },
+    {
+      "date": "2026-03-15",
+      "tool": "google-antigravity",
+      "type": "pricing_change",
+      "description": "Google AI Pro price rounded up from $19.99 to $20.00/mo. Pricing flux warning cleared — tiers are now stable.",
+      "details": {
+        "plan": "antigravity-ai-pro",
+        "field": "base_price.amount",
+        "old_value": 19.99,
+        "new_value": 20.00,
+        "verified_via": "web search consensus",
+        "source": "https://one.google.com/about/google-ai-plans/"
+      }
+    },
     {
       "date": "2026-03-13",
       "tool": "google-antigravity",
