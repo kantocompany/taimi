@@ -1,8 +1,8 @@
 name: Price Update
 
 on:
-  schedule:
-    - cron: "0 5 * * *" # 05:00 UTC daily
+  # schedule:
+  #   - cron: "0 5 * * *" # 05:00 UTC daily — disabled pending v1.1 stabilization
   workflow_dispatch:
 
 concurrency:

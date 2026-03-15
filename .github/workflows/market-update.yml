@@ -1,8 +1,8 @@
 name: Market Update
 
 on:
-  schedule:
-    - cron: "0 2 * * 0" # 02:00 UTC Sundays
+  # schedule:
+  #   - cron: "0 2 * * 0" # 02:00 UTC Sundays — disabled pending v1.1 stabilization
   workflow_dispatch:
 
 concurrency:
