@@ -44,6 +44,7 @@ run_agent() {
   if claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
     --model "$MODEL" --max-turns "$MAX_TURNS" \
     --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
+    --disallowedTools "Agent" \
     2>&1 | tee "$logfile"; then
     echo ""
   else
@@ -59,6 +60,7 @@ run_agent_quiet() {
   if claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
     --model "$MODEL" --max-turns "$MAX_TURNS" \
     --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
+    --disallowedTools "Agent" \
     > "$logfile" 2>&1; then
     local status
     status=$(grep -oE '(✅|✏️|⚠️) '"$slug"':.*' "$logfile" | tail -1) || true

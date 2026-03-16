@@ -74,10 +74,14 @@ Vendors whose primary pricing URL blocks automated fetchers.
 | Vendor | Primary (problem) | Alternate (working) | Verified |
 |--------|-------------------|---------------------|----------|
 | Anthropic | `claude.com/pricing` (JS-rendered) | None — rendering proxy (priority 3) handles this | 2026-03-16 |
+| Mistral | `mistral.ai/pricing` (API pricing table is JS-rendered) | Subscription plans visible directly; API rates need rendering proxy (priority 3) or web search | 2026-03-16 |
 | OpenAI | `openai.com/pricing` (Cloudflare 403) | `developers.openai.com/docs/pricing` | 2026-03-08 |
+| Windsurf | `windsurf.com/pricing` (hangs/times out) | Use rendering proxy: `r.jina.ai/https://windsurf.com/pricing` | 2026-03-16 |
 
 ## Notes
 
 - `chatgpt.com/pricing` is also blocked (same Cloudflare setup)
 - Anthropic: primary URL is JS-rendered. Priority 3 (rendering proxy) will return the rendered content. Do NOT use `platform.claude.com/docs/en/about-claude/pricing` — it has unreliable subscription tier prices.
 - OpenAI alternate covers API pricing only; subscription plans (Plus/Pro/Team) need web search consensus (priority 5)
+- Windsurf: direct fetch hangs indefinitely. Always start with the rendering proxy.
+- Mistral: subscription plan prices ($14.99 Pro, $24.99 Team) are in the static HTML. API token rates (per-model input/output) are in a JS-rendered table — use rendering proxy or web search.

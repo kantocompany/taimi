@@ -43,6 +43,7 @@ The two workflows have **zero overlap** in web operations. Price verification ru
 | Parallelism | up to 12 (one per tool) |
 
 **Allowed tools:** Read, Edit, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq)
+**Disallowed tools:** Agent (prevents subagent spawning that drains budget)
 
 ### Market update
 

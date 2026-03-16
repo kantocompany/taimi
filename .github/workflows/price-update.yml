@@ -71,6 +71,7 @@ jobs:
             --max-turns 18
             --max-budget-usd 0.50
             --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
+            --disallowedTools "Agent"
 
       - name: Upload tool file
         if: always()
@@ -103,7 +104,7 @@ jobs:
             tool=$(basename "$dir" | sed 's/^tool-//')
             entry=$(./scripts/generate-changelog-entry.sh \
               "data/tools/$tool.json" \
-              "$dir/data/tools/$tool.json" \
+              "$dir/$tool.json" \
               "$tool" "$DATE" || true)
             if [[ -n "$entry" ]]; then
               entries+=("$entry")
@@ -125,7 +126,7 @@ jobs:
         run: |
           for dir in artifacts/tools/tool-*; do
             tool=$(basename "$dir" | sed 's/^tool-//')
-            cp "$dir/data/tools/$tool.json" data/tools/
+            cp "$dir/$tool.json" data/tools/
           done
 
       - name: Build
