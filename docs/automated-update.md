@@ -91,8 +91,8 @@ Per matrix job (Sonnet $3/$15 per M tokens):
 | **Total per tool** | **~13K** | **~4K** |
 
 - **Per job: ~$0.06-0.17** (higher when changes found)
-- **Per run (12 tools): ~$0.72-2.04**
-- **Monthly (daily): ~$22-62**
+- **Per run (12 tools): ~$2.41** (measured 2026-03-16)
+- **Monthly (daily): ~$72**
 
 ### Market update (weekly)
 
@@ -104,10 +104,10 @@ Per matrix job (Sonnet $3/$15 per M tokens):
 | Representation + observations | ~10K | ~5K |
 | **Total** | **~75K** | **~16K** |
 
-- **Estimated run: ~$1.50-2.50**
-- **Monthly (weekly): ~$6-10**
+- **Per run: ~$2.41** (measured 2026-03-16)
+- **Monthly (weekly): ~$10**
 
 ### Combined monthly
 
-- **Estimated: $28-72/month**
+- **Estimated: ~$82/month** (based on first CI runs)
 - **Anthropic console limit: $100/month** (set 50% email alert)

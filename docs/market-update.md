@@ -120,6 +120,7 @@ For each tool in `data/tools/`, read its file and check:
 4. **Terminology drift** — Does the vendor still use the same language we do? If they renamed a plan or feature, update the tool file. `vendor.name` is the legal/parent company, not the product brand (the product brand is in `name`). Do not duplicate the product name into `vendor.name`.
 5. **Missing or removed plans** — Has the vendor added new plan tiers or removed existing ones? Update the tool file.
 6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying?
+7. **Notes style** — Keep notes terse and factual: plan limits, pricing mechanics, key constraints. No marketing copy, no integration partner lists, no trailing periods. Match the style of existing tool files.
 
 ## Observations review
 
