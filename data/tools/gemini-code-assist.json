@@ -36,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access, code review for GitHub/GitLab."
+        "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access"
       },
       "overage": null
     },
