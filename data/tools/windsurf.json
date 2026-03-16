@@ -38,7 +38,11 @@
         "tokens_included": null,
         "notes": "500 prompt credits"
       },
-      "overage": null
+      "overage": {
+        "unit": "request",
+        "price_per_unit": 0.04,
+        "notes": "$10 per 250 credits"
+      }
     },
     {
       "id": "windsurf-teams",
@@ -50,9 +54,9 @@
         "per": "user"
       },
       "includes": {
-        "premium_requests": null,
+        "premium_requests": 500,
         "tokens_included": null,
-        "notes": "Self-hosted option"
+        "notes": "500 prompt credits/user/month; SSO +$10/user/month"
       },
       "overage": null
     },

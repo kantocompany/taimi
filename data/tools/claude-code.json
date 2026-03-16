@@ -92,7 +92,7 @@
       "category": "team",
       "platform_plan": true,
       "base_price": {
-        "amount": 150.00,
+        "amount": 125.00,
         "period": "monthly",
         "per": "user"
       },

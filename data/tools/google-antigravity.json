@@ -14,12 +14,12 @@
       "Google One AI Premium",
       "NotebookLM Plus"
     ],
-    "note": "AI Pro/Ultra are Google-wide subscriptions; Free tier and credit add-ons are standalone"
+    "note": "Developer/Team plans require Google AI Pro/Ultra or Workspace AI Ultra for Business; Individual tier is standalone"
   },
   "plans": [
     {
-      "id": "antigravity-free",
-      "name": "Free",
+      "id": "antigravity-individual",
+      "name": "Individual",
       "category": "free",
       "base_price": {
         "amount": 0,
@@ -29,13 +29,13 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12"
+        "notes": "$0/mo. Includes Gemini 3.1 Pro, Gemini 3 Flash, Claude Sonnet & Opus 4.6, gpt-oss-120b. Unlimited tab completions and command requests with weekly rate limits."
       },
       "overage": null
     },
     {
-      "id": "antigravity-ai-pro",
-      "name": "AI Pro",
+      "id": "antigravity-developer",
+      "name": "Developer",
       "category": "individual",
       "platform_plan": true,
       "base_price": {
@@ -46,14 +46,14 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "1,000 AI credits/mo, 2TB storage, Gemini 2.5 Pro, higher rate limits"
+        "notes": "More generous rate limits and flexible AI credit pool. Requires Google AI Pro or Ultra subscription."
       },
       "overage": null
     },
     {
-      "id": "antigravity-ai-ultra",
-      "name": "AI Ultra",
-      "category": "individual",
+      "id": "antigravity-team",
+      "name": "Team",
+      "category": "team",
       "platform_plan": true,
       "base_price": {
         "amount": 249.99,
@@ -63,7 +63,24 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "25,000 AI credits/mo, 30TB storage, Gemini 2.5 Ultra, priority access"
+        "notes": "Elevated rate limits for development groups. Requires Google Workspace AI Ultra for Business."
+      },
+      "overage": null
+    },
+    {
+      "id": "antigravity-organization",
+      "name": "Organization",
+      "category": "enterprise",
+      "platform_plan": true,
+      "base_price": {
+        "amount": null,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Coming soon. Enterprise-grade solution via Google Cloud. Pricing TBD."
       },
       "overage": null
     }
