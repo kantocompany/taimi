@@ -35,7 +35,7 @@ claude -p "Today is $DATE. Read docs/market-update.md and execute." \
 
 echo ""
 echo "Agent complete. Building..."
-./scripts/assemble.sh
+ASSEMBLE_DATE="$DATE" ./scripts/assemble.sh
 ./scripts/generate-index.sh
 ./scripts/validate.sh
 echo ""

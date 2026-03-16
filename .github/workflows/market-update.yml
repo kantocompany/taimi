@@ -62,7 +62,7 @@ jobs:
       - name: Build
         if: ${{ !steps.check-pr.outputs.skip }}
         run: |
-          ./scripts/assemble.sh
+          ASSEMBLE_DATE=${{ env.DATE }} ./scripts/assemble.sh
           ./scripts/generate-index.sh
 
       - name: Validate

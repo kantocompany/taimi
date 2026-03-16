@@ -10,8 +10,8 @@ NEW="$2"
 SLUG="$3"
 DATE="$4"
 
-# Fast path: identical files = no entry
-if diff -q "$OLD" "$NEW" >/dev/null 2>&1; then
+# Fast path: identical JSON = no entry (normalize to ignore whitespace differences)
+if diff -q <(jq -S . "$OLD") <(jq -S . "$NEW") >/dev/null 2>&1; then
   exit 0
 fi
 

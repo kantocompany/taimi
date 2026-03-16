@@ -37,7 +37,7 @@ The two workflows have **zero overlap** in web operations. Price verification ru
 | Setting | Value |
 |---------|-------|
 | Model | `claude-sonnet-4-6` |
-| Max turns | 12 |
+| Max turns | 18 |
 | Budget cap | $0.50/job |
 | Timeout | 10 minutes |
 | Parallelism | up to 12 (one per tool) |

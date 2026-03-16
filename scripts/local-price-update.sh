@@ -112,7 +112,7 @@ fi
 
 echo ""
 echo "Post-processing..."
-./scripts/assemble.sh
+ASSEMBLE_DATE="$DATE" ./scripts/assemble.sh
 ./scripts/generate-index.sh
 ./scripts/validate.sh
 echo ""

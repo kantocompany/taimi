@@ -82,7 +82,7 @@ jobs:
   # ── Job 3: Finalize ─────────────────────────────────────────────
   finalize:
     needs: [setup, verify]
-    if: ${{ !needs.setup.outputs.skip }}
+    if: ${{ always() && !needs.setup.outputs.skip && !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -130,7 +130,7 @@ jobs:
 
       - name: Build
         run: |
-          ./scripts/assemble.sh
+          ASSEMBLE_DATE=${{ env.DATE }} ./scripts/assemble.sh
           ./scripts/generate-index.sh
 
       - name: Validate

@@ -32,8 +32,17 @@ if [[ ${#files[@]} -eq 0 ]]; then
 fi
 
 tool_count=${#files[@]}
-updated_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-version=$(date -u +%Y-%m-%d)
+# Use ASSEMBLE_DATE env var if set (update workflows), else preserve existing, else now
+if [[ -n "${ASSEMBLE_DATE:-}" ]]; then
+  updated_at="${ASSEMBLE_DATE}T00:00:00Z"
+  version="$ASSEMBLE_DATE"
+elif [[ -f "$OUT_JSON" ]]; then
+  updated_at=$(jq -r '.meta.updated_at' "$OUT_JSON")
+  version=$(jq -r '.meta.version' "$OUT_JSON")
+else
+  updated_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+  version=$(date -u +%Y-%m-%d)
+fi
 
 echo "Assembling $tool_count tools..."
 
