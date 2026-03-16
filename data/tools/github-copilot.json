@@ -74,9 +74,9 @@
         "per": "user"
       },
       "includes": {
-        "premium_requests": null,
+        "premium_requests": 300,
         "tokens_included": null,
-        "notes": "Org management"
+        "notes": "300 premium req/user, org management"
       },
       "overage": null
     },

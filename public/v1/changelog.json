@@ -1,17 +1,65 @@
 {
   "meta": {
-    "version": "2026-03-13",
-    "updated_at": "2026-03-13T18:00:00Z",
+    "version": "2026-03-16",
+    "updated_at": "2026-03-16T15:56:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-16",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.4.base_price.amount: 150.00 → 125.00",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-16",
+      "tool": "github-copilot",
+      "type": "pricing_change",
+      "description": "plans.3.includes.notes: Org management → 300 premium req/user, org management; plans.3.includes.premium_requests: added 300",
+      "details": {
+        "source": "https://github.com/features/copilot/plans"
+      }
+    },
+    {
+      "date": "2026-03-16",
+      "tool": "google-antigravity",
+      "type": "pricing_change",
+      "description": "platform.note: AI Pro/Ultra are Google-wide subscriptions; Free tier and credit add-ons are standalone → Developer/Team plans require Google AI Pro/Ultra or Workspace AI Ultra for Business; Individual tier is standalone; plans.0.id: antigravity-free → antigravity-individual; plans.0.name: Free → Individual; plans.0.includes.notes: $0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12 → $0/mo. Includes Gemini 3.1 Pro, Gemini 3 Flash, Claude Sonnet & Opus 4.6, gpt-oss-120b. Unlimited tab completions and command requests with weekly rate limits.; plans.1.id: antigravity-ai-pro → antigravity-developer; plans.1.name: AI Pro → Developer; plans.1.includes.notes: 1,000 AI credits/mo, 2TB storage, Gemini 2.5 Pro, higher rate limits → More generous rate limits and flexible AI credit pool. Requires Google AI Pro or Ultra subscription.; plans.2.id: antigravity-ai-ultra → antigravity-team; plans.2.name: AI Ultra → Team; plans.2.category: individual → team; plans.2.includes.notes: 25,000 AI credits/mo, 30TB storage, Gemini 2.5 Ultra, priority access → Elevated rate limits for development groups. Requires Google Workspace AI Ultra for Business.; plans.3.id: added antigravity-organization; plans.3.name: added Organization; plans.3.category: added enterprise; plans.3.platform_plan: added true; plans.3.base_price.period: added monthly; plans.3.base_price.per: added user; plans.3.includes.notes: added Coming soon. Enterprise-grade solution via Google Cloud. Pricing TBD.",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-03-16",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.2.name: Team → Business; plans.2.includes.notes: $25 annual / $30 monthly → $25 annual / $30 monthly; renamed from Team to Business on 2025-08-29; plans.3.overage.notes: o3 $2/$8, gpt-5.4 $2.50/$15 → UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16",
+      "details": {
+        "source": "https://openai.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-16",
+      "tool": "windsurf",
+      "type": "pricing_change",
+      "description": "plans.2.includes.notes: Self-hosted option → 500 prompt credits/user/month; SSO +$10/user/month; plans.1.overage.unit: added request; plans.1.overage.price_per_unit: added 0.04; plans.1.overage.notes: added $10 per 250 credits; plans.2.includes.premium_requests: added 500",
+      "details": {
+        "source": "https://windsurf.com/pricing"
+      }
+    },
     {
       "date": "2026-03-13",
       "tool": "google-antigravity",
       "type": "feature",
       "description": "Added platform field and Google AI subscription tiers. AI Pro ($19.99/mo) and AI Ultra ($249.99/mo) as platform plans with platform_plan: true. Renamed plan from Public Preview to Free. Updated credit pack pricing to $25/2,500.",
       "details": {
-        "new_plans": ["antigravity-ai-pro ($19.99/mo)", "antigravity-ai-ultra ($249.99/mo)"],
+        "new_plans": [
+          "antigravity-ai-pro ($19.99/mo)",
+          "antigravity-ai-ultra ($249.99/mo)"
+        ],
         "platform_added": true,
         "renamed": "Public Preview → Free",
         "source": "https://antigravity.google/pricing, https://one.google.com/about/google-ai-plans/"
@@ -49,7 +97,10 @@
       "description": "Split API usage plan into separate Sonnet 4.6 ($3/$15/M) and Opus 4.6 ($5/$25/M) entries. Previously a single plan with Sonnet pricing in the overage field and both models in notes — misleading for API consumers.",
       "details": {
         "old_plan": "claude-code-api (output_per_million: 15.00, notes mentioned both)",
-        "new_plans": ["claude-code-api-sonnet ($3/$15/M)", "claude-code-api-opus ($5/$25/M)"],
+        "new_plans": [
+          "claude-code-api-sonnet ($3/$15/M)",
+          "claude-code-api-opus ($5/$25/M)"
+        ],
         "source": "https://platform.claude.com/docs/en/docs/about-claude/models"
       }
     },
@@ -110,7 +161,9 @@
       "type": "new_tool",
       "description": "Added Aider: open-source terminal-based AI pair programming agent (BYOK). 41K+ GitHub stars, supports 100+ languages, any LLM provider.",
       "details": {
-        "plans": ["Free (BYOK) $0"],
+        "plans": [
+          "Free (BYOK) $0"
+        ],
         "source": "https://aider.chat"
       }
     },
@@ -156,7 +209,11 @@
       "type": "new_tool",
       "description": "Added Replit: browser-based agentic coding platform with Agent 3. Starter (free), Core ($20/mo), Pro ($100/mo flat for 15 builders)",
       "details": {
-        "plans": ["Starter $0", "Core $20/mo", "Pro $100/mo flat"],
+        "plans": [
+          "Starter $0",
+          "Core $20/mo",
+          "Pro $100/mo flat"
+        ],
         "source": "https://replit.com/pricing"
       }
     },
@@ -191,8 +248,15 @@
       "type": "feature",
       "description": "Added platform bundling metadata: optional platform field at tool level, platform_plan flag at plan level for Claude Code, OpenAI Codex, Mistral Vibe",
       "details": {
-        "fields_added": ["tool.platform", "plan.platform_plan"],
-        "affected_tools": ["claude-code", "openai-codex", "mistral-vibe"],
+        "fields_added": [
+          "tool.platform",
+          "plan.platform_plan"
+        ],
+        "affected_tools": [
+          "claude-code",
+          "openai-codex",
+          "mistral-vibe"
+        ],
         "breaking": false
       }
     },
@@ -251,8 +315,14 @@
       "description": "Verified API pricing via developers.openai.com: models updated to o3/gpt-5.4, output corrected to $8-15/M",
       "details": {
         "field": "overage",
-        "old_value": { "model": "gpt-4o / o3", "output_per_million": 8.00 },
-        "new_value": { "model": "o3 / gpt-5.4", "output_per_million": 15.00 },
+        "old_value": {
+          "model": "gpt-4o / o3",
+          "output_per_million": 8.00
+        },
+        "new_value": {
+          "model": "o3 / gpt-5.4",
+          "output_per_million": 15.00
+        },
         "source": "https://developers.openai.com/docs/pricing"
       }
     },
@@ -262,8 +332,16 @@
       "type": "pricing_change",
       "description": "Augment Code restructured plans: Individual $50 replaced by Indie $20, Standard $60, Max $200",
       "details": {
-        "old_plans": ["Individual $50/mo", "Teams $50-200/seat"],
-        "new_plans": ["Indie $20/mo", "Standard $60/seat", "Max $200/seat", "Enterprise custom"],
+        "old_plans": [
+          "Individual $50/mo",
+          "Teams $50-200/seat"
+        ],
+        "new_plans": [
+          "Indie $20/mo",
+          "Standard $60/seat",
+          "Max $200/seat",
+          "Enterprise custom"
+        ],
         "source": "https://www.augmentcode.com/pricing"
       }
     },
@@ -316,7 +394,9 @@
       "tool": "github-copilot",
       "type": "feature",
       "description": "Copilot CLI reached general availability",
-      "details": { "source": "https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available/" }
+      "details": {
+        "source": "https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available/"
+      }
     },
     {
       "date": "2026-01-27",
@@ -337,8 +417,14 @@
       "description": "Devstral 2 API moved from free to paid access",
       "details": {
         "plan": "Devstral 2 API",
-        "old_value": { "input_per_million": 0, "output_per_million": 0 },
-        "new_value": { "input_per_million": 0.40, "output_per_million": 2.00 },
+        "old_value": {
+          "input_per_million": 0,
+          "output_per_million": 0
+        },
+        "new_value": {
+          "input_per_million": 0.40,
+          "output_per_million": 2.00
+        },
         "source": "https://mistral.ai/news/mistral-vibe-2-0"
       }
     },

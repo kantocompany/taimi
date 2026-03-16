@@ -55,7 +55,7 @@
     },
     {
       "id": "codex-team",
-      "name": "Team",
+      "name": "Business",
       "category": "team",
       "platform_plan": true,
       "base_price": {
@@ -66,7 +66,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "$25 annual / $30 monthly"
+        "notes": "$25 annual / $30 monthly; renamed from Team to Business on 2025-08-29"
       },
       "overage": null
     },
@@ -81,7 +81,7 @@
         "input_per_million": 2.00,
         "output_per_million": 15.00,
         "model": "o3 / gpt-5.4",
-        "notes": "o3 $2/$8, gpt-5.4 $2.50/$15"
+        "notes": "UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16"
       }
     }
   ],

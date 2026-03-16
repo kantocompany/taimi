@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2026-03-16",
-    "updated_at": "2026-03-16T05:57:24Z",
+    "updated_at": "2026-03-16T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -248,7 +248,7 @@
           "category": "team",
           "platform_plan": true,
           "base_price": {
-            "amount": 150.00,
+            "amount": 125.00,
             "period": "monthly",
             "per": "user"
           },
@@ -653,9 +653,9 @@
             "per": "user"
           },
           "includes": {
-            "premium_requests": null,
+            "premium_requests": 300,
             "tokens_included": null,
-            "notes": "Org management"
+            "notes": "300 premium req/user, org management"
           },
           "overage": null
         },
@@ -707,12 +707,12 @@
           "Google One AI Premium",
           "NotebookLM Plus"
         ],
-        "note": "AI Pro/Ultra are Google-wide subscriptions; Free tier and credit add-ons are standalone"
+        "note": "Developer/Team plans require Google AI Pro/Ultra or Workspace AI Ultra for Business; Individual tier is standalone"
       },
       "plans": [
         {
-          "id": "antigravity-free",
-          "name": "Free",
+          "id": "antigravity-individual",
+          "name": "Individual",
           "category": "free",
           "base_price": {
             "amount": 0,
@@ -722,13 +722,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12"
+            "notes": "$0/mo. Includes Gemini 3.1 Pro, Gemini 3 Flash, Claude Sonnet & Opus 4.6, gpt-oss-120b. Unlimited tab completions and command requests with weekly rate limits."
           },
           "overage": null
         },
         {
-          "id": "antigravity-ai-pro",
-          "name": "AI Pro",
+          "id": "antigravity-developer",
+          "name": "Developer",
           "category": "individual",
           "platform_plan": true,
           "base_price": {
@@ -739,14 +739,14 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 AI credits/mo, 2TB storage, Gemini 2.5 Pro, higher rate limits"
+            "notes": "More generous rate limits and flexible AI credit pool. Requires Google AI Pro or Ultra subscription."
           },
           "overage": null
         },
         {
-          "id": "antigravity-ai-ultra",
-          "name": "AI Ultra",
-          "category": "individual",
+          "id": "antigravity-team",
+          "name": "Team",
+          "category": "team",
           "platform_plan": true,
           "base_price": {
             "amount": 249.99,
@@ -756,7 +756,24 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "25,000 AI credits/mo, 30TB storage, Gemini 2.5 Ultra, priority access"
+            "notes": "Elevated rate limits for development groups. Requires Google Workspace AI Ultra for Business."
+          },
+          "overage": null
+        },
+        {
+          "id": "antigravity-organization",
+          "name": "Organization",
+          "category": "enterprise",
+          "platform_plan": true,
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Coming soon. Enterprise-grade solution via Google Cloud. Pricing TBD."
           },
           "overage": null
         }
@@ -957,7 +974,7 @@
         },
         {
           "id": "codex-team",
-          "name": "Team",
+          "name": "Business",
           "category": "team",
           "platform_plan": true,
           "base_price": {
@@ -968,7 +985,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$25 annual / $30 monthly"
+            "notes": "$25 annual / $30 monthly; renamed from Team to Business on 2025-08-29"
           },
           "overage": null
         },
@@ -983,7 +1000,7 @@
             "input_per_million": 2.00,
             "output_per_million": 15.00,
             "model": "o3 / gpt-5.4",
-            "notes": "o3 $2/$8, gpt-5.4 $2.50/$15"
+            "notes": "UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16"
           }
         }
       ],
@@ -1136,7 +1153,11 @@
             "tokens_included": null,
             "notes": "500 prompt credits"
           },
-          "overage": null
+          "overage": {
+            "unit": "request",
+            "price_per_unit": 0.04,
+            "notes": "$10 per 250 credits"
+          }
         },
         {
           "id": "windsurf-teams",
@@ -1148,9 +1169,9 @@
             "per": "user"
           },
           "includes": {
-            "premium_requests": null,
+            "premium_requests": 500,
             "tokens_included": null,
-            "notes": "Self-hosted option"
+            "notes": "500 prompt credits/user/month; SSO +$10/user/month"
           },
           "overage": null
         },

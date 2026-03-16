@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2026-03-16",
-    "updated_at": "2026-03-16T05:57:24Z",
+    "updated_at": "2026-03-16T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -85,9 +85,9 @@
           "per": "user"
         },
         "includes": {
-          "premium_requests": null,
+          "premium_requests": 300,
           "tokens_included": null,
-          "notes": "Org management"
+          "notes": "300 premium req/user, org management"
         },
         "overage": null
       },
