@@ -1,0 +1,74 @@
+{
+  "slug": "gemini-code-assist",
+  "name": "Gemini Code Assist",
+  "vendor": {
+    "name": "Google",
+    "hq_country": "US",
+    "eu_based": false,
+    "pricing_url": "https://cloud.google.com/gemini/docs/codeassist/overview"
+  },
+  "plans": [
+    {
+      "id": "gemini-code-assist-individual",
+      "name": "Individual",
+      "category": "free",
+      "base_price": {
+        "amount": 0,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required."
+      },
+      "overage": null
+    },
+    {
+      "id": "gemini-code-assist-standard",
+      "name": "Standard",
+      "category": "individual",
+      "base_price": {
+        "amount": 19.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access, code review for GitHub/GitLab."
+      },
+      "overage": null
+    },
+    {
+      "id": "gemini-code-assist-enterprise",
+      "name": "Enterprise",
+      "category": "enterprise",
+      "base_price": {
+        "amount": 45.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud."
+      },
+      "overage": null
+    }
+  ],
+  "capabilities": {
+    "autonomy_level": "interactive_to_autonomous",
+    "ide_type": "extension",
+    "model_choice": false,
+    "self_hosted": false,
+    "fedramp": false,
+    "eu_data_residency": true,
+    "soc2": true,
+    "on_premise": false
+  },
+  "benchmarks": {
+    "swe_bench_verified": null,
+    "measured_at": null
+  }
+}

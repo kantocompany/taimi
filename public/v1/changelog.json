@@ -1,10 +1,26 @@
 {
   "meta": {
     "version": "2026-03-16",
-    "updated_at": "2026-03-16T15:56:00Z",
+    "updated_at": "2026-03-16T00:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-16",
+      "tool": "gemini-code-assist",
+      "type": "new_tool",
+      "description": "Google's AI coding assistant with Agent Mode for autonomous multi-file code generation, integrating with VS Code and IntelliJ. Gartner Magic Quadrant Leader 2024.",
+      "details": {}
+    },
+    {
+      "date": "2026-03-16",
+      "tool": "google-antigravity",
+      "type": "removed_tool",
+      "description": "Archived Google Antigravity. Operational instability: 92% free-tier quota cuts and OAuth account bans March 2026; persistent pricing flux since launch; Gemini Code Assist is Google's stable, Gartner-ranked agentic coding product",
+      "details": {
+        "reason": "Operational instability: 92% free-tier quota cuts and OAuth account bans March 2026; persistent pricing flux since launch; Gemini Code Assist is Google's stable, Gartner-ranked agentic coding product"
+      }
+    },
     {
       "date": "2026-03-16",
       "tool": "claude-code",
