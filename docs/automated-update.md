@@ -6,67 +6,73 @@ Updates run via two GitHub Actions workflows using Claude Code. Both create PRs 
 
 | Workflow | Runbook | Schedule | Scope |
 |----------|---------|----------|-------|
-| `price-update.yml` | `docs/price-update.md` | Daily 05:00 UTC | Price verification for all vendors |
+| `price-update.yml` | `docs/price-update.md` | Daily 05:00 UTC | Price verification (matrix: one agent per tool) |
 | `market-update.yml` | `docs/market-update.md` | Weekly Sunday 02:00 UTC | Market scan, health checks, representation + observations review |
 
 The two workflows have **zero overlap** in web operations. Price verification runs daily; the market update does not repeat it.
 
 ## How it works
 
-### Price update (daily)
+### Price update (daily) — matrix architecture
 
-1. Cron fires at **05:00 UTC** (or manual `workflow_dispatch`)
-2. Checks for open `price-update` PR — skips if one exists
-3. Creates branch `price-update/YYYY-MM-DD`
-4. Runs Claude Code agent with `price-update.md`
-5. Post-agent validation (`generate-tool-files.sh` + `validate.sh`)
-6. If changes exist, commits only `public/` files and opens a PR
-7. `validate.yml` runs on the PR as a status check
-8. Human reviews and merges
+1. **Setup job**: cron fires at 05:00 UTC (or manual dispatch). Checks for open PR, discovers tool slugs from `data/tools/*.json`
+2. **Verify jobs** (parallel, one per tool): each runs Claude Code agent scoped to one vendor. Edits `data/tools/{slug}.json` if prices changed
+3. **Finalize job**: downloads artifacts from all verify jobs, generates changelog entries from diffs, runs `assemble.sh` + `generate-index.sh` + `validate.sh`, commits `data/` + `public/`, opens PR
+4. `validate.yml` runs on the PR as a status check
+5. Human reviews and merges
 
-### Market update (weekly)
+### Market update (weekly) — monolithic
 
-1. Cron fires at **02:00 UTC Sunday** (or manual `workflow_dispatch`)
+1. Cron fires at **02:00 UTC Sunday** (or manual dispatch)
 2. Checks for open `market-update` PR — skips if one exists
-3. Creates branch `market-update/YYYY-MM-DD`
-4. Runs Claude Code agent with `market-update.md`
-5. Post-agent validation
-6. If changes exist, commits only `public/` files and opens a PR
-7. Human reviews and merges
+3. Runs Claude Code agent with `market-update.md` (creates/deletes files in `data/tools/`, edits `data/observations.html`, edits `public/v1/changelog.json`)
+4. Post-agent build: `assemble.sh` + `generate-index.sh` + `validate.sh`
+5. If changes exist, commits `data/` + `public/` and opens a PR
+6. Human reviews and merges
 
 ## Agent configuration
 
-| Setting | Price update | Market update |
-|---------|-------------|---------------|
-| Model | `claude-sonnet-4-6` | `claude-sonnet-4-6` |
-| Max turns | 15 | 30 |
-| Budget cap | $2/run | $5/run |
-| Timeout | 30 minutes | 60 minutes |
-| Concurrency | 1 | 1 |
+### Price update (per matrix job)
 
-**Allowed tools:** Read, Edit, Write, Glob, Grep, WebSearch, WebFetch, Bash (scripts, jq, git diff/status/log)
+| Setting | Value |
+|---------|-------|
+| Model | `claude-sonnet-4-6` |
+| Max turns | 12 |
+| Budget cap | $0.50/job |
+| Timeout | 10 minutes |
+| Parallelism | up to 12 (one per tool) |
 
-**Blocked tools:** Bash (rm, curl, wget, npm, pip, sudo)
+**Allowed tools:** Read, Edit, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq)
 
-**Visibility:** `show_full_output: true` — required for live output in workflow logs.
+### Market update
+
+| Setting | Value |
+|---------|-------|
+| Model | `claude-sonnet-4-6` |
+| Max turns | 30 |
+| Budget cap | $5/run |
+| Timeout | 60 minutes |
+| Parallelism | 1 |
+
+**Allowed tools:** Read, Edit, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq, ls, scripts)
 
 ## Safety layers
 
-- `git add public/` — only public files are committed, regardless of what the agent touches
+- `git add data/ public/` — only data and public files are committed
 - Duplicate PR prevention — forces human review before next run proceeds
-- Post-agent validation — runs even if the agent already ran validation
-- `validate.yml` — independent PR check for all PRs (human or bot)
-- Branch protection — requires "Validate Data" check to pass before merge (see setup)
+- Post-agent build + validation — `assemble.sh` + `generate-index.sh` + `validate.sh` run regardless
+- `validate.yml` — independent PR check that rebuilds from source and checks for drift
+- Branch protection — requires "Validate Data" check to pass before merge
 - Independent labels (`price-update` / `market-update`) — workflows don't block each other
+- Matrix isolation — one tool's verification failure doesn't affect others
 
 ## Error handling
 
 | Failure | Mitigation |
 |---------|-----------|
-| Agent crashes | `timeout-minutes` kills job; no branch pushed |
+| Single tool agent crashes | Other tools unaffected; finalize job still runs |
 | Budget exceeded | `--max-budget-usd` stops agent; partial changes uncommitted |
 | Validation fails | No commit if exit code != 0 |
-| Protected file edited | `git add` scopes to `public/` only |
 | Network errors | Runbook escalation ladder (step 6: mark UNVERIFIED) |
 | GitHub rate limit | Job fails; retries next scheduled run |
 | Open PR exists | Skips entire run |
@@ -75,37 +81,32 @@ The two workflows have **zero overlap** in web operations. Price verification ru
 
 ### Price update (daily)
 
-Per-run cost (Sonnet $3/$15 per M tokens):
+Per matrix job (Sonnet $3/$15 per M tokens):
 
 | Phase | Input tokens | Output tokens |
 |-------|-------------|--------------|
-| Context loading (3 files) | ~10K | ~1K |
-| Price verification (12 vendors × 1-3 fetches) | ~50K | ~8K |
-| Schema validation | ~5K | ~2K |
-| **Total** | **~65K** | **~11K** |
+| Context loading (CLAUDE.md + runbook + tool file) | ~5K | ~1K |
+| Verification (1-3 fetches) | ~8K | ~3K |
+| **Total per tool** | **~13K** | **~4K** |
 
-- **Typical run: ~$0.90-1.50**
-- **Monthly (daily): ~$27-45**
-- **Hard cap (per run): $2.00**
+- **Per job: ~$0.06-0.17** (higher when changes found)
+- **Per run (12 tools): ~$0.72-2.04**
+- **Monthly (daily): ~$22-62**
 
 ### Market update (weekly)
 
-Per-run cost estimate (TBD — test first):
-
 | Phase | Input tokens | Output tokens |
 |-------|-------------|--------------|
-| Context loading (5 files) | ~15K | ~1K |
+| Context loading | ~15K | ~1K |
 | Market scan (5 searches) | ~20K | ~5K |
 | Health check (12 tools × 1 search) | ~30K | ~5K |
 | Representation + observations | ~10K | ~5K |
-| Schema validation | ~5K | ~2K |
-| **Total** | **~80K** | **~18K** |
+| **Total** | **~75K** | **~16K** |
 
-- **Estimated run: ~$1.50-2.50** (no price verification web fetches)
+- **Estimated run: ~$1.50-2.50**
 - **Monthly (weekly): ~$6-10**
-- **Hard cap (per run): $5.00**
 
 ### Combined monthly
 
-- **Estimated: $33-55/month**
+- **Estimated: $28-72/month**
 - **Anthropic console limit: $100/month** (set 50% email alert)

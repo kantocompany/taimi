@@ -43,16 +43,24 @@ curl -s https://taimi.market/v1/tools.json | jq '[.tools[] | select(.capabilitie
 ## Project structure
 
 ```
-public/
-├── index.html                 # The pricing comparison page
+data/
+├── tools/
+│   └── {slug}.json            # Source of truth — one file per tool
+└── observations.html          # Editorial observations snippet
+public/                        # Generated output — do not edit directly
+├── index.html                 # Pricing comparison page (generated)
 └── v1/
-    ├── tools.json             # All tools — the single source of truth
-    ├── changelog.json         # Price change history
+    ├── tools.json             # All tools assembled (generated)
+    ├── changelog.json         # Price change history (append-only)
     └── tools/
-        └── {slug}.json        # Individual tool files (derived from tools.json)
+        └── {slug}.json        # Per-tool API files (generated)
 scripts/
-├── generate-tool-files.sh     # Generate {slug}.json files from tools.json
-├── validate.sh                # Consistency checks across all data files
+├── assemble.sh                # data/tools/*.json → public/v1/
+├── generate-index.sh          # tools.json → index.html
+├── merge-changelog.sh         # Merge changes/*.json into changelog
+├── local-price-update.sh      # Run price verification locally
+├── local-market-update.sh     # Run market update locally
+├── validate.sh                # Consistency checks
 docs/
 ├── price-update.md            # Daily price verification runbook (protected)
 ├── market-update.md           # Weekly market update runbook (protected)
@@ -61,24 +69,38 @@ docs/
 ├── focus-analysis.md          # FOCUS spec evaluation
 ```
 
+## Building
+
+```bash
+./scripts/assemble.sh          # data/tools/ → public/v1/
+./scripts/generate-index.sh    # public/v1/tools.json → public/index.html
+./scripts/validate.sh          # check consistency
+```
+
 ## Updating data
 
 Two automated workflows keep data current:
 
-- **Daily:** Price verification via `docs/price-update.md`
+- **Daily:** Price verification via matrix of Claude Code agents (one per tool)
 - **Weekly:** Market scan, health checks, editorial review via `docs/market-update.md`
 
-To run locally:
+Manual updates: edit files in `data/tools/`, update `public/v1/changelog.json`, then run `./scripts/assemble.sh && ./scripts/generate-index.sh`.
+
+### Local agent runs
+
+Simulate the CI price-update matrix locally:
 
 ```bash
-# Price check
-claude "Read docs/price-update.md and execute the price verification process."
-
-# Full market update
-claude "Read docs/market-update.md and execute the market update process."
+./scripts/local-price-update.sh              # all tools, sequential
+./scripts/local-price-update.sh cursor aider  # specific tools only
+./scripts/local-price-update.sh -j4           # all tools, 4 parallel
 ```
 
-Manual updates: edit `public/v1/tools.json`, update `changelog.json`, regenerate individual tool files and `index.html`.
+Handles agent runs, changelog fragment merge, assembly, generation, and validation. Logs per tool in `logs/`.
+
+```bash
+./scripts/local-market-update.sh              # weekly market scan + editorial review
+```
 
 ## Hosting
 

@@ -23,6 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Build
+        run: |
+          ./scripts/assemble.sh
+          ./scripts/generate-index.sh
+
+      - name: Validate
+        run: ./scripts/validate.sh
+
       - uses: actions/upload-pages-artifact@v4
         with:
           path: public

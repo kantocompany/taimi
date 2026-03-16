@@ -4,6 +4,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - "data/**"
       - "public/v1/**"
 
 permissions:
@@ -16,14 +17,16 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Generate tool files
-        run: ./scripts/generate-tool-files.sh
+      - name: Build from source
+        run: |
+          ./scripts/assemble.sh
+          ./scripts/generate-index.sh
 
       - name: Check for drift
         run: |
-          if ! git diff --quiet public/v1/tools/; then
-            echo "::error::Generated tool files are out of sync with tools.json"
-            git diff --stat public/v1/tools/
+          if ! git diff --quiet public/; then
+            echo "::error::Generated files are out of sync with source data"
+            git diff --stat public/
             exit 1
           fi
 
@@ -38,7 +41,7 @@ jobs:
           gh pr comment ${{ github.event.pull_request.number }} --body "## Validation Failed
 
           Check the Actions log for details. Common fixes:
-          - Run \`./scripts/generate-tool-files.sh\` to regenerate per-tool files
-          - Check \`meta.tool_count\` matches actual tool count
+          - Run \`./scripts/assemble.sh && ./scripts/generate-index.sh\` to regenerate from source
+          - Check that \`data/tools/*.json\` files have valid JSON with required fields
           - Ensure \`changelog.json\` is valid JSON
           - Verify all tools have \`pricing_url\` set"

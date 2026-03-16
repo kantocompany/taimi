@@ -2,12 +2,8 @@ name: Price Update
 
 on:
   # schedule:
-  #   - cron: "0 5 * * *" # 05:00 UTC daily — disabled pending v1.1 stabilization
+  #   - cron: "0 5 * * *" # 05:00 UTC daily — disabled pending testing
   workflow_dispatch:
-
-concurrency:
-  group: taimi-price-update
-  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -15,10 +11,13 @@ permissions:
   id-token: write
 
 jobs:
-  update:
+  # ── Job 1: Setup ────────────────────────────────────────────────
+  setup:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-
+    outputs:
+      matrix: ${{ steps.tools.outputs.matrix }}
+      date: ${{ steps.date.outputs.date }}
+      skip: ${{ steps.check-pr.outputs.skip }}
     steps:
       - uses: actions/checkout@v6
 
@@ -35,76 +34,153 @@ jobs:
 
       - name: Set date
         if: ${{ !steps.check-pr.outputs.skip }}
-        run: echo "DATE=$(date -u +%Y-%m-%d)" >> "$GITHUB_ENV"
+        id: date
+        run: echo "date=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
-      - name: Create update branch
+      - name: Discover tools
         if: ${{ !steps.check-pr.outputs.skip }}
+        id: tools
         run: |
-          git checkout -B "price-update/${{ env.DATE }}"
-          echo "BRANCH=price-update/${{ env.DATE }}" >> "$GITHUB_ENV"
+          matrix=$(ls data/tools/*.json | xargs -I{} basename {} .json | jq -R -s -c 'split("\n") | map(select(. != ""))')
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "::notice::Tools to verify: $matrix"
 
-      - name: Run Claude Code agent
-        if: ${{ !steps.check-pr.outputs.skip }}
+  # ── Job 2: Verify (one per tool, parallel) ──────────────────────
+  verify:
+    needs: setup
+    if: ${{ !needs.setup.outputs.skip }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        tool: ${{ fromJson(needs.setup.outputs.matrix) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Verify ${{ matrix.tool }}
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           show_full_output: true
           prompt: |
-            Today is ${{ env.DATE }}. Read docs/price-update.md and execute the price verification process for all vendors. Do not commit or push — the workflow handles git operations.
+            Today is ${{ needs.setup.outputs.date }}. Tool: ${{ matrix.tool }}.
+            Read docs/price-update.md and execute.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 25
-            --max-budget-usd 3
-            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(./scripts/*),Bash(bash scripts/*),Bash(bash ./scripts/*),Bash(jq *),Bash(git diff*),Bash(git status*),Bash(git log*)"
-            --disallowedTools "Bash(rm *),Bash(curl *),Bash(wget *),Bash(npm *),Bash(pip *),Bash(sudo *)"
+            --max-turns 18
+            --max-budget-usd 0.50
+            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
 
-      - name: Post-agent validation
-        if: ${{ !steps.check-pr.outputs.skip }}
+      - name: Upload tool file
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tool-${{ matrix.tool }}
+          path: data/tools/${{ matrix.tool }}.json
+
+  # ── Job 3: Finalize ─────────────────────────────────────────────
+  finalize:
+    needs: [setup, verify]
+    if: ${{ !needs.setup.outputs.skip }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DATE: ${{ needs.setup.outputs.date }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download tool artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: tool-*
+          path: artifacts/tools/
+
+      - name: Generate changelog from diffs
         run: |
-          ./scripts/generate-tool-files.sh
-          ./scripts/validate.sh
+          entries=()
+          for dir in artifacts/tools/tool-*; do
+            tool=$(basename "$dir" | sed 's/^tool-//')
+            entry=$(./scripts/generate-changelog-entry.sh \
+              "data/tools/$tool.json" \
+              "$dir/data/tools/$tool.json" \
+              "$tool" "$DATE" || true)
+            if [[ -n "$entry" ]]; then
+              entries+=("$entry")
+              echo "  changelog: $tool"
+            fi
+          done
+          if [[ ${#entries[@]} -gt 0 ]]; then
+            new_json=$(printf '%s\n' "${entries[@]}" | jq -s '.')
+            jq --argjson new "$new_json" \
+              '.changes = ($new + .changes) | .meta.updated_at = (now | strftime("%Y-%m-%dT%H:%M:%SZ")) | .meta.version = (now | strftime("%Y-%m-%d"))' \
+              public/v1/changelog.json > tmp_changelog.json
+            mv tmp_changelog.json public/v1/changelog.json
+            echo "Generated ${#entries[@]} changelog entries"
+          else
+            echo "No price changes detected"
+          fi
+
+      - name: Apply updated tool files
+        run: |
+          for dir in artifacts/tools/tool-*; do
+            tool=$(basename "$dir" | sed 's/^tool-//')
+            cp "$dir/data/tools/$tool.json" data/tools/
+          done
+
+      - name: Build
+        run: |
+          ./scripts/assemble.sh
+          ./scripts/generate-index.sh
+
+      - name: Validate
+        run: ./scripts/validate.sh
 
       - name: Check for changes
-        if: ${{ !steps.check-pr.outputs.skip }}
         id: changes
         run: |
-          git add public/
+          git add data/ public/
           if git diff --cached --quiet; then
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::No changes in public/. Skipping PR."
+            echo "::notice::No changes detected. Skipping PR."
           else
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            git diff --cached --stat
           fi
 
       - name: Commit and push
-        if: ${{ !steps.check-pr.outputs.skip && steps.changes.outputs.has_changes == 'true' }}
+        if: steps.changes.outputs.has_changes == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BRANCH="price-update/${{ env.DATE }}"
+          git checkout -B "$BRANCH"
           git commit -m "chore: automated price update ${{ env.DATE }}"
           git push -u origin "$BRANCH"
 
       - name: Create pull request
-        if: ${{ !steps.check-pr.outputs.skip && steps.changes.outputs.has_changes == 'true' }}
+        if: steps.changes.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
             --title "Price update ${{ env.DATE }}" \
             --label "price-update" \
-            --body "## Price Update
+            --body "$(cat <<'EOF'
+          ## Price Update
 
-          Created by the daily price-update workflow running Claude Code agent against [price-update.md](docs/price-update.md).
+          Created by the daily price-update workflow. Each tool was verified independently via a matrix of Claude Code agents against [price-update.md](docs/price-update.md).
 
           ### Review checklist
-          - [ ] Only \`public/\` files changed
-          - [ ] \`changelog.json\` has entries with source URLs
           - [ ] Price changes verified against vendor pricing pages
-          - [ ] \`validate.sh\` passed (check Actions log)
+          - [ ] `changelog.json` has entries with source URLs
+          - [ ] `validate.sh` passed (check Actions log)
           - [ ] No UNVERIFIED markers left unaddressed
 
           ### Cost
-          Check the Claude Code step log for actual token usage.
+          Check individual matrix job logs for per-tool token usage.
 
           ---
-          Generated by [Claude Code](https://claude.com/claude-code) via GitHub Actions"
+          Generated by [Claude Code](https://claude.com/claude-code) via GitHub Actions
+          EOF
+          )"

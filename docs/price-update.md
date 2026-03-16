@@ -1,124 +1,83 @@
 # Price Update Runbook
 
-Daily procedure for verifying pricing accuracy across all tracked tools. Run via GitHub Actions (`price-update.yml`).
+Verify pricing for a single tool. The workflow prompt provides today's date and the tool slug.
 
-## Build context
+## Constraints
 
-Read these files before starting:
+- **Read:** `CLAUDE.md`, `data/tools/{slug}.json`, this file
+- **Edit:** only `data/tools/{slug}.json`
+- Do not edit any other files. Do not commit or push. The workflow handles changelog, assembly, generation, and git.
+- **Pricing convention:** `base_price.amount` is always the monthly billing price. Annual discounts go in the plan's `notes` field, never in `base_price.amount`.
+- **Plan boundaries:** A plan is a distinct purchasable tier with its own price. Eligibility discounts (student, OSS maintainer) are notes on the qualifying plan, not separate plan objects.
 
-1. `CLAUDE.md` — project rules and schema constraints
-2. `public/v1/tools.json` — source of truth for all pricing data
-3. This file (`docs/price-update.md`)
+## What counts as a verified price
 
-Do not read index.html, changelog.json, or other docs unless a price change requires updating them.
-
-## What counts as a successful price extraction
-
-A fetch is only successful if you can extract **specific dollar amounts** for each plan tier. If the page returns HTML structure, plan names, or marketing copy but no actual prices, that is a **failed extraction** — treat it the same as a 403 and continue to the next step.
+You must extract **specific dollar amounts** for each plan tier. If you can state "Plan X costs $Y/month" from fetched content, the extraction succeeded. Anything else — page skeleton without prices, marketing copy, interactive calculators, plan names without amounts — is a **failed extraction**.
 
 Common failure modes that look like success:
-- JS-rendered pricing pages that return page skeleton without dollar amounts
-- Pages that load an interactive calculator but no static price table
-- Redirect chains that land on a different page than expected
-- Pages that show plan names but prices are behind a "See pricing" button
+- JS-rendered pages returning skeleton without dollar amounts
+- Interactive calculators with no static price table
+- Redirect chains landing on a different page
+- Confusing credit allowances ("$25/mo of credits included") with subscription prices
+- Pages showing plan names but prices behind a "See pricing" button
+- "From $X/mo" or "starting at $X" = lowest tier price, not the price of the specific plan you're checking
 
-When in doubt: if you cannot state "Plan X costs $Y/month" from the fetched content, the extraction failed.
+## Decision rules (mandatory)
 
-## Price verification
+1. **Price mismatch → edit immediately.** The vendor's pricing page is the authority.
+2. **Missing plan → add it.** Follow the schema of existing plans.
+3. **Removed plan → remove it.**
+4. **Renamed plan → update it.**
+5. **When in doubt, make the change.** A human reviews the PR.
+6. **Never skip a discrepancy silently.** Note it in the plan's `notes` field.
 
-For each vendor in `public/v1/tools.json`, compare every plan's `base_price.amount` and `overage` fields against the vendor's current pricing. Walk through the escalation steps below until you get a successful extraction.
+## Verification procedure
 
-### Step 1 — Check known alternates
+### 1. Fetch pricing
 
-Before fetching the primary URL, check the [known alternates table](#known-alternate-urls) below. If an alternate exists, try it first.
+Try sources in order. Stop at the first successful extraction.
 
-### Step 2 — Fetch primary pricing URL
+| Priority | Source | Method |
+|----------|--------|--------|
+| 1 | Known alternate URL (see table below) | WebFetch |
+| 2 | `vendor.pricing_url` from tool file | WebFetch |
+| 3 | Rendered version: `https://r.jina.ai/{pricing_url}` (handles JS-rendered pages) | WebFetch |
+| 4 | Vendor developer docs (e.g., `developers.*.com/docs/pricing`) | WebFetch |
+| 5 | Web search `"[vendor] pricing [year]"` — need **3+ sources agreeing** | WebSearch |
+| 6 | LiteLLM dataset (sanity check only, may lag 1-2 months) | WebFetch `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json` |
 
-WebFetch `vendor.pricing_url` from tools.json.
-- Successful extraction (specific dollar amounts found): compare against tools.json, done.
-- No dollar amounts extracted, 403, timeout, or error: continue to step 3.
+### 2. Compare and update
 
-### Step 3 — Fetch vendor's developer docs
+If extraction succeeded:
+- Compare every `base_price.amount` and `overage` field against extracted prices
+- If they match: done, no changes needed
+- If they differ: edit `data/tools/{slug}.json` with correct values
 
-Many vendors have separate documentation sites (e.g., `developers.*.com/docs/pricing`) with less aggressive bot protection. WebFetch the docs URL.
-- Successful extraction: compare against tools.json, done.
-- Fail: continue to step 4.
+### 3. Handle failure
 
-### Step 4 — Web search consensus
+If ALL sources failed, or you have reached web search (priority 4) without a successful extraction and are running low on turns — stop immediately and mark UNVERIFIED. Do not exhaust remaining turns on long-shot attempts.
 
-WebSearch `"[vendor name] pricing [current-year]"`.
-- Need **3+ independent sources** agreeing on the same price.
-- If consensus: compare against tools.json. Mark as "verified via web search" in changelog.
-- No consensus: continue to step 5.
-
-### Step 5 — Community aggregator cross-check
-
-Fetch a community-maintained pricing dataset:
-- LiteLLM: `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json`
-
-Use only for sanity-checking, never as sole source. May lag 1-2 months.
-
-### Step 6 — Mark UNVERIFIED
-
-All methods failed. Do NOT silently keep stale data.
-- Prefix the `notes` field in tools.json with `UNVERIFIED`
-- Add changelog entry with `type: "unverified"`
-- Log which methods were attempted and what failed
-
-### After verification
-
-For each vendor, you must be in one of two states:
-1. **Verified** — you extracted specific dollar amounts and compared them against tools.json. If they differ, update tools.json.
-2. **UNVERIFIED** — all extraction methods failed. The tool is flagged.
-
-There is no third state. "I fetched the page and it looked fine" without extracting dollar amounts is not verification.
-
-## Decision rules
-
-These rules are mandatory. Do not rationalize exceptions.
-
-1. **Price mismatch → edit immediately.** If your verified price differs from tools.json by any amount, update tools.json. Do not explain away the difference. Do not assume the vendor page is wrong. The vendor's current pricing page is the authority.
-
-2. **Missing plan → add it.** If the vendor's pricing page shows a plan tier that does not exist in tools.json, add it. Follow the schema in existing plans for structure.
-
-3. **Removed plan → remove it.** If a plan tier in tools.json no longer appears on the vendor's pricing page, remove it from tools.json.
-
-4. **Renamed plan → update it.** If a vendor renamed a plan (e.g., "Team" → "Business"), update the plan name and slug in tools.json.
-
-5. **When in doubt, make the change.** If you are 80%+ confident a price or plan has changed based on your sources, edit tools.json. A human reviewer will check the PR. False positives (unnecessary changes flagged for review) are far better than false negatives (stale data kept silently).
-
-6. **Never skip a discrepancy silently.** If you notice something different but decide not to change it, you must add a note to the plan's `notes` field explaining why (e.g., "Vendor shows $X but this may be annual billing; kept monthly rate of $Y").
+- Prefix the first plan's `notes` with `UNVERIFIED`
+- Log which methods you tried and what failed
 
 ## Post-verification
 
-If any prices changed:
-
-1. Update `public/v1/tools.json` with new values
-2. Update `meta.updated_at` timestamp
-3. Read `public/v1/changelog.json` and add entry with source URL
-4. Read `public/index.html` and update corresponding plan prices
-5. Verify `data-*` sort attributes on modified rows match new values
-
-## Schema validation
-
-Run after all changes:
-
-1. Generate individual tool files: `./scripts/generate-tool-files.sh`
-2. Validate: `./scripts/validate.sh`
-3. Do not proceed if validation fails. Fix issues and re-run.
+**Required status output** — your final message must include exactly one of:
+- `✅ {slug}: verified` — prices match, no changes
+- `✏️ {slug}: updated` — prices changed, file edited
+- `⚠️ {slug}: UNVERIFIED` — all extraction methods failed
 
 ## Known alternate URLs
 
-Vendors whose primary pricing URL blocks automated fetchers. Updated as new blocks are discovered.
+Vendors whose primary pricing URL blocks automated fetchers.
 
-| Vendor | Primary URL (problem) | Alternate URL (working) | Verified |
-|--------|----------------------|------------------------|----------|
-| Anthropic | `claude.com/pricing` (JS-rendered, no dollar amounts in HTML) | `platform.claude.com/docs/en/about-claude/pricing` | 2026-03-15 |
+| Vendor | Primary (problem) | Alternate (working) | Verified |
+|--------|-------------------|---------------------|----------|
+| Anthropic | `claude.com/pricing` (JS-rendered) | None — rendering proxy (priority 3) handles this | 2026-03-16 |
 | OpenAI | `openai.com/pricing` (Cloudflare 403) | `developers.openai.com/docs/pricing` | 2026-03-08 |
 
 ## Notes
 
-- `chatgpt.com/pricing` is also blocked (same Cloudflare setup as openai.com)
-- OpenAI's `robots.txt` allows `/pricing` but Cloudflare overrides it at the HTTP layer
-- The alternate URL covers API token pricing only; subscription plans (Plus/Pro/Team) require web search consensus (step 4)
-- `claude.com/pricing` returns page skeleton with plan names but dollar amounts are in React components that don't render for web fetchers. The platform docs URL returns static markdown with full pricing tables.
+- `chatgpt.com/pricing` is also blocked (same Cloudflare setup)
+- Anthropic: primary URL is JS-rendered. Priority 3 (rendering proxy) will return the rendered content. Do NOT use `platform.claude.com/docs/en/about-claude/pricing` — it has unreliable subscription tier prices.
+- OpenAI alternate covers API pricing only; subscription plans (Plus/Pro/Team) need web search consensus (priority 5)

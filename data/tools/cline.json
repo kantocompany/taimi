@@ -1,0 +1,78 @@
+{
+  "slug": "cline",
+  "name": "Cline",
+  "vendor": {
+    "name": "Open Source Community",
+    "hq_country": null,
+    "eu_based": false,
+    "pricing_url": "https://cline.bot"
+  },
+  "plans": [
+    {
+      "id": "cline-free",
+      "name": "Free (BYOK)",
+      "category": "free",
+      "base_price": {
+        "amount": 0,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "VS Code extension, BYOK, any provider"
+      },
+      "overage": {
+        "unit": "token",
+        "price_per_unit": null,
+        "notes": "Cost depends on chosen LLM provider"
+      }
+    },
+    {
+      "id": "cline-teams",
+      "name": "Teams",
+      "category": "team",
+      "base_price": {
+        "amount": 20.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "JetBrains, centralized billing, RBAC, first 10 seats free. $0/mo promo ends 2026-03-31"
+      },
+      "overage": {
+        "unit": "token",
+        "price_per_unit": null,
+        "notes": "Cost depends on chosen LLM provider"
+      }
+    },
+    {
+      "id": "cline-enterprise",
+      "name": "Enterprise",
+      "category": "enterprise",
+      "base_price": null,
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "SSO, SLA, dedicated support"
+      },
+      "overage": null
+    }
+  ],
+  "capabilities": {
+    "autonomy_level": "full",
+    "ide_type": "extension",
+    "model_choice": true,
+    "self_hosted": true,
+    "fedramp": false,
+    "eu_data_residency": true,
+    "soc2": false,
+    "on_premise": true
+  },
+  "benchmarks": {
+    "swe_bench_pro": null,
+    "measured_at": null
+  }
+}

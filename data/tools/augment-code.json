@@ -1,0 +1,98 @@
+{
+  "slug": "augment-code",
+  "name": "Augment Code",
+  "vendor": {
+    "name": "Augment",
+    "hq_country": "US",
+    "eu_based": false,
+    "pricing_url": "https://www.augmentcode.com/pricing"
+  },
+  "plans": [
+    {
+      "id": "augment-indie",
+      "name": "Indie",
+      "category": "individual",
+      "base_price": {
+        "amount": 20.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "40K credits, 1 user, Context Engine"
+      },
+      "overage": {
+        "unit": "request",
+        "price_per_unit": null,
+        "notes": "Auto top-up $15/24K credits"
+      }
+    },
+    {
+      "id": "augment-standard",
+      "name": "Standard",
+      "category": "team",
+      "base_price": {
+        "amount": 60.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "130K credits, up to 20 users, analytics"
+      },
+      "overage": {
+        "unit": "request",
+        "price_per_unit": null,
+        "notes": "Auto top-up credits"
+      }
+    },
+    {
+      "id": "augment-max",
+      "name": "Max",
+      "category": "team",
+      "base_price": {
+        "amount": 200.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "450K credits, up to 20 users"
+      },
+      "overage": {
+        "unit": "request",
+        "price_per_unit": null,
+        "notes": "$15/24K credits top-up"
+      }
+    },
+    {
+      "id": "augment-enterprise",
+      "name": "Enterprise",
+      "category": "enterprise",
+      "base_price": null,
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Custom credits, SSO, SCIM, SIEM, data residency"
+      },
+      "overage": null
+    }
+  ],
+  "capabilities": {
+    "autonomy_level": "interactive_to_autonomous",
+    "ide_type": "extension",
+    "model_choice": false,
+    "self_hosted": false,
+    "fedramp": false,
+    "eu_data_residency": false,
+    "soc2": true,
+    "on_premise": false
+  },
+  "benchmarks": {
+    "swe_bench_pro": 51.8,
+    "measured_at": "2026-02-01"
+  }
+}

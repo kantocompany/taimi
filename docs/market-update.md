@@ -9,12 +9,19 @@ Price verification is handled by the daily price-update workflow. Do not verify 
 Read ALL of these files before starting:
 
 1. `CLAUDE.md` — project rules and schema constraints
-2. `public/v1/tools.json` — source of truth for all pricing data
+2. `data/observations.html` — editorial observations snippet
 3. `public/v1/changelog.json` — change history
-4. `public/index.html` — the rendered pricing page (observations, links, display)
-5. This file (`docs/market-update.md`)
+4. This file (`docs/market-update.md`)
 
-Do not proceed to market scan until all files are loaded.
+Also list the tool files: `ls data/tools/*.json` to see all tracked tools.
+
+Do not read or edit `public/v1/tools.json`, `public/v1/tools/*.json`, or `public/index.html` — these are generated from source data by the workflow build step. Do not commit or push — the workflow handles git operations.
+
+## Decision rules (mandatory)
+
+1. **Finding → edit immediately.** When the market scan or representation review reveals a change, edit the relevant `data/tools/{slug}.json` file right away. Do not just note it — apply it.
+2. **When in doubt, make the change.** A human reviewer will check the PR. False positives are far better than false negatives.
+3. **Never skip a finding silently.** If you identify something that looks wrong but decide not to change it, add a note to the relevant plan's `notes` field explaining why.
 
 ## Tool cap
 
@@ -38,14 +45,19 @@ A tool that ranks below all 12 current entries does not get added, even if it me
 
 When a tool is archived (dropped from active tracking or confirmed dead/acquired):
 
-1. Remove the tool from the `tools[]` array in `tools.json`
-2. Decrement `meta.tool_count`
-3. Update `meta.updated_at`
-4. **Keep** the individual `tools/{slug}.json` file as-is — it becomes a historical snapshot
-5. Remove the tool's row from `index.html`
-6. Add changelog entry with `type: "removed_tool"` and reason (e.g., "archived: ranked below cap", "discontinued", "acquired")
+    bash scripts/archive-tool.sh {slug} "reason for archival"
 
-The orphaned `tools/{slug}.json` file will trigger a `validate.sh` warning — this is expected. Consumers hitting `tools/{slug}.json` still get the last-known data.
+This deletes `data/tools/{slug}.json` and adds a `removed_tool` changelog entry atomically.
+
+The old `public/v1/tools/{slug}.json` API file will persist as a historical snapshot until cleaned up.
+
+### Adding a new tool
+
+    bash scripts/add-tool.sh {slug} "description of the tool"
+
+This checks the tool cap, creates a skeleton `data/tools/{slug}.json`, and adds a `new_tool` changelog entry. If at cap (12 tools), it exits with an error — archive a tool first.
+
+After the script creates the skeleton, edit `data/tools/{slug}.json` to fill in vendor details, plans, and capabilities. Follow the schema of existing tool files.
 
 ## Market scan
 
@@ -65,27 +77,28 @@ For each tool that appears in **3+ of these searches** but is NOT in our list:
 2. Add to the "Candidates" section of the update cycle document
 3. Fetch its pricing page and document plan structure
 4. If the list is at cap (12 tools), rank the candidate against existing tools
-5. If inclusion criteria met and ranked above an existing tool: add the candidate (CLAUDE.md "Adding a new tool"), archive the displaced tool (see archival process above)
+5. If inclusion criteria met and ranked above an existing tool: add the candidate, archive the displaced tool
 
 #### Inclusion criteria
 
 ALL of these must be true:
 
 - Is an **agentic coding tool** (autonomous or semi-autonomous code generation, not just autocomplete or chat)
+- **Works with existing codebases** — integrates with developer workflows (IDE, terminal, or repository). Greenfield-only app generators (e.g., Lovable, Bolt, v0) are out of scope.
 - Has **public pricing** or a free tier (no stealth/waitlist-only products)
 - Shows **adoption signals** from 2+ of: >5K GitHub stars, notable funding round, enterprise customers listed, >10K weekly downloads, featured in major tech press
 - Has been **publicly available for 30+ days** (no launch-day hype)
 
 ### Part B — Health check existing tools
 
-For each tool currently in tools.json:
+For each tool in `data/tools/`:
 
 1. WebSearch `"[tool name] shutdown OR discontinued OR acquired [current-year]"`
 2. If results suggest the tool is dead, acquired, or merged:
    - Verify against official source
    - If confirmed: archive the tool (see archival process above)
 3. If the tool has been **rebranded** (name change, new parent company):
-   - Update vendor info and slug if needed
+   - Update the tool's `data/tools/{slug}.json` file
    - Add changelog entry
 
 ### Part C — Document findings
@@ -99,43 +112,30 @@ Create `docs/YYYY-MM-DD-changes.md` as a **working document** during the cycle. 
 
 ## Representation review
 
+For each tool in `data/tools/`, read its file and check:
+
 1. **Annual vs monthly** — If the vendor shows both, are we showing monthly? If annual, does the notes field say so? (Convention: always show monthly price; note annual discount if significant.)
-2. **Overage field fitness** — Does the overage object capture what an API consumer would need? If a tool has multiple models at different price points (e.g., Claude Code Sonnet vs Opus), can a consumer parsing output_per_million get a correct answer? If not, flag for schema restructure (split plans, add fields, or at minimum make notes unambiguous).
-3. **Temporal state** — Is there a promo, beta, or sunset happening within 30 days? If yes, add a dated note: "Free through 2026-03-31, then $20/seat". If pricing is in active flux or community controversy, note it.
-4. **Terminology drift** — Does the vendor still use the same language we do? If they renamed a plan or feature (e.g., "Team" → "Business", "premium requests" → "credits"), update even if the underlying mechanic is identical. Our plan names and notes should match what a user sees on the vendor's page.
-5. **Missing or removed plans** — Has the vendor added new plan tiers or removed existing ones since our last update? Compare the plans in tools.json against the vendor's current pricing page. Add new plans, remove discontinued ones.
-6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying? If the plan name or notes could mislead someone into thinking the price is for the coding tool alone, clarify.
-7. **Sort attributes** — When prices change in index.html, verify that `data-*` sort attributes on the row wrapper match the updated values.
-
-## Decision rules
-
-These rules are mandatory. Do not rationalize exceptions.
-
-1. **Finding → edit immediately.** When the market scan or representation review reveals a change (new tool qualifies, tool dead, plan renamed, plan added/removed, terminology drift), edit tools.json and index.html right away. Do not just note it — apply it.
-
-2. **When in doubt, make the change.** A human reviewer will check the PR. False positives (unnecessary changes flagged for review) are far better than false negatives (stale data kept silently).
-
-3. **Never skip a finding silently.** If you identify something that looks wrong but decide not to change it, you must add a note to the relevant plan's `notes` field explaining why.
+2. **Overage field fitness** — Does the overage object capture what an API consumer would need? If a tool has multiple models at different price points, can a consumer parsing output_per_million get a correct answer? If not, flag for schema restructure.
+3. **Temporal state** — Is there a promo, beta, or sunset happening within 30 days? If yes, add a dated note.
+4. **Terminology drift** — Does the vendor still use the same language we do? If they renamed a plan or feature, update the tool file. `vendor.name` is the legal/parent company, not the product brand (the product brand is in `name`). Do not duplicate the product name into `vendor.name`.
+5. **Missing or removed plans** — Has the vendor added new plan tiers or removed existing ones? Update the tool file.
+6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying?
 
 ## Observations review
 
 Run as the **last step**, after all data changes are complete.
 
-The "Key observations" section in `public/index.html` is editorial analysis — it lives only in the HTML, not in tools.json. It must reflect current data.
+The "Key observations" section lives in `data/observations.html`. It is editorial analysis that must reflect current data.
 
-1. Read each observation in the `<div class="observations">` section
-2. Check every factual claim against the current tools.json data:
+1. Read `data/observations.html`
+2. Check every factual claim against the current tool data files:
    - "cheapest individual plan" — is it still true?
    - Price ranges and multipliers — do the numbers match?
    - Vendor-specific claims (e.g., "only EU vendor") — still accurate?
 3. Rewrite any observation that is factually stale
-4. If a new tool was added or a major price shift occurred, consider adding or replacing an observation to highlight it
+4. If a new tool was added or a major price shift occurred, consider adding or replacing an observation
 5. Keep the total to 5-6 bullet points — concise, not comprehensive
 
 ## Schema validation
 
-Run after all data changes, before committing.
-
-1. Generate individual tool files: `./scripts/generate-tool-files.sh`
-2. Validate all files: `./scripts/validate.sh`
-3. Do not commit if validation fails. Fix issues and re-run.
+The workflow runs `assemble.sh` + `generate-index.sh` + `validate.sh` after the agent completes. You do not need to run these yourself, but if you want to check your work locally: `bash scripts/assemble.sh && bash scripts/generate-index.sh && bash scripts/validate.sh`

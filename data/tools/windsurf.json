@@ -1,0 +1,86 @@
+{
+  "slug": "windsurf",
+  "name": "Windsurf",
+  "vendor": {
+    "name": "Cognition AI",
+    "hq_country": "US",
+    "eu_based": false,
+    "pricing_url": "https://windsurf.com/pricing"
+  },
+  "plans": [
+    {
+      "id": "windsurf-free",
+      "name": "Free",
+      "category": "free",
+      "base_price": {
+        "amount": 0,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "25 prompt credits"
+      },
+      "overage": null
+    },
+    {
+      "id": "windsurf-pro",
+      "name": "Pro",
+      "category": "individual",
+      "base_price": {
+        "amount": 15.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": 500,
+        "tokens_included": null,
+        "notes": "500 prompt credits"
+      },
+      "overage": null
+    },
+    {
+      "id": "windsurf-teams",
+      "name": "Teams",
+      "category": "team",
+      "base_price": {
+        "amount": 30.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Self-hosted option"
+      },
+      "overage": null
+    },
+    {
+      "id": "windsurf-enterprise",
+      "name": "Enterprise",
+      "category": "enterprise",
+      "base_price": null,
+      "includes": {
+        "premium_requests": 1000,
+        "tokens_included": null,
+        "notes": "1,000 prompt credits/user/mo, FedRAMP High, on-prem, EU data residency"
+      },
+      "overage": null
+    }
+  ],
+  "capabilities": {
+    "autonomy_level": "interactive_to_autonomous",
+    "ide_type": "ide",
+    "model_choice": true,
+    "self_hosted": true,
+    "fedramp": true,
+    "eu_data_residency": true,
+    "soc2": true,
+    "on_premise": true
+  },
+  "benchmarks": {
+    "swe_bench_verified": 78.0,
+    "measured_at": "2026-03-01"
+  }
+}

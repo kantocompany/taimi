@@ -6,34 +6,44 @@ Taimi — The AI Market Intelligence — a free, open pricing comparison page an
 
 ## Architecture
 
-This is a static site. No build step, no framework, no dependencies. Everything deploys as-is to object storage.
+Static site with a build step: source data in `data/`, generated output in `public/`. Dependencies: `jq` and `bash` only.
 
-- `public/v1/tools.json` is the **single source of truth** for all pricing data
-- `public/v1/tools/{slug}.json` files are **derived** from tools.json — never edit these directly
-- `public/v1/changelog.json` tracks price changes over time
-- `public/index.html` is the human-readable pricing matrix page
+- `data/tools/{slug}.json` files are the **single source of truth** — one file per tool, containing just the tool object
+- `public/v1/tools.json` is **assembled** from data/tools/ — never edit directly
+- `public/v1/tools/{slug}.json` files are **generated** API files — never edit directly
+- `public/index.html` is **generated** from tools.json — never edit directly
+- `data/observations.html` is the editorial observations snippet included in index.html
+- `public/v1/changelog.json` tracks price changes over time (append-only)
+
+## Data flow
+
+```
+data/tools/{slug}.json        ← SOURCE OF TRUTH (edit these)
+        │
+scripts/assemble.sh           ← reads data/tools/*.json
+        │
+        ├──→ public/v1/tools.json         (assembled)
+        └──→ public/v1/tools/{slug}.json  (generated API files)
+                │
+scripts/generate-index.sh     ← reads tools.json + data/observations.html
+                │
+                └──→ public/index.html    (generated)
+```
+
+Build: `./scripts/assemble.sh && ./scripts/generate-index.sh`
+Validate: `./scripts/validate.sh`
 
 ## Critical rules
 
-1. **tools.json is the source of truth.** All data flows from this file. Individual tool JSONs are generated from it. When index.html is eventually template-driven, it will also be generated from tools.json.
+1. **data/tools/ files are the source of truth.** All data flows from these files. Never edit public/v1/ files directly — they are generated.
 
 2. **Never fabricate pricing data.** If you update prices, you must verify against the vendor's official pricing page. Include the source URL. Wrong prices destroy the project's credibility.
 
-3. **Always update changelog.json** when prices change. Every change needs: date, tool slug, type (pricing_change/feature/new_tool/removed_tool), description, and details with old/new values.
+3. **Always record price changes.** Format: date, tool slug, type (pricing_change/feature/new_tool/removed_tool), description, and details with source URL. See the active runbook for where to write the entry.
 
-4. **Keep index.html visually aligned with Kanto branding.** Dark background (#0a0a0a), lime green accent (#AAFF00), Space Mono for headings/prices, DM Sans for body text. EU vendors get a green left border highlight.
+4. **Preserve the API schema.** The JSON structure is a contract. Don't rename fields, change types, or restructure without updating schema_version in meta. Consumers may depend on the current shape.
 
-5. **Every price block in index.html must link to the vendor's official pricing page.** No dead-end display-only prices.
-
-6. **Preserve the API schema.** The JSON structure is a contract. Don't rename fields, change types, or restructure without updating schema_version in meta. Consumers may depend on the current shape.
-
-## File relationships
-
-```
-tools.json ──→ tools/{slug}.json  (generated, 1:1)
-tools.json ──→ index.html         (manual now, template-driven later)
-any change ──→ changelog.json     (append-only log)
-```
+5. **index.html is generated.** Branding (dark background, lime green accent, Space Mono/DM Sans fonts, EU green border) is maintained in `scripts/generate-index.sh`. Do not hand-edit public/index.html.
 
 ## Plan categories (enum)
 
@@ -54,22 +64,25 @@ In index.html, platform plans are marked with a superscript `P` badge and explai
 
 ## Tool cap
 
-Maximum **12 tools** in `tools.json`. When adding a new tool at cap, archive the lowest-ranked existing tool. See `docs/market-update.md` for ranking criteria and archival process.
+Maximum **12 tools** in `data/tools/`. When adding a new tool at cap, archive the lowest-ranked existing tool. See `docs/market-update.md` for ranking criteria and archival process.
 
 ## Adding a new tool
 
-1. Check tool cap — if at 12, identify a tool to archive first
-2. Add entry to `tools` array in `public/v1/tools.json`
-3. Increment `meta.tool_count`
-4. Update `meta.updated_at`
-5. Generate `public/v1/tools/{slug}.json`
-6. Add row to `public/index.html`. Use 🇪🇺 flag and "EU-based vendor" notation for `eu_based: true` vendors, country flag otherwise.
-7. Add changelog entry with type `new_tool`
+1. Check tool cap — if at 12, archive first
+2. `bash scripts/add-tool.sh {slug} "description"` (creates skeleton + changelog entry)
+3. Edit `data/tools/{slug}.json` to fill in vendor, plans, capabilities
+4. Build: `./scripts/assemble.sh && ./scripts/generate-index.sh` (automated workflows handle this)
+
+## Removing a tool
+
+1. `bash scripts/archive-tool.sh {slug} "reason"` (deletes file + adds changelog entry)
+2. Build: `./scripts/assemble.sh && ./scripts/generate-index.sh` (automated workflows handle this)
 
 ## Updating data
 
 - **Prices:** Follow `docs/price-update.md` for the verification process. Never skip verification.
 - **Tools (add/remove/health checks):** Follow `docs/market-update.md` for market scan and editorial review.
+- **Observations:** Edit `data/observations.html` directly.
 
 ## Protected files
 

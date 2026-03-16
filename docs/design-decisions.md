@@ -25,7 +25,7 @@ The CC BY 4.0 data license encourages adoption. If other tools, dashboards, or M
 
 ## Why static files, not a dynamic API
 
-The entire dataset for 10 tools is ~19KB of JSON. Prices change monthly, not hourly. A static file behind a CDN answers every query pattern that matters, with:
+The entire dataset for 12 tools is ~20KB of JSON. Prices change weekly, not hourly. A static file behind a CDN answers every query pattern that matters, with:
 
 - Zero infrastructure cost (object storage minimum tier)
 - Zero operational burden (no servers, no databases, no uptime pager)
@@ -95,11 +95,13 @@ Both are protected files — agents read them but cannot modify them.
 
 ### Done: CI/CD pipeline
 
-Two GitHub Actions workflows run the agent via API key. Daily price checks (`price-update.yml`) and weekly market scans (`market-update.yml`) each create a PR for human review. See `docs/automated-update.md` for architecture details.
+Two GitHub Actions workflows run Claude Code agents via API key. Daily price checks (`price-update.yml`, matrix strategy) and weekly market scans (`market-update.yml`, monolithic) each create a PR for human review. See `docs/automated-update.md` for architecture details.
 
-### v1.1: Template-driven HTML generation
+### Done: Template-driven HTML + reversed data flow (v1.1)
 
-Make index.html generated from tools.json via a simple script. This eliminates the manual sync between JSON data and HTML, making updates a single-file edit.
+Individual tool files (`data/tools/{slug}.json`) are now the source of truth. `scripts/assemble.sh` builds `tools.json` and per-tool API files. `scripts/generate-index.sh` generates `index.html` from assembled data. No manual HTML editing — all display comes from JSON.
+
+Price verification uses a GitHub Actions matrix strategy: one Claude Code agent per tool, running in parallel. This eliminated context rot, turn budget exhaustion, and the fragile HTML editing that plagued the monolithic approach.
 
 ### v2.1: MCP server
 

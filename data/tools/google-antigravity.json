@@ -1,0 +1,85 @@
+{
+  "slug": "google-antigravity",
+  "name": "Google Antigravity",
+  "vendor": {
+    "name": "Google",
+    "hq_country": "US",
+    "eu_based": false,
+    "pricing_url": "https://antigravity.google/pricing"
+  },
+  "platform": {
+    "name": "Google AI",
+    "bundled_with": [
+      "Gemini",
+      "Google One AI Premium",
+      "NotebookLM Plus"
+    ],
+    "note": "AI Pro/Ultra are Google-wide subscriptions; Free tier and credit add-ons are standalone"
+  },
+  "plans": [
+    {
+      "id": "antigravity-free",
+      "name": "Free",
+      "category": "free",
+      "base_price": {
+        "amount": 0,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "$0/mo, credit add-ons ($25/2,500). Developer/Team/Org tiers TBA. ⚠ Pricing in flux as of 2026-03-12"
+      },
+      "overage": null
+    },
+    {
+      "id": "antigravity-ai-pro",
+      "name": "AI Pro",
+      "category": "individual",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 19.99,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "1,000 AI credits/mo, 2TB storage, Gemini 2.5 Pro, higher rate limits"
+      },
+      "overage": null
+    },
+    {
+      "id": "antigravity-ai-ultra",
+      "name": "AI Ultra",
+      "category": "individual",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 249.99,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "25,000 AI credits/mo, 30TB storage, Gemini 2.5 Ultra, priority access"
+      },
+      "overage": null
+    }
+  ],
+  "capabilities": {
+    "autonomy_level": "full",
+    "ide_type": "ide",
+    "model_choice": true,
+    "self_hosted": false,
+    "fedramp": false,
+    "eu_data_residency": false,
+    "soc2": false,
+    "on_premise": false
+  },
+  "benchmarks": {
+    "swe_bench_pro": null,
+    "measured_at": null
+  }
+}

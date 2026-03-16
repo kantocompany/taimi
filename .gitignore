@@ -1,2 +1,5 @@
 # Update cycle working documents (created during runs, not committed)
 docs/*-changes.md
+
+# Local agent run artifacts
+logs/
