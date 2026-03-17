@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-16",
-    "updated_at": "2026-03-16T00:00:00Z",
+    "version": "2026-03-17",
+    "updated_at": "2026-03-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -89,10 +89,10 @@
         "includes": null,
         "overage": {
           "unit": "token",
-          "input_per_million": 2.00,
+          "input_per_million": 2.50,
           "output_per_million": 15.00,
-          "model": "o3 / gpt-5.4",
-          "notes": "UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16"
+          "model": "gpt-5.4 / gpt-5.3-codex / gpt-5.1-codex-mini",
+          "notes": "API key mode billed at standard API rates; gpt-5.4 confirmed at $2.50 input / $15.00 output per 1M tokens (openai.com/api/pricing, 2026-03-17). CLI/web interface uses a credit system — not per-token. Source: developers.openai.com/codex/pricing"
         }
       }
     ],

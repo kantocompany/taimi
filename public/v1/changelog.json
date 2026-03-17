@@ -1,10 +1,46 @@
 {
   "meta": {
-    "version": "2026-03-16",
-    "updated_at": "2026-03-16T00:00:00Z",
+    "version": "2026-03-17",
+    "updated_at": "2026-03-17T11:40:57Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-17",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "plans.1.overage.notes: Auto top-up credits → Auto top-up $15/24K credits",
+      "details": {
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-17",
+      "tool": "gemini-code-assist",
+      "type": "pricing_change",
+      "description": "plans.1.base_price.amount: 19.00 → 22.80; plans.1.includes.notes: Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access → Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. $19.00/user/month with 12-month commitment.; plans.2.base_price.amount: 45.00 → 54.00; plans.2.includes.notes: Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. → Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. $45.00/user/month with 12-month commitment.",
+      "details": {
+        "source": "https://cloud.google.com/gemini/docs/codeassist/overview"
+      }
+    },
+    {
+      "date": "2026-03-17",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.3.overage.input_per_million: 2.00 → 2.50; plans.3.overage.model: o3 / gpt-5.4 → gpt-5.4 / gpt-5.3-codex / gpt-5.1-codex-mini; plans.3.overage.notes: UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16 → API key mode billed at standard API rates; gpt-5.4 confirmed at $2.50 input / $15.00 output per 1M tokens (openai.com/api/pricing, 2026-03-17). CLI/web interface uses a credit system — not per-token. Source: developers.openai.com/codex/pricing",
+      "details": {
+        "source": "https://openai.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-17",
+      "tool": "replit",
+      "type": "pricing_change",
+      "description": "plans.1.includes.notes: $25/mo credits included, full Agent access, 5 collaborators. $20/mo on annual billing → $20/mo credits included, full Agent access, 5 collaborators. $17/mo on annual billing; plans.2.includes.notes: $100/mo credits, up to 15 builders, priority support → $100/mo credits, up to 15 collaborators, 50 viewers, priority support. $95/mo on annual billing",
+      "details": {
+        "source": "https://replit.com/pricing"
+      }
+    },
     {
       "date": "2026-03-16",
       "tool": "gemini-code-assist",

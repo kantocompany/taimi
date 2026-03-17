@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-16",
-    "updated_at": "2026-03-16T00:00:00Z",
+    "version": "2026-03-17",
+    "updated_at": "2026-03-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -40,14 +40,14 @@
         "name": "Standard",
         "category": "individual",
         "base_price": {
-          "amount": 19.00,
+          "amount": 22.80,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access"
+          "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. $19.00/user/month with 12-month commitment."
         },
         "overage": null
       },
@@ -56,14 +56,14 @@
         "name": "Enterprise",
         "category": "enterprise",
         "base_price": {
-          "amount": 45.00,
+          "amount": 54.00,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud."
+          "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. $45.00/user/month with 12-month commitment."
         },
         "overage": null
       }

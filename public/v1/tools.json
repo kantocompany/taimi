@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-16",
-    "updated_at": "2026-03-16T00:00:00Z",
+    "version": "2026-03-17",
+    "updated_at": "2026-03-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -103,7 +103,7 @@
           "overage": {
             "unit": "request",
             "price_per_unit": null,
-            "notes": "Auto top-up credits"
+            "notes": "Auto top-up $15/24K credits"
           }
         },
         {
@@ -608,14 +608,14 @@
           "name": "Standard",
           "category": "individual",
           "base_price": {
-            "amount": 19.00,
+            "amount": 22.80,
             "period": "monthly",
             "per": "user"
           },
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access"
+            "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. $19.00/user/month with 12-month commitment."
           },
           "overage": null
         },
@@ -624,14 +624,14 @@
           "name": "Enterprise",
           "category": "enterprise",
           "base_price": {
-            "amount": 45.00,
+            "amount": 54.00,
             "period": "monthly",
             "per": "user"
           },
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud."
+            "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. $45.00/user/month with 12-month commitment."
           },
           "overage": null
         }
@@ -969,10 +969,10 @@
           "includes": null,
           "overage": {
             "unit": "token",
-            "input_per_million": 2.00,
+            "input_per_million": 2.50,
             "output_per_million": 15.00,
-            "model": "o3 / gpt-5.4",
-            "notes": "UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16"
+            "model": "gpt-5.4 / gpt-5.3-codex / gpt-5.1-codex-mini",
+            "notes": "API key mode billed at standard API rates; gpt-5.4 confirmed at $2.50 input / $15.00 output per 1M tokens (openai.com/api/pricing, 2026-03-17). CLI/web interface uses a credit system — not per-token. Source: developers.openai.com/codex/pricing"
           }
         }
       ],
@@ -1029,7 +1029,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$25/mo credits included, full Agent access, 5 collaborators. $20/mo on annual billing"
+            "notes": "$20/mo credits included, full Agent access, 5 collaborators. $17/mo on annual billing"
           },
           "overage": {
             "unit": "request",
@@ -1049,7 +1049,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$100/mo credits, up to 15 builders, priority support"
+            "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, priority support. $95/mo on annual billing"
           },
           "overage": {
             "unit": "request",

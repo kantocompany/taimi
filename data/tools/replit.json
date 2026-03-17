@@ -36,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "$25/mo credits included, full Agent access, 5 collaborators. $20/mo on annual billing"
+        "notes": "$20/mo credits included, full Agent access, 5 collaborators. $17/mo on annual billing"
       },
       "overage": {
         "unit": "request",
@@ -56,7 +56,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "$100/mo credits, up to 15 builders, priority support"
+        "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, priority support. $95/mo on annual billing"
       },
       "overage": {
         "unit": "request",
