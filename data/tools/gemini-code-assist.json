@@ -20,7 +20,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required."
+        "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
       },
       "overage": null
     },

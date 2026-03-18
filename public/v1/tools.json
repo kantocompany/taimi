@@ -103,7 +103,7 @@
           "overage": {
             "unit": "request",
             "price_per_unit": null,
-            "notes": "Auto top-up credits"
+            "notes": "Auto top-up $15/24K credits"
           }
         },
         {
@@ -599,7 +599,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required."
+            "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
           },
           "overage": null
         },
@@ -957,7 +957,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$30/user/month (monthly billing); $25/user/month when billed annually; renamed from Team to Business on 2025-08-29"
+            "notes": "Renamed from Team to Business on 2025-08-29"
           },
           "overage": null
         },
@@ -969,10 +969,10 @@
           "includes": null,
           "overage": {
             "unit": "token",
-            "input_per_million": 2.00,
+            "input_per_million": 2.50,
             "output_per_million": 15.00,
             "model": "GPT-5.3-Codex / GPT-5.4",
-            "notes": "UNVERIFIED — official Codex pricing page (developers.openai.com/codex/pricing) shows usage limits only, not per-token rates; OpenAI API pricing page lists no Codex-specific model rows; third-party sources disagree on rates; tried priority 1–5 sources 2026-03-18"
+            "notes": "API key mode billed at standard API rates; gpt-5.4 confirmed at $2.50 input / $15.00 output per 1M tokens (openai.com/api/pricing, 2026-03-17)"
           }
         }
       ],
@@ -1029,7 +1029,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$25/mo credits included, full Agent access, 5 collaborators. Credits do not roll over."
+            "notes": "$20/mo credits included, full Agent access, 5 collaborators"
           },
           "overage": {
             "unit": "request",
@@ -1049,7 +1049,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$100/mo credits, up to 15 builders, priority support"
+            "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, priority support"
           },
           "overage": {
             "unit": "request",

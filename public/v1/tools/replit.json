@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$25/mo credits included, full Agent access, 5 collaborators. Credits do not roll over."
+          "notes": "$20/mo credits included, full Agent access, 5 collaborators"
         },
         "overage": {
           "unit": "request",
@@ -67,7 +67,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$100/mo credits, up to 15 builders, priority support"
+          "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, priority support"
         },
         "overage": {
           "unit": "request",
