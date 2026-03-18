@@ -1,10 +1,37 @@
 {
   "meta": {
-    "version": "2026-03-16",
-    "updated_at": "2026-03-16T00:00:00Z",
+    "version": "2026-03-18",
+    "updated_at": "2026-03-18T05:41:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-18",
+      "tool": "gemini-code-assist",
+      "type": "pricing_change",
+      "description": "vendor.pricing_url: https://cloud.google.com/gemini/docs/codeassist/overview → https://cloud.google.com/products/gemini/pricing; plans.1.base_price.amount: 19.00 → 22.80; plans.1.includes.notes: Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access → Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. 12-month commitment: $19.00/user/month.; plans.2.base_price.amount: 45.00 → 54.00; plans.2.includes.notes: Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. → Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. 12-month commitment: $45.00/user/month.",
+      "details": {
+        "source": "https://cloud.google.com/products/gemini/pricing"
+      }
+    },
+    {
+      "date": "2026-03-18",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.2.base_price.amount: 25.00 → 30.00; plans.2.includes.notes: $25 annual / $30 monthly; renamed from Team to Business on 2025-08-29 → $30/user/month (monthly billing); $25/user/month when billed annually; renamed from Team to Business on 2025-08-29; plans.3.overage.model: o3 / gpt-5.4 → GPT-5.3-Codex / GPT-5.4; plans.3.overage.notes: UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16 → UNVERIFIED — official Codex pricing page (developers.openai.com/codex/pricing) shows usage limits only, not per-token rates; OpenAI API pricing page lists no Codex-specific model rows; third-party sources disagree on rates; tried priority 1–5 sources 2026-03-18",
+      "details": {
+        "source": "https://openai.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-18",
+      "tool": "replit",
+      "type": "pricing_change",
+      "description": "plans.1.base_price.amount: 25.00 → 20.00; plans.1.includes.notes: $25/mo credits included, full Agent access, 5 collaborators. $20/mo on annual billing → $25/mo credits included, full Agent access, 5 collaborators. Credits do not roll over.",
+      "details": {
+        "source": "https://replit.com/pricing"
+      }
+    },
     {
       "date": "2026-03-16",
       "tool": "gemini-code-assist",

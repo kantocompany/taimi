@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-16",
-    "updated_at": "2026-03-16T00:00:00Z",
+    "version": "2026-03-18",
+    "updated_at": "2026-03-18T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -16,7 +16,7 @@
       "name": "Google",
       "hq_country": "US",
       "eu_based": false,
-      "pricing_url": "https://cloud.google.com/gemini/docs/codeassist/overview"
+      "pricing_url": "https://cloud.google.com/products/gemini/pricing"
     },
     "plans": [
       {
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required."
+          "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
         },
         "overage": null
       },
@@ -40,14 +40,14 @@
         "name": "Standard",
         "category": "individual",
         "base_price": {
-          "amount": 19.00,
+          "amount": 22.80,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access"
+          "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. 12-month commitment: $19.00/user/month."
         },
         "overage": null
       },
@@ -56,14 +56,14 @@
         "name": "Enterprise",
         "category": "enterprise",
         "base_price": {
-          "amount": 45.00,
+          "amount": 54.00,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud."
+          "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. 12-month commitment: $45.00/user/month."
         },
         "overage": null
       }
