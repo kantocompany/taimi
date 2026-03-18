@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-16",
-    "updated_at": "2026-03-16T00:00:00Z",
+    "version": "2026-03-18",
+    "updated_at": "2026-03-18T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -584,7 +584,7 @@
         "name": "Google",
         "hq_country": "US",
         "eu_based": false,
-        "pricing_url": "https://cloud.google.com/gemini/docs/codeassist/overview"
+        "pricing_url": "https://cloud.google.com/products/gemini/pricing"
       },
       "plans": [
         {
@@ -608,14 +608,14 @@
           "name": "Standard",
           "category": "individual",
           "base_price": {
-            "amount": 19.00,
+            "amount": 22.80,
             "period": "monthly",
             "per": "user"
           },
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access"
+            "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. 12-month commitment: $19.00/user/month."
           },
           "overage": null
         },
@@ -624,14 +624,14 @@
           "name": "Enterprise",
           "category": "enterprise",
           "base_price": {
-            "amount": 45.00,
+            "amount": 54.00,
             "period": "monthly",
             "per": "user"
           },
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud."
+            "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. 12-month commitment: $45.00/user/month."
           },
           "overage": null
         }
@@ -950,14 +950,14 @@
           "category": "team",
           "platform_plan": true,
           "base_price": {
-            "amount": 25.00,
+            "amount": 30.00,
             "period": "monthly",
             "per": "user"
           },
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$25 annual / $30 monthly; renamed from Team to Business on 2025-08-29"
+            "notes": "$30/user/month (monthly billing); $25/user/month when billed annually; renamed from Team to Business on 2025-08-29"
           },
           "overage": null
         },
@@ -971,8 +971,8 @@
             "unit": "token",
             "input_per_million": 2.00,
             "output_per_million": 15.00,
-            "model": "o3 / gpt-5.4",
-            "notes": "UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16"
+            "model": "GPT-5.3-Codex / GPT-5.4",
+            "notes": "UNVERIFIED — official Codex pricing page (developers.openai.com/codex/pricing) shows usage limits only, not per-token rates; OpenAI API pricing page lists no Codex-specific model rows; third-party sources disagree on rates; tried priority 1–5 sources 2026-03-18"
           }
         }
       ],
@@ -1022,14 +1022,14 @@
           "name": "Core",
           "category": "individual",
           "base_price": {
-            "amount": 25.00,
+            "amount": 20.00,
             "period": "monthly",
             "per": "user"
           },
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$25/mo credits included, full Agent access, 5 collaborators. $20/mo on annual billing"
+            "notes": "$25/mo credits included, full Agent access, 5 collaborators. Credits do not roll over."
           },
           "overage": {
             "unit": "request",

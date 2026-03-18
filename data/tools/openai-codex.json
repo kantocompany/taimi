@@ -59,14 +59,14 @@
       "category": "team",
       "platform_plan": true,
       "base_price": {
-        "amount": 25.00,
+        "amount": 30.00,
         "period": "monthly",
         "per": "user"
       },
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "$25 annual / $30 monthly; renamed from Team to Business on 2025-08-29"
+        "notes": "$30/user/month (monthly billing); $25/user/month when billed annually; renamed from Team to Business on 2025-08-29"
       },
       "overage": null
     },
@@ -80,8 +80,8 @@
         "unit": "token",
         "input_per_million": 2.00,
         "output_per_million": 15.00,
-        "model": "o3 / gpt-5.4",
-        "notes": "UNVERIFIED — official codex pricing page returned 404; third-party sources show new model lineup (codex-mini-latest, GPT-5.x-Codex) but no official confirmation obtained 2026-03-16"
+        "model": "GPT-5.3-Codex / GPT-5.4",
+        "notes": "UNVERIFIED — official Codex pricing page (developers.openai.com/codex/pricing) shows usage limits only, not per-token rates; OpenAI API pricing page lists no Codex-specific model rows; third-party sources disagree on rates; tried priority 1–5 sources 2026-03-18"
       }
     }
   ],
