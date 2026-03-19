@@ -71,21 +71,23 @@ If ALL sources failed, or you have reached web search (priority 4) without a suc
 - `✏️ {slug}: updated` — prices changed, file edited
 - `⚠️ {slug}: UNVERIFIED` — all extraction methods failed
 
-## Known alternate URLs
+## Known vendor quirks
 
-Vendors whose primary pricing URL blocks automated fetchers.
+Vendors whose pricing pages block fetchers or present misleading defaults.
 
-| Vendor | Primary (problem) | Alternate (working) | Verified |
-|--------|-------------------|---------------------|----------|
-| Anthropic | `claude.com/pricing` (JS-rendered) | None — rendering proxy (priority 3) handles this | 2026-03-16 |
-| Mistral | `mistral.ai/pricing` (API pricing table is JS-rendered) | Subscription plans visible directly; API rates need rendering proxy (priority 3) or web search | 2026-03-16 |
-| OpenAI Codex | `openai.com/pricing` (Cloudflare 403) | `developers.openai.com/codex/pricing` (subscriptions); `developers.openai.com/api/docs/pricing` (per-token API rates) | 2026-03-18 |
-| Windsurf | `windsurf.com/pricing` (hangs/times out) | Use rendering proxy: `r.jina.ai/https://windsurf.com/pricing` | 2026-03-16 |
+| Vendor | Problem | Workaround | Verified |
+|--------|---------|------------|----------|
+| Anthropic | `claude.com/pricing` is JS-rendered | Rendering proxy (priority 3) handles this | 2026-03-16 |
+| Mistral | `mistral.ai/pricing` API table is JS-rendered | Subscription plans visible directly; API rates need rendering proxy or web search | 2026-03-16 |
+| OpenAI Codex | `openai.com/pricing` returns Cloudflare 403 | `developers.openai.com/codex/pricing` (subscriptions); `developers.openai.com/api/docs/pricing` (per-token API rates) | 2026-03-18 |
+| Replit | `replit.com/pricing` defaults to annual toggle | Page shows annual prices first. Always look for a monthly/annual toggle and extract the **monthly** price. The annual and monthly amounts may look similar ($20 annual vs $20 monthly) — verify which toggle is active | 2026-03-19 |
+| Windsurf | `windsurf.com/pricing` hangs/times out | Use rendering proxy: `r.jina.ai/https://windsurf.com/pricing` | 2026-03-16 |
 
 ## Notes
 
 - `chatgpt.com/pricing` is also blocked (same Cloudflare setup)
-- Anthropic: primary URL is JS-rendered. Priority 3 (rendering proxy) will return the rendered content. Do NOT use `platform.claude.com/docs/en/about-claude/pricing` — it has unreliable subscription tier prices.
-- OpenAI Codex: `developers.openai.com/codex/pricing` has subscription plans and usage limits. `developers.openai.com/api/docs/pricing` has per-token API rates. Codex models may be listed under GPT-5.x-Codex names.
+- Anthropic: do NOT use `platform.claude.com/docs/en/about-claude/pricing` — it has unreliable subscription tier prices.
+- OpenAI Codex: Codex models may be listed under GPT-5.x-Codex names on the API pricing page.
+- Replit: if the page content mentions "billed annually" or shows a toggled annual view, you are reading annual prices. Switch to monthly before extracting.
 - Windsurf: direct fetch hangs indefinitely. Always start with the rendering proxy.
 - Mistral: subscription plan prices ($14.99 Pro, $24.99 Team) are in the static HTML. API token rates (per-model input/output) are in a JS-rendered table — use rendering proxy or web search.
