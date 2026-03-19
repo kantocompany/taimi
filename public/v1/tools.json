@@ -310,7 +310,7 @@
         "name": "Open Source Community",
         "hq_country": null,
         "eu_based": false,
-        "pricing_url": "https://cline.bot"
+        "pricing_url": "https://cline.bot/pricing"
       },
       "plans": [
         {
@@ -896,7 +896,7 @@
         "name": "OpenAI",
         "hq_country": "US",
         "eu_based": false,
-        "pricing_url": "https://openai.com/pricing"
+        "pricing_url": "https://developers.openai.com/codex/pricing"
       },
       "platform": {
         "name": "ChatGPT",

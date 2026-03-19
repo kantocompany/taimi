@@ -7,7 +7,7 @@ Verify pricing for a single tool. The workflow prompt provides today's date and 
 - **Read:** `CLAUDE.md`, `data/tools/{slug}.json`, this file
 - **Edit:** only `data/tools/{slug}.json`
 - Do not edit any other files. Do not commit or push. The workflow handles changelog, assembly, generation, and git.
-- **Pricing convention:** `base_price.amount` is always the monthly billing price. Annual discounts go in the plan's `notes` field, never in `base_price.amount`.
+- **Pricing convention:** `base_price.amount` is always the monthly (no-commitment) billing price. If the vendor offers annual billing at a lower rate, note it in the format `Annual billing: $X/mo` — no other phrasing variations.
 - **Plan boundaries:** A plan is a distinct purchasable tier with its own price. Eligibility discounts (student, OSS maintainer) are notes on the qualifying plan, not separate plan objects.
 
 ## What counts as a verified price
@@ -32,6 +32,10 @@ Common failure modes that look like success:
 6. **Never skip a discrepancy silently.** Note it in the plan's `notes` field.
 
 ## Verification procedure
+
+### 0. Validate pricing URL
+
+If `vendor.pricing_url` returns a non-200 status, redirects to a different domain, or does not contain pricing for this specific tool, update it to the correct URL before proceeding.
 
 ### 1. Fetch pricing
 
@@ -75,13 +79,13 @@ Vendors whose primary pricing URL blocks automated fetchers.
 |--------|-------------------|---------------------|----------|
 | Anthropic | `claude.com/pricing` (JS-rendered) | None — rendering proxy (priority 3) handles this | 2026-03-16 |
 | Mistral | `mistral.ai/pricing` (API pricing table is JS-rendered) | Subscription plans visible directly; API rates need rendering proxy (priority 3) or web search | 2026-03-16 |
-| OpenAI | `openai.com/pricing` (Cloudflare 403) | `developers.openai.com/docs/pricing` | 2026-03-08 |
+| OpenAI Codex | `openai.com/pricing` (Cloudflare 403) | `developers.openai.com/codex/pricing` (subscriptions); `developers.openai.com/api/docs/pricing` (per-token API rates) | 2026-03-18 |
 | Windsurf | `windsurf.com/pricing` (hangs/times out) | Use rendering proxy: `r.jina.ai/https://windsurf.com/pricing` | 2026-03-16 |
 
 ## Notes
 
 - `chatgpt.com/pricing` is also blocked (same Cloudflare setup)
 - Anthropic: primary URL is JS-rendered. Priority 3 (rendering proxy) will return the rendered content. Do NOT use `platform.claude.com/docs/en/about-claude/pricing` — it has unreliable subscription tier prices.
-- OpenAI alternate covers API pricing only; subscription plans (Plus/Pro/Team) need web search consensus (priority 5)
+- OpenAI Codex: `developers.openai.com/codex/pricing` has subscription plans and usage limits. `developers.openai.com/api/docs/pricing` has per-token API rates. Codex models may be listed under GPT-5.x-Codex names.
 - Windsurf: direct fetch hangs indefinitely. Always start with the rendering proxy.
 - Mistral: subscription plan prices ($14.99 Pro, $24.99 Team) are in the static HTML. API token rates (per-model input/output) are in a JS-rendered table — use rendering proxy or web search.
