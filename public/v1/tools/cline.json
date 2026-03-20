@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-19",
-    "updated_at": "2026-03-19T00:00:00Z",
+    "version": "2026-03-20",
+    "updated_at": "2026-03-20T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -51,7 +51,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31"
+          "notes": "JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31. First 10 seats free permanently after promo."
         },
         "overage": {
           "unit": "token",
