@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-03-19",
-    "updated_at": "2026-03-19T12:23:45Z",
+    "version": "2026-03-20",
+    "updated_at": "2026-03-20T18:07:42Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-20",
+      "tool": "cline",
+      "type": "pricing_change",
+      "description": "plans.1.includes.notes: JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31 → JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31. First 10 seats free permanently after promo.",
+      "details": {
+        "source": "https://cline.bot/pricing"
+      }
+    },
+    {
+      "date": "2026-03-20",
+      "tool": "windsurf",
+      "type": "pricing_change",
+      "description": "plans.0.includes.notes: 25 prompt credits → Light quota for agent interactions; unlimited inline edits and Tab completions; plans.1.base_price.amount: 15.00 → 20.00; plans.1.includes.notes: 500 prompt credits → Increased quotas; access to OpenAI, Claude, and Gemini frontier models; 2-week free trial; plans.1.overage.notes: $10 per 250 credits → UNVERIFIED_OVERAGE: page states 'at API pricing' with no specific per-unit rate; devin.ai (Cognition sibling) uses ACU units but no Windsurf-specific rate published; prior rate was $10/250 credits ($0.04/request); plans.2.id: windsurf-teams → windsurf-max; plans.2.name: Teams → Max; plans.2.category: team → individual; plans.2.base_price.amount: 30.00 → 200.00; plans.2.includes.notes: 500 prompt credits/user/month; SSO +$10/user/month → Significantly higher quotas than Pro; access to all frontier models; plans.3.id: windsurf-enterprise → windsurf-teams; plans.3.name: Enterprise → Teams; plans.3.category: enterprise → team; plans.3.includes.notes: 1,000 prompt credits/user/mo, FedRAMP High, on-prem, EU data residency → Increased quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention; plans.3.base_price.amount: added 40.00; plans.3.base_price.period: added monthly; plans.3.base_price.per: added user; plans.4.id: added windsurf-enterprise; plans.4.name: added Enterprise; plans.4.category: added enterprise; plans.4.includes.notes: added Highest priority support; dedicated account management; RBAC; SSO + access control; hybrid deployment; plans.1.includes.premium_requests: removed; plans.2.includes.premium_requests: removed; plans.3.includes.premium_requests: removed",
+      "details": {
+        "source": "https://windsurf.com/pricing"
+      }
+    },
     {
       "date": "2026-03-19",
       "tool": "cline",
