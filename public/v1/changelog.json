@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-03-19",
-    "updated_at": "2026-03-19T12:23:45Z",
+    "version": "2026-03-20",
+    "updated_at": "2026-03-20T13:56:22Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-20",
+      "tool": "replit",
+      "type": "pricing_change",
+      "description": "plans.1.includes.notes: $20/mo credits included, full Agent access, 5 collaborators → $25/mo credits included, full Agent access, 5 collaborators",
+      "details": {
+        "source": "https://replit.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-20",
+      "tool": "windsurf",
+      "type": "pricing_change",
+      "description": "plans.0.includes.notes: 25 prompt credits → Usage refreshes daily & weekly; all premium models included; plans.1.base_price.amount: 15.00 → 20.00; plans.1.includes.notes: 500 prompt credits → Unlimited usage; extra usage at API price; plans.1.overage.notes: $10 per 250 credits → UNVERIFIED_OVERAGE: page states 'at API price' without specific per-unit rate; prior rate was $10/250 credits; plans.2.id: windsurf-teams → windsurf-max; plans.2.name: Teams → Max; plans.2.category: team → individual; plans.2.base_price.amount: 30.00 → 200.00; plans.2.includes.notes: 500 prompt credits/user/month; SSO +$10/user/month → Unlimited usage; extra usage at API price; plans.3.id: windsurf-enterprise → windsurf-teams; plans.3.name: Enterprise → Teams; plans.3.category: enterprise → team; plans.3.includes.notes: 1,000 prompt credits/user/mo, FedRAMP High, on-prem, EU data residency → Unlimited usage; centralized billing, admin dashboard, SSO + RBAC, priority support, extra usage at API price; plans.3.base_price.amount: added 40.00; plans.3.base_price.period: added monthly; plans.3.base_price.per: added user; plans.4.id: added windsurf-enterprise; plans.4.name: added Enterprise; plans.4.category: added enterprise; plans.4.includes.notes: added Custom pricing; FedRAMP High, on-prem, EU data residency; plans.1.includes.premium_requests: removed; plans.2.includes.premium_requests: removed; plans.3.includes.premium_requests: removed",
+      "details": {
+        "source": "https://windsurf.com/pricing"
+      }
+    },
     {
       "date": "2026-03-19",
       "tool": "cline",

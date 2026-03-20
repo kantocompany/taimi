@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-19",
-    "updated_at": "2026-03-19T00:00:00Z",
+    "version": "2026-03-20",
+    "updated_at": "2026-03-20T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "25 prompt credits"
+          "notes": "Usage refreshes daily & weekly; all premium models included"
         },
         "overage": null
       },
@@ -40,34 +40,50 @@
         "name": "Pro",
         "category": "individual",
         "base_price": {
-          "amount": 15.00,
+          "amount": 20.00,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
-          "premium_requests": 500,
+          "premium_requests": null,
           "tokens_included": null,
-          "notes": "500 prompt credits"
+          "notes": "Unlimited usage; extra usage at API price"
         },
         "overage": {
           "unit": "request",
           "price_per_unit": 0.04,
-          "notes": "$10 per 250 credits"
+          "notes": "UNVERIFIED_OVERAGE: page states 'at API price' without specific per-unit rate; prior rate was $10/250 credits"
         }
+      },
+      {
+        "id": "windsurf-max",
+        "name": "Max",
+        "category": "individual",
+        "base_price": {
+          "amount": 200.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Unlimited usage; extra usage at API price"
+        },
+        "overage": null
       },
       {
         "id": "windsurf-teams",
         "name": "Teams",
         "category": "team",
         "base_price": {
-          "amount": 30.00,
+          "amount": 40.00,
           "period": "monthly",
           "per": "user"
         },
         "includes": {
-          "premium_requests": 500,
+          "premium_requests": null,
           "tokens_included": null,
-          "notes": "500 prompt credits/user/month; SSO +$10/user/month"
+          "notes": "Unlimited usage; centralized billing, admin dashboard, SSO + RBAC, priority support, extra usage at API price"
         },
         "overage": null
       },
@@ -77,9 +93,9 @@
         "category": "enterprise",
         "base_price": null,
         "includes": {
-          "premium_requests": 1000,
+          "premium_requests": null,
           "tokens_included": null,
-          "notes": "1,000 prompt credits/user/mo, FedRAMP High, on-prem, EU data residency"
+          "notes": "Custom pricing; FedRAMP High, on-prem, EU data residency"
         },
         "overage": null
       }
