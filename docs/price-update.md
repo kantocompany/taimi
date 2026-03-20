@@ -21,6 +21,9 @@ Common failure modes that look like success:
 - Confusing credit allowances ("$25/mo of credits included") with subscription prices
 - Pages showing plan names but prices behind a "See pricing" button
 - "From $X/mo" or "starting at $X" = lowest tier price, not the price of the specific plan you're checking
+- "At API pricing," "usage-based," or "pay as you go" without a specific dollar amount per unit is a failed overage extraction — continue to the next source
+
+Overage rates (`overage.price_per_unit`) require the same extraction standard as base prices. Do not replace existing concrete overage data with vague notes. If all sources are exhausted and no per-unit rate can be found, keep the existing overage data unchanged and prefix the plan's `notes` with `UNVERIFIED_OVERAGE`.
 
 ## Decision rules (mandatory)
 
