@@ -62,6 +62,14 @@ Some tools are features within broader platform subscriptions (e.g., Claude Code
 
 In index.html, platform plans are marked with a superscript `P` badge and explained in the amber warning banner.
 
+## Verification overrides (optional field)
+
+**`tool.verification_override`** — string. When present, the price-update agent follows these instructions instead of the standard fetch procedure. Absent = standard procedure applies.
+
+Use for vendors where automated fetching produces **wrong results** (e.g., JS-only toggle showing annual prices, unresolvable "at API pricing" requiring cross-tool lookup). Do not use for simple fetch failures — those belong in the "Known fetch hints" table in `docs/price-update.md`.
+
+Source-only field — `assemble.sh` strips it from public API output.
+
 ## Tool cap
 
 Maximum **12 tools** in `data/tools/`. When adding a new tool at cap, archive the lowest-ranked existing tool. See `docs/market-update.md` for ranking criteria and archival process.

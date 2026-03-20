@@ -7,6 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://replit.com/pricing"
   },
+  "verification_override": "Replit pricing is not reliably extractable by automated tools. The pricing page defaults to annual billing with a JS-only toggle, and third-party web sources frequently show outdated prices. Do NOT change any existing prices. Only check for structural changes (new plans, removed plans, renamed plans) via WebSearch 'replit plans [current-year]'. If a new plan is found, add it with prices from 3+ agreeing sources. If no structural changes, report as verified with no edits.",
   "plans": [
     {
       "id": "replit-starter",

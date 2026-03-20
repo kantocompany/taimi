@@ -123,7 +123,7 @@ else
     source_mismatches=0
     for f in "${source_files[@]}"; do
       slug=$(jq -r '.slug' "$f")
-      source_data=$(jq -c '.' "$f")
+      source_data=$(jq -c 'del(.verification_override)' "$f")
       assembled_data=$(jq -c --arg s "$slug" '.tools[] | select(.slug == $s)' "$TOOLS_JSON")
       if [[ "$source_data" != "$assembled_data" ]]; then
         echo "FAIL: $slug data in tools.json differs from source (run scripts/assemble.sh)"
@@ -157,7 +157,7 @@ if [[ -f "$TOOLS_JSON" ]]; then
     fi
     # Check tool data matches source
     api_tool=$(jq -c '.tool' "$api_file")
-    source_data=$(jq -c '.' "$f")
+    source_data=$(jq -c 'del(.verification_override)' "$f")
     if [[ "$api_tool" != "$source_data" ]]; then
       echo "FAIL: $slug.json API file tool data differs from source"
       ((api_errors++)) || true

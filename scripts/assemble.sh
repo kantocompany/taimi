@@ -52,7 +52,7 @@ jq -n \
   --arg version "$version" \
   --arg updated_at "$updated_at" \
   --argjson tool_count "$tool_count" \
-  --slurpfile tools <(jq -s 'sort_by(.slug)' "${files[@]}") \
+  --slurpfile tools <(jq -s '[.[] | del(.verification_override)] | sort_by(.slug)' "${files[@]}") \
   '{
     meta: {
       version: $version,
@@ -80,7 +80,7 @@ for file in "${files[@]}"; do
   slug=$(jq -r '.slug' "$file")
   outfile="$OUT_DIR/$slug.json"
 
-  jq -n --argjson meta "$meta" --argjson tool "$(cat "$file")" \
+  jq -n --argjson meta "$meta" --argjson tool "$(jq 'del(.verification_override)' "$file")" \
     '{ meta: $meta, tool: $tool }' > "$outfile"
 
   echo "  ✓ $outfile"

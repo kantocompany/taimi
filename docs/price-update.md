@@ -21,6 +21,7 @@ Common failure modes that look like success:
 - Confusing credit allowances ("$25/mo of credits included") with subscription prices
 - Pages showing plan names but prices behind a "See pricing" button
 - "From $X/mo" or "starting at $X" = lowest tier price, not the price of the specific plan you're checking
+- Annual/monthly toggle defaulting to annual — prices and credit amounts from the annual view are NOT monthly prices
 - "At API pricing," "usage-based," or "pay as you go" without a specific dollar amount per unit is a failed overage extraction — continue to the next source
 
 Overage rates (`overage.price_per_unit`) require the same extraction standard as base prices. Do not replace existing concrete overage data with vague notes. If all sources are exhausted and no per-unit rate can be found, keep the existing overage data unchanged and prefix the plan's `notes` with `UNVERIFIED_OVERAGE`.
@@ -40,7 +41,13 @@ Overage rates (`overage.price_per_unit`) require the same extraction standard as
 
 If `vendor.pricing_url` returns a non-200 status, redirects to a different domain, or does not contain pricing for this specific tool, update it to the correct URL before proceeding.
 
-### 1. Fetch pricing
+### 1. Check for verification override
+
+Read the tool's `verification_override` field in the JSON file. If present, follow those instructions instead of the standard fetch procedure (§2). The override is the complete verification procedure for this tool — do not also run the standard procedure.
+
+If no `verification_override` field exists, proceed to §2.
+
+### 2. Fetch pricing
 
 Try sources in order. Stop at the first successful extraction.
 
@@ -53,16 +60,16 @@ Try sources in order. Stop at the first successful extraction.
 | 5 | Web search `"[vendor] pricing [year]"` — need **3+ sources agreeing** | WebSearch |
 | 6 | LiteLLM dataset (sanity check only, may lag 1-2 months) | WebFetch `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json` |
 
-### 2. Compare and update
+### 3. Compare and update
 
 If extraction succeeded:
 - Compare every `base_price.amount` and `overage` field against extracted prices
 - If they match: done, no changes needed
 - If they differ: edit `data/tools/{slug}.json` with correct values
 
-### 3. Handle failure
+### 4. Handle failure
 
-If ALL sources failed, or you have reached web search (priority 4) without a successful extraction and are running low on turns — stop immediately and mark UNVERIFIED. Do not exhaust remaining turns on long-shot attempts.
+If ALL sources failed, or you have reached web search (priority 5) without a successful extraction and are running low on turns — stop immediately and mark UNVERIFIED. Do not exhaust remaining turns on long-shot attempts.
 
 - Prefix the first plan's `notes` with `UNVERIFIED`
 - Log which methods you tried and what failed
@@ -74,23 +81,19 @@ If ALL sources failed, or you have reached web search (priority 4) without a suc
 - `✏️ {slug}: updated` — prices changed, file edited
 - `⚠️ {slug}: UNVERIFIED` — all extraction methods failed
 
-## Known vendor quirks
+## Known fetch hints
 
-Vendors whose pricing pages block fetchers or present misleading defaults.
+Vendors whose pricing pages need alternate fetch methods. Tools with a `verification_override` field are not listed here — their override is the complete procedure.
 
 | Vendor | Problem | Workaround | Verified |
 |--------|---------|------------|----------|
 | Anthropic | `claude.com/pricing` is JS-rendered | Rendering proxy (priority 3) handles this | 2026-03-16 |
 | Mistral | `mistral.ai/pricing` API table is JS-rendered | Subscription plans visible directly; API rates need rendering proxy or web search | 2026-03-16 |
 | OpenAI Codex | `openai.com/pricing` returns Cloudflare 403 | `developers.openai.com/codex/pricing` (subscriptions); `developers.openai.com/api/docs/pricing` (per-token API rates) | 2026-03-18 |
-| Replit | `replit.com/pricing` defaults to annual toggle | Page shows annual prices first. Always look for a monthly/annual toggle and extract the **monthly** price. The annual and monthly amounts may look similar ($20 annual vs $20 monthly) — verify which toggle is active | 2026-03-19 |
-| Windsurf | `windsurf.com/pricing` hangs/times out | Use rendering proxy: `r.jina.ai/https://windsurf.com/pricing` | 2026-03-16 |
 
 ## Notes
 
 - `chatgpt.com/pricing` is also blocked (same Cloudflare setup)
 - Anthropic: do NOT use `platform.claude.com/docs/en/about-claude/pricing` — it has unreliable subscription tier prices.
 - OpenAI Codex: Codex models may be listed under GPT-5.x-Codex names on the API pricing page.
-- Replit: if the page content mentions "billed annually" or shows a toggled annual view, you are reading annual prices. Switch to monthly before extracting.
-- Windsurf: direct fetch hangs indefinitely. Always start with the rendering proxy.
 - Mistral: subscription plan prices ($14.99 Pro, $24.99 Team) are in the static HTML. API token rates (per-model input/output) are in a JS-rendered table — use rendering proxy or web search.

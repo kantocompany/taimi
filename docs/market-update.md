@@ -122,6 +122,7 @@ For each tool in `data/tools/`, read its file and check:
 6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying?
 7. **Notes style** — Keep notes terse and factual: plan limits, pricing mechanics, key constraints. No marketing copy, no integration partner lists, no trailing periods. Match the style of existing tool files.
 8. **Usage plan coverage** — For tools with usage-based API plans, check if the vendor has added new models at different price points since last review. If a new model is the default or significantly different in price, add it as a separate usage plan entry following the existing pattern (e.g., Claude Code has separate Sonnet and Opus entries).
+9. **Verification overrides** — If the tool has a `verification_override` field, check if it is still accurate. If the vendor has fixed the issue (e.g., made their pricing page accessible), remove the field. When adding a new tool whose pricing page has known fetch issues, set `verification_override` with the workaround.
 
 ## Observations review
 
