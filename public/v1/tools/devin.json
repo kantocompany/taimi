@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-20",
-    "updated_at": "2026-03-20T00:00:00Z",
+    "version": "2026-03-21",
+    "updated_at": "2026-03-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -26,15 +26,16 @@
         "base_price": {
           "amount": 20.00,
           "period": "monthly",
-          "per": "user"
+          "per": "flat"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Pay-per-ACU beyond base"
+          "notes": "No included ACUs; $20 minimum top-up"
         },
         "overage": {
           "unit": "acu",
+          "mechanism": "automatic",
           "price_per_unit": 2.25,
           "notes": "Agent Compute Unit, ~minutes of agent work"
         }
@@ -55,6 +56,7 @@
         },
         "overage": {
           "unit": "acu",
+          "mechanism": "automatic",
           "price_per_unit": 2.00,
           "notes": "Per ACU beyond 250"
         }

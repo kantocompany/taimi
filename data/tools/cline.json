@@ -10,7 +10,7 @@
   "plans": [
     {
       "id": "cline-free",
-      "name": "Free (BYOK)",
+      "name": "Open Source",
       "category": "free",
       "base_price": {
         "amount": 0,
@@ -20,7 +20,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "VS Code extension, BYOK, any provider"
+        "notes": "VS Code extension, CLI, BYOK, any provider"
       },
       "overage": {
         "unit": "token",

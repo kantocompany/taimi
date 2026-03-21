@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-20",
-    "updated_at": "2026-03-20T00:00:00Z",
+    "version": "2026-03-21",
+    "updated_at": "2026-03-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
+          "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
         },
         "overage": null
       },
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. 12-month commitment: $19.00/user/month."
+          "notes": "1,500 daily model requests, multi-repo indexing (up to 25 repos). 12-month commitment: $19.00/user/month."
         },
         "overage": null
       },
@@ -63,7 +63,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. 12-month commitment: $45.00/user/month."
+          "notes": "2,000 daily model requests, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 12-month commitment: $45.00/user/month."
         },
         "overage": null
       }

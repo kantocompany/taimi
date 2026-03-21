@@ -40,7 +40,7 @@
       },
       "overage": {
         "unit": "request",
-        "mechanism": "add_on",
+        "mechanism": "unverified",
         "price_per_unit": 0.04,
         "notes": "UNVERIFIED_OVERAGE: page states 'at API pricing' with no specific per-unit rate; devin.ai (Cognition sibling) uses ACU units but no Windsurf-specific rate published; prior rate was $10/250 credits ($0.04/request)"
       }
@@ -59,7 +59,12 @@
         "tokens_included": null,
         "notes": "Significantly higher quotas than Pro; access to all frontier models"
       },
-      "overage": null
+      "overage": {
+        "unit": "request",
+        "mechanism": "unverified",
+        "price_per_unit": null,
+        "notes": "UNVERIFIED_OVERAGE: page states 'Extra usage at API pricing' with no specific per-unit rate"
+      }
     },
     {
       "id": "windsurf-teams",
@@ -75,7 +80,12 @@
         "tokens_included": null,
         "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
       },
-      "overage": null
+      "overage": {
+        "unit": "request",
+        "mechanism": "unverified",
+        "price_per_unit": null,
+        "notes": "UNVERIFIED_OVERAGE: page states 'Extra usage at API pricing' with no specific per-unit rate"
+      }
     },
     {
       "id": "windsurf-enterprise",

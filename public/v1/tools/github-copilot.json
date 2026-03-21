@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-20",
-    "updated_at": "2026-03-20T00:00:00Z",
+    "version": "2026-03-21",
+    "updated_at": "2026-03-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -51,6 +51,7 @@
         },
         "overage": {
           "unit": "request",
+          "mechanism": "add_on",
           "price_per_unit": 0.04,
           "notes": "$0.04/req beyond limit"
         }
@@ -71,6 +72,7 @@
         },
         "overage": {
           "unit": "request",
+          "mechanism": "add_on",
           "price_per_unit": 0.04,
           "notes": "$0.04/req beyond limit"
         }
@@ -89,7 +91,12 @@
           "tokens_included": null,
           "notes": "300 premium req/user, org management"
         },
-        "overage": null
+        "overage": {
+          "unit": "request",
+          "mechanism": "add_on",
+          "price_per_unit": 0.04,
+          "notes": "$0.04/req beyond limit"
+        }
       },
       {
         "id": "copilot-enterprise",

@@ -16,7 +16,7 @@
       "research tools",
       "custom GPTs"
     ],
-    "note": "Plus/Pro/Team are ChatGPT subscriptions; API plan is standalone pay-per-use"
+    "note": "Plus/Pro/Business/Enterprise are ChatGPT subscriptions; API plan is standalone pay-per-use"
   },
   "plans": [
     {
@@ -67,6 +67,19 @@
         "premium_requests": null,
         "tokens_included": null,
         "notes": "Renamed from Team to Business on 2025-08-29"
+      },
+      "overage": null
+    },
+    {
+      "id": "codex-enterprise",
+      "name": "Enterprise",
+      "category": "enterprise",
+      "platform_plan": true,
+      "base_price": null,
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Custom pricing; SCIM, EKM, RBAC, audit logs, data residency controls, no fixed usage limits"
       },
       "overage": null
     },

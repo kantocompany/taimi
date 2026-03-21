@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-20",
-    "updated_at": "2026-03-20T00:00:00Z",
+    "version": "2026-03-21",
+    "updated_at": "2026-03-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Extended Agent limits"
+          "notes": "Extended Agent limits, frontier models, MCPs, cloud agents"
         },
         "overage": null
       },
@@ -95,7 +95,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Shared chats, rules, privacy mode, RBAC"
+          "notes": "Shared chats, rules, privacy mode, RBAC, SSO"
         },
         "overage": null
       },
@@ -108,6 +108,50 @@
           "premium_requests": null,
           "tokens_included": null,
           "notes": "Pooled usage, SCIM, audit logs, dedicated AM"
+        },
+        "overage": null
+      },
+      {
+        "id": "cursor-bugbot-pro",
+        "name": "Bugbot Pro",
+        "category": "individual",
+        "base_price": {
+          "amount": 40.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Automated PR reviews; up to 200 PRs/month, 14-day trial"
+        },
+        "overage": null
+      },
+      {
+        "id": "cursor-bugbot-teams",
+        "name": "Bugbot Teams",
+        "category": "team",
+        "base_price": {
+          "amount": 40.00,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Automated PR reviews; unlimited PRs/month, analytics, 14-day trial"
+        },
+        "overage": null
+      },
+      {
+        "id": "cursor-bugbot-enterprise",
+        "name": "Bugbot Enterprise",
+        "category": "enterprise",
+        "base_price": null,
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Automated PR reviews; advanced analytics, 30-day trial"
         },
         "overage": null
       }

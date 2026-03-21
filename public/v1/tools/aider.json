@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-20",
-    "updated_at": "2026-03-20T00:00:00Z",
+    "version": "2026-03-21",
+    "updated_at": "2026-03-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -35,6 +35,7 @@
         },
         "overage": {
           "unit": "token",
+          "mechanism": "byok",
           "price_per_unit": null,
           "notes": "Cost depends on chosen LLM provider"
         }

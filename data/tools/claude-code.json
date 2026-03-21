@@ -31,7 +31,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Sonnet-powered, rate-limited"
+        "notes": "Sonnet-powered, rate-limited; Annual billing: $17/mo"
       },
       "overage": null
     },
@@ -82,7 +82,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Standard seat, min 5 members, admin controls"
+        "notes": "Standard seat, min 5 members, admin controls; Annual billing: $20/mo"
       },
       "overage": null
     },
@@ -99,7 +99,20 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Premium seat, Claude Code access, early features"
+        "notes": "Premium seat, Claude Code access, early features; Annual billing: $100/mo"
+      },
+      "overage": null
+    },
+    {
+      "id": "claude-code-enterprise",
+      "name": "Enterprise",
+      "category": "enterprise",
+      "platform_plan": true,
+      "base_price": null,
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "All Teams features plus RBAC, SCIM, audit logs, compliance API, custom data retention, HIPAA-ready option, IP allowlisting; API usage billed at standard rates; contact sales"
       },
       "overage": null
     },
@@ -131,6 +144,21 @@
         "output_per_million": 25.00,
         "model": "claude-opus-4-6",
         "notes": "Available on Max/Teams Premium plans"
+      }
+    },
+    {
+      "id": "claude-code-api-haiku",
+      "name": "API (Haiku 4.5)",
+      "category": "usage",
+      "base_price": null,
+      "includes": null,
+      "overage": {
+        "unit": "token",
+        "mechanism": "automatic",
+        "input_per_million": 1.00,
+        "output_per_million": 5.00,
+        "model": "claude-haiku-4-5",
+        "notes": "Lightweight model; available via API"
       }
     }
   ],

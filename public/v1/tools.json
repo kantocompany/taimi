@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-20",
-    "updated_at": "2026-03-20T00:00:00Z",
+    "version": "2026-03-21",
+    "updated_at": "2026-03-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -36,6 +36,7 @@
           },
           "overage": {
             "unit": "token",
+            "mechanism": "byok",
             "price_per_unit": null,
             "notes": "Cost depends on chosen LLM provider"
           }
@@ -82,6 +83,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "automatic",
             "price_per_unit": null,
             "notes": "Auto top-up $15/24K credits"
           }
@@ -102,6 +104,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "automatic",
             "price_per_unit": null,
             "notes": "Auto top-up $15/24K credits"
           }
@@ -122,6 +125,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "automatic",
             "price_per_unit": null,
             "notes": "$15/24K credits top-up"
           }
@@ -187,7 +191,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Sonnet-powered, rate-limited"
+            "notes": "Sonnet-powered, rate-limited; Annual billing: $17/mo"
           },
           "overage": null
         },
@@ -238,7 +242,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard seat, min 5 members, admin controls"
+            "notes": "Standard seat, min 5 members, admin controls; Annual billing: $20/mo"
           },
           "overage": null
         },
@@ -255,7 +259,20 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Premium seat, Claude Code access, early features"
+            "notes": "Premium seat, Claude Code access, early features; Annual billing: $100/mo"
+          },
+          "overage": null
+        },
+        {
+          "id": "claude-code-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "platform_plan": true,
+          "base_price": null,
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "All Teams features plus RBAC, SCIM, audit logs, compliance API, custom data retention, HIPAA-ready option, IP allowlisting; API usage billed at standard rates; contact sales"
           },
           "overage": null
         },
@@ -267,6 +284,7 @@
           "includes": null,
           "overage": {
             "unit": "token",
+            "mechanism": "automatic",
             "input_per_million": 3.00,
             "output_per_million": 15.00,
             "model": "claude-sonnet-4-6",
@@ -281,10 +299,26 @@
           "includes": null,
           "overage": {
             "unit": "token",
+            "mechanism": "automatic",
             "input_per_million": 5.00,
             "output_per_million": 25.00,
             "model": "claude-opus-4-6",
             "notes": "Available on Max/Teams Premium plans"
+          }
+        },
+        {
+          "id": "claude-code-api-haiku",
+          "name": "API (Haiku 4.5)",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "token",
+            "mechanism": "automatic",
+            "input_per_million": 1.00,
+            "output_per_million": 5.00,
+            "model": "claude-haiku-4-5",
+            "notes": "Lightweight model; available via API"
           }
         }
       ],
@@ -315,7 +349,7 @@
       "plans": [
         {
           "id": "cline-free",
-          "name": "Free (BYOK)",
+          "name": "Open Source",
           "category": "free",
           "base_price": {
             "amount": 0,
@@ -325,10 +359,11 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "VS Code extension, BYOK, any provider"
+            "notes": "VS Code extension, CLI, BYOK, any provider"
           },
           "overage": {
             "unit": "token",
+            "mechanism": "byok",
             "price_per_unit": null,
             "notes": "Cost depends on chosen LLM provider"
           }
@@ -349,6 +384,7 @@
           },
           "overage": {
             "unit": "token",
+            "mechanism": "byok",
             "price_per_unit": null,
             "notes": "Cost depends on chosen LLM provider"
           }
@@ -419,7 +455,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Extended Agent limits"
+            "notes": "Extended Agent limits, frontier models, MCPs, cloud agents"
           },
           "overage": null
         },
@@ -467,7 +503,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Shared chats, rules, privacy mode, RBAC"
+            "notes": "Shared chats, rules, privacy mode, RBAC, SSO"
           },
           "overage": null
         },
@@ -480,6 +516,50 @@
             "premium_requests": null,
             "tokens_included": null,
             "notes": "Pooled usage, SCIM, audit logs, dedicated AM"
+          },
+          "overage": null
+        },
+        {
+          "id": "cursor-bugbot-pro",
+          "name": "Bugbot Pro",
+          "category": "individual",
+          "base_price": {
+            "amount": 40.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Automated PR reviews; up to 200 PRs/month, 14-day trial"
+          },
+          "overage": null
+        },
+        {
+          "id": "cursor-bugbot-teams",
+          "name": "Bugbot Teams",
+          "category": "team",
+          "base_price": {
+            "amount": 40.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Automated PR reviews; unlimited PRs/month, analytics, 14-day trial"
+          },
+          "overage": null
+        },
+        {
+          "id": "cursor-bugbot-enterprise",
+          "name": "Bugbot Enterprise",
+          "category": "enterprise",
+          "base_price": null,
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Automated PR reviews; advanced analytics, 30-day trial"
           },
           "overage": null
         }
@@ -516,15 +596,16 @@
           "base_price": {
             "amount": 20.00,
             "period": "monthly",
-            "per": "user"
+            "per": "flat"
           },
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Pay-per-ACU beyond base"
+            "notes": "No included ACUs; $20 minimum top-up"
           },
           "overage": {
             "unit": "acu",
+            "mechanism": "automatic",
             "price_per_unit": 2.25,
             "notes": "Agent Compute Unit, ~minutes of agent work"
           }
@@ -545,6 +626,7 @@
           },
           "overage": {
             "unit": "acu",
+            "mechanism": "automatic",
             "price_per_unit": 2.00,
             "notes": "Per ACU beyond 250"
           }
@@ -599,7 +681,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Free for individuals. Code completions, chat, Agent Mode in VS Code and IntelliJ. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
+            "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
           },
           "overage": null
         },
@@ -615,7 +697,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Higher rate limits, multi-repo indexing (up to 25 repos), Gemini 2.5 Pro access. 12-month commitment: $19.00/user/month."
+            "notes": "1,500 daily model requests, multi-repo indexing (up to 25 repos). 12-month commitment: $19.00/user/month."
           },
           "overage": null
         },
@@ -631,7 +713,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK, enterprise SLA. Billed via Google Cloud. 12-month commitment: $45.00/user/month."
+            "notes": "2,000 daily model requests, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 12-month commitment: $45.00/user/month."
           },
           "overage": null
         }
@@ -693,6 +775,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "add_on",
             "price_per_unit": 0.04,
             "notes": "$0.04/req beyond limit"
           }
@@ -713,6 +796,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "add_on",
             "price_per_unit": 0.04,
             "notes": "$0.04/req beyond limit"
           }
@@ -731,7 +815,12 @@
             "tokens_included": null,
             "notes": "300 premium req/user, org management"
           },
-          "overage": null
+          "overage": {
+            "unit": "request",
+            "mechanism": "add_on",
+            "price_per_unit": 0.04,
+            "notes": "$0.04/req beyond limit"
+          }
         },
         {
           "id": "copilot-enterprise",
@@ -816,6 +905,7 @@
           },
           "overage": {
             "unit": "token",
+            "mechanism": "unverified",
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
@@ -839,6 +929,7 @@
           },
           "overage": {
             "unit": "token",
+            "mechanism": "unverified",
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
@@ -853,6 +944,7 @@
           "includes": null,
           "overage": {
             "unit": "token",
+            "mechanism": "automatic",
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
@@ -867,11 +959,40 @@
           "includes": null,
           "overage": {
             "unit": "token",
+            "mechanism": "automatic",
             "input_per_million": 0.10,
             "output_per_million": 0.30,
             "model": "devstral-small-2",
             "notes": "24B param, self-hostable, Apache 2.0"
           }
+        },
+        {
+          "id": "mistral-api-devstral-medium",
+          "name": "Devstral Medium API",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "token",
+            "mechanism": "automatic",
+            "input_per_million": 0.40,
+            "output_per_million": 2.00,
+            "model": "devstral-medium-1",
+            "notes": "Enterprise-grade SWE model, Premier tier, API-only"
+          }
+        },
+        {
+          "id": "mistral-enterprise",
+          "name": "Le Chat Enterprise",
+          "category": "enterprise",
+          "platform_plan": true,
+          "base_price": null,
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Custom pricing, private deployments, custom models and UI"
+          },
+          "overage": null
         }
       ],
       "capabilities": {
@@ -907,7 +1028,7 @@
           "research tools",
           "custom GPTs"
         ],
-        "note": "Plus/Pro/Team are ChatGPT subscriptions; API plan is standalone pay-per-use"
+        "note": "Plus/Pro/Business/Enterprise are ChatGPT subscriptions; API plan is standalone pay-per-use"
       },
       "plans": [
         {
@@ -962,6 +1083,19 @@
           "overage": null
         },
         {
+          "id": "codex-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "platform_plan": true,
+          "base_price": null,
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Custom pricing; SCIM, EKM, RBAC, audit logs, data residency controls, no fixed usage limits"
+          },
+          "overage": null
+        },
+        {
           "id": "codex-api",
           "name": "API",
           "category": "usage",
@@ -969,6 +1103,7 @@
           "includes": null,
           "overage": {
             "unit": "token",
+            "mechanism": "automatic",
             "input_per_million": 1.75,
             "output_per_million": 14.00,
             "model": "gpt-5.3-codex",
@@ -1033,6 +1168,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "unverified",
             "price_per_unit": null,
             "notes": "Effort-based pricing per Agent task"
           }
@@ -1053,6 +1189,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "unverified",
             "price_per_unit": null,
             "notes": "Effort-based pricing per Agent task"
           }
@@ -1127,6 +1264,7 @@
           },
           "overage": {
             "unit": "request",
+            "mechanism": "unverified",
             "price_per_unit": 0.04,
             "notes": "UNVERIFIED_OVERAGE: page states 'at API pricing' with no specific per-unit rate; devin.ai (Cognition sibling) uses ACU units but no Windsurf-specific rate published; prior rate was $10/250 credits ($0.04/request)"
           }
@@ -1145,7 +1283,12 @@
             "tokens_included": null,
             "notes": "Significantly higher quotas than Pro; access to all frontier models"
           },
-          "overage": null
+          "overage": {
+            "unit": "request",
+            "mechanism": "unverified",
+            "price_per_unit": null,
+            "notes": "UNVERIFIED_OVERAGE: page states 'Extra usage at API pricing' with no specific per-unit rate"
+          }
         },
         {
           "id": "windsurf-teams",
@@ -1161,7 +1304,12 @@
             "tokens_included": null,
             "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
           },
-          "overage": null
+          "overage": {
+            "unit": "request",
+            "mechanism": "unverified",
+            "price_per_unit": null,
+            "notes": "UNVERIFIED_OVERAGE: page states 'Extra usage at API pricing' with no specific per-unit rate"
+          }
         },
         {
           "id": "windsurf-enterprise",
