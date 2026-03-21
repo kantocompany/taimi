@@ -1,0 +1,187 @@
+name: Tool Update
+
+on:
+  # schedule:
+  #   - cron: "0 3 * * 3" # 03:00 UTC Wednesday — disabled pending testing
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  # ── Job 1: Setup ────────────────────────────────────────────────
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.tools.outputs.matrix }}
+      date: ${{ steps.date.outputs.date }}
+      skip: ${{ steps.check-pr.outputs.skip }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check for existing tool-update PR
+        id: check-pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          open_prs=$(gh pr list --label tool-update --state open --json number --jq 'length')
+          if [ "$open_prs" -gt 0 ]; then
+            echo "::notice::Open tool-update PR exists. Skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set date
+        if: ${{ !steps.check-pr.outputs.skip }}
+        id: date
+        run: echo "date=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      - name: Discover tools
+        if: ${{ !steps.check-pr.outputs.skip }}
+        id: tools
+        run: |
+          matrix=$(ls data/tools/*.json | xargs -I{} basename {} .json | jq -R -s -c 'split("\n") | map(select(. != ""))')
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "::notice::Tools to review: $matrix"
+
+  # ── Job 2: Review (one per tool, parallel) ──────────────────────
+  review:
+    needs: setup
+    if: ${{ !needs.setup.outputs.skip }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        tool: ${{ fromJson(needs.setup.outputs.matrix) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Review ${{ matrix.tool }}
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          show_full_output: true
+          prompt: |
+            Today is ${{ needs.setup.outputs.date }}. Tool: ${{ matrix.tool }}.
+            Read docs/tool-update.md and execute.
+          claude_args: |
+            --model claude-sonnet-4-6
+            --max-turns 20
+            --max-budget-usd 1.00
+            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
+            --disallowedTools "Agent"
+
+      - name: Upload tool file
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tool-${{ matrix.tool }}
+          path: data/tools/${{ matrix.tool }}.json
+
+  # ── Job 3: Finalize ─────────────────────────────────────────────
+  finalize:
+    needs: [setup, review]
+    if: ${{ always() && !needs.setup.outputs.skip && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DATE: ${{ needs.setup.outputs.date }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download tool artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: tool-*
+          path: artifacts/tools/
+
+      - name: Generate changelog from diffs
+        run: |
+          entries=()
+          for dir in artifacts/tools/tool-*; do
+            tool=$(basename "$dir" | sed 's/^tool-//')
+            entry=$(./scripts/generate-changelog-entry.sh \
+              "data/tools/$tool.json" \
+              "$dir/$tool.json" \
+              "$tool" "$DATE" || true)
+            if [[ -n "$entry" ]]; then
+              entries+=("$entry")
+              echo "  changelog: $tool"
+            fi
+          done
+          if [[ ${#entries[@]} -gt 0 ]]; then
+            new_json=$(printf '%s\n' "${entries[@]}" | jq -s '.')
+            jq --argjson new "$new_json" \
+              '.changes = ($new + .changes) | .meta.updated_at = (now | strftime("%Y-%m-%dT%H:%M:%SZ")) | .meta.version = (now | strftime("%Y-%m-%d"))' \
+              public/v1/changelog.json > tmp_changelog.json
+            mv tmp_changelog.json public/v1/changelog.json
+            echo "Generated ${#entries[@]} changelog entries"
+          else
+            echo "No structural changes detected"
+          fi
+
+      - name: Apply updated tool files
+        run: |
+          for dir in artifacts/tools/tool-*; do
+            tool=$(basename "$dir" | sed 's/^tool-//')
+            cp "$dir/$tool.json" data/tools/
+          done
+
+      - name: Build
+        run: |
+          ASSEMBLE_DATE=${{ env.DATE }} ./scripts/assemble.sh
+          ./scripts/generate-index.sh
+
+      - name: Validate
+        run: ./scripts/validate.sh
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add data/ public/
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No changes detected. Skipping PR."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            git diff --cached --stat
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BRANCH="tool-update/${{ env.DATE }}"
+          git checkout -B "$BRANCH"
+          git commit -m "chore: automated tool update ${{ env.DATE }}"
+          git push -u origin "$BRANCH"
+
+      - name: Create pull request
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Tool update ${{ env.DATE }}" \
+            --label "tool-update" \
+            --body "$(cat <<'EOF'
+          ## Tool Update
+
+          Created by the weekly tool-update workflow. Each tool was reviewed independently via a matrix of Claude Code agents against [tool-update.md](docs/tool-update.md).
+
+          ### Review checklist
+          - [ ] Structural changes verified against vendor pricing pages
+          - [ ] `changelog.json` has entries with source URLs
+          - [ ] `validate.sh` passed (check Actions log)
+          - [ ] No UNVERIFIED markers left unaddressed
+
+          ### Cost
+          Check individual matrix job logs for per-tool token usage.
+
+          ---
+          Generated by [Claude Code](https://claude.com/claude-code) via GitHub Actions
+          EOF
+          )"

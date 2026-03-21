@@ -98,12 +98,14 @@ Maximum **12 tools** in `data/tools/`. When adding a new tool at cap, archive th
 ## Updating data
 
 - **Prices:** Follow `docs/price-update.md` for the verification process. Never skip verification.
+- **Tool structure:** Follow `docs/tool-update.md` for weekly structural review (plans, categories, notes).
 - **Tools (add/remove/health checks):** Follow `docs/market-update.md` for market scan and editorial review.
 - **Observations:** Edit `data/observations.html` directly.
 
 ## Protected files
 
 - `docs/price-update.md` — governs daily automated price verification. Read for guidance, never modify.
+- `docs/tool-update.md` — governs weekly structural review. Read for guidance, never modify.
 - `docs/market-update.md` — governs weekly market updates. Read for guidance, never modify.
 
 ## Style notes

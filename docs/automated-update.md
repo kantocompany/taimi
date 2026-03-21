@@ -2,14 +2,15 @@
 
 ## Overview
 
-Updates run via two GitHub Actions workflows using Claude Code. Both create PRs for human review — neither touches main directly.
+Updates run via three GitHub Actions workflows using Claude Code. All create PRs for human review — none touch main directly.
 
 | Workflow | Runbook | Schedule | Scope |
 |----------|---------|----------|-------|
 | `price-update.yml` | `docs/price-update.md` | Daily 05:00 UTC | Price verification (matrix: one agent per tool) |
-| `market-update.yml` | `docs/market-update.md` | Weekly Sunday 02:00 UTC | Market scan, health checks, representation + observations review |
+| `tool-update.yml` | `docs/tool-update.md` | Weekly Wednesday 03:00 UTC | Structural review (matrix: one agent per tool) |
+| `market-update.yml` | `docs/market-update.md` | Weekly Sunday 02:00 UTC | Market scan, health checks, observations review |
 
-The two workflows have **zero overlap** in web operations. Price verification runs daily; the market update does not repeat it.
+The three workflows have **zero overlap**. Price verification checks amounts. Tool update checks structure (plans, categories, notes). Market update scans for new tools and editorial quality.
 
 ## How it works
 
@@ -18,6 +19,14 @@ The two workflows have **zero overlap** in web operations. Price verification ru
 1. **Setup job**: cron fires at 05:00 UTC (or manual dispatch). Checks for open PR, discovers tool slugs from `data/tools/*.json`
 2. **Verify jobs** (parallel, one per tool): each runs Claude Code agent scoped to one vendor. Edits `data/tools/{slug}.json` if prices changed
 3. **Finalize job**: downloads artifacts from all verify jobs, generates changelog entries from diffs, runs `assemble.sh` + `generate-index.sh` + `validate.sh`, commits `data/` + `public/`, opens PR
+4. `validate.yml` runs on the PR as a status check
+5. Human reviews and merges
+
+### Tool update (weekly) — matrix architecture
+
+1. **Setup job**: cron fires at 03:00 UTC Wednesday (or manual dispatch). Checks for open PR, discovers tool slugs
+2. **Review jobs** (parallel, one per tool): each runs Claude Code agent scoped to one vendor. Fetches pricing page and compares full plan structure against `data/tools/{slug}.json`
+3. **Finalize job**: downloads artifacts, generates changelog, builds, validates, commits, opens PR
 4. `validate.yml` runs on the PR as a status check
 5. Human reviews and merges
 
@@ -40,6 +49,19 @@ The two workflows have **zero overlap** in web operations. Price verification ru
 | Max turns | 18 |
 | Budget cap | $0.50/job |
 | Timeout | 10 minutes |
+| Parallelism | up to 12 (one per tool) |
+
+**Allowed tools:** Read, Edit, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq)
+**Disallowed tools:** Agent (prevents subagent spawning that drains budget)
+
+### Tool update (per matrix job)
+
+| Setting | Value |
+|---------|-------|
+| Model | `claude-sonnet-4-6` |
+| Max turns | 20 |
+| Budget cap | $1.00/job |
+| Timeout | 15 minutes |
 | Parallelism | up to 12 (one per tool) |
 
 **Allowed tools:** Read, Edit, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq)
@@ -94,6 +116,20 @@ Per matrix job (Sonnet $3/$15 per M tokens):
 - **Per run (12 tools): ~$2.41** (measured 2026-03-16)
 - **Monthly (daily): ~$72**
 
+### Tool update (weekly)
+
+Per matrix job (Sonnet $3/$15 per M tokens):
+
+| Phase | Input tokens | Output tokens |
+|-------|-------------|--------------|
+| Context loading (CLAUDE.md + runbook + tool file) | ~5K | ~1K |
+| Vendor page fetch + comparison | ~15K | ~5K |
+| **Total per tool** | **~20K** | **~6K** |
+
+- **Per job: ~$0.15-0.30** (higher when structural changes found)
+- **Per run (12 tools): ~$3.60**
+- **Monthly (weekly): ~$15**
+
 ### Market update (weekly)
 
 | Phase | Input tokens | Output tokens |
@@ -101,7 +137,7 @@ Per matrix job (Sonnet $3/$15 per M tokens):
 | Context loading | ~15K | ~1K |
 | Market scan (5 searches) | ~20K | ~5K |
 | Health check (12 tools × 1 search) | ~30K | ~5K |
-| Representation + observations | ~10K | ~5K |
+| Observations review | ~10K | ~5K |
 | **Total** | **~75K** | **~16K** |
 
 - **Per run: ~$2.41** (measured 2026-03-16)
@@ -109,5 +145,5 @@ Per matrix job (Sonnet $3/$15 per M tokens):
 
 ### Combined monthly
 
-- **Estimated: ~$82/month** (based on first CI runs)
+- **Estimated: ~$97/month** (based on first CI runs)
 - **Anthropic console limit: $100/month** (set 50% email alert)

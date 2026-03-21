@@ -112,17 +112,7 @@ Create `docs/YYYY-MM-DD-changes.md` as a **working document** during the cycle. 
 
 ## Representation review
 
-For each tool in `data/tools/`, read its file and check:
-
-1. **Annual vs monthly** — If the vendor shows both, are we showing monthly? If annual, does the notes field say so? (Convention: always show monthly price; note annual discount if significant.)
-2. **Overage field fitness** — Does the overage object capture what an API consumer would need? If a tool has multiple models at different price points, can a consumer parsing output_per_million get a correct answer? If not, flag for schema restructure.
-3. **Temporal state** — Is there a promo, beta, or sunset happening within 30 days? If yes, add a dated note.
-4. **Terminology drift** — Does the vendor still use the same language we do? If they renamed a plan or feature, update the tool file. `vendor.name` is the legal/parent company, not the product brand (the product brand is in `name`). Do not duplicate the product name into `vendor.name`. Verify `vendor.pricing_url` links to the tool's own pricing page, not a parent company or platform page.
-5. **Missing or removed plans** — Has the vendor added new plan tiers or removed existing ones? Update the tool file.
-6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying?
-7. **Notes style** — Keep notes terse and factual: plan limits, pricing mechanics, key constraints. No marketing copy, no integration partner lists, no trailing periods. Match the style of existing tool files.
-8. **Usage plan coverage** — For tools with usage-based API plans, check if the vendor has added new models at different price points since last review. If a new model is the default or significantly different in price, add it as a separate usage plan entry following the existing pattern (e.g., Claude Code has separate Sonnet and Opus entries).
-9. **Verification overrides** — If the tool has a `verification_override` field, check if it is still accurate. If the vendor has fixed the issue (e.g., made their pricing page accessible), remove the field. When adding a new tool whose pricing page has known fetch issues, set `verification_override` with the workaround.
+Per-tool structural review (annual pricing, missing plans, terminology drift, etc.) is handled by the weekly `tool-update.yml` workflow. See `docs/tool-update.md` for the full checklist. Do not duplicate that work here.
 
 ## Observations review
 
