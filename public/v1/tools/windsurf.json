@@ -36,6 +36,18 @@
         "overage": null
       },
       {
+        "id": "windsurf-light",
+        "name": "Light",
+        "category": "individual",
+        "base_price": null,
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "UNVERIFIED_PRICE: pricing page shows 'Unlimited' in the price position with no dollar amount; positioned between Free ($0) and Pro ($20); appears to offer unlimited usage allowance with no extra usage billing; effective March 19, 2026 pricing update"
+        },
+        "overage": null
+      },
+      {
         "id": "windsurf-pro",
         "name": "Pro",
         "category": "individual",
@@ -53,7 +65,7 @@
           "unit": "request",
           "mechanism": "unverified",
           "price_per_unit": 0.04,
-          "notes": "UNVERIFIED_OVERAGE: page states 'at API pricing' with no specific per-unit rate; devin.ai (Cognition sibling) uses ACU units but no Windsurf-specific rate published; prior rate was $10/250 credits ($0.04/request)"
+          "notes": "UNVERIFIED_OVERAGE: page states 'at API pricing' with no specific per-unit rate or unit type; Cognition sibling Devin charges $2.25/ACU (Core) but windsurf.com does not confirm ACUs as Windsurf's overage unit"
         }
       },
       {
