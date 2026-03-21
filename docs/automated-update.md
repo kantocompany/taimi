@@ -59,7 +59,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 | Setting | Value |
 |---------|-------|
 | Model | `claude-sonnet-4-6` |
-| Max turns | 20 |
+| Max turns | 25 |
 | Budget cap | $1.00/job |
 | Timeout | 15 minutes |
 | Parallelism | up to 12 (one per tool) |

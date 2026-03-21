@@ -16,14 +16,14 @@ Fetch `vendor.pricing_url` from the tool file. If the page is JS-rendered or blo
 
 ### 2. Compare structure
 
-List every purchasable plan tier on the vendor page. Compare against the plans in `data/tools/{slug}.json`. Note any differences — missing plans, removed plans, renamed plans, changed categories.
+List every purchasable plan tier on the vendor page. Count them. Compare against the plans in `data/tools/{slug}.json` — count those too. If the counts differ, identify which plans are missing or extra. Note any differences — missing plans, removed plans, renamed plans, changed categories.
 
 ### 3. Review checklist
 
 For this tool, check each item against the fetched vendor page:
 
 1. **Annual vs monthly** — Are we showing the monthly (no-commitment) price? If the vendor offers annual billing at a lower rate, note it in the format `Annual billing: $X/mo`
-2. **Overage field fitness** — Does the overage object capture what an API consumer would need? Is `mechanism` correct per the enum definitions in CLAUDE.md?
+2. **Overage field fitness** — Does the overage object capture what an API consumer would need? Is `mechanism` correct per the enum definitions in CLAUDE.md? If the vendor page does not explicitly describe the billing mechanism, set `mechanism` to `unverified` — never infer from other tools or from notes
 3. **Temporal state** — Is there a promo, beta, or sunset happening within 30 days? If yes, add a dated note
 4. **Terminology drift** — Has the vendor renamed plans, features, or the product itself? `vendor.name` is the legal/parent company, not the product brand. Verify `vendor.pricing_url` still points to the correct page
 5. **Missing or removed plans** — Add plans the vendor shows but we don't have. Remove plans the vendor no longer offers. Follow the schema of existing plans

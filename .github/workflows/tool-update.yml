@@ -68,7 +68,7 @@ jobs:
             Read docs/tool-update.md and execute.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 20
+            --max-turns 25
             --max-budget-usd 1.00
             --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
             --disallowedTools "Agent"

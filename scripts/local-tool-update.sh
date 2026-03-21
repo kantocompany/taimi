@@ -13,7 +13,7 @@ set -euo pipefail
 DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
 MODEL="claude-sonnet-4-6"
-MAX_TURNS=20
+MAX_TURNS=25
 SLUGS=()
 
 while [[ $# -gt 0 ]]; do
