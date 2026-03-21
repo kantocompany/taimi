@@ -7,6 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://devin.ai/pricing"
   },
+  "verification_override": "Core plan is pay-as-you-go with a $20 minimum top-up, not a $20/user/month subscription. Verify base_price.per is flat, not user.",
   "plans": [
     {
       "id": "devin-core",
