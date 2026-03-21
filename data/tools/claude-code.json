@@ -111,6 +111,7 @@
       "includes": null,
       "overage": {
         "unit": "token",
+        "mechanism": "automatic",
         "input_per_million": 3.00,
         "output_per_million": 15.00,
         "model": "claude-sonnet-4-6",
@@ -125,6 +126,7 @@
       "includes": null,
       "overage": {
         "unit": "token",
+        "mechanism": "automatic",
         "input_per_million": 5.00,
         "output_per_million": 25.00,
         "model": "claude-opus-4-6",

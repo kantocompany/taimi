@@ -41,6 +41,7 @@
       },
       "overage": {
         "unit": "request",
+        "mechanism": "unverified",
         "price_per_unit": null,
         "notes": "Effort-based pricing per Agent task"
       }
@@ -61,6 +62,7 @@
       },
       "overage": {
         "unit": "request",
+        "mechanism": "unverified",
         "price_per_unit": null,
         "notes": "Effort-based pricing per Agent task"
       }

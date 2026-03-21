@@ -24,6 +24,7 @@
       },
       "overage": {
         "unit": "token",
+        "mechanism": "byok",
         "price_per_unit": null,
         "notes": "Cost depends on chosen LLM provider"
       }
@@ -44,6 +45,7 @@
       },
       "overage": {
         "unit": "token",
+        "mechanism": "byok",
         "price_per_unit": null,
         "notes": "Cost depends on chosen LLM provider"
       }

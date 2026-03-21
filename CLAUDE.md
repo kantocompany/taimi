@@ -53,6 +53,15 @@ Validate: `./scripts/validate.sh`
 
 `token`, `request`, `acu`
 
+## Overage mechanism types (enum)
+
+- `automatic` — vendor bills beyond included usage with no user action required
+- `add_on` — user must purchase additional capacity to continue beyond included usage
+- `byok` — tool vendor does not bill; user brings their own API key to a third-party LLM provider
+- `unverified` — mechanism could not be determined from vendor pricing page
+
+`mechanism` must be verified from the vendor pricing page, not inferred from notes or other tools.
+
 ## Platform bundling (optional fields)
 
 Some tools are features within broader platform subscriptions (e.g., Claude Code is part of the Anthropic platform alongside Claude.ai, Cowork, etc.). Two optional fields express this:

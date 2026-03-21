@@ -24,6 +24,7 @@
       },
       "overage": {
         "unit": "acu",
+        "mechanism": "automatic",
         "price_per_unit": 2.25,
         "notes": "Agent Compute Unit, ~minutes of agent work"
       }
@@ -44,6 +45,7 @@
       },
       "overage": {
         "unit": "acu",
+        "mechanism": "automatic",
         "price_per_unit": 2.00,
         "notes": "Per ACU beyond 250"
       }

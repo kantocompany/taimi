@@ -40,6 +40,7 @@
       },
       "overage": {
         "unit": "request",
+        "mechanism": "add_on",
         "price_per_unit": 0.04,
         "notes": "$0.04/req beyond limit"
       }
@@ -60,6 +61,7 @@
       },
       "overage": {
         "unit": "request",
+        "mechanism": "add_on",
         "price_per_unit": 0.04,
         "notes": "$0.04/req beyond limit"
       }

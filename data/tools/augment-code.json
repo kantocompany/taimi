@@ -24,6 +24,7 @@
       },
       "overage": {
         "unit": "request",
+        "mechanism": "automatic",
         "price_per_unit": null,
         "notes": "Auto top-up $15/24K credits"
       }
@@ -44,6 +45,7 @@
       },
       "overage": {
         "unit": "request",
+        "mechanism": "automatic",
         "price_per_unit": null,
         "notes": "Auto top-up $15/24K credits"
       }
@@ -64,6 +66,7 @@
       },
       "overage": {
         "unit": "request",
+        "mechanism": "automatic",
         "price_per_unit": null,
         "notes": "$15/24K credits top-up"
       }

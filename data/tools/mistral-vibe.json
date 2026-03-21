@@ -49,6 +49,7 @@
       },
       "overage": {
         "unit": "token",
+        "mechanism": "unverified",
         "input_per_million": 0.40,
         "output_per_million": 2.00,
         "model": "devstral-2",
@@ -72,6 +73,7 @@
       },
       "overage": {
         "unit": "token",
+        "mechanism": "unverified",
         "input_per_million": 0.40,
         "output_per_million": 2.00,
         "model": "devstral-2",
@@ -86,6 +88,7 @@
       "includes": null,
       "overage": {
         "unit": "token",
+        "mechanism": "automatic",
         "input_per_million": 0.40,
         "output_per_million": 2.00,
         "model": "devstral-2",
@@ -100,6 +103,7 @@
       "includes": null,
       "overage": {
         "unit": "token",
+        "mechanism": "automatic",
         "input_per_million": 0.10,
         "output_per_million": 0.30,
         "model": "devstral-small-2",
