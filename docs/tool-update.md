@@ -6,6 +6,7 @@ Deep structural review for a single tool. The workflow prompt provides today's d
 
 - **Read:** `CLAUDE.md`, `data/tools/{slug}.json`, this file
 - **Edit:** only `data/tools/{slug}.json`
+- **Do not edit** `capabilities` fields. Capability changes require manual verification and are out of scope for automated review.
 - Do not edit any other files. Do not commit or push. The workflow handles changelog, assembly, generation, and git.
 
 ## Procedure
@@ -14,9 +15,11 @@ Deep structural review for a single tool. The workflow prompt provides today's d
 
 Fetch `vendor.pricing_url` from the tool file. If the page is JS-rendered or blocked, use the rendering proxy (`https://r.jina.ai/{url}`) or developer docs. If the tool has a `verification_override`, follow those fetch instructions.
 
+**Source rule:** All plan and pricing data must be verifiable from `vendor.pricing_url` (or the pages specified in `verification_override`). Do not use search results, third-party comparison sites, or unrelated vendor pages as data sources. If you find relevant information elsewhere, add it as a note — do not change field values based on it.
+
 ### 2. Compare structure
 
-List every purchasable plan tier on the vendor page. Count them. Compare against the plans in `data/tools/{slug}.json` — count those too. If the counts differ, identify which plans are missing or extra. Note any differences — missing plans, removed plans, renamed plans, changed categories.
+List every plan tier on the vendor page, including free tiers and contact-sales tiers. Count them. Compare against the plans in `data/tools/{slug}.json` — count those too. If the counts differ, identify which plans are missing or extra. Note any differences — missing plans, removed plans, renamed plans, changed categories.
 
 ### 3. Review checklist
 
