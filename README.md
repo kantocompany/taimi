@@ -79,27 +79,40 @@ docs/
 
 ## Updating data
 
-Two automated workflows keep data current:
+Three automated workflows keep data current:
 
 - **Daily:** Price verification via matrix of Claude Code agents (one per tool)
-- **Weekly:** Market scan, health checks, editorial review via `docs/market-update.md`
+- **Weekly (Wed):** Structural review via matrix of Claude Code agents (one per tool)
+- **Weekly (Sun):** Market scan, health checks, editorial review via `docs/market-update.md`
 
 Manual updates: edit files in `data/tools/`, update `public/v1/changelog.json`, then run `./scripts/assemble.sh && ./scripts/generate-index.sh`.
 
 ### Local agent runs
 
-Simulate the CI price-update matrix locally:
+When running all three update types in one session, order matters — each builds on the previous:
 
 ```bash
-./scripts/local-price-update.sh              # all tools, sequential
-./scripts/local-price-update.sh cursor aider  # specific tools only
-./scripts/local-price-update.sh -j4           # all tools, 4 parallel
+# 1. Market update — changes the tool set (add/remove/archive)
+./scripts/local-market-update.sh
+# review → commit
+
+# 2. Tool update — fixes structure (plans, categories, notes, overrides)
+./scripts/local-tool-update.sh
+# review → commit
+
+# 3. Price update — verifies amounts against correct structure
+./scripts/local-price-update.sh
+# review → commit
 ```
 
-Handles agent runs, changelog fragment merge, assembly, generation, and validation. Logs per tool in `logs/`.
+One commit per update type preserves the audit trail. Each script handles changelog generation, assembly, index generation, and validation internally. Logs per tool in `logs/`.
+
+Individual runs:
 
 ```bash
-./scripts/local-market-update.sh              # weekly market scan + editorial review
+./scripts/local-price-update.sh cursor aider  # specific tools only
+./scripts/local-price-update.sh -j4           # all tools, 4 parallel
+./scripts/local-tool-update.sh cursor         # single tool structural review
 ```
 
 ## Hosting
