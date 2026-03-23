@@ -36,18 +36,6 @@
         "overage": null
       },
       {
-        "id": "windsurf-light",
-        "name": "Light",
-        "category": "individual",
-        "base_price": null,
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "UNVERIFIED_PRICE: pricing page shows 'Unlimited' in the price position with no dollar amount; positioned between Free ($0) and Pro ($20); appears to offer unlimited usage allowance with no extra usage billing; effective March 19, 2026 pricing update"
-        },
-        "overage": null
-      },
-      {
         "id": "windsurf-pro",
         "name": "Pro",
         "category": "individual",
