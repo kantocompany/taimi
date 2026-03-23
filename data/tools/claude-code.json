@@ -31,7 +31,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Sonnet-powered, rate-limited; Annual billing: $17/mo"
+        "notes": "Rate-limited; Annual billing: $17/mo"
       },
       "overage": null
     },
@@ -48,7 +48,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Opus access"
+        "notes": "5x usage vs Pro; early access to new features"
       },
       "overage": null
     },
@@ -65,7 +65,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Full Opus 4.6"
+        "notes": "20x usage vs Pro; priority access during high traffic"
       },
       "overage": null
     },
@@ -99,20 +99,37 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Premium seat, Claude Code access, early features; Annual billing: $100/mo"
+        "notes": "Higher usage than Standard; Annual billing: $100/mo"
       },
       "overage": null
     },
     {
-      "id": "claude-code-enterprise",
-      "name": "Enterprise",
+      "id": "claude-code-enterprise-selfserve",
+      "name": "Enterprise Self-Serve",
+      "category": "enterprise",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 20.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, connectors; API usage billed separately; billed annually"
+      },
+      "overage": null
+    },
+    {
+      "id": "claude-code-enterprise-sales",
+      "name": "Enterprise Sales-Assisted",
       "category": "enterprise",
       "platform_plan": true,
       "base_price": null,
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "All Teams features plus RBAC, SCIM, audit logs, compliance API, custom data retention, HIPAA-ready option, IP allowlisting; API usage billed at standard rates; contact sales"
+        "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support; contact sales"
       },
       "overage": null
     },

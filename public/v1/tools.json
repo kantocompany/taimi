@@ -127,7 +127,7 @@
             "unit": "request",
             "mechanism": "automatic",
             "price_per_unit": null,
-            "notes": "$15/24K credits top-up"
+            "notes": "Auto top-up $15/24K credits"
           }
         },
         {
@@ -138,7 +138,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom credits, SSO, SCIM, SIEM, data residency"
+            "notes": "Custom credits, SSO, OIDC, SCIM, CMEK, ISO 42001"
           },
           "overage": null
         }
@@ -191,7 +191,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Sonnet-powered, rate-limited; Annual billing: $17/mo"
+            "notes": "Rate-limited; Annual billing: $17/mo"
           },
           "overage": null
         },
@@ -208,7 +208,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Opus access"
+            "notes": "5x usage vs Pro; early access to new features"
           },
           "overage": null
         },
@@ -225,7 +225,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Full Opus 4.6"
+            "notes": "20x usage vs Pro; priority access during high traffic"
           },
           "overage": null
         },
@@ -259,20 +259,37 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Premium seat, Claude Code access, early features; Annual billing: $100/mo"
+            "notes": "Higher usage than Standard; Annual billing: $100/mo"
           },
           "overage": null
         },
         {
-          "id": "claude-code-enterprise",
-          "name": "Enterprise",
+          "id": "claude-code-enterprise-selfserve",
+          "name": "Enterprise Self-Serve",
+          "category": "enterprise",
+          "platform_plan": true,
+          "base_price": {
+            "amount": 20.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, connectors; API usage billed separately; billed annually"
+          },
+          "overage": null
+        },
+        {
+          "id": "claude-code-enterprise-sales",
+          "name": "Enterprise Sales-Assisted",
           "category": "enterprise",
           "platform_plan": true,
           "base_price": null,
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features plus RBAC, SCIM, audit logs, compliance API, custom data retention, HIPAA-ready option, IP allowlisting; API usage billed at standard rates; contact sales"
+            "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support; contact sales"
           },
           "overage": null
         },
@@ -380,7 +397,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31. First 10 seats free permanently after promo."
+            "notes": "JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31"
           },
           "overage": {
             "unit": "token",
@@ -681,7 +698,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
+            "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
           },
           "overage": null
         },
@@ -697,7 +714,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,500 daily model requests, multi-repo indexing (up to 25 repos). 12-month commitment: $19.00/user/month."
+            "notes": "1,500 CLI/Agent mode requests/day, multi-repo indexing (up to 25 repos). 12-month commitment: $19.00/user/month."
           },
           "overage": null
         },
@@ -713,7 +730,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 daily model requests, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 12-month commitment: $45.00/user/month."
+            "notes": "2,000 CLI/Agent mode requests/day, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 12-month commitment: $45.00/user/month."
           },
           "overage": null
         }
@@ -771,7 +788,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "300 premium requests"
+            "notes": "300 premium requests; Annual billing: $8.33/mo"
           },
           "overage": {
             "unit": "request",
@@ -792,7 +809,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "1,500 premium requests"
+            "notes": "1,500 premium requests; Annual billing: $32.50/mo"
           },
           "overage": {
             "unit": "request",
@@ -836,7 +853,12 @@
             "tokens_included": null,
             "notes": "1K premium req/user, IP indemnity, SSO"
           },
-          "overage": null
+          "overage": {
+            "unit": "request",
+            "mechanism": "add_on",
+            "price_per_unit": 0.04,
+            "notes": "$0.04/req beyond limit"
+          }
         }
       ],
       "capabilities": {
@@ -1061,7 +1083,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Full model access"
+            "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus"
           },
           "overage": null
         },
@@ -1107,7 +1129,7 @@
             "input_per_million": 1.75,
             "output_per_million": 14.00,
             "model": "gpt-5.3-codex",
-            "notes": "API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-19)"
+            "notes": "API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-23)"
           }
         }
       ],

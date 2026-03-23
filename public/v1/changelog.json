@@ -1,10 +1,64 @@
 {
   "meta": {
-    "version": "2026-03-21",
-    "updated_at": "2026-03-21T20:27:54Z",
+    "version": "2026-03-23",
+    "updated_at": "2026-03-23T12:13:30Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-23",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "plans.2.overage.notes: $15/24K credits top-up → Auto top-up $15/24K credits; plans.3.includes.notes: Custom credits, SSO, SCIM, SIEM, data residency → Custom credits, SSO, OIDC, SCIM, CMEK, ISO 42001",
+      "details": {
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-23",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.0.includes.notes: Sonnet-powered, rate-limited; Annual billing: $17/mo → Rate-limited; Annual billing: $17/mo; plans.1.includes.notes: Opus access → 5x usage vs Pro; early access to new features; plans.2.includes.notes: Full Opus 4.6 → 20x usage vs Pro; priority access during high traffic; plans.4.includes.notes: Premium seat, Claude Code access, early features; Annual billing: $100/mo → Higher usage than Standard; Annual billing: $100/mo; plans.5.id: claude-code-enterprise → claude-code-enterprise-selfserve; plans.5.name: Enterprise → Enterprise Self-Serve; plans.5.includes.notes: All Teams features plus RBAC, SCIM, audit logs, compliance API, custom data retention, HIPAA-ready option, IP allowlisting; API usage billed at standard rates; contact sales → SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, connectors; API usage billed separately; billed annually; plans.6.id: claude-code-api-sonnet → claude-code-enterprise-sales; plans.6.name: API (Sonnet 4.6) → Enterprise Sales-Assisted; plans.6.category: usage → enterprise; plans.7.id: claude-code-api-opus → claude-code-api-sonnet; plans.7.name: API (Opus 4.6) → API (Sonnet 4.6); plans.7.overage.input_per_million: 5.00 → 3.00; plans.7.overage.output_per_million: 25.00 → 15.00; plans.7.overage.model: claude-opus-4-6 → claude-sonnet-4-6; plans.7.overage.notes: Available on Max/Teams Premium plans → Default model for Pro/Teams Standard; plans.8.id: claude-code-api-haiku → claude-code-api-opus; plans.8.name: API (Haiku 4.5) → API (Opus 4.6); plans.8.overage.input_per_million: 1.00 → 5.00; plans.8.overage.output_per_million: 5.00 → 25.00; plans.8.overage.model: claude-haiku-4-5 → claude-opus-4-6; plans.8.overage.notes: Lightweight model; available via API → Available on Max/Teams Premium plans; plans.5.base_price.amount: added 20.00; plans.5.base_price.period: added monthly; plans.5.base_price.per: added user; plans.6.platform_plan: added true; plans.6.includes.notes: added All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support; contact sales; plans.9.id: added claude-code-api-haiku; plans.9.name: added API (Haiku 4.5); plans.9.category: added usage; plans.9.overage.unit: added token; plans.9.overage.mechanism: added automatic; plans.9.overage.input_per_million: added 1.00; plans.9.overage.output_per_million: added 5.00; plans.9.overage.model: added claude-haiku-4-5; plans.9.overage.notes: added Lightweight model; available via API; plans.6.overage.unit: removed; plans.6.overage.mechanism: removed; plans.6.overage.input_per_million: removed; plans.6.overage.output_per_million: removed; plans.6.overage.model: removed; plans.6.overage.notes: removed",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-23",
+      "tool": "cline",
+      "type": "pricing_change",
+      "description": "plans.1.includes.notes: JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31. First 10 seats free permanently after promo. → JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31",
+      "details": {
+        "source": "https://cline.bot/pricing"
+      }
+    },
+    {
+      "date": "2026-03-23",
+      "tool": "gemini-code-assist",
+      "type": "pricing_change",
+      "description": "plans.0.includes.notes: Free for individuals. 6,000 code completions and 240 chat requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits. → Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits.; plans.1.includes.notes: 1,500 daily model requests, multi-repo indexing (up to 25 repos). 12-month commitment: $19.00/user/month. → 1,500 CLI/Agent mode requests/day, multi-repo indexing (up to 25 repos). 12-month commitment: $19.00/user/month.; plans.2.includes.notes: 2,000 daily model requests, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 12-month commitment: $45.00/user/month. → 2,000 CLI/Agent mode requests/day, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 12-month commitment: $45.00/user/month.",
+      "details": {
+        "source": "https://cloud.google.com/products/gemini/pricing"
+      }
+    },
+    {
+      "date": "2026-03-23",
+      "tool": "github-copilot",
+      "type": "pricing_change",
+      "description": "plans.1.includes.notes: 300 premium requests → 300 premium requests; Annual billing: $8.33/mo; plans.2.includes.notes: 1,500 premium requests → 1,500 premium requests; Annual billing: $32.50/mo; plans.4.overage.unit: added request; plans.4.overage.mechanism: added add_on; plans.4.overage.price_per_unit: added 0.04; plans.4.overage.notes: added $0.04/req beyond limit",
+      "details": {
+        "source": "https://github.com/features/copilot/plans"
+      }
+    },
+    {
+      "date": "2026-03-23",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.1.includes.notes: Full model access → GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; plans.4.overage.notes: API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-19) → API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-23)",
+      "details": {
+        "source": "https://developers.openai.com/codex/pricing"
+      }
+    },
     {
       "date": "2026-03-21",
       "tool": "windsurf",

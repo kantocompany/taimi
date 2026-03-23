@@ -79,7 +79,7 @@
           "unit": "request",
           "mechanism": "automatic",
           "price_per_unit": null,
-          "notes": "$15/24K credits top-up"
+          "notes": "Auto top-up $15/24K credits"
         }
       },
       {
@@ -90,7 +90,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom credits, SSO, SCIM, SIEM, data residency"
+          "notes": "Custom credits, SSO, OIDC, SCIM, CMEK, ISO 42001"
         },
         "overage": null
       }
