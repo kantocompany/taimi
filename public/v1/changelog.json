@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-03-23",
-    "updated_at": "2026-03-23T13:33:02Z",
+    "version": "2026-03-24",
+    "updated_at": "2026-03-24T13:46:09Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-24",
+      "tool": "cline",
+      "type": "pricing_change",
+      "description": "plans.1.includes.notes: JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31 → JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31; first 10 seats free after promo",
+      "details": {
+        "source": "https://cline.bot/pricing"
+      }
+    },
+    {
+      "date": "2026-03-24",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.4.overage.notes: API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-23) → API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens; priority tier at $3.50 input / $28.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-24)",
+      "details": {
+        "source": "https://developers.openai.com/codex/pricing"
+      }
+    },
     {
       "date": "2026-03-23",
       "tool": "windsurf",

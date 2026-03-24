@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-23",
-    "updated_at": "2026-03-23T00:00:00Z",
+    "version": "2026-03-24",
+    "updated_at": "2026-03-24T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -397,7 +397,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31"
+            "notes": "JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31; first 10 seats free after promo"
           },
           "overage": {
             "unit": "token",
@@ -1129,7 +1129,7 @@
             "input_per_million": 1.75,
             "output_per_million": 14.00,
             "model": "gpt-5.3-codex",
-            "notes": "API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-23)"
+            "notes": "API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens; priority tier at $3.50 input / $28.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-24)"
           }
         }
       ],
