@@ -111,8 +111,12 @@ generate_rows() {
       if cat == "free" then
         "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><div class=\"tier-name\">\($plan.name)\($badge)</div>\(if $notes != "" then "<div class=\"tier-notes\">\($notes)</div>" else "" end)</a>"
       elif cat == "enterprise" then
-        (if $plan.includes.notes then $plan.includes.notes else $plan.name end) as $ent_text |
-        "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><span class=\"tier-name\">\($ent_text)</span></a>"
+        if $bp != null and $bp.amount != null then
+          "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><div class=\"tier-row\"><span class=\"tier-name\">\($plan.name)\($badge)</span><span class=\"tier-price\">\($price)</span></div>\(if $notes != "" then "<div class=\"tier-notes\">\($notes)</div>" else "" end)</a>"
+        else
+          (if $plan.includes.notes then $plan.includes.notes else $plan.name end) as $ent_text |
+          "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><span class=\"tier-name\">\($ent_text)</span></a>"
+        end
       elif cat == "usage" then
         (if $plan.overage then
           ($plan.overage.notes // "") as $ovnotes |
