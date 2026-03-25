@@ -21,12 +21,17 @@ DESCRIPTION=$(jq -rn \
   --slurpfile old "$OLD" \
   --slurpfile new "$NEW" \
   '
+  # Strip editorial fields that produce changelog noise but have no value
+  # to API consumers (notes rewording, verification override changes)
+  def strip_editorial:
+    walk(if type == "object" then del(.notes, .verification_override) else . end);
+
   def flatten_leaves:
     [paths(scalars) as $p | {key: ($p | map(tostring) | join(".")), value: getpath($p)}]
     | from_entries;
 
-  ($old[0] | flatten_leaves) as $o |
-  ($new[0] | flatten_leaves) as $n |
+  ($old[0] | strip_editorial | flatten_leaves) as $o |
+  ($new[0] | strip_editorial | flatten_leaves) as $n |
 
   ([$o | to_entries[] | select($n[.key] != null and $n[.key] != .value) |
     "\(.key): \(.value) → \($n[.key])"] ) +
@@ -36,6 +41,11 @@ DESCRIPTION=$(jq -rn \
     "\(.key): removed"] )
   | join("; ")
   ')
+
+# If only editorial fields changed, skip the entry
+if [[ -z "$DESCRIPTION" ]]; then
+  exit 0
+fi
 
 jq -n \
   --arg date "$DATE" \
