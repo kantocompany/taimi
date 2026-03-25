@@ -1,0 +1,29 @@
+# Taimi — The AI Market Intelligence
+
+Pricing comparison data for agentic AI coding tools. Curated by Kanto Company.
+
+## API
+
+Static JSON, no auth, CORS enabled, CC BY 4.0.
+
+- All tools: https://taimi.market/v1/tools.json
+- Single tool: https://taimi.market/v1/tools/<tool>.json
+- Price change log: https://taimi.market/v1/changelog.json
+
+## Schema essentials
+
+- Currency: USD, all prices monthly (no-commitment)
+- Plan categories: free, individual, team, enterprise, usage
+- Overage units: token (per 1M), request (per call), acu (agent compute minutes)
+- base_price.per: user (per seat), team/flat (flat monthly)
+- platform_plan: true means the price covers a broader platform, not just the coding tool
+
+## Caveats
+
+- Usage-based units are NOT comparable across vendors. Tokens, requests, and ACUs measure fundamentally different things.
+- Enterprise plans with null base_price are "contact sales" — no public price.
+- Annual billing discounts are noted in plan notes, not in base_price.amount.
+
+## Attribution
+
+Data licensed CC BY 4.0. Attribute to Kanto Company when using.
