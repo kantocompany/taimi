@@ -36,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Extended Agent limits, frontier models, MCPs, cloud agents"
+        "notes": "Extended Agent limits, frontier models, MCPs, skills, hooks, cloud agents"
       },
       "overage": null
     },
@@ -68,7 +68,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "20× usage on all models"
+        "notes": "20× usage on all models; priority access to new features"
       },
       "overage": null
     },

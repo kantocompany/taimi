@@ -27,7 +27,7 @@
     {
       "id": "gemini-code-assist-standard",
       "name": "Standard",
-      "category": "individual",
+      "category": "team",
       "base_price": {
         "amount": 22.80,
         "period": "monthly",
@@ -36,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "1,500 CLI/Agent mode requests/day, multi-repo indexing (up to 25 repos). 12-month commitment: $19.00/user/month."
+        "notes": "1,500 CLI/Agent mode requests/day. 30-day free trial (up to 50 users). 12-month commitment: $19.00/user/month."
       },
       "overage": null
     },
@@ -52,7 +52,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "2,000 CLI/Agent mode requests/day, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 12-month commitment: $45.00/user/month."
+        "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
       },
       "overage": null
     }

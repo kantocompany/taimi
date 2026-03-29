@@ -58,7 +58,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, priority support"
+        "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, premium support"
       },
       "overage": {
         "unit": "request",

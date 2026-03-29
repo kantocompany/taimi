@@ -1,10 +1,46 @@
 {
   "meta": {
-    "version": "2026-03-24",
-    "updated_at": "2026-03-24T13:46:09Z",
+    "version": "2026-03-29",
+    "updated_at": "2026-03-29T18:19:50Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-29",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "vendor.name: Augment → Augment Code",
+      "details": {
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-03-29",
+      "tool": "cline",
+      "type": "pricing_change",
+      "description": "vendor.name: Open Source Community → Cline Bot Inc.; plans.1.overage.mechanism: byok → unverified; vendor.hq_country: added US",
+      "details": {
+        "source": "https://cline.bot/pricing"
+      }
+    },
+    {
+      "date": "2026-03-29",
+      "tool": "gemini-code-assist",
+      "type": "pricing_change",
+      "description": "plans.1.category: individual → team",
+      "details": {
+        "source": "https://cloud.google.com/products/gemini/pricing"
+      }
+    },
+    {
+      "date": "2026-03-29",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.3.name: Enterprise → Enterprise & Edu",
+      "details": {
+        "source": "https://developers.openai.com/codex/pricing"
+      }
+    },
     {
       "date": "2026-03-24",
       "tool": "cline",

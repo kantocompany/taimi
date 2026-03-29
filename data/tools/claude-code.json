@@ -48,7 +48,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "5x usage vs Pro; early access to new features"
+        "notes": "5x usage vs Pro; early access to advanced features"
       },
       "overage": null
     },
@@ -65,7 +65,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "20x usage vs Pro; priority access during high traffic"
+        "notes": "20x usage vs Pro; priority access during peak traffic"
       },
       "overage": null
     },
@@ -145,7 +145,8 @@
         "input_per_million": 3.00,
         "output_per_million": 15.00,
         "model": "claude-sonnet-4-6",
-        "notes": "Default model for Pro/Teams Standard"
+        "notes": "Default model for Pro/Teams Standard",
+        "price_per_unit": null
       }
     },
     {
@@ -160,7 +161,8 @@
         "input_per_million": 5.00,
         "output_per_million": 25.00,
         "model": "claude-opus-4-6",
-        "notes": "Available on Max/Teams Premium plans"
+        "notes": "Available on Max/Teams Premium plans",
+        "price_per_unit": null
       }
     },
     {
@@ -175,7 +177,8 @@
         "input_per_million": 1.00,
         "output_per_million": 5.00,
         "model": "claude-haiku-4-5",
-        "notes": "Lightweight model; available via API"
+        "notes": "Lightweight model; available via API",
+        "price_per_unit": null
       }
     }
   ],

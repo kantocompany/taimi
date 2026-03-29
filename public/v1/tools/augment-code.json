@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-24",
-    "updated_at": "2026-03-24T00:00:00Z",
+    "version": "2026-03-29",
+    "updated_at": "2026-03-29T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -13,7 +13,7 @@
     "slug": "augment-code",
     "name": "Augment Code",
     "vendor": {
-      "name": "Augment",
+      "name": "Augment Code",
       "hq_country": "US",
       "eu_based": false,
       "pricing_url": "https://www.augmentcode.com/pricing"
@@ -37,7 +37,9 @@
           "unit": "request",
           "mechanism": "automatic",
           "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits"
+          "notes": "Auto top-up $15/24K credits",
+          "input_per_million": null,
+          "output_per_million": null
         }
       },
       {
@@ -52,13 +54,15 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "130K credits, up to 20 users, analytics"
+          "notes": "130K credits, up to 20 users, analytics, CMEK, ISO 42001, SSO"
         },
         "overage": {
           "unit": "request",
           "mechanism": "automatic",
           "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits"
+          "notes": "Auto top-up $15/24K credits",
+          "input_per_million": null,
+          "output_per_million": null
         }
       },
       {
@@ -79,7 +83,9 @@
           "unit": "request",
           "mechanism": "automatic",
           "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits"
+          "notes": "Auto top-up $15/24K credits",
+          "input_per_million": null,
+          "output_per_million": null
         }
       },
       {
@@ -90,7 +96,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom credits, SSO, OIDC, SCIM, CMEK, ISO 42001"
+          "notes": "Custom credits, unlimited users, OIDC, SCIM, volume discounts, dedicated support"
         },
         "overage": null
       }
