@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Run price verification for all tools locally.
-# Simulates the CI matrix strategy with optional parallelism.
+# Four-phase pipeline: research → diff → validate → apply.
 #
 # Usage:
 #   ./scripts/local-price-update.sh                          # all tools, sequential
@@ -14,6 +14,7 @@ DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
 MODEL="claude-sonnet-4-6"
 MAX_TURNS=18
+VALIDATE_MAX_TURNS=6
 SLUGS=()
 
 while [[ $# -gt 0 ]]; do
@@ -32,52 +33,179 @@ if [[ ${#SLUGS[@]} -eq 0 ]]; then
   done
 fi
 
-mkdir -p logs
+mkdir -p logs findings diff-results validated
 
 echo "Price update $DATE — ${#SLUGS[@]} tools, parallelism: $PARALLEL, model: $MODEL, max-turns: $MAX_TURNS"
+echo "Pipeline: research → diff → validate (conditional) → apply"
 echo ""
 
-run_agent() {
+run_pipeline() {
   local slug="$1"
   local logfile="logs/${slug}.log"
   echo "━━━ $slug ━━━"
+
+  # Phase 1: Research (no Edit permission)
+  echo "  [$slug] Phase 1: Research"
   if claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
     --model "$MODEL" --max-turns "$MAX_TURNS" \
-    --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
-    --disallowedTools "Agent" \
+    --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
+    --disallowedTools "Agent,Edit" \
     2>&1 | tee "$logfile"; then
-    echo ""
+    true
   else
-    echo "  $slug: FAILED (exit $?, see $logfile)"
+    echo "  $slug: research FAILED (exit $?, see $logfile)"
+    echo ""
+    return
   fi
-}
-export DATE MODEL MAX_TURNS
 
-run_agent_quiet() {
+  # Safety: restore data file if agent wrote to it despite instructions
+  git checkout -- "data/tools/${slug}.json" 2>/dev/null || true
+
+  # Phase 2: Deterministic diff
+  echo "  [$slug] Phase 2: Diff"
+  if [[ ! -f "findings/${slug}.json" ]]; then
+    echo "  $slug: no findings file — agent may have failed"
+    echo ""
+    return
+  fi
+
+  if ! jq empty "findings/${slug}.json" 2>/dev/null; then
+    echo "  $slug: findings file is not valid JSON"
+    echo ""
+    return
+  fi
+
+  local diff_result
+  diff_result=$(./scripts/diff-findings.sh "findings/${slug}.json" "data/tools/${slug}.json")
+  echo "$diff_result" > "diff-results/${slug}.json"
+  local has_changes
+  has_changes=$(echo "$diff_result" | jq -r '.has_changes')
+  local finding_status
+  finding_status=$(echo "$diff_result" | jq -r '.status // "unknown"')
+
+  if [[ "$has_changes" != "true" ]]; then
+    if [[ "$finding_status" == "unverified" ]]; then
+      echo "  ⚠️ $slug: UNVERIFIED — extraction failed, no comparison"
+    else
+      echo "  ✅ $slug: verified — no price changes"
+    fi
+    echo ""
+    return
+  fi
+
+  echo "  $slug: changes detected:"
+  echo "$diff_result" | jq -r '.changes[] | "    \(.plan_id) \(.field): \(.old) → \(.new)"'
+
+  # Phase 3: Validate (clean slate, narrow scope)
+  echo "  [$slug] Phase 3: Validate"
+  local validate_logfile="logs/${slug}-validate.log"
+  local source_url
+  source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
+  local changes_summary
+  changes_summary=$(echo "$diff_result" | jq -c '.changes')
+
+  if claude -p "$(cat <<PROMPT
+Price verification for $slug.
+
+A research agent reports these price changes:
+$changes_summary
+
+Source URL: $source_url
+
+Your task: independently verify each change.
+1. Fetch $source_url
+2. For each change, confirm the NEW value appears on the page
+3. Write your verdict to validated/${slug}.json with this schema:
+{
+  "slug": "$slug",
+  "changes": [
+    { "plan_id": "...", "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "text from page" }
+  ]
+}
+PROMPT
+)" \
+    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+    --allowedTools "Write,WebSearch,WebFetch" \
+    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+    2>&1 | tee "$validate_logfile"; then
+    true
+  else
+    echo "  $slug: validation FAILED (exit $?, see $validate_logfile)"
+    echo ""
+    return
+  fi
+
+  # Phase 4: Deterministic apply
+  echo "  [$slug] Phase 4: Apply"
+  if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
+    ./scripts/apply-findings.sh "validated/${slug}.json" "data/tools/${slug}.json"
+  else
+    echo "  $slug: no valid verdict file — skipping apply"
+  fi
+  echo ""
+}
+export DATE MODEL MAX_TURNS VALIDATE_MAX_TURNS
+
+run_pipeline_quiet() {
   local slug="$1"
   local logfile="logs/${slug}.log"
+  local validate_logfile="logs/${slug}-validate.log"
   echo "→ $slug: starting"
-  if claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
+
+  # Phase 1: Research
+  if ! claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
     --model "$MODEL" --max-turns "$MAX_TURNS" \
-    --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
-    --disallowedTools "Agent" \
+    --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
+    --disallowedTools "Agent,Edit" \
     > "$logfile" 2>&1; then
+    echo "  $slug: research FAILED (see $logfile)"; return
+  fi
+  git checkout -- "data/tools/${slug}.json" 2>/dev/null || true
+
+  # Phase 2: Diff
+  if [[ ! -f "findings/${slug}.json" ]] || ! jq empty "findings/${slug}.json" 2>/dev/null; then
+    echo "  $slug: no valid findings"; return
+  fi
+  local diff_result has_changes
+  diff_result=$(./scripts/diff-findings.sh "findings/${slug}.json" "data/tools/${slug}.json")
+  echo "$diff_result" > "diff-results/${slug}.json"
+  has_changes=$(echo "$diff_result" | jq -r '.has_changes')
+
+  if [[ "$has_changes" != "true" ]]; then
     local status
-    status=$(grep -oE '(✅|✏️|⚠️) '"$slug"':.*' "$logfile" | tail -1) || true
-    echo "  $slug: ${status:-done}"
+    status=$(echo "$diff_result" | jq -r '.status // "verified"')
+    echo "  $slug: $status — no changes"; return
+  fi
+
+  # Phase 3: Validate
+  local source_url changes_summary
+  source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
+  changes_summary=$(echo "$diff_result" | jq -c '.changes')
+  if ! claude -p "Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change, write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}" \
+    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+    --allowedTools "Write,WebSearch,WebFetch" \
+    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+    > "$validate_logfile" 2>&1; then
+    echo "  $slug: validation FAILED (see $validate_logfile)"; return
+  fi
+
+  # Phase 4: Apply
+  if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
+    ./scripts/apply-findings.sh "validated/${slug}.json" "data/tools/${slug}.json"
+    echo "  $slug: changes applied"
   else
-    echo "  $slug: FAILED (exit $?, see $logfile)"
+    echo "  $slug: no valid verdict — skipped"
   fi
 }
-export -f run_agent_quiet
+export -f run_pipeline_quiet
 
 if [[ "$PARALLEL" -eq 1 ]]; then
   for slug in "${SLUGS[@]}"; do
-    run_agent "$slug"
+    run_pipeline "$slug"
   done
 else
   echo "Parallel mode — output in logs/"
-  printf '%s\n' "${SLUGS[@]}" | xargs -P "$PARALLEL" -I{} bash -c 'run_agent_quiet "$@"' _ {}
+  printf '%s\n' "${SLUGS[@]}" | xargs -P "$PARALLEL" -I{} bash -c 'run_pipeline_quiet "$@"' _ {}
 fi
 
 echo ""
@@ -118,4 +246,4 @@ ASSEMBLE_DATE="$DATE" ./scripts/assemble.sh
 ./scripts/generate-index.sh
 ./scripts/validate.sh
 echo ""
-echo "Done. Logs in logs/"
+echo "Done. Logs in logs/, findings in findings/, verdicts in validated/"

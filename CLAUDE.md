@@ -97,7 +97,7 @@ Maximum **12 tools** in `data/tools/`. When adding a new tool at cap, archive th
 
 ## Updating data
 
-- **Prices:** Follow `docs/price-update.md` for the verification process. Never skip verification.
+- **Prices:** Follow `docs/price-update.md` for the verification process. Never skip verification. Price-update uses a four-phase pipeline: research agent (no edit permission) → deterministic diff → conditional validation agent (clean slate) → deterministic apply. No AI agent edits `data/tools/` directly.
 - **Tool structure:** Follow `docs/tool-update.md` for weekly structural review (plans, categories, notes).
 - **Tools (add/remove/health checks):** Follow `docs/market-update.md` for market scan and editorial review.
 - **Observations:** Edit `data/observations.html` directly.

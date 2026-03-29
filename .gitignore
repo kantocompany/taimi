@@ -3,3 +3,8 @@ docs/*-changes.md
 
 # Local agent run artifacts
 logs/
+
+# Price update pipeline working directories
+findings/
+diff-results/
+validated/
