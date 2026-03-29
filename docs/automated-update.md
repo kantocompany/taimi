@@ -26,10 +26,14 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 4. `validate.yml` runs on the PR as a status check
 5. Human reviews and merges
 
-### Tool update (weekly) — matrix architecture
+### Tool update (weekly) — four-phase matrix architecture
 
 1. **Setup job**: cron fires at 03:00 UTC Wednesday (or manual dispatch). Checks for open PR, discovers tool slugs
-2. **Review jobs** (parallel, one per tool): each runs Claude Code agent scoped to one vendor. Fetches pricing page and compares full plan structure against `data/tools/{slug}.json`
+2. **Review jobs** (parallel, one per tool): four-phase pipeline per tool:
+   - **Phase 1 — Research**: Claude Code agent fetches vendor page and writes complete proposed tool JSON to `findings/{slug}.json`. Agent has no Edit permission — cannot modify data files.
+   - **Phase 2 — Diff**: deterministic jq script (`diff-tool-findings.sh`) compares proposed vs current data. Changes categorized as structural (vendor metadata, plan names/categories, overage mechanisms) or editorial (notes). Price fields and capabilities are excluded from comparison.
+   - **Phase 3 — Validate** (conditional): runs only when Phase 2 detects structural changes. A clean-slate agent independently verifies structural claims against the vendor page. Skipped for notes-only changes.
+   - **Phase 4 — Apply**: deterministic jq script (`apply-tool-findings.sh`) merges confirmed changes. Price fields always preserved from original (price-update's scope). Plans never auto-removed.
 3. **Finalize job**: downloads artifacts, generates changelog, builds, validates, commits, opens PR
 4. `validate.yml` runs on the PR as a status check
 5. Human reviews and merges
@@ -70,7 +74,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 **Allowed tools:** Write, WebSearch, WebFetch
 **Disallowed tools:** Agent, Edit, Read, Bash, Glob, Grep (clean slate — no repo access)
 
-### Tool update (per matrix job)
+### Tool update — research phase (per matrix job)
 
 | Setting | Value |
 |---------|-------|
@@ -80,8 +84,19 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 | Timeout | 15 minutes |
 | Parallelism | up to 12 (one per tool) |
 
-**Allowed tools:** Read, Edit, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq)
-**Disallowed tools:** Agent (prevents subagent spawning that drains budget)
+**Allowed tools:** Read, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq)
+**Disallowed tools:** Agent, Edit (agent proposes changes, cannot edit data files)
+
+### Tool update — validation phase (conditional, per matrix job)
+
+| Setting | Value |
+|---------|-------|
+| Model | `claude-sonnet-4-6` |
+| Max turns | 8 |
+| Budget cap | $0.15/job |
+
+**Allowed tools:** Write, WebSearch, WebFetch
+**Disallowed tools:** Agent, Edit, Read, Bash, Glob, Grep (clean slate — no repo access)
 
 ### Market update
 
@@ -146,17 +161,26 @@ Per matrix job — Phase 3 validation (conditional, Sonnet $3/$15 per M tokens):
 
 ### Tool update (weekly)
 
-Per matrix job (Sonnet $3/$15 per M tokens):
+Per matrix job — Phase 1 research (Sonnet $3/$15 per M tokens):
 
 | Phase | Input tokens | Output tokens |
 |-------|-------------|--------------|
-| Context loading (CLAUDE.md + runbook + tool file) | ~5K | ~1K |
+| Context loading (CLAUDE.md + runbook + tool file + schema) | ~6K | ~1K |
 | Vendor page fetch + comparison | ~15K | ~5K |
-| **Total per tool** | **~20K** | **~6K** |
+| **Total per tool (research)** | **~21K** | **~6K** |
 
-- **Per job: ~$0.15-0.30** (higher when structural changes found)
-- **Per run (12 tools): ~$3.60**
-- **Monthly (weekly): ~$15**
+Per matrix job — Phase 3 validation (conditional, Sonnet $3/$15 per M tokens):
+
+| Phase | Input tokens | Output tokens |
+|-------|-------------|--------------|
+| Prompt + changes context | ~2K | ~1K |
+| Vendor page fetch | ~5K | ~1K |
+| **Total per tool (validation)** | **~7K** | **~2K** |
+
+- **Research per job: ~$0.15-0.30** (same as before)
+- **Validation per job: ~$0.05** (runs only when structural changes detected)
+- **Per run (12 tools): ~$3.60** (validation adds ~$0-0.50 when structural changes found)
+- **Monthly (weekly): ~$16**
 
 ### Market update (weekly)
 

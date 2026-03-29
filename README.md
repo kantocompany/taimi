@@ -56,12 +56,15 @@ public/                        # Generated output — do not edit directly
         └── {slug}.json        # Per-tool API files (generated)
 schemas/
 ├── price-findings.json        # Research agent output schema (price-update)
+├── tool-findings.json         # Research agent output schema (tool-update)
 └── verdict.json               # Validation agent output schema (shared)
 scripts/
 ├── assemble.sh                # data/tools/*.json → public/v1/
 ├── generate-index.sh          # tools.json → index.html
 ├── diff-findings.sh           # Deterministic price diff (findings vs data)
-├── apply-findings.sh          # Deterministic apply of validated changes
+├── diff-tool-findings.sh      # Deterministic structural diff (findings vs data)
+├── apply-findings.sh          # Deterministic apply of validated price changes
+├── apply-tool-findings.sh     # Deterministic apply of validated structural changes
 ├── generate-changelog-entry.sh # Diff-based changelog entry generator
 ├── local-price-update.sh      # Run price verification locally
 ├── local-tool-update.sh       # Run structural review locally
@@ -91,7 +94,7 @@ docs/
 Three automated workflows keep data current:
 
 - **Daily:** Price verification via matrix of Claude Code agents (one per tool). Four-phase pipeline: research (no edit permission) → deterministic diff → conditional validation (clean-slate agent) → deterministic apply. No AI agent edits data files directly.
-- **Weekly (Wed):** Structural review via matrix of Claude Code agents (one per tool)
+- **Weekly (Wed):** Structural review via matrix of Claude Code agents (one per tool). Four-phase pipeline: research (no edit permission) → deterministic diff → conditional validation (structural changes only) → deterministic apply. Price fields preserved from original (price-update's scope).
 - **Weekly (Sun):** Market scan, health checks, editorial review via `docs/market-update.md`
 
 Manual updates: edit files in `data/tools/`, update `public/v1/changelog.json`, then run `./scripts/assemble.sh && ./scripts/generate-index.sh`.

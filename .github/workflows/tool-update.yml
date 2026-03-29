@@ -45,7 +45,7 @@ jobs:
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "::notice::Tools to review: $matrix"
 
-  # ── Job 2: Review (one per tool, parallel) ──────────────────────
+  # ── Job 2: Review (four-phase pipeline per tool, parallel) ─────
   review:
     needs: setup
     if: ${{ !needs.setup.outputs.skip }}
@@ -55,23 +55,119 @@ jobs:
       matrix:
         tool: ${{ fromJson(needs.setup.outputs.matrix) }}
       fail-fast: false
+    env:
+      DATE: ${{ needs.setup.outputs.date }}
     steps:
       - uses: actions/checkout@v6
 
-      - name: Review ${{ matrix.tool }}
+      - name: Create working directories
+        run: mkdir -p findings diff-results validated
+
+      # ── Phase 1: Research (AI — no Edit permission) ──────────────
+      - name: Research ${{ matrix.tool }}
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           show_full_output: true
           prompt: |
-            Today is ${{ needs.setup.outputs.date }}. Tool: ${{ matrix.tool }}.
+            Today is ${{ env.DATE }}. Tool: ${{ matrix.tool }}.
             Read docs/tool-update.md and execute.
           claude_args: |
             --model claude-sonnet-4-6
             --max-turns 25
             --max-budget-usd 1.00
-            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
-            --disallowedTools "Agent"
+            --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
+            --disallowedTools "Agent,Edit"
+
+      # Safety: restore data file if agent wrote to it despite instructions
+      - name: Restore data file
+        run: git checkout -- data/tools/${{ matrix.tool }}.json 2>/dev/null || true
+
+      # ── Phase 2: Deterministic diff ──────────────────────────────
+      - name: Diff findings
+        id: diff
+        run: |
+          if [[ ! -f findings/${{ matrix.tool }}.json ]]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "has_structural=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::No findings file for ${{ matrix.tool }} — agent may have failed"
+            exit 0
+          fi
+          if ! jq empty findings/${{ matrix.tool }}.json 2>/dev/null; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "has_structural=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Invalid findings JSON for ${{ matrix.tool }}"
+            exit 0
+          fi
+          result=$(./scripts/diff-tool-findings.sh \
+            findings/${{ matrix.tool }}.json \
+            data/tools/${{ matrix.tool }}.json)
+          has_changes=$(echo "$result" | jq -r '.has_changes')
+          has_structural=$(echo "$result" | jq -r '.has_structural_changes')
+          echo "has_changes=$has_changes" >> "$GITHUB_OUTPUT"
+          echo "has_structural=$has_structural" >> "$GITHUB_OUTPUT"
+          echo "$result" > diff-results/${{ matrix.tool }}.json
+          if [[ "$has_changes" == "true" ]]; then
+            echo "changes=$(echo "$result" | jq -c '.changes')" >> "$GITHUB_OUTPUT"
+            echo "source_url=$(echo "$result" | jq -r '.source_url')" >> "$GITHUB_OUTPUT"
+            echo "::notice::${{ matrix.tool }}: changes detected (structural=$has_structural)"
+            echo "$result" | jq -r '.changes[] | "  \(.category) \(.field): \(.old) → \(.new)"'
+            echo "$result" | jq -r '.warnings[]? | "  ⚠️ \(.type): \(.plan_id) — \(.message)"'
+          else
+            status=$(echo "$result" | jq -r '.status // "reviewed"')
+            echo "::notice::${{ matrix.tool }}: $status — no changes"
+          fi
+
+      # ── Phase 3: Conditional validation (clean slate) ────────────
+      - name: Validate ${{ matrix.tool }}
+        if: steps.diff.outputs.has_structural == 'true'
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          show_full_output: true
+          prompt: |
+            Structural review verification for ${{ matrix.tool }}.
+
+            A research agent proposes these structural changes:
+            ${{ steps.diff.outputs.changes }}
+
+            Source URL: ${{ steps.diff.outputs.source_url }}
+
+            Your task: independently verify each STRUCTURAL change (category "structural").
+            1. Fetch the source URL above
+            2. For each structural change, confirm the NEW value is supported by the page
+            3. Write your verdict to validated/${{ matrix.tool }}.json with this schema:
+            {
+              "slug": "${{ matrix.tool }}",
+              "changes": [
+                { "field": "...", "old": ..., "new": ..., "confirmed": true, "evidence": "quoted text from page" }
+              ]
+            }
+            If you cannot fetch the page or verify a claim, set confirmed to false.
+            Skip editorial changes (notes) — those do not need verification.
+          claude_args: |
+            --model claude-sonnet-4-6
+            --max-turns 8
+            --max-budget-usd 0.15
+            --allowedTools "Write,WebSearch,WebFetch"
+            --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep"
+
+      # ── Phase 4: Deterministic apply ─────────────────────────────
+      - name: Apply changes
+        if: steps.diff.outputs.has_changes == 'true'
+        run: |
+          validated_arg=""
+          if [[ -f validated/${{ matrix.tool }}.json ]] && jq empty validated/${{ matrix.tool }}.json 2>/dev/null; then
+            validated_arg="validated/${{ matrix.tool }}.json"
+          elif [[ "${{ steps.diff.outputs.has_structural }}" == "true" ]]; then
+            echo "::warning::No valid verdict for ${{ matrix.tool }} — applying editorial only"
+          fi
+          ./scripts/apply-tool-findings.sh \
+            findings/${{ matrix.tool }}.json \
+            diff-results/${{ matrix.tool }}.json \
+            data/tools/${{ matrix.tool }}.json \
+            $validated_arg
 
       - name: Upload tool file
         if: always()
@@ -79,6 +175,16 @@ jobs:
         with:
           name: tool-${{ matrix.tool }}
           path: data/tools/${{ matrix.tool }}.json
+
+      - name: Upload findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: findings-${{ matrix.tool }}
+          path: |
+            findings/${{ matrix.tool }}.json
+            diff-results/${{ matrix.tool }}.json
+            validated/${{ matrix.tool }}.json
 
   # ── Job 3: Finalize ─────────────────────────────────────────────
   finalize:
@@ -170,13 +276,18 @@ jobs:
             --body "$(cat <<'EOF'
           ## Tool Update
 
-          Created by the weekly tool-update workflow. Each tool was reviewed independently via a matrix of Claude Code agents against [tool-update.md](docs/tool-update.md).
+          Created by the weekly tool-update workflow. Four-phase pipeline per tool:
+          1. **Research** — Claude Code agent proposes structural changes (no edit permission)
+          2. **Diff** — deterministic jq comparison of proposed vs current data
+          3. **Validate** — clean-slate agent independently verifies structural changes
+          4. **Apply** — deterministic jq merge of confirmed changes (price fields preserved)
 
           ### Review checklist
           - [ ] Structural changes verified against vendor pricing pages
           - [ ] `changelog.json` has entries with source URLs
           - [ ] `validate.sh` passed (check Actions log)
           - [ ] No UNVERIFIED markers left unaddressed
+          - [ ] Check findings artifacts for extraction details
 
           ### Cost
           Check individual matrix job logs for per-tool token usage.

@@ -5,9 +5,10 @@ Deep structural review for a single tool. The workflow prompt provides today's d
 ## Constraints
 
 - **Read:** `CLAUDE.md`, `data/tools/{slug}.json`, this file
-- **Edit:** only `data/tools/{slug}.json`
-- **Do not edit** `capabilities` fields. Capability changes require manual verification and are out of scope for automated review.
-- Do not edit any other files. Do not commit or push. The workflow handles changelog, assembly, generation, and git.
+- **Write:** only `findings/{slug}.json` — your structured output
+- Do **NOT** edit or write to `data/tools/` — a deterministic script applies changes after validation.
+- Do not edit any other files. Do not commit or push. The workflow handles diffing, validation, changelog, assembly, generation, and git.
+- **Do not edit** `capabilities` or `benchmarks` fields in your proposed output. Copy them unchanged from the current data file.
 
 ## Procedure
 
@@ -35,13 +36,25 @@ For this tool, check each item against the fetched vendor page:
 8. **Usage plan coverage** — Has the vendor added new models at different price points? If a new model is the default or significantly different in price, add it as a separate usage plan entry
 9. **Verification overrides** — If the tool has a `verification_override`, is it still needed? If the vendor fixed the issue, remove the field
 
-### 4. Apply changes
+### 4. Record findings
 
-Edit `data/tools/{slug}.json` for any issues found. When in doubt, make the change — a human reviews the PR.
+Whether you found changes or not, write your findings to `findings/{slug}.json`. Read `schemas/tool-findings.json` for the exact schema.
+
+Key rules:
+- The `proposed` object must be the **complete tool JSON** as you believe it should look — including unchanged fields. The diff script compares it against current data.
+- Copy `capabilities` and `benchmarks` unchanged from the current data file.
+- Copy all price-bearing fields (`base_price.amount`, overage rates) unchanged — price accuracy is owned by the price-update pipeline.
+- For new plans, include complete plan objects following the schema of existing plans.
+- For plans you believe should be removed, simply omit them from `proposed.plans`. The diff script flags removals as warnings for human review — they are not auto-applied.
+- `status`: `"reviewed"` if no changes needed, `"changes_found"` if your proposed JSON differs from current data, `"unverified"` if extraction failed entirely.
+
+### 5. Handle failure
+
+If the vendor page is not accessible after all fetch methods, set `status: "unverified"` and record extraction failures. Do not guess at structural changes.
 
 ## Post-review
 
 **Required status output** — your final message must include exactly one of:
 - `✅ {slug}: reviewed` — no structural changes needed
-- `✏️ {slug}: updated` — file edited
+- `✏️ {slug}: changes found` — proposed JSON includes changes
 - `⚠️ {slug}: UNVERIFIED` — vendor page not accessible
