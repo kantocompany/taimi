@@ -58,7 +58,10 @@ jq --argjson validated "$(cat "$VALIDATED")" '
   )
 ' "$DATA_FILE" > "$tmpfile"
 
-mv "$tmpfile" "$DATA_FILE"
-trap - EXIT
-
-echo "Applied $confirmed confirmed change(s) to $(basename "$DATA_FILE")"
+if diff -q <(jq -S . "$DATA_FILE") <(jq -S . "$tmpfile") >/dev/null 2>&1; then
+  echo "No changes applied (plan IDs not found in data)"
+else
+  mv "$tmpfile" "$DATA_FILE"
+  trap - EXIT
+  echo "Applied confirmed change(s) to $(basename "$DATA_FILE")"
+fi

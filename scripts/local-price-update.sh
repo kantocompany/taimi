@@ -35,6 +35,11 @@ fi
 
 mkdir -p logs findings diff-results validated
 
+# Clean working files for tools being processed (prevent stale data from previous runs)
+for slug in "${SLUGS[@]}"; do
+  rm -f "findings/${slug}.json" "diff-results/${slug}.json" "validated/${slug}.json"
+done
+
 echo "Price update $DATE — ${#SLUGS[@]} tools, parallelism: $PARALLEL, model: $MODEL, max-turns: $MAX_TURNS"
 echo "Pipeline: research → diff → validate (conditional) → apply"
 echo ""

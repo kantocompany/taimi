@@ -104,6 +104,8 @@ jobs:
           echo "has_changes=$has_changes" >> "$GITHUB_OUTPUT"
           echo "$result" > diff-results/${{ matrix.tool }}.json
           if [[ "$has_changes" == "true" ]]; then
+            echo "changes=$(echo "$result" | jq -c '.changes')" >> "$GITHUB_OUTPUT"
+            echo "source_url=$(echo "$result" | jq -r '.source_url')" >> "$GITHUB_OUTPUT"
             echo "::notice::${{ matrix.tool }}: price changes detected"
             echo "$result" | jq -r '.changes[] | "  \(.plan_id) \(.field): \(.old) → \(.new)"'
           else
@@ -123,9 +125,9 @@ jobs:
             Price verification for ${{ matrix.tool }}.
 
             A research agent reports these price changes:
-            $(cat diff-results/${{ matrix.tool }}.json | jq -c '.changes')
+            ${{ steps.diff.outputs.changes }}
 
-            Source URL: $(cat diff-results/${{ matrix.tool }}.json | jq -r '.source_url')
+            Source URL: ${{ steps.diff.outputs.source_url }}
 
             Your task: independently verify each change.
             1. Fetch the source URL above
