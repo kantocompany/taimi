@@ -14,6 +14,7 @@ Static site with a build step: source data in `data/`, generated output in `publ
 - `public/index.html` is **generated** from tools.json — never edit directly
 - `data/observations.html` is the editorial observations snippet included in index.html
 - `public/v1/changelog.json` tracks price changes over time (append-only)
+- `schemas/` contains pipeline intermediate schemas (price findings, validation verdicts) — NOT tool data schemas. Tool data structure is convention-based, not schema-locked.
 
 ## Data flow
 

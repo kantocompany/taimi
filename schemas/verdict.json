@@ -1,0 +1,15 @@
+{
+  "_description": "Output schema for validation agents. Write to validated/{slug}.json.",
+  "_note": "Shared across price-update and tool-update validation. Only confirmed changes are applied.",
+  "slug": "{slug}",
+  "changes": [
+    {
+      "plan_id": "{plan id}",
+      "field": "base_price.amount",
+      "old": 20.00,
+      "new": 25.00,
+      "confirmed": true,
+      "evidence": "quoted text from vendor page confirming the price"
+    }
+  ]
+}

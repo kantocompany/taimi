@@ -1,0 +1,28 @@
+{
+  "_description": "Output schema for price-update research agents. Write to findings/{slug}.json.",
+  "_note": "Only price-bearing fields. No notes, capabilities, or editorial text — the diff script structurally ignores those.",
+  "slug": "{slug}",
+  "date": "{YYYY-MM-DD}",
+  "status": "verified|changes_found|unverified",
+  "source_url": "{url used for extraction}",
+  "fetch_method": "direct|proxy|dev_docs|web_search|litellm",
+  "plans": [
+    {
+      "id": "{plan id from current data}",
+      "base_price_amount": 20.00,
+      "overage": null
+    },
+    {
+      "id": "{plan id}",
+      "base_price_amount": null,
+      "overage": {
+        "input_per_million": 3.00,
+        "output_per_million": 15.00,
+        "price_per_unit": null
+      }
+    }
+  ],
+  "extraction_failures": [
+    {"method": "direct", "error": "JS-rendered, no prices in response"}
+  ]
+}

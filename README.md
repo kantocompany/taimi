@@ -54,15 +54,24 @@ public/                        # Generated output — do not edit directly
     ├── changelog.json         # Price change history (append-only)
     └── tools/
         └── {slug}.json        # Per-tool API files (generated)
+schemas/
+├── price-findings.json        # Research agent output schema (price-update)
+└── verdict.json               # Validation agent output schema (shared)
 scripts/
 ├── assemble.sh                # data/tools/*.json → public/v1/
 ├── generate-index.sh          # tools.json → index.html
-├── merge-changelog.sh         # Merge changes/*.json into changelog
+├── diff-findings.sh           # Deterministic price diff (findings vs data)
+├── apply-findings.sh          # Deterministic apply of validated changes
+├── generate-changelog-entry.sh # Diff-based changelog entry generator
 ├── local-price-update.sh      # Run price verification locally
+├── local-tool-update.sh       # Run structural review locally
 ├── local-market-update.sh     # Run market update locally
+├── add-tool.sh                # Add new tool (skeleton + changelog)
+├── archive-tool.sh            # Archive tool (delete + changelog)
 ├── validate.sh                # Consistency checks
 docs/
 ├── price-update.md            # Daily price verification runbook (protected)
+├── tool-update.md             # Weekly structural review runbook (protected)
 ├── market-update.md           # Weekly market update runbook (protected)
 ├── automated-update.md        # CI/CD architecture and spend estimates
 ├── design-decisions.md        # Architecture rationale and roadmap
@@ -81,7 +90,7 @@ docs/
 
 Three automated workflows keep data current:
 
-- **Daily:** Price verification via matrix of Claude Code agents (one per tool)
+- **Daily:** Price verification via matrix of Claude Code agents (one per tool). Four-phase pipeline: research (no edit permission) → deterministic diff → conditional validation (clean-slate agent) → deterministic apply. No AI agent edits data files directly.
 - **Weekly (Wed):** Structural review via matrix of Claude Code agents (one per tool)
 - **Weekly (Sun):** Market scan, health checks, editorial review via `docs/market-update.md`
 

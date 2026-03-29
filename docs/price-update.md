@@ -71,43 +71,13 @@ If ALL sources failed, or you have reached web search (priority 5) without a suc
 
 ## Output format
 
-Your final action must be writing `findings/{slug}.json` with this schema:
+Your final action must be writing `findings/{slug}.json`. Read `schemas/price-findings.json` for the exact schema.
 
-```json
-{
-  "slug": "{slug}",
-  "date": "{YYYY-MM-DD}",
-  "status": "verified|changes_found|unverified",
-  "source_url": "{url used for extraction}",
-  "fetch_method": "direct|proxy|dev_docs|web_search|litellm",
-  "plans": [
-    {
-      "id": "{plan id from current data}",
-      "base_price_amount": 20.00,
-      "overage": null
-    },
-    {
-      "id": "{plan id}",
-      "base_price_amount": null,
-      "overage": {
-        "input_per_million": 3.00,
-        "output_per_million": 15.00,
-        "price_per_unit": null
-      }
-    }
-  ],
-  "extraction_failures": [
-    {"method": "direct", "error": "JS-rendered, no prices in response"}
-  ]
-}
-```
-
-**Schema rules:**
+Key rules:
 - Include only plans where you extracted at least one price field. Omit plans you could not verify.
-- `base_price_amount`: the monthly (no-commitment) dollar amount. `null` if extraction failed for this plan.
-- `overage`: include `input_per_million`, `output_per_million`, or `price_per_unit` as applicable. `null` if no overage or extraction failed.
-- `extraction_failures`: record each failed fetch method (for debugging). Empty array if first method succeeded.
-- `status`: `"verified"` if all prices match current data, `"changes_found"` if any differ, `"unverified"` if extraction failed entirely.
+- `base_price_amount`: monthly (no-commitment) dollar amount. `null` if extraction failed.
+- `overage`: include rate fields as applicable. `null` if no overage or extraction failed.
+- `status`: `"verified"` if prices match current data, `"changes_found"` if any differ, `"unverified"` if extraction failed entirely.
 
 **Your final text message** must include exactly one status line:
 - `✅ {slug}: verified` — prices match, no changes expected
