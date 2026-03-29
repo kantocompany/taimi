@@ -108,22 +108,26 @@ jq \
     end
   ] |
 
-  # Vendor metadata (structural — confirmed only)
-  (if ($diff.changes | map(select(.field | startswith("vendor."))) | length > 0) then
-    ($diff.changes | map(select(.field | startswith("vendor."))) | .[0].field // "") as $vf |
-    if is_confirmed($vf) then
-      .vendor = $proposed.vendor
+  # Vendor metadata (structural — per-field confirmed)
+  (reduce ($diff.changes[] | select(.field | startswith("vendor."))) as $c
+    (.;
+      if is_confirmed($c.field) then
+        ($c.field | ltrimstr("vendor.")) as $key |
+        .vendor[$key] = $proposed.vendor[$key]
+      else . end
+    )
+  ) |
+
+  # Verification override (structural — confirmed only)
+  (if ($diff.changes | map(select(.field == "verification_override")) | length > 0) then
+    if is_confirmed("verification_override") then
+      .verification_override = $proposed.verification_override
     else . end
    else . end) |
 
-  # Verification override — editorial, always from proposed
-  (if $proposed | has("verification_override") then
-    .verification_override = $proposed.verification_override
-   else . end) |
-
-  # Platform object (structural)
+  # Platform object (structural — all changes must be confirmed)
   (if ($proposed | has("platform")) and ($diff.changes | map(select(.field | startswith("platform."))) | length > 0) then
-    if is_confirmed($diff.changes | map(select(.field | startswith("platform."))) | .[0].field // "") then
+    if [$diff.changes[] | select(.field | startswith("platform.")) | .field] | all(is_confirmed(.)) then
       .platform = $proposed.platform
     else . end
    else . end) |
@@ -140,7 +144,7 @@ if [[ -n "$new_plans" ]]; then
     # New plans are structural — need confirmation
     if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]]; then
       is_confirmed=$(jq --arg pid "$plan_id" \
-        '[.changes[]? | select(.field | test($pid)) | select(.confirmed == true)] | length > 0' "$VALIDATED")
+        '[.changes[]? | select(.confirmed == true) | select((.field == $pid) or (.field | split(".") | any(. == $pid)))] | length > 0' "$VALIDATED")
       if [[ "$is_confirmed" != "true" ]]; then
         echo "  Skipping unconfirmed new plan: $plan_id"
         continue
