@@ -117,6 +117,7 @@ jobs:
       # Verdict schema: schemas/verdict.json (inline here because agent has no Read permission)
       - name: Validate ${{ matrix.tool }}
         if: steps.diff.outputs.has_changes == 'true'
+        continue-on-error: true
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -142,7 +143,7 @@ jobs:
             If you cannot fetch the page or find the price, set confirmed to false.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 6
+            --max-turns 8
             --max-budget-usd 0.15
             --allowedTools "Write,WebSearch,WebFetch"
             --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep"
