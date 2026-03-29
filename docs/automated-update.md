@@ -67,7 +67,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 | Setting | Value |
 |---------|-------|
 | Model | `claude-sonnet-4-6` |
-| Max turns | 6 |
+| Max turns | 8 |
 | Budget cap | $0.15/job |
 | Runs when | Phase 2 diff detects price changes |
 
@@ -119,9 +119,10 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 - Branch protection — requires "Validate Data" check to pass before merge
 - Independent labels (`price-update` / `market-update` / `tool-update`) — workflows don't block each other
 - Matrix isolation — one tool's verification failure doesn't affect others
-- **Research/edit separation** (price-update) — research agent cannot edit data files (Edit tool disallowed). Data file restored via `git checkout` after research phase as safety net.
-- **Deterministic diff** (price-update) — jq script compares only price-bearing fields. Notes, capabilities, and editorial fields are structurally ignored, preventing notes drift.
-- **Clean-slate validation** (price-update) — validation agent has no access to research agent's reasoning, runbook, or repo files. Can only fetch web content. Prevents confirmation bias.
+- **Research/edit separation** (price-update, tool-update) — research agent cannot edit data files (Edit tool disallowed). Data file restored via `git checkout` after research phase as safety net.
+- **Deterministic diff** (price-update, tool-update) — jq script compares findings against current data. Price-update compares only price-bearing fields; tool-update categorizes changes as structural vs editorial and excludes price fields and capabilities.
+- **Clean-slate validation** (price-update, tool-update) — validation agent has no access to research agent's reasoning, runbook, or repo files. Can only fetch web content. Prevents confirmation bias. Tool-update validation runs only for structural changes (skipped for notes-only).
+- **Deterministic apply** (price-update, tool-update) — jq script applies only confirmed changes. Tool-update preserves price fields from original, never auto-removes plans, and gates structural fields on validation verdicts.
 
 ## Error handling
 

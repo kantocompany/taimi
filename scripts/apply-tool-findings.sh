@@ -95,8 +95,10 @@ jq \
          else . end)
        else . end) |
 
-      # Platform plan flag
-      (if $prop | has("platform_plan") then .platform_plan = $prop.platform_plan else . end) |
+      # Platform plan flag (structural — confirmed only)
+      (if $prop | has("platform_plan") and ($prop.platform_plan != ($orig.platform_plan // null)) then
+        if is_confirmed($diff.changes | map(select(.field | endswith(".platform_plan"))) | first | .field // "") then .platform_plan = $prop.platform_plan else . end
+       else . end) |
 
       # ALWAYS restore price fields from original
       .base_price = $orig.base_price |
