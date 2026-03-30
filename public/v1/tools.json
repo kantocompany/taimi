@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-29",
-    "updated_at": "2026-03-29T00:00:00Z",
+    "version": "2026-03-30",
+    "updated_at": "2026-03-30T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -265,7 +265,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Higher usage than Standard; Annual billing: $100/mo"
+            "notes": "5x more usage than Standard; Annual billing: $100/mo"
           },
           "overage": null
         },
@@ -631,13 +631,15 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "No included ACUs; $20 minimum top-up"
+            "notes": "No included ACUs; $20 minimum top-up; unlimited users; up to 10 concurrent sessions"
           },
           "overage": {
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 2.25,
-            "notes": "Agent Compute Unit, ~minutes of agent work"
+            "notes": "Agent Compute Unit, ~minutes of agent work",
+            "input_per_million": null,
+            "output_per_million": null
           }
         },
         {
@@ -652,13 +654,15 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "250 ACUs included, flat team price"
+            "notes": "250 ACUs included, flat team price; unlimited concurrent sessions"
           },
           "overage": {
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 2.00,
-            "notes": "Per ACU beyond 250"
+            "notes": "Per ACU beyond 250",
+            "input_per_million": null,
+            "output_per_million": null
           }
         },
         {
@@ -669,7 +673,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation"
+            "notes": "Devin Enterprise version (most capable); VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation"
           },
           "overage": null
         }
@@ -936,7 +940,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Mistral Vibe + Devstral 2, PAYG beyond"
+            "notes": "Mistral Vibe + Devstral 2, PAYG beyond; student discount available"
           },
           "overage": {
             "unit": "token",
@@ -1001,7 +1005,7 @@
             "input_per_million": 0.10,
             "output_per_million": 0.30,
             "model": "devstral-small-2",
-            "notes": "24B param, self-hostable, Apache 2.0",
+            "notes": "24B param, self-hostable, Apache 2.0; Labs (experimental)",
             "price_per_unit": null
           }
         },
@@ -1084,7 +1088,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Bundled with ChatGPT Plus"
+            "notes": "Bundled with ChatGPT Plus; includes GPT-5.4, GPT-5.4-mini, GPT-5.3-Codex; web, CLI, IDE extension, iOS"
           },
           "overage": null
         },
@@ -1101,7 +1105,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus"
+            "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; 10x cloud code reviews vs Plus; priority processing"
           },
           "overage": null
         },
@@ -1118,7 +1122,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Flexible credit system for usage extension; SAML SSO, MFA, admin controls; no training on business data by default"
+            "notes": "Larger virtual machines for faster cloud tasks; flexible credit extension; SAML SSO, MFA, admin controls; no training on business data by default"
           },
           "overage": null
         },
@@ -1285,7 +1289,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Light quota for agent interactions; unlimited Tab completions and Previews; no Deploys, Fast Context, or SWE-1.5"
+            "notes": "Light quota to code with agents; unlimited Tab completions; limited model availability; extra usage at no charge"
           },
           "overage": null
         },
@@ -1301,7 +1305,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased quotas; access to all premium models including SWE-1.5; Tab, Previews, Deploys, Fast Context"
+            "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models"
           },
           "overage": {
             "unit": "request",
@@ -1324,7 +1328,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Significantly higher quotas than Pro; access to all frontier models including SWE-1.5; unlimited overage option"
+            "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models"
           },
           "overage": {
             "unit": "request",
@@ -1347,7 +1351,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; knowledge base; SSO + access control; RBAC; volume-based discounts; hybrid deployment; account management"
+            "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
           },
           "overage": {
             "unit": "request",
@@ -1366,7 +1370,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features; highest priority support; dedicated account management; custom terms; contact-sales pricing"
+            "notes": "All Teams features; RBAC; SSO + access control; hybrid deployment; highest priority support; dedicated account management; custom terms; contact-sales pricing"
           },
           "overage": null
         }

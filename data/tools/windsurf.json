@@ -20,7 +20,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Light quota for agent interactions; unlimited Tab completions and Previews; no Deploys, Fast Context, or SWE-1.5"
+        "notes": "Light quota to code with agents; unlimited Tab completions; limited model availability; extra usage at no charge"
       },
       "overage": null
     },
@@ -36,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased quotas; access to all premium models including SWE-1.5; Tab, Previews, Deploys, Fast Context"
+        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models"
       },
       "overage": {
         "unit": "request",
@@ -59,7 +59,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Significantly higher quotas than Pro; access to all frontier models including SWE-1.5; unlimited overage option"
+        "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models"
       },
       "overage": {
         "unit": "request",
@@ -82,7 +82,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; knowledge base; SSO + access control; RBAC; volume-based discounts; hybrid deployment; account management"
+        "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
       },
       "overage": {
         "unit": "request",
@@ -101,7 +101,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "All Teams features; highest priority support; dedicated account management; custom terms; contact-sales pricing"
+        "notes": "All Teams features; RBAC; SSO + access control; hybrid deployment; highest priority support; dedicated account management; custom terms; contact-sales pricing"
       },
       "overage": null
     }

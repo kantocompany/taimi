@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-29",
-    "updated_at": "2026-03-29T00:00:00Z",
+    "version": "2026-03-30",
+    "updated_at": "2026-03-30T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -31,13 +31,15 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "No included ACUs; $20 minimum top-up"
+          "notes": "No included ACUs; $20 minimum top-up; unlimited users; up to 10 concurrent sessions"
         },
         "overage": {
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 2.25,
-          "notes": "Agent Compute Unit, ~minutes of agent work"
+          "notes": "Agent Compute Unit, ~minutes of agent work",
+          "input_per_million": null,
+          "output_per_million": null
         }
       },
       {
@@ -52,13 +54,15 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "250 ACUs included, flat team price"
+          "notes": "250 ACUs included, flat team price; unlimited concurrent sessions"
         },
         "overage": {
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 2.00,
-          "notes": "Per ACU beyond 250"
+          "notes": "Per ACU beyond 250",
+          "input_per_million": null,
+          "output_per_million": null
         }
       },
       {
@@ -69,7 +73,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation"
+          "notes": "Devin Enterprise version (most capable); VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation"
         },
         "overage": null
       }

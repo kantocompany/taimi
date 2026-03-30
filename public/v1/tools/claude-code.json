@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-29",
-    "updated_at": "2026-03-29T00:00:00Z",
+    "version": "2026-03-30",
+    "updated_at": "2026-03-30T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -110,7 +110,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Higher usage than Standard; Annual billing: $100/mo"
+          "notes": "5x more usage than Standard; Annual billing: $100/mo"
         },
         "overage": null
       },

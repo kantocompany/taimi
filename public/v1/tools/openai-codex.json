@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-29",
-    "updated_at": "2026-03-29T00:00:00Z",
+    "version": "2026-03-30",
+    "updated_at": "2026-03-30T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -43,7 +43,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Bundled with ChatGPT Plus"
+          "notes": "Bundled with ChatGPT Plus; includes GPT-5.4, GPT-5.4-mini, GPT-5.3-Codex; web, CLI, IDE extension, iOS"
         },
         "overage": null
       },
@@ -60,7 +60,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus"
+          "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; 10x cloud code reviews vs Plus; priority processing"
         },
         "overage": null
       },
@@ -77,7 +77,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Flexible credit system for usage extension; SAML SSO, MFA, admin controls; no training on business data by default"
+          "notes": "Larger virtual machines for faster cloud tasks; flexible credit extension; SAML SSO, MFA, admin controls; no training on business data by default"
         },
         "overage": null
       },
