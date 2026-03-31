@@ -84,7 +84,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Shared chats, rules, privacy mode, RBAC, SSO"
+        "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO"
       },
       "overage": null
     },
@@ -96,7 +96,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Pooled usage, SCIM, audit logs, dedicated AM"
+        "notes": "Pooled usage, SCIM, AI code tracking API, audit logs, dedicated AM"
       },
       "overage": null
     },

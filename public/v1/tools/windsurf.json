@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-30",
-    "updated_at": "2026-03-30T00:00:00Z",
+    "version": "2026-03-31",
+    "updated_at": "2026-03-31T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Light quota to code with agents; unlimited Tab completions; limited model availability; extra usage at no charge"
+          "notes": "Light quota to code with agents; unlimited inline edits and Tab completions; limited model availability"
         },
         "overage": null
       },
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models"
+          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; 2-week free trial for new users"
         },
         "overage": {
           "unit": "request",

@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-03-29",
-    "updated_at": "2026-03-29T18:19:50Z",
+    "version": "2026-03-31",
+    "updated_at": "2026-03-31T05:18:55Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-03-31",
+      "tool": "devin",
+      "type": "pricing_change",
+      "description": "plans.0.overage.mechanism: automatic → add_on; plans.1.overage.mechanism: automatic → add_on",
+      "details": {
+        "source": "https://devin.ai/pricing"
+      }
+    },
     {
       "date": "2026-03-29",
       "tool": "augment-code",

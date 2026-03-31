@@ -66,7 +66,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Larger virtual machines for faster cloud tasks; flexible credit extension; SAML SSO, MFA, admin controls; no training on business data by default"
+        "notes": "Same usage limits as Plus tier; larger virtual machines for faster cloud tasks; SAML SSO, MFA, admin controls; no training on business data by default"
       },
       "overage": null
     },

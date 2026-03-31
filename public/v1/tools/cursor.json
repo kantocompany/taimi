@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-30",
-    "updated_at": "2026-03-30T00:00:00Z",
+    "version": "2026-03-31",
+    "updated_at": "2026-03-31T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -95,7 +95,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Shared chats, rules, privacy mode, RBAC, SSO"
+          "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO"
         },
         "overage": null
       },
@@ -107,7 +107,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Pooled usage, SCIM, audit logs, dedicated AM"
+          "notes": "Pooled usage, SCIM, AI code tracking API, audit logs, dedicated AM"
         },
         "overage": null
       },

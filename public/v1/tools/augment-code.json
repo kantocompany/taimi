@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-30",
-    "updated_at": "2026-03-30T00:00:00Z",
+    "version": "2026-03-31",
+    "updated_at": "2026-03-31T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -54,7 +54,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "130K credits, up to 20 users, analytics, CMEK, ISO 42001, SSO"
+          "notes": "130K credits, up to 20 users, advanced analytics"
         },
         "overage": {
           "unit": "request",
@@ -96,7 +96,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom credits, unlimited users, OIDC, SCIM, volume discounts, dedicated support"
+          "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, volume discounts, dedicated support"
         },
         "overage": null
       }

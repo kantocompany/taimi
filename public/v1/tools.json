@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-30",
-    "updated_at": "2026-03-30T00:00:00Z",
+    "version": "2026-03-31",
+    "updated_at": "2026-03-31T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -102,7 +102,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "130K credits, up to 20 users, analytics, CMEK, ISO 42001, SSO"
+            "notes": "130K credits, up to 20 users, advanced analytics"
           },
           "overage": {
             "unit": "request",
@@ -144,7 +144,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom credits, unlimited users, OIDC, SCIM, volume discounts, dedicated support"
+            "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, volume discounts, dedicated support"
           },
           "overage": null
         }
@@ -408,7 +408,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "JetBrains, centralized billing, RBAC. $0/mo promo ends 2026-03-31; first 10 seats free after promo"
+            "notes": "JetBrains, centralized billing, RBAC; first 10 seats always free"
           },
           "overage": {
             "unit": "token",
@@ -533,7 +533,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Shared chats, rules, privacy mode, RBAC, SSO"
+            "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO"
           },
           "overage": null
         },
@@ -545,7 +545,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Pooled usage, SCIM, audit logs, dedicated AM"
+            "notes": "Pooled usage, SCIM, AI code tracking API, audit logs, dedicated AM"
           },
           "overage": null
         },
@@ -635,9 +635,9 @@
           },
           "overage": {
             "unit": "acu",
-            "mechanism": "automatic",
+            "mechanism": "add_on",
             "price_per_unit": 2.25,
-            "notes": "Agent Compute Unit, ~minutes of agent work",
+            "notes": "Agent Compute Unit, ~minutes of agent work; auto-reload optional",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -658,9 +658,9 @@
           },
           "overage": {
             "unit": "acu",
-            "mechanism": "automatic",
+            "mechanism": "add_on",
             "price_per_unit": 2.00,
-            "notes": "Per ACU beyond 250",
+            "notes": "Per ACU beyond 250; auto-recharge optional",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -965,7 +965,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Admin, priority support"
+            "notes": "Collaborative workspace, domain verification, data export"
           },
           "overage": {
             "unit": "token",
@@ -1122,7 +1122,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Larger virtual machines for faster cloud tasks; flexible credit extension; SAML SSO, MFA, admin controls; no training on business data by default"
+            "notes": "Same usage limits as Plus tier; larger virtual machines for faster cloud tasks; SAML SSO, MFA, admin controls; no training on business data by default"
           },
           "overage": null
         },
@@ -1289,7 +1289,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Light quota to code with agents; unlimited Tab completions; limited model availability; extra usage at no charge"
+            "notes": "Light quota to code with agents; unlimited inline edits and Tab completions; limited model availability"
           },
           "overage": null
         },
@@ -1305,7 +1305,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models"
+            "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; 2-week free trial for new users"
           },
           "overage": {
             "unit": "request",
