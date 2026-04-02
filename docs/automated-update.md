@@ -32,8 +32,8 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 2. **Review jobs** (parallel, one per tool): four-phase pipeline per tool:
    - **Phase 1 — Research**: Claude Code agent fetches vendor page and writes complete proposed tool JSON to `findings/{slug}.json`. Agent has no Edit permission — cannot modify data files.
    - **Phase 2 — Diff**: deterministic jq script (`diff-tool-findings.sh`) compares proposed vs current data. Changes categorized as structural (vendor metadata, plan names/categories, overage mechanisms) or editorial (notes). Price fields and capabilities are excluded from comparison.
-   - **Phase 3 — Validate** (conditional): runs only when Phase 2 detects structural changes. A clean-slate agent independently verifies structural claims against the vendor page. Skipped for notes-only changes.
-   - **Phase 4 — Apply**: deterministic jq script (`apply-tool-findings.sh`) merges confirmed changes. Price fields always preserved from original (price-update's scope). Plans never auto-removed.
+   - **Phase 3 — Validate**: runs when Phase 2 detects any changes. A clean-slate agent independently verifies all changes (structural and editorial) against the vendor page.
+   - **Phase 4 — Apply**: deterministic jq script (`apply-tool-findings.sh`) merges confirmed changes only. Price fields always preserved from original (price-update's scope). Plans never auto-removed.
 3. **Finalize job**: downloads artifacts, generates changelog, builds, validates, commits, opens PR
 4. `validate.yml` runs on the PR as a status check
 5. Human reviews and merges
@@ -87,13 +87,14 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 **Allowed tools:** Read, Write, Glob, Grep, WebSearch, WebFetch, Bash (jq)
 **Disallowed tools:** Agent, Edit (agent proposes changes, cannot edit data files)
 
-### Tool update — validation phase (conditional, per matrix job)
+### Tool update — validation phase (per matrix job)
 
 | Setting | Value |
 |---------|-------|
 | Model | `claude-sonnet-4-6` |
-| Max turns | 8 |
+| Max turns | 10 |
 | Budget cap | $0.15/job |
+| Runs when | Phase 2 diff detects any changes |
 
 **Allowed tools:** Write, WebSearch, WebFetch
 **Disallowed tools:** Agent, Edit, Read, Bash, Glob, Grep (clean slate — no repo access)
@@ -121,8 +122,8 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 - Matrix isolation — one tool's verification failure doesn't affect others
 - **Research/edit separation** (price-update, tool-update) — research agent cannot edit data files (Edit tool disallowed). Data file restored via `git checkout` after research phase as safety net.
 - **Deterministic diff** (price-update, tool-update) — jq script compares findings against current data. Price-update compares only price-bearing fields; tool-update categorizes changes as structural vs editorial and excludes price fields and capabilities.
-- **Clean-slate validation** (price-update, tool-update) — validation agent has no access to research agent's reasoning, runbook, or repo files. Can only fetch web content. Prevents confirmation bias. Tool-update validation runs only for structural changes (skipped for notes-only).
-- **Deterministic apply** (price-update, tool-update) — jq script applies only confirmed changes. Tool-update preserves price fields from original, never auto-removes plans, and gates structural fields on validation verdicts.
+- **Clean-slate validation** (price-update, tool-update) — validation agent has no access to research agent's reasoning, runbook, or repo files. Can only fetch web content. Prevents confirmation bias.
+- **Deterministic apply** (price-update, tool-update) — jq script applies only confirmed changes. Tool-update preserves price fields from original, never auto-removes plans, and gates all changes (structural and editorial) on validation verdicts.
 
 ## Error handling
 
@@ -179,8 +180,8 @@ Per matrix job — Phase 3 validation (conditional, Sonnet $3/$15 per M tokens):
 | **Total per tool (validation)** | **~7K** | **~2K** |
 
 - **Research per job: ~$0.15-0.30** (same as before)
-- **Validation per job: ~$0.05** (runs only when structural changes detected)
-- **Per run (12 tools): ~$3.60** (validation adds ~$0-0.50 when structural changes found)
+- **Validation per job: ~$0.05** (runs when any changes detected)
+- **Per run (12 tools): ~$3.60** (validation adds ~$0.15-0.50 on change days)
 - **Monthly (weekly): ~$16**
 
 ### Market update (weekly)

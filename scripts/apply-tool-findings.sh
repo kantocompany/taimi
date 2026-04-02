@@ -3,8 +3,8 @@ set -euo pipefail
 
 # Apply tool-update changes to a data file.
 # Merges proposed JSON but preserves price fields, capabilities, and benchmarks.
-# When a validation verdict exists, only applies confirmed structural changes.
-# Editorial changes (notes) are always applied — they don't need validation.
+# Only applies changes confirmed by the validation verdict.
+# All changes (structural and editorial) require confirmation.
 #
 # Usage: ./scripts/apply-tool-findings.sh <findings.json> <diff-results.json> <data-file.json> [validated.json]
 # Exit 0: success (changes applied or nothing to apply).
@@ -26,22 +26,19 @@ if [[ "$has_changes" != "true" ]]; then
   exit 0
 fi
 
-has_structural=$(jq -r '.has_structural_changes' "$DIFF_RESULTS")
-
 # Build confirmed fields from verdict (empty array if no verdict)
 confirmed_fields="[]"
 if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]] && jq empty "$VALIDATED" 2>/dev/null; then
   confirmed_fields=$(jq '[.changes[]? | select(.confirmed == true) | .field]' "$VALIDATED")
-elif [[ "$has_structural" == "true" ]]; then
-  echo "WARNING: Structural changes but no valid verdict — applying editorial only"
+else
+  echo "WARNING: Changes detected but no valid verdict — skipping apply"
 fi
 
 tmpfile=$(mktemp "${DATA_FILE}.XXXXXX")
 trap 'rm -f "$tmpfile"' EXIT
 
 # Merge strategy:
-# - Editorial fields (notes): always from proposed
-# - Structural fields: from proposed only if confirmed (or no validation needed)
+# - All changes (editorial + structural): from proposed only if confirmed
 # - Price fields: always from original
 # - Protected fields (capabilities, benchmarks): always from original
 # - Plan removals: never (conservative)
@@ -49,14 +46,12 @@ jq \
   --argjson proposed "$(jq '.proposed' "$FINDINGS")" \
   --argjson diff "$(cat "$DIFF_RESULTS")" \
   --argjson confirmed "$confirmed_fields" \
-  --argjson has_structural "$has_structural" \
   '
   . as $original |
 
-  # Helper: is this structural field confirmed?
+  # Helper: is this field confirmed by the validation verdict?
   def is_confirmed($field):
-    if ($has_structural | not) then true    # no structural changes = nothing to gate
-    elif ($confirmed | length == 0) then false  # structural but no verdict = block
+    if ($confirmed | length == 0) then false
     else ($confirmed | index($field) != null)
     end;
 
@@ -66,13 +61,17 @@ jq \
     if $prop == null then $orig  # not in proposed = keep original
     else
       $orig |
-      # Editorial: notes (always applied)
-      (if $prop.includes.notes then .includes.notes = $prop.includes.notes else . end) |
+      # Editorial: notes (confirmed only)
+      (if $prop.includes.notes and $prop.includes.notes != ($orig.includes.notes // null) then
+        if is_confirmed($diff.changes | map(select(.field | endswith(".includes.notes"))) | first | .field // "") then .includes.notes = $prop.includes.notes else . end
+       else . end) |
       (if $prop.includes then
         .includes.premium_requests = $prop.includes.premium_requests |
         .includes.tokens_included = $prop.includes.tokens_included
        else . end) |
-      (if $prop.overage and $prop.overage.notes then .overage.notes = $prop.overage.notes else . end) |
+      (if $prop.overage and $prop.overage.notes and $prop.overage.notes != ($orig.overage.notes // null) then
+        if is_confirmed($diff.changes | map(select(.field | endswith(".overage.notes"))) | first | .field // "") then .overage.notes = $prop.overage.notes else . end
+       else . end) |
 
       # Structural: plan name, category (confirmed only)
       (if $prop.name != $orig.name and ($diff.changes | map(select(.field | endswith(".name") and (. != "vendor.name"))) | length > 0) then
@@ -139,11 +138,11 @@ jq \
   .benchmarks = $original.benchmarks
   ' "$DATA_FILE" > "$tmpfile"
 
-# Add new plans if confirmed (or editorial-only diff with no validation)
+# Add new plans if confirmed
 new_plans=$(jq -r '.new_plans // [] | .[]' "$DIFF_RESULTS")
 if [[ -n "$new_plans" ]]; then
   for plan_id in $new_plans; do
-    # New plans are structural — need confirmation
+    # New plans need confirmation
     if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]]; then
       is_confirmed=$(jq --arg pid "$plan_id" \
         '[.changes[]? | select(.confirmed == true) | select((.field == $pid) or (.field | split(".") | any(. == $pid)))] | length > 0' "$VALIDATED")
@@ -151,7 +150,7 @@ if [[ -n "$new_plans" ]]; then
         echo "  Skipping unconfirmed new plan: $plan_id"
         continue
       fi
-    elif [[ "$has_structural" == "true" ]]; then
+    else
       echo "  Skipping new plan (no verdict): $plan_id"
       continue
     fi

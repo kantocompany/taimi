@@ -105,26 +105,25 @@ run_pipeline() {
   echo "$diff_result" | jq -r '.changes[] | "    \(.category) \(.field): \(.old) → \(.new)"'
   echo "$diff_result" | jq -r '.warnings[]? | "    ⚠️ \(.type): \(.plan_id) — \(.message)"'
 
-  # Phase 3: Validate (conditional — structural changes only)
+  # Phase 3: Validate
+  echo "  [$slug] Phase 3: Validate"
+  local validate_logfile="logs/${slug}-tool-validate.log"
   local validated_arg=""
-  if [[ "$has_structural" == "true" ]]; then
-    echo "  [$slug] Phase 3: Validate"
-    local validate_logfile="logs/${slug}-tool-validate.log"
-    local source_url changes_summary
-    source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
-    changes_summary=$(echo "$diff_result" | jq -c '.changes')
+  local source_url changes_summary
+  source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
+  changes_summary=$(echo "$diff_result" | jq -c '.changes')
 
-    if claude -p "$(cat <<PROMPT
-Structural review verification for $slug.
+  if claude -p "$(cat <<PROMPT
+Review verification for $slug.
 
-A research agent proposes these structural changes:
+A research agent proposes these changes:
 $changes_summary
 
 Source URL: $source_url
 
-Your task: independently verify each STRUCTURAL change (category "structural").
+Your task: independently verify each change.
 1. Fetch $source_url
-2. For each structural change, confirm the NEW value is supported by the page
+2. For each change, confirm the NEW value is supported by the page
 3. Write your verdict to validated/${slug}.json with this schema:
 {
   "slug": "$slug",
@@ -132,25 +131,21 @@ Your task: independently verify each STRUCTURAL change (category "structural").
     { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "text from page" }
   ]
 }
-Skip editorial changes (notes) — those do not need verification.
 PROMPT
 )" \
-      --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
-      --allowedTools "Write,WebSearch,WebFetch" \
-      --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
-      2>&1 | tee "$validate_logfile"; then
-      true
-    else
-      echo "  $slug: validation FAILED (exit $?, see $validate_logfile)"
-    fi
-
-    if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
-      validated_arg="validated/${slug}.json"
-    else
-      echo "  $slug: no valid verdict — applying editorial only"
-    fi
+    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+    --allowedTools "Write,WebSearch,WebFetch" \
+    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+    2>&1 | tee "$validate_logfile"; then
+    true
   else
-    echo "  [$slug] Phase 3: Skipped (no structural changes)"
+    echo "  $slug: validation FAILED (exit $?, see $validate_logfile)"
+  fi
+
+  if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
+    validated_arg="validated/${slug}.json"
+  else
+    echo "  $slug: no valid verdict — skipping apply"
   fi
 
   # Phase 4: Deterministic apply
@@ -196,23 +191,21 @@ run_pipeline_quiet() {
     echo "  $slug: $status — no changes"; return
   fi
 
-  # Phase 3: Validate (conditional)
+  # Phase 3: Validate
   local validated_arg=""
-  if [[ "$has_structural" == "true" ]]; then
-    local source_url changes_summary
-    source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
-    changes_summary=$(echo "$diff_result" | jq -c '.changes')
-    if claude -p "Structural review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each structural change, write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}" \
-      --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
-      --allowedTools "Write,WebSearch,WebFetch" \
-      --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
-      > "$validate_logfile" 2>&1; then
-      if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
-        validated_arg="validated/${slug}.json"
-      fi
-    else
-      echo "  $slug: validation FAILED (see $validate_logfile)"
+  local source_url changes_summary
+  source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
+  changes_summary=$(echo "$diff_result" | jq -c '.changes')
+  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change, write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}" \
+    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+    --allowedTools "Write,WebSearch,WebFetch" \
+    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+    > "$validate_logfile" 2>&1; then
+    if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
+      validated_arg="validated/${slug}.json"
     fi
+  else
+    echo "  $slug: validation FAILED (see $validate_logfile)"
   fi
 
   # Phase 4: Apply
