@@ -32,9 +32,10 @@ For this tool, check each item against the fetched vendor page:
 4. **Terminology drift** — Has the vendor renamed plans, features, or the product itself? `vendor.name` is the legal/parent company, not the product brand. Verify `vendor.pricing_url` still points to the correct page
 5. **Missing or removed plans** — Add plans the vendor shows but we don't have. Remove plans the vendor no longer offers. Follow the schema of existing plans
 6. **Platform bundling clarity** — For platform plans, would a reader understand what they're actually buying?
-7. **Notes style** — Keep notes terse and factual. No marketing copy, no trailing periods. Match the style of existing tool files
-8. **Usage plan coverage** — Has the vendor added new models at different price points? If a new model is the default or significantly different in price, add it as a separate usage plan entry
-9. **Verification overrides** — If the tool has a `verification_override`, is it still needed? If the vendor fixed the issue, remove the field
+7. **Feature-to-plan attribution** — Verify which tier each feature actually belongs to. Pricing pages often list features cumulatively or ambiguously — a feature shown near a plan may require a higher tier. Check for "Enterprise only", "Custom plan", "available on X and above", or similar qualifiers before attributing a feature to a specific plan's notes
+8. **Notes style** — Keep notes terse and factual. No marketing copy, no trailing periods. Match the style of existing tool files
+9. **Usage plan coverage** — Has the vendor added new models at different price points? If a new model is the default or significantly different in price, add it as a separate usage plan entry
+10. **Verification overrides** — If the tool has a `verification_override`, is it still needed? If the vendor fixed the issue, remove the field
 
 ### 4. Record findings
 
