@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-31",
-    "updated_at": "2026-03-31T00:00:00Z",
+    "version": "2026-04-02",
+    "updated_at": "2026-04-02T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -673,7 +673,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Devin Enterprise version (most capable); VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation"
+            "notes": "Devin Enterprise version (most capable); VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation; centralized billing across orgs"
           },
           "overage": null
         }
@@ -789,7 +789,7 @@
           "includes": {
             "premium_requests": 50,
             "tokens_included": null,
-            "notes": "50 chat req/mo, 2K completions"
+            "notes": "50 agent mode/chat req/mo, 2K completions"
           },
           "overage": null
         },
@@ -811,7 +811,9 @@
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.04,
-            "notes": "$0.04/req beyond limit"
+            "notes": "$0.04/req beyond limit",
+            "input_per_million": null,
+            "output_per_million": null
           }
         },
         {
@@ -826,13 +828,15 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "1,500 premium requests; Annual billing: $32.50/mo"
+            "notes": "1,500 premium requests; GitHub Spark; third-party agent delegation; Annual billing: $32.50/mo"
           },
           "overage": {
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.04,
-            "notes": "$0.04/req beyond limit"
+            "notes": "$0.04/req beyond limit",
+            "input_per_million": null,
+            "output_per_million": null
           }
         },
         {
@@ -853,7 +857,9 @@
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.04,
-            "notes": "$0.04/req beyond limit"
+            "notes": "$0.04/req beyond limit",
+            "input_per_million": null,
+            "output_per_million": null
           }
         },
         {
@@ -874,7 +880,9 @@
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.04,
-            "notes": "$0.04/req beyond limit"
+            "notes": "$0.04/req beyond limit",
+            "input_per_million": null,
+            "output_per_million": null
           }
         }
       ],
@@ -1021,7 +1029,7 @@
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-medium-1",
-            "notes": "Enterprise-grade SWE model, API-only",
+            "notes": "Enterprise-grade SWE model, API-only; deprecated 2026-02-27, retiring 2026-05-31, replace with Devstral 2",
             "price_per_unit": null
           }
         },
@@ -1088,7 +1096,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Bundled with ChatGPT Plus; includes GPT-5.4, GPT-5.4-mini, GPT-5.3-Codex; web, CLI, IDE extension, iOS"
+            "notes": "Bundled with ChatGPT Plus; GPT-5.4, GPT-5.4-mini, GPT-5.3-Codex; web, CLI, IDE extension, iOS; cloud code review, Slack integration; flexible credit extension when limits reached"
           },
           "overage": null
         },
@@ -1105,7 +1113,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; 10x cloud code reviews vs Plus; priority processing"
+            "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; 10x weekly cloud code reviews vs Plus; priority processing; flexible credit extension when limits reached"
           },
           "overage": null
         },
@@ -1122,7 +1130,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Same usage limits as Plus tier; larger virtual machines for faster cloud tasks; SAML SSO, MFA, admin controls; no training on business data by default"
+            "notes": "Same usage limits as Plus tier; larger virtual machines for faster cloud tasks; SAML SSO, MFA, admin controls; no training on business data by default; flexible credit extension when limits reached"
           },
           "overage": null
         },
@@ -1135,7 +1143,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom pricing; SCIM, EKM, RBAC, audit logs, data residency controls, compliance API access"
+            "notes": "Custom pricing; SCIM, EKM, RBAC, user analytics, audit logs via Compliance API, data residency controls"
           },
           "overage": null
         },

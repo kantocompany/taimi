@@ -63,7 +63,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Devin Enterprise version (most capable); VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation"
+        "notes": "Devin Enterprise version (most capable); VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation; centralized billing across orgs"
       },
       "overage": null
     }

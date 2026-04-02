@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-03-31",
-    "updated_at": "2026-03-31T00:00:00Z",
+    "version": "2026-04-02",
+    "updated_at": "2026-04-02T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -43,7 +43,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Bundled with ChatGPT Plus; includes GPT-5.4, GPT-5.4-mini, GPT-5.3-Codex; web, CLI, IDE extension, iOS"
+          "notes": "Bundled with ChatGPT Plus; GPT-5.4, GPT-5.4-mini, GPT-5.3-Codex; web, CLI, IDE extension, iOS; cloud code review, Slack integration; flexible credit extension when limits reached"
         },
         "overage": null
       },
@@ -60,7 +60,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; 10x cloud code reviews vs Plus; priority processing"
+          "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; 10x weekly cloud code reviews vs Plus; priority processing; flexible credit extension when limits reached"
         },
         "overage": null
       },
@@ -77,7 +77,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Same usage limits as Plus tier; larger virtual machines for faster cloud tasks; SAML SSO, MFA, admin controls; no training on business data by default"
+          "notes": "Same usage limits as Plus tier; larger virtual machines for faster cloud tasks; SAML SSO, MFA, admin controls; no training on business data by default; flexible credit extension when limits reached"
         },
         "overage": null
       },
@@ -90,7 +90,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom pricing; SCIM, EKM, RBAC, audit logs, data residency controls, compliance API access"
+          "notes": "Custom pricing; SCIM, EKM, RBAC, user analytics, audit logs via Compliance API, data residency controls"
         },
         "overage": null
       },
