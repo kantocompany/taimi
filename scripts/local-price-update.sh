@@ -7,13 +7,14 @@
 #   ./scripts/local-price-update.sh cursor aider              # specific tools only
 #   ./scripts/local-price-update.sh -j4                       # all tools, 4 parallel
 #   ./scripts/local-price-update.sh --model claude-opus-4-6   # override model
-#   ./scripts/local-price-update.sh --max-turns 18 cursor     # override turns
+#   ./scripts/local-price-update.sh --research-max-turns 18 cursor  # override research turns
+#   ./scripts/local-price-update.sh --validate-max-turns 4         # override validation turns
 set -euo pipefail
 
 DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
 MODEL="claude-sonnet-4-6"
-MAX_TURNS=18
+RESEARCH_MAX_TURNS=18
 VALIDATE_MAX_TURNS=8
 SLUGS=()
 
@@ -22,7 +23,8 @@ while [[ $# -gt 0 ]]; do
     -j[0-9]*)    PARALLEL="${1#-j}"; shift ;;
     -j)          PARALLEL="$2"; shift 2 ;;
     --model)     MODEL="$2"; shift 2 ;;
-    --max-turns) MAX_TURNS="$2"; shift 2 ;;
+    --research-max-turns) RESEARCH_MAX_TURNS="$2"; shift 2 ;;
+    --validate-max-turns) VALIDATE_MAX_TURNS="$2"; shift 2 ;;
     *)           SLUGS+=("$1"); shift ;;
   esac
 done
@@ -40,7 +42,7 @@ for slug in "${SLUGS[@]}"; do
   rm -f "findings/${slug}.json" "diff-results/${slug}.json" "validated/${slug}.json"
 done
 
-echo "Price update $DATE — ${#SLUGS[@]} tools, parallelism: $PARALLEL, model: $MODEL, max-turns: $MAX_TURNS"
+echo "Price update $DATE — ${#SLUGS[@]} tools, parallelism: $PARALLEL, model: $MODEL, research-max-turns: $RESEARCH_MAX_TURNS, validate-max-turns: $VALIDATE_MAX_TURNS"
 echo "Pipeline: research → diff → validate (conditional) → apply"
 echo ""
 
@@ -52,7 +54,7 @@ run_pipeline() {
   # Phase 1: Research (no Edit permission)
   echo "  [$slug] Phase 1: Research"
   if claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
-    --model "$MODEL" --max-turns "$MAX_TURNS" \
+    --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \
     2>&1 | tee "$logfile"; then
@@ -149,7 +151,7 @@ PROMPT
   fi
   echo ""
 }
-export DATE MODEL MAX_TURNS VALIDATE_MAX_TURNS
+export DATE MODEL RESEARCH_MAX_TURNS VALIDATE_MAX_TURNS
 
 run_pipeline_quiet() {
   local slug="$1"
@@ -159,7 +161,7 @@ run_pipeline_quiet() {
 
   # Phase 1: Research
   if ! claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
-    --model "$MODEL" --max-turns "$MAX_TURNS" \
+    --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \
     > "$logfile" 2>&1; then

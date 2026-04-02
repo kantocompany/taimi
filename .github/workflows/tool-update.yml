@@ -74,7 +74,7 @@ jobs:
             Read docs/tool-update.md and execute.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 25
+            --max-turns 25  # research-max-turns
             --max-budget-usd 1.00
             --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
             --disallowedTools "Agent,Edit"
@@ -148,7 +148,7 @@ jobs:
             Skip editorial changes (notes) — those do not need verification.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 8
+            --max-turns 10  # validate-max-turns
             --max-budget-usd 0.15
             --allowedTools "Write,WebSearch,WebFetch"
             --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep"
