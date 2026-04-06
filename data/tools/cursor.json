@@ -84,7 +84,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO"
+        "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO, usage analytics"
       },
       "overage": null
     },
@@ -96,7 +96,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Pooled usage, SCIM, AI code tracking API, audit logs, dedicated AM"
+        "notes": "Pooled usage, invoice/PO billing, SCIM, AI code tracking API, audit logs, granular admin controls, priority support"
       },
       "overage": null
     },
@@ -112,7 +112,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Automated PR reviews; up to 200 PRs/month, 14-day trial"
+        "notes": "Automated PR reviews; up to 200 PRs/month, Bugbot rules access, 14-day trial"
       },
       "overage": null
     },
@@ -128,7 +128,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Automated PR reviews; unlimited PRs/month, analytics, 14-day trial"
+        "notes": "Automated PR reviews; unlimited PRs/month, advanced rules, analytics, 14-day trial"
       },
       "overage": null
     },
@@ -140,7 +140,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Automated PR reviews; advanced analytics, 30-day trial"
+        "notes": "Automated PR reviews; advanced analytics, priority support, 30-day trial"
       },
       "overage": null
     }

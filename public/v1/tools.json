@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-02",
-    "updated_at": "2026-04-02T00:00:00Z",
+    "version": "2026-04-06",
+    "updated_at": "2026-04-06T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -427,7 +427,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "SSO, SLA, dedicated support"
+            "notes": "SSO, SLA, dedicated support, authentication logs"
           },
           "overage": null
         }
@@ -533,7 +533,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO"
+            "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO, usage analytics"
           },
           "overage": null
         },
@@ -545,7 +545,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Pooled usage, SCIM, AI code tracking API, audit logs, dedicated AM"
+            "notes": "Pooled usage, invoice/PO billing, SCIM, AI code tracking API, audit logs, granular admin controls, priority support"
           },
           "overage": null
         },
@@ -561,7 +561,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Automated PR reviews; up to 200 PRs/month, 14-day trial"
+            "notes": "Automated PR reviews; up to 200 PRs/month, Bugbot rules access, 14-day trial"
           },
           "overage": null
         },
@@ -577,7 +577,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Automated PR reviews; unlimited PRs/month, analytics, 14-day trial"
+            "notes": "Automated PR reviews; unlimited PRs/month, advanced rules, analytics, 14-day trial"
           },
           "overage": null
         },
@@ -589,7 +589,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Automated PR reviews; advanced analytics, 30-day trial"
+            "notes": "Automated PR reviews; advanced analytics, priority support, 30-day trial"
           },
           "overage": null
         }
@@ -1080,7 +1080,7 @@
           "research tools",
           "custom GPTs"
         ],
-        "note": "Plus/Pro/Business/Enterprise are ChatGPT subscriptions; API plan is standalone pay-per-use"
+        "note": "Free/Go/Plus/Pro/Business/Enterprise are ChatGPT subscriptions; API plan is standalone pay-per-use"
       },
       "plans": [
         {
@@ -1130,7 +1130,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Same usage limits as Plus tier; larger virtual machines for faster cloud tasks; SAML SSO, MFA, admin controls; no training on business data by default; flexible credit extension when limits reached"
+            "notes": "Pay-as-you-go or usage-based seat options; larger virtual machines; SAML SSO, MFA, admin controls; dedicated workspace; no training on business data by default; flexible credit purchasing"
           },
           "overage": null
         },
@@ -1143,7 +1143,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom pricing; SCIM, EKM, RBAC, user analytics, audit logs via Compliance API, data residency controls"
+            "notes": "Custom pricing; priority request processing; SCIM, EKM, RBAC, domain verification, user analytics, audit logs via Compliance API, data residency controls"
           },
           "overage": null
         },

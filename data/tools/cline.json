@@ -62,7 +62,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "SSO, SLA, dedicated support"
+        "notes": "SSO, SLA, dedicated support, authentication logs"
       },
       "overage": null
     }

@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-03-31",
-    "updated_at": "2026-03-31T05:18:55Z",
+    "version": "2026-04-06",
+    "updated_at": "2026-04-06T05:24:51Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-04-06",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "platform.note: Plus/Pro/Business/Enterprise are ChatGPT subscriptions; API plan is standalone pay-per-use → Free/Go/Plus/Pro/Business/Enterprise are ChatGPT subscriptions; API plan is standalone pay-per-use",
+      "details": {
+        "source": "https://developers.openai.com/codex/pricing"
+      }
+    },
     {
       "date": "2026-03-31",
       "tool": "devin",
