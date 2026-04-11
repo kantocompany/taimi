@@ -7,7 +7,7 @@
     "eu_based": true,
     "pricing_url": "https://mistral.ai/pricing"
   },
-  "verification_override": "Pricing page is JS-rendered. Use https://r.jina.ai/https://mistral.ai/pricing for plan tiers. API model pricing is not on the pricing page — use https://r.jina.ai/https://docs.mistral.ai/getting-started/models/ for the model list and verify rates against OpenRouter listings.",
+  "verification_override": "Pricing page is JS-rendered. Use https://r.jina.ai/https://mistral.ai/pricing for plan tiers. API model pricing is not on the pricing page — use https://r.jina.ai/https://docs.mistral.ai/getting-started/models/ for the model list and verify rates against OpenRouter listings. Feature attribution: the page uses dash/checkmark columns per plan. Team has domain verification, Admin API, data export. Audit logs, SAML SSO, white label are Enterprise-only.",
   "platform": {
     "name": "Le Chat",
     "bundled_with": [

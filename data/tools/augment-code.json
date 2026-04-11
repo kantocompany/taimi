@@ -7,6 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://www.augmentcode.com/pricing"
   },
+  "verification_override": "Pricing page uses ✕/✓ marks per feature per plan. Web fetch cannot distinguish these visually — treat all features listed under Standard/Max with ✕ as Enterprise-only. Enterprise-only features: Usage Analytics, Slack integration, MCP support, GitHub Multi Org, Advanced Analytics, User allowlist.",
   "plans": [
     {
       "id": "augment-indie",
