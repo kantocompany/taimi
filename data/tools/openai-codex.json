@@ -32,7 +32,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Bundled with ChatGPT Plus; GPT-5.4, GPT-5.4-mini, GPT-5.3-Codex; web, CLI, IDE extension, iOS; cloud code review, Slack integration; flexible credit extension when limits reached"
+        "notes": "ChatGPT Plus subscription; GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations; flexible credit purchases"
       },
       "overage": null
     },
@@ -49,7 +49,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "GPT-5.3-Codex-Spark (research preview); 6x usage limits vs Plus; 10x weekly cloud code reviews vs Plus; priority processing; flexible credit extension when limits reached"
+        "notes": "ChatGPT Pro subscription; GPT-5.3-Codex-Spark (research preview); 5x or 20x higher rate limits than Plus; priority processing; temporary 2x usage boost through 2026-05-31"
       },
       "overage": null
     },
@@ -66,7 +66,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Pay-as-you-go or usage-based seat options; larger virtual machines; SAML SSO, MFA, admin controls; dedicated workspace; no training on business data by default; flexible credit purchasing"
+        "notes": "Standard or usage-based seats; larger VMs for faster tasks; secure workspace; SAML SSO; no training on business data by default; credit flexibility"
       },
       "overage": null
     },

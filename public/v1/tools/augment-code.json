@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-06",
-    "updated_at": "2026-04-06T00:00:00Z",
+    "version": "2026-04-11",
+    "updated_at": "2026-04-11T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -37,7 +37,7 @@
           "unit": "request",
           "mechanism": "automatic",
           "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits",
+          "notes": "Auto top-up $15/24K credits; top-up credits expire 12 months",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -54,13 +54,13 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "130K credits, up to 20 users, advanced analytics"
+          "notes": "130K credits, up to 20 users"
         },
         "overage": {
           "unit": "request",
           "mechanism": "automatic",
           "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits",
+          "notes": "Auto top-up $15/24K credits; top-up credits expire 12 months",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -77,13 +77,13 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "450K credits, up to 20 users"
+          "notes": "450K credits, up to 20 users, credits pooled"
         },
         "overage": {
           "unit": "request",
           "mechanism": "automatic",
           "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits",
+          "notes": "Auto top-up $15/24K credits; top-up credits expire 12 months",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -96,7 +96,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, volume discounts, dedicated support"
+          "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, Slack integration, volume discounts, dedicated support"
         },
         "overage": null
       }

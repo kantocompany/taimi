@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-06",
-    "updated_at": "2026-04-06T00:00:00Z",
+    "version": "2026-04-11",
+    "updated_at": "2026-04-11T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -49,7 +49,11 @@
           "tokens_included": null,
           "notes": "Extended Agent limits, frontier models, MCPs, skills, hooks, cloud agents"
         },
-        "overage": null
+        "overage": {
+          "notes": "On-demand usage billed in arrears beyond included limits",
+          "unit": "request",
+          "mechanism": "automatic"
+        }
       },
       {
         "id": "cursor-pro-plus",
@@ -65,7 +69,11 @@
           "tokens_included": null,
           "notes": "3× usage on all models"
         },
-        "overage": null
+        "overage": {
+          "notes": "On-demand usage billed in arrears beyond included limits",
+          "unit": "request",
+          "mechanism": "automatic"
+        }
       },
       {
         "id": "cursor-ultra",
@@ -81,7 +89,11 @@
           "tokens_included": null,
           "notes": "20× usage on all models; priority access to new features"
         },
-        "overage": null
+        "overage": {
+          "notes": "On-demand usage billed in arrears beyond included limits",
+          "unit": "request",
+          "mechanism": "automatic"
+        }
       },
       {
         "id": "cursor-business",
@@ -95,9 +107,13 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Shared chats, commands, rules, privacy mode, RBAC, SSO, usage analytics"
+          "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SSO, usage analytics"
         },
-        "overage": null
+        "overage": {
+          "notes": "On-demand usage billed in arrears beyond included limits",
+          "unit": "request",
+          "mechanism": "automatic"
+        }
       },
       {
         "id": "cursor-enterprise",

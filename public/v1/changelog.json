@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-04-06",
-    "updated_at": "2026-04-06T05:24:51Z",
+    "version": "2026-04-11",
+    "updated_at": "2026-04-11T06:46:25Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-04-11",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "plans.1.overage.unit: added request; plans.1.overage.mechanism: added automatic; plans.2.overage.unit: added request; plans.2.overage.mechanism: added automatic; plans.3.overage.unit: added request; plans.3.overage.mechanism: added automatic; plans.4.overage.unit: added request; plans.4.overage.mechanism: added automatic",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
     {
       "date": "2026-04-06",
       "tool": "openai-codex",

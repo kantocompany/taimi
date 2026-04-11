@@ -62,7 +62,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "SSO, SLA, dedicated support, authentication logs"
+        "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs"
       },
       "overage": null
     }
