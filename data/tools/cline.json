@@ -20,36 +20,13 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "VS Code extension, CLI, BYOK, any provider"
+        "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace"
       },
       "overage": {
         "unit": "token",
         "mechanism": "byok",
         "price_per_unit": null,
         "notes": "Cost depends on chosen LLM provider",
-        "input_per_million": null,
-        "output_per_million": null
-      }
-    },
-    {
-      "id": "cline-teams",
-      "name": "Teams",
-      "category": "team",
-      "base_price": {
-        "amount": 20.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "JetBrains, centralized billing, RBAC; first 10 seats always free"
-      },
-      "overage": {
-        "unit": "token",
-        "mechanism": "unverified",
-        "price_per_unit": null,
-        "notes": "Centralized billing offers credits purchased through Cline at no markup; BYOK also supported",
         "input_per_million": null,
         "output_per_million": null
       }
@@ -62,7 +39,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs"
+        "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, inference provider restrictions"
       },
       "overage": null
     }

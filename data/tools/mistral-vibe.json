@@ -100,22 +100,6 @@
       }
     },
     {
-      "id": "mistral-api-devstral-small",
-      "name": "Devstral Small 2 API",
-      "category": "usage",
-      "base_price": null,
-      "includes": null,
-      "overage": {
-        "unit": "token",
-        "mechanism": "automatic",
-        "input_per_million": 0.10,
-        "output_per_million": 0.30,
-        "model": "devstral-small-2",
-        "notes": "24B param, self-hostable, Apache 2.0; Labs (experimental)",
-        "price_per_unit": null
-      }
-    },
-    {
       "id": "mistral-api-devstral-medium",
       "name": "Devstral Medium API",
       "category": "usage",

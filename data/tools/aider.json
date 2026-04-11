@@ -2,7 +2,7 @@
   "slug": "aider",
   "name": "Aider",
   "vendor": {
-    "name": "Aider AI (Open Source)",
+    "name": "Aider AI LLC",
     "hq_country": null,
     "eu_based": false,
     "pricing_url": "https://aider.chat"
@@ -26,7 +26,9 @@
         "unit": "token",
         "mechanism": "byok",
         "price_per_unit": null,
-        "notes": "Cost depends on chosen LLM provider"
+        "notes": "Cost depends on chosen LLM provider",
+        "input_per_million": null,
+        "output_per_million": null
       }
     }
   ],

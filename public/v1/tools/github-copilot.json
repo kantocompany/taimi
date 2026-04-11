@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "300 premium requests; Annual billing: $8.33/mo"
+          "notes": "300 premium requests; unlimited completions; Annual billing: $8.33/mo"
         },
         "overage": {
           "unit": "request",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": 1500,
           "tokens_included": null,
-          "notes": "1,500 premium requests; GitHub Spark; third-party agent delegation; Annual billing: $32.50/mo"
+          "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation; Annual billing: $32.50/mo"
         },
         "overage": {
           "unit": "request",
@@ -93,7 +93,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "300 premium req/user, org management"
+          "notes": "300 premium req/user; IP indemnity; org management"
         },
         "overage": {
           "unit": "request",
@@ -116,7 +116,7 @@
         "includes": {
           "premium_requests": 1000,
           "tokens_included": null,
-          "notes": "1K premium req/user, IP indemnity, SSO"
+          "notes": "1K premium req/user; all models incl Claude Opus 4.6; GitHub Spark; IP indemnity; SSO"
         },
         "overage": {
           "unit": "request",

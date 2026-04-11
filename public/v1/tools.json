@@ -14,7 +14,7 @@
       "slug": "aider",
       "name": "Aider",
       "vendor": {
-        "name": "Aider AI (Open Source)",
+        "name": "Aider AI LLC",
         "hq_country": null,
         "eu_based": false,
         "pricing_url": "https://aider.chat"
@@ -38,7 +38,9 @@
             "unit": "token",
             "mechanism": "byok",
             "price_per_unit": null,
-            "notes": "Cost depends on chosen LLM provider"
+            "notes": "Cost depends on chosen LLM provider",
+            "input_per_million": null,
+            "output_per_million": null
           }
         }
       ],
@@ -79,7 +81,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "40K credits, 1 user, Context Engine"
+            "notes": "40K credits, 1 user, Context Engine, MCP & Native Tools"
           },
           "overage": {
             "unit": "request",
@@ -385,36 +387,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "VS Code extension, CLI, BYOK, any provider"
+            "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace"
           },
           "overage": {
             "unit": "token",
             "mechanism": "byok",
             "price_per_unit": null,
             "notes": "Cost depends on chosen LLM provider",
-            "input_per_million": null,
-            "output_per_million": null
-          }
-        },
-        {
-          "id": "cline-teams",
-          "name": "Teams",
-          "category": "team",
-          "base_price": {
-            "amount": 20.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "JetBrains, centralized billing, RBAC; first 10 seats always free"
-          },
-          "overage": {
-            "unit": "token",
-            "mechanism": "unverified",
-            "price_per_unit": null,
-            "notes": "Centralized billing offers credits purchased through Cline at no markup; BYOK also supported",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -427,7 +406,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs"
+            "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, inference provider restrictions"
           },
           "overage": null
         }
@@ -490,7 +469,10 @@
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
             "unit": "request",
-            "mechanism": "automatic"
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "price_per_unit": null
           }
         },
         {
@@ -505,12 +487,15 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "3× usage on all models"
+            "notes": "3× usage on all OpenAI, Claude, Gemini models"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
             "unit": "request",
-            "mechanism": "automatic"
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "price_per_unit": null
           }
         },
         {
@@ -525,12 +510,15 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "20× usage on all models; priority access to new features"
+            "notes": "20× usage on all OpenAI, Claude, Gemini models; priority access to new features"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
             "unit": "request",
-            "mechanism": "automatic"
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "price_per_unit": null
           }
         },
         {
@@ -550,7 +538,10 @@
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
             "unit": "request",
-            "mechanism": "automatic"
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "price_per_unit": null
           }
         },
         {
@@ -821,7 +812,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "300 premium requests; Annual billing: $8.33/mo"
+            "notes": "300 premium requests; unlimited completions; Annual billing: $8.33/mo"
           },
           "overage": {
             "unit": "request",
@@ -844,7 +835,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "1,500 premium requests; GitHub Spark; third-party agent delegation; Annual billing: $32.50/mo"
+            "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation; Annual billing: $32.50/mo"
           },
           "overage": {
             "unit": "request",
@@ -867,7 +858,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "300 premium req/user, org management"
+            "notes": "300 premium req/user; IP indemnity; org management"
           },
           "overage": {
             "unit": "request",
@@ -890,7 +881,7 @@
           "includes": {
             "premium_requests": 1000,
             "tokens_included": null,
-            "notes": "1K premium req/user, IP indemnity, SSO"
+            "notes": "1K premium req/user; all models incl Claude Opus 4.6; GitHub Spark; IP indemnity; SSO"
           },
           "overage": {
             "unit": "request",
@@ -1018,22 +1009,6 @@
           }
         },
         {
-          "id": "mistral-api-devstral-small",
-          "name": "Devstral Small 2 API",
-          "category": "usage",
-          "base_price": null,
-          "includes": null,
-          "overage": {
-            "unit": "token",
-            "mechanism": "automatic",
-            "input_per_million": 0.10,
-            "output_per_million": 0.30,
-            "model": "devstral-small-2",
-            "notes": "24B param, self-hostable, Apache 2.0; Labs (experimental)",
-            "price_per_unit": null
-          }
-        },
-        {
           "id": "mistral-api-devstral-medium",
           "name": "Devstral Medium API",
           "category": "usage",
@@ -1146,7 +1121,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard or usage-based seats; larger VMs for faster tasks; secure workspace; SAML SSO; no training on business data by default; credit flexibility"
+            "notes": "Standard or usage-based seats; larger VMs for faster tasks; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
           },
           "overage": null
         },
@@ -1175,9 +1150,43 @@
             "input_per_million": 1.75,
             "output_per_million": 14.00,
             "model": "gpt-5.3-codex",
-            "notes": "API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens; priority tier at $3.50 input / $28.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-24)",
+            "notes": "API key mode billed at standard API rates; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens; priority tier at $3.50 input / $28.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-24); no cloud features; delayed model access vs subscription tiers",
             "price_per_unit": null
           }
+        },
+        {
+          "id": "codex-free",
+          "name": "Free",
+          "category": "free",
+          "platform_plan": true,
+          "base_price": {
+            "amount": 0.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "ChatGPT Free subscription; basic exploration of Codex capabilities"
+          },
+          "overage": null
+        },
+        {
+          "id": "codex-go",
+          "name": "Go",
+          "category": "individual",
+          "platform_plan": true,
+          "base_price": {
+            "amount": 8.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "ChatGPT Go subscription; lightweight coding tasks"
+          },
+          "overage": null
         }
       ],
       "capabilities": {
@@ -1375,7 +1384,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
+            "notes": "Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
           },
           "overage": {
             "unit": "request",

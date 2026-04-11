@@ -82,7 +82,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
+        "notes": "Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
       },
       "overage": {
         "unit": "request",

@@ -52,7 +52,10 @@
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
           "unit": "request",
-          "mechanism": "automatic"
+          "mechanism": "automatic",
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
         }
       },
       {
@@ -67,12 +70,15 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "3× usage on all models"
+          "notes": "3× usage on all OpenAI, Claude, Gemini models"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
           "unit": "request",
-          "mechanism": "automatic"
+          "mechanism": "automatic",
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
         }
       },
       {
@@ -87,12 +93,15 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "20× usage on all models; priority access to new features"
+          "notes": "20× usage on all OpenAI, Claude, Gemini models; priority access to new features"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
           "unit": "request",
-          "mechanism": "automatic"
+          "mechanism": "automatic",
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
         }
       },
       {
@@ -112,7 +121,10 @@
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
           "unit": "request",
-          "mechanism": "automatic"
+          "mechanism": "automatic",
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
         }
       },
       {
