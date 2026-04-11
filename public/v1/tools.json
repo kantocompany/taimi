@@ -1097,7 +1097,7 @@
           "category": "individual",
           "platform_plan": true,
           "base_price": {
-            "amount": 200.00,
+            "amount": 100.00,
             "period": "monthly",
             "per": "user"
           },
