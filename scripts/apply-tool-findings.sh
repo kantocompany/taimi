@@ -99,8 +99,16 @@ jq \
         if is_confirmed($diff.changes | map(select(.field | endswith(".platform_plan"))) | first | .field // "") then .platform_plan = $prop.platform_plan else . end
        else . end) |
 
-      # ALWAYS restore price fields from original
-      .base_price = $orig.base_price |
+      # Restore price amount from original (price-update scope).
+      # Allow base_price nullification (fixed→PAYG) only when confirmed.
+      (if $prop.base_price == null and $orig.base_price != null then
+        if ([$diff.changes[] | select(.field | test("base_price\\.(period|per)$"))] | length > 0)
+           and ([$diff.changes[] | select(.field | test("base_price\\.(period|per)$")) | .field] | all(is_confirmed(.)))
+        then .base_price = null
+        else .base_price = $orig.base_price end
+      elif $orig.base_price != null then
+        .base_price.amount = ($orig.base_price.amount // null)
+      else . end) |
       (if $orig.overage then
         .overage.input_per_million = ($orig.overage.input_per_million // null) |
         .overage.output_per_million = ($orig.overage.output_per_million // null) |
@@ -145,7 +153,7 @@ if [[ -n "$new_plans" ]]; then
     # New plans need confirmation
     if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]]; then
       is_confirmed=$(jq --arg pid "$plan_id" \
-        '[.changes[]? | select(.confirmed == true) | select((.field == $pid) or (.field | split(".") | any(. == $pid)))] | length > 0' "$VALIDATED")
+        '[.changes[]? | select(.confirmed == true) | select((.field == $pid) or (.field | split(".") | any(. == $pid)) or (.new == $pid))] | length > 0' "$VALIDATED")
       if [[ "$is_confirmed" != "true" ]]; then
         echo "  Skipping unconfirmed new plan: $plan_id"
         continue
@@ -159,6 +167,24 @@ if [[ -n "$new_plans" ]]; then
       jq --argjson np "$new_plan" '.plans += [$np]' "$tmpfile" > "${tmpfile}.tmp"
       mv "${tmpfile}.tmp" "$tmpfile"
       echo "  Added new plan: $plan_id"
+    fi
+  done
+fi
+
+# Remove confirmed plans
+removed_plans=$(jq -r '[.warnings[]? | select(.type == "plan_removal") | .plan_id] | .[]' "$DIFF_RESULTS")
+if [[ -n "$removed_plans" ]]; then
+  for plan_id in $removed_plans; do
+    if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]]; then
+      is_confirmed=$(jq --arg pid "$plan_id" \
+        '[.changes[]? | select(.confirmed == true) | select(.field == ("remove:" + $pid))] | length > 0' "$VALIDATED")
+      if [[ "$is_confirmed" == "true" ]]; then
+        jq --arg pid "$plan_id" '.plans |= map(select(.id != $pid))' "$tmpfile" > "${tmpfile}.tmp"
+        mv "${tmpfile}.tmp" "$tmpfile"
+        echo "  Removed plan: $plan_id"
+      else
+        echo "  Skipping unconfirmed plan removal: $plan_id"
+      fi
     fi
   done
 fi

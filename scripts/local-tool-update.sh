@@ -111,7 +111,7 @@ run_pipeline() {
   local validated_arg=""
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
-  changes_summary=$(echo "$diff_result" | jq -c '.changes')
+  changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: (.new_plans // []), removed_plans: [.warnings[]? | select(.type == "plan_removal") | .plan_id]}')
 
   if claude -p "$(cat <<PROMPT
 Review verification for $slug.
@@ -123,12 +123,16 @@ Source URL: $source_url
 
 Your task: independently verify each change.
 1. Fetch $source_url
-2. For each change, confirm the NEW value is supported by the page
-3. Write your verdict to validated/${slug}.json with this schema:
+2. For each field change, confirm the NEW value is supported by the page
+3. For each new plan ID, verify the plan exists on the vendor page
+4. For each removed plan ID, verify the plan is NO LONGER on the vendor page
+5. Write your verdict to validated/${slug}.json with this schema:
 {
   "slug": "$slug",
   "changes": [
-    { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "text from page" }
+    { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "text from page" },
+    { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" },
+    { "field": "remove:<removed_plan_id>", "confirmed": true/false, "evidence": "plan no longer listed" }
   ]
 }
 PROMPT
@@ -195,8 +199,8 @@ run_pipeline_quiet() {
   local validated_arg=""
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
-  changes_summary=$(echo "$diff_result" | jq -c '.changes')
-  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change, write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}" \
+  changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: (.new_plans // []), removed_plans: [.warnings[]? | select(.type == "plan_removal") | .plan_id]}')
+  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. For new plan IDs, confirm they exist on the page. For removed plan IDs, confirm they are no longer listed. Write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}. For new plans use field=plan_id. For removed plans use field=remove:plan_id." \
     --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
     --allowedTools "Write,WebSearch,WebFetch" \
     --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \

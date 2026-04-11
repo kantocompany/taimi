@@ -108,7 +108,7 @@ jobs:
           echo "has_structural=$has_structural" >> "$GITHUB_OUTPUT"
           echo "$result" > diff-results/${{ matrix.tool }}.json
           if [[ "$has_changes" == "true" ]]; then
-            echo "changes=$(echo "$result" | jq -c '.changes')" >> "$GITHUB_OUTPUT"
+            echo "changes=$(echo "$result" | jq -c '{changes, new_plans: (.new_plans // []), removed_plans: [.warnings[]? | select(.type == "plan_removal") | .plan_id]}')" >> "$GITHUB_OUTPUT"
             echo "source_url=$(echo "$result" | jq -r '.source_url')" >> "$GITHUB_OUTPUT"
             echo "::notice::${{ matrix.tool }}: changes detected (structural=$has_structural)"
             echo "$result" | jq -r '.changes[] | "  \(.category) \(.field): \(.old) → \(.new)"'
@@ -136,12 +136,16 @@ jobs:
 
             Your task: independently verify each change.
             1. Fetch the source URL above
-            2. For each change, confirm the NEW value is supported by the page
-            3. Write your verdict to validated/${{ matrix.tool }}.json with this schema:
+            2. For each field change, confirm the NEW value is supported by the page
+            3. For each new plan ID, verify the plan exists on the vendor page
+            4. For each removed plan ID, verify the plan is NO LONGER on the vendor page
+            5. Write your verdict to validated/${{ matrix.tool }}.json with this schema:
             {
               "slug": "${{ matrix.tool }}",
               "changes": [
-                { "field": "...", "old": ..., "new": ..., "confirmed": true, "evidence": "quoted text from page" }
+                { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "quoted text from page" },
+                { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" },
+                { "field": "remove:<removed_plan_id>", "confirmed": true/false, "evidence": "plan no longer listed" }
               ]
             }
             If you cannot fetch the page or verify a claim, set confirmed to false.
