@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-04-11",
-    "updated_at": "2026-04-11T10:12:56Z",
+    "version": "2026-04-15",
+    "updated_at": "2026-04-15T16:39:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-04-15",
+      "tool": "mistral-vibe",
+      "type": "pricing_change",
+      "description": "platform.note: Le Chat Pro/Team include Vibe CLI; API plans are standalone → Pro/Team plans include Mistral Vibe; API plans are standalone; plans.1.name: Le Chat Pro → Pro; plans.2.name: Le Chat Team → Team; plans.5.name: Le Chat Enterprise → Enterprise",
+      "details": {
+        "source": "https://mistral.ai/pricing"
+      }
+    },
+    {
+      "date": "2026-04-15",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.1.name: Pro → Pro 5x; plans.7.id: added codex-pro-20x; plans.7.name: added Pro 20x; plans.7.category: added individual; plans.7.platform_plan: added true; plans.7.base_price.amount: added 200.00; plans.7.base_price.period: added monthly; plans.7.base_price.per: added user",
+      "details": {
+        "source": "https://developers.openai.com/codex/pricing"
+      }
+    },
     {
       "date": "2026-04-11",
       "tool": "openai-codex",

@@ -38,7 +38,7 @@
     },
     {
       "id": "codex-pro",
-      "name": "Pro",
+      "name": "Pro 5x",
       "category": "individual",
       "platform_plan": true,
       "base_price": {
@@ -49,7 +49,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "ChatGPT Pro subscription; GPT-5.3-Codex-Spark (research preview); 5x or 20x higher rate limits than Plus; priority processing; temporary 2x usage boost through 2026-05-31"
+        "notes": "ChatGPT Pro 5x subscription; GPT-5.3-Codex-Spark (research preview); 5x Plus rate limits (10x through 2026-05-31); priority processing"
       },
       "overage": null
     },
@@ -130,6 +130,23 @@
         "premium_requests": null,
         "tokens_included": null,
         "notes": "ChatGPT Go subscription; lightweight coding tasks"
+      },
+      "overage": null
+    },
+    {
+      "id": "codex-pro-20x",
+      "name": "Pro 20x",
+      "category": "individual",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 200.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing"
       },
       "overage": null
     }

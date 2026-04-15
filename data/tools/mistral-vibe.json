@@ -13,7 +13,7 @@
     "bundled_with": [
       "Le Chat web/desktop"
     ],
-    "note": "Le Chat Pro/Team include Vibe CLI; API plans are standalone"
+    "note": "Pro/Team plans include Mistral Vibe; API plans are standalone"
   },
   "plans": [
     {
@@ -35,7 +35,7 @@
     },
     {
       "id": "mistral-pro",
-      "name": "Le Chat Pro",
+      "name": "Pro",
       "category": "individual",
       "platform_plan": true,
       "base_price": {
@@ -60,7 +60,7 @@
     },
     {
       "id": "mistral-team",
-      "name": "Le Chat Team",
+      "name": "Team",
       "category": "team",
       "platform_plan": true,
       "base_price": {
@@ -117,7 +117,7 @@
     },
     {
       "id": "mistral-enterprise",
-      "name": "Le Chat Enterprise",
+      "name": "Enterprise",
       "category": "enterprise",
       "platform_plan": true,
       "base_price": null,
