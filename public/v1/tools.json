@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-15",
-    "updated_at": "2026-04-15T00:00:00Z",
+    "version": "2026-04-16",
+    "updated_at": "2026-04-16T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -654,7 +654,7 @@
           "name": "Team",
           "category": "team",
           "base_price": {
-            "amount": 500.00,
+            "amount": 80.00,
             "period": "monthly",
             "per": "flat"
           },

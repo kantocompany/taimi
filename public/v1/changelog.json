@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-04-15",
-    "updated_at": "2026-04-15T16:39:00Z",
+    "version": "2026-04-16",
+    "updated_at": "2026-04-16T17:51:37Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-04-16",
+      "tool": "devin",
+      "type": "pricing_change",
+      "description": "plans.1.base_price.amount: 500.00 → 80.00",
+      "details": {
+        "source": "https://devin.ai/pricing"
+      }
+    },
     {
       "date": "2026-04-15",
       "tool": "mistral-vibe",
