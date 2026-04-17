@@ -71,7 +71,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Collaborative workspace, domain verification, data export"
+        "notes": "Collaborative workspace, domain verification, Admin API, data export"
       },
       "overage": {
         "unit": "token",

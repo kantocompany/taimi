@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-16",
-    "updated_at": "2026-04-16T00:00:00Z",
+    "version": "2026-04-17",
+    "updated_at": "2026-04-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -250,7 +250,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard seat, min 5 members, admin controls; Annual billing: $20/mo"
+            "notes": "Standard seat, 5-150 members, admin controls; Annual billing: $20/mo"
           },
           "overage": null
         },
@@ -267,7 +267,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5x more usage than Standard; Annual billing: $100/mo"
+            "notes": "5x more usage than Standard; SSO, domain verification, admin controls; Annual billing: $100/mo"
           },
           "overage": null
         },
@@ -284,7 +284,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, connectors; API usage billed separately; billed annually"
+            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting; API usage billed separately; billed annually"
           },
           "overage": null
         },
@@ -319,7 +319,7 @@
         },
         {
           "id": "claude-code-api-opus",
-          "name": "API (Opus 4.6)",
+          "name": "API (Opus 4.7)",
           "category": "usage",
           "base_price": null,
           "includes": null,
@@ -328,7 +328,7 @@
             "mechanism": "automatic",
             "input_per_million": 5.00,
             "output_per_million": 25.00,
-            "model": "claude-opus-4-6",
+            "model": "claude-opus-4-7",
             "notes": "Available on Max/Teams Premium plans",
             "price_per_unit": null
           }
@@ -627,8 +627,37 @@
       },
       "plans": [
         {
-          "id": "devin-core",
-          "name": "Core",
+          "id": "devin-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "base_price": null,
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation"
+          },
+          "overage": null,
+          "platform_plan": true
+        },
+        {
+          "id": "devin-free",
+          "name": "Free",
+          "category": "free",
+          "base_price": {
+            "amount": 0,
+            "period": "monthly",
+            "per": "flat"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Limited Devin usage; Devin Review; DeepWiki; 1 member"
+          },
+          "overage": null
+        },
+        {
+          "id": "devin-pro",
+          "name": "Pro",
           "category": "individual",
           "base_price": {
             "amount": 20.00,
@@ -638,20 +667,45 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "No included ACUs; $20 minimum top-up; unlimited users; up to 10 concurrent sessions"
+            "notes": "Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; 1 member"
           },
           "overage": {
             "unit": "acu",
-            "mechanism": "add_on",
+            "mechanism": "unverified",
             "price_per_unit": 2.25,
-            "notes": "Agent Compute Unit, ~minutes of agent work; auto-reload optional",
+            "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
             "input_per_million": null,
             "output_per_million": null
-          }
+          },
+          "platform_plan": true
         },
         {
-          "id": "devin-team",
-          "name": "Team",
+          "id": "devin-max",
+          "name": "Max",
+          "category": "individual",
+          "base_price": {
+            "amount": 200.00,
+            "period": "monthly",
+            "per": "flat"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; 1 member"
+          },
+          "overage": {
+            "unit": "acu",
+            "mechanism": "unverified",
+            "price_per_unit": null,
+            "notes": "Pay-as-you-go beyond included quota; rate not shown on pricing page",
+            "input_per_million": null,
+            "output_per_million": null
+          },
+          "platform_plan": true
+        },
+        {
+          "id": "devin-teams",
+          "name": "Teams",
           "category": "team",
           "base_price": {
             "amount": 80.00,
@@ -661,28 +715,17 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "250 ACUs included, flat team price; unlimited concurrent sessions"
+            "notes": "All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; unlimited concurrent sessions"
           },
           "overage": {
             "unit": "acu",
-            "mechanism": "add_on",
+            "mechanism": "unverified",
             "price_per_unit": 2.00,
-            "notes": "Per ACU beyond 250; auto-recharge optional",
+            "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
             "input_per_million": null,
             "output_per_million": null
-          }
-        },
-        {
-          "id": "devin-enterprise",
-          "name": "Enterprise",
-          "category": "enterprise",
-          "base_price": null,
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Devin Enterprise version (most capable); VPC deploy, SAML/OIDC SSO, centralized admin, teamspace isolation; centralized billing across orgs"
           },
-          "overage": null
+          "platform_plan": true
         }
       ],
       "capabilities": {
@@ -698,6 +741,13 @@
       "benchmarks": {
         "swe_bench_pro": null,
         "measured_at": null
+      },
+      "platform": {
+        "name": "Cognition AI",
+        "bundled_with": [
+          "Windsurf"
+        ],
+        "note": "Paid plans include Windsurf IDE usage quota following Cognition's 2025 acquisition of Windsurf"
       }
     },
     {
@@ -980,7 +1030,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Collaborative workspace, domain verification, data export"
+            "notes": "Collaborative workspace, domain verification, Admin API, data export"
           },
           "overage": {
             "unit": "token",
@@ -1087,7 +1137,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Plus subscription; GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations; flexible credit purchases"
+            "notes": "ChatGPT Plus subscription; GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
           },
           "overage": null
         },
@@ -1121,7 +1171,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard or usage-based seats; larger VMs for faster tasks; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
+            "notes": "Standard or usage-based seats; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
           },
           "overage": null
         },

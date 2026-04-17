@@ -82,7 +82,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Standard seat, min 5 members, admin controls; Annual billing: $20/mo"
+        "notes": "Standard seat, 5-150 members, admin controls; Annual billing: $20/mo"
       },
       "overage": null
     },
@@ -99,7 +99,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "5x more usage than Standard; Annual billing: $100/mo"
+        "notes": "5x more usage than Standard; SSO, domain verification, admin controls; Annual billing: $100/mo"
       },
       "overage": null
     },
@@ -116,7 +116,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, connectors; API usage billed separately; billed annually"
+        "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting; API usage billed separately; billed annually"
       },
       "overage": null
     },
@@ -151,7 +151,7 @@
     },
     {
       "id": "claude-code-api-opus",
-      "name": "API (Opus 4.6)",
+      "name": "API (Opus 4.7)",
       "category": "usage",
       "base_price": null,
       "includes": null,
@@ -160,7 +160,7 @@
         "mechanism": "automatic",
         "input_per_million": 5.00,
         "output_per_million": 25.00,
-        "model": "claude-opus-4-6",
+        "model": "claude-opus-4-7",
         "notes": "Available on Max/Teams Premium plans",
         "price_per_unit": null
       }

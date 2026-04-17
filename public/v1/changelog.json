@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-04-16",
-    "updated_at": "2026-04-16T17:51:37Z",
+    "version": "2026-04-17",
+    "updated_at": "2026-04-17T05:01:39Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-04-17",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.8.name: API (Opus 4.6) → API (Opus 4.7); plans.8.overage.model: claude-opus-4-6 → claude-opus-4-7",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-04-17",
+      "tool": "devin",
+      "type": "pricing_change",
+      "description": "plans.0.id: devin-core → devin-enterprise; plans.0.name: Core → Enterprise; plans.0.category: individual → enterprise; plans.1.id: devin-team → devin-free; plans.1.name: Team → Free; plans.1.category: team → free; plans.1.base_price.amount: 80.00 → 0; plans.2.id: devin-enterprise → devin-pro; plans.2.name: Enterprise → Pro; plans.2.category: enterprise → individual; plans.0.platform_plan: added true; plans.2.base_price.amount: added 20.00; plans.2.base_price.period: added monthly; plans.2.base_price.per: added flat; plans.2.overage.unit: added acu; plans.2.overage.mechanism: added unverified; plans.2.overage.price_per_unit: added 2.25; plans.2.platform_plan: added true; plans.3.id: added devin-max; plans.3.name: added Max; plans.3.category: added individual; plans.3.base_price.amount: added 200.00; plans.3.base_price.period: added monthly; plans.3.base_price.per: added flat; plans.3.overage.unit: added acu; plans.3.overage.mechanism: added unverified; plans.3.platform_plan: added true; plans.4.id: added devin-teams; plans.4.name: added Teams; plans.4.category: added team; plans.4.base_price.amount: added 80.00; plans.4.base_price.period: added monthly; plans.4.base_price.per: added flat; plans.4.overage.unit: added acu; plans.4.overage.mechanism: added unverified; plans.4.overage.price_per_unit: added 2.00; plans.4.platform_plan: added true; platform.name: added Cognition AI; platform.bundled_with.0: added Windsurf; platform.note: added Paid plans include Windsurf IDE usage quota following Cognition's 2025 acquisition of Windsurf; plans.0.base_price.amount: removed; plans.0.base_price.period: removed; plans.0.base_price.per: removed; plans.0.overage.unit: removed; plans.0.overage.mechanism: removed; plans.0.overage.price_per_unit: removed; plans.1.overage.unit: removed; plans.1.overage.mechanism: removed; plans.1.overage.price_per_unit: removed",
+      "details": {
+        "source": "https://devin.ai/pricing"
+      }
+    },
     {
       "date": "2026-04-16",
       "tool": "devin",
