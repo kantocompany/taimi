@@ -121,6 +121,7 @@ jq -n \
     # Added fields (in proposed, not in current)
     ($prop | to_entries[] |
       select($cur[.key] == null) |
+      select(.value != null) |
       select(.key | is_price_field | not) |
       select(.key | is_protected_field | not) |
       {
@@ -133,6 +134,7 @@ jq -n \
     # Removed fields (in current, not in proposed) — excluding plan-level removals
     ($cur | to_entries[] |
       select($prop[.key] == null) |
+      select(.value != null) |
       select(.key | is_price_field | not) |
       select(.key | is_protected_field | not) |
       # Skip fields belonging to removed plans (handled separately as warnings)
