@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-04-17",
-    "updated_at": "2026-04-17T05:01:39Z",
+    "version": "2026-04-19",
+    "updated_at": "2026-04-19T06:55:19Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-04-19",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.10.id: added claude-code-free; plans.10.name: added Free; plans.10.category: added free; plans.10.platform_plan: added true; plans.10.base_price.amount: added 0; plans.10.base_price.period: added monthly; plans.10.base_price.per: added user; plans.11.id: added claude-code-api-managed-agents; plans.11.name: added API (Managed Agents); plans.11.category: added usage; plans.11.overage.unit: added request; plans.11.overage.mechanism: added automatic; plans.11.overage.price_per_unit: added 0.08; plans.12.id: added claude-code-api-web-search; plans.12.name: added API (Web Search); plans.12.category: added usage; plans.12.overage.unit: added request; plans.12.overage.mechanism: added automatic; plans.12.overage.price_per_unit: added 0.01; plans.13.id: added claude-code-api-code-execution; plans.13.name: added API (Code Execution); plans.13.category: added usage; plans.13.overage.unit: added request; plans.13.overage.mechanism: added automatic; plans.13.overage.price_per_unit: added 0.05",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-04-17",
       "tool": "claude-code",

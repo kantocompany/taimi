@@ -528,14 +528,16 @@
         </div>
 
         <!-- ============ Claude Code ============ -->
-        <div class="row" data-name="claude-code" data-individual="20" data-team="25" data-free="9999" data-enterprise="1" data-eu="0">
+        <div class="row" data-name="claude-code" data-individual="20" data-team="25" data-free="0" data-enterprise="1" data-eu="0">
         <div class="vendor-cell">
           <div class="vendor-name"><span class="flag">🇺🇸</span><span class="name">Claude Code</span></div>
           <div class="vendor-parent">Anthropic</div>
 
           <a class="vendor-link" href="https://claude.com/pricing" target="_blank" rel="noopener">↗ official pricing</a>
         </div>
-        <div class="cell"><div class="empty-cell">—</div></div>
+        <div class="cell">
+          <a class="price-block pb-free" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-name">Free<span class="platform-badge">P</span></div><div class="tier-notes">Claude chat access only; Claude Code requires Pro or higher</div></a>
+        </div>
         <div class="cell">
           <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Pro<span class="platform-badge">P</span></span><span class="tier-price">$20/mo</span></div><div class="tier-notes">Rate-limited; Annual billing: $17/mo</div></a>
           <a class="price-block pb-individual" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Max 5x<span class="platform-badge">P</span></span><span class="tier-price">$100/mo</span></div><div class="tier-notes">5x usage vs Pro; early access to advanced features</div></a>
@@ -549,6 +551,9 @@
           <a class="price-block pb-usage" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">API (Sonnet 4.6)</span><span class="tier-price">$3/$15/M</span></div><div class="tier-notes">Default model for Pro/Teams Standard</div><div class="tier-unit">per M tokens</div></a>
           <a class="price-block pb-usage" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">API (Opus 4.7)</span><span class="tier-price">$5/$25/M</span></div><div class="tier-notes">Available on Max/Teams Premium plans</div><div class="tier-unit">per M tokens</div></a>
           <a class="price-block pb-usage" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">API (Haiku 4.5)</span><span class="tier-price">$1/$5/M</span></div><div class="tier-notes">Lightweight model; available via API</div><div class="tier-unit">per M tokens</div></a>
+          <a class="price-block pb-usage" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">API (Managed Agents)</span><span class="tier-price">$0.08/req</span></div><div class="tier-notes">$0.08 per session-hour of active agent runtime</div><div class="tier-unit">per request</div></a>
+          <a class="price-block pb-usage" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">API (Web Search)</span><span class="tier-price">$0.01/req</span></div><div class="tier-notes">$10 per 1,000 searches ($0.01/search)</div><div class="tier-unit">per request</div></a>
+          <a class="price-block pb-usage" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">API (Code Execution)</span><span class="tier-price">$0.05/req</span></div><div class="tier-notes">$0.05 per container-hour; 50 free hours per day</div><div class="tier-unit">per request</div></a>
         </div>
         <div class="cell">
           <a class="price-block pb-enterprise" href="https://claude.com/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Enterprise Self-Serve<span class="platform-badge">P</span></span><span class="tier-price">$20/mo</span></div><div class="tier-notes">SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting; API usage billed separately; billed annually</div></a>
@@ -565,7 +570,7 @@
           <a class="vendor-link" href="https://cline.bot/pricing" target="_blank" rel="noopener">↗ official pricing</a>
         </div>
         <div class="cell">
-          <a class="price-block pb-free" href="https://cline.bot/pricing" target="_blank" rel="noopener"><div class="tier-name">Open Source</div><div class="tier-notes">VS Code extension, CLI, BYOK, any provider, MCP Marketplace</div></a>
+          <a class="price-block pb-free" href="https://cline.bot/pricing" target="_blank" rel="noopener"><div class="tier-name">Open Source</div><div class="tier-notes">VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces</div></a>
         </div>
         <div class="cell"><div class="empty-cell">—</div></div>
         <div class="cell"><div class="empty-cell">—</div></div>
@@ -615,15 +620,15 @@
           <a class="price-block pb-free" href="https://devin.ai/pricing" target="_blank" rel="noopener"><div class="tier-name">Free</div><div class="tier-notes">Limited Devin usage; Devin Review; DeepWiki; 1 member</div></a>
         </div>
         <div class="cell">
-          <a class="price-block pb-individual" href="https://devin.ai/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Pro<span class="platform-badge">P</span></span><span class="tier-price">$20/mo flat</span></div><div class="tier-notes">Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; 1 member</div></a>
-          <a class="price-block pb-individual" href="https://devin.ai/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Max<span class="platform-badge">P</span></span><span class="tier-price">$200/mo flat</span></div><div class="tier-notes">Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; 1 member</div></a>
+          <a class="price-block pb-individual" href="https://devin.ai/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Pro<span class="platform-badge">P</span></span><span class="tier-price">$20/mo flat</span></div><div class="tier-notes">Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member</div></a>
+          <a class="price-block pb-individual" href="https://devin.ai/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Max<span class="platform-badge">P</span></span><span class="tier-price">$200/mo flat</span></div><div class="tier-notes">Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member</div></a>
         </div>
         <div class="cell">
           <a class="price-block pb-team" href="https://devin.ai/pricing" target="_blank" rel="noopener"><div class="tier-row"><span class="tier-name">Teams<span class="platform-badge">P</span></span><span class="tier-price">$80/mo flat</span></div><div class="tier-notes">All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; unlimited concurrent sessions</div></a>
         </div>
         <div class="cell"><div class="empty-cell">—</div></div>
         <div class="cell">
-          <a class="price-block pb-enterprise" href="https://devin.ai/pricing" target="_blank" rel="noopener"><span class="tier-name">All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation</span></a>
+          <a class="price-block pb-enterprise" href="https://devin.ai/pricing" target="_blank" rel="noopener"><span class="tier-name">All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions</span></a>
         </div>
         </div>
 

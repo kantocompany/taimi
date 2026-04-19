@@ -180,6 +180,71 @@
         "notes": "Lightweight model; available via API",
         "price_per_unit": null
       }
+    },
+    {
+      "id": "claude-code-free",
+      "name": "Free",
+      "category": "free",
+      "platform_plan": true,
+      "base_price": {
+        "amount": 0,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Claude chat access only; Claude Code requires Pro or higher"
+      },
+      "overage": null
+    },
+    {
+      "id": "claude-code-api-managed-agents",
+      "name": "API (Managed Agents)",
+      "category": "usage",
+      "base_price": null,
+      "includes": null,
+      "overage": {
+        "unit": "request",
+        "mechanism": "automatic",
+        "input_per_million": null,
+        "output_per_million": null,
+        "model": null,
+        "notes": "$0.08 per session-hour of active agent runtime",
+        "price_per_unit": 0.08
+      }
+    },
+    {
+      "id": "claude-code-api-web-search",
+      "name": "API (Web Search)",
+      "category": "usage",
+      "base_price": null,
+      "includes": null,
+      "overage": {
+        "unit": "request",
+        "mechanism": "automatic",
+        "input_per_million": null,
+        "output_per_million": null,
+        "model": null,
+        "notes": "$10 per 1,000 searches ($0.01/search)",
+        "price_per_unit": 0.01
+      }
+    },
+    {
+      "id": "claude-code-api-code-execution",
+      "name": "API (Code Execution)",
+      "category": "usage",
+      "base_price": null,
+      "includes": null,
+      "overage": {
+        "unit": "request",
+        "mechanism": "automatic",
+        "input_per_million": null,
+        "output_per_million": null,
+        "model": null,
+        "notes": "$0.05 per container-hour; 50 free hours per day",
+        "price_per_unit": 0.05
+      }
     }
   ],
   "capabilities": {

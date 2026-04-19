@@ -31,13 +31,13 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace"
+          "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces"
         },
         "overage": {
           "unit": "token",
           "mechanism": "byok",
           "price_per_unit": null,
-          "notes": "Cost depends on chosen LLM provider",
+          "notes": "BYOK or managed inference at cost via Cline account; cost depends on chosen provider",
           "input_per_million": null,
           "output_per_million": null
         }

@@ -348,6 +348,71 @@
             "notes": "Lightweight model; available via API",
             "price_per_unit": null
           }
+        },
+        {
+          "id": "claude-code-free",
+          "name": "Free",
+          "category": "free",
+          "platform_plan": true,
+          "base_price": {
+            "amount": 0,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Claude chat access only; Claude Code requires Pro or higher"
+          },
+          "overage": null
+        },
+        {
+          "id": "claude-code-api-managed-agents",
+          "name": "API (Managed Agents)",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "request",
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "model": null,
+            "notes": "$0.08 per session-hour of active agent runtime",
+            "price_per_unit": 0.08
+          }
+        },
+        {
+          "id": "claude-code-api-web-search",
+          "name": "API (Web Search)",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "request",
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "model": null,
+            "notes": "$10 per 1,000 searches ($0.01/search)",
+            "price_per_unit": 0.01
+          }
+        },
+        {
+          "id": "claude-code-api-code-execution",
+          "name": "API (Code Execution)",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "request",
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "model": null,
+            "notes": "$0.05 per container-hour; 50 free hours per day",
+            "price_per_unit": 0.05
+          }
         }
       ],
       "capabilities": {
@@ -387,13 +452,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace"
+            "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces"
           },
           "overage": {
             "unit": "token",
             "mechanism": "byok",
             "price_per_unit": null,
-            "notes": "Cost depends on chosen LLM provider",
+            "notes": "BYOK or managed inference at cost via Cline account; cost depends on chosen provider",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -634,7 +699,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation"
+            "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
           },
           "overage": null,
           "platform_plan": true
@@ -667,7 +732,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; 1 member"
+            "notes": "Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
           },
           "overage": {
             "unit": "acu",
@@ -691,7 +756,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; 1 member"
+            "notes": "Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
           },
           "overage": {
             "unit": "acu",

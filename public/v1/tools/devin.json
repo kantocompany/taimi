@@ -27,7 +27,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation"
+          "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
         },
         "overage": null,
         "platform_plan": true
@@ -60,7 +60,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; 1 member"
+          "notes": "Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
         },
         "overage": {
           "unit": "acu",
@@ -84,7 +84,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; 1 member"
+          "notes": "Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
         },
         "overage": {
           "unit": "acu",
