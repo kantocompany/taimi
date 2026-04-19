@@ -90,13 +90,11 @@ Vendors whose pricing pages need alternate fetch methods. Tools with a `verifica
 
 | Vendor | Problem | Workaround | Verified |
 |--------|---------|------------|----------|
-| Anthropic | `claude.com/pricing` is JS-rendered | Rendering proxy (priority 3) handles this | 2026-03-16 |
 | Mistral | `mistral.ai/pricing` API table is JS-rendered | Subscription plans visible directly; API rates need rendering proxy or web search | 2026-03-16 |
 | OpenAI Codex | `openai.com/pricing` returns Cloudflare 403 | `developers.openai.com/codex/pricing` (subscriptions); `developers.openai.com/api/docs/pricing` (per-token API rates) | 2026-03-18 |
 
 ## Notes
 
 - `chatgpt.com/pricing` is also blocked (same Cloudflare setup)
-- Anthropic: do NOT use `platform.claude.com/docs/en/about-claude/pricing` — it has unreliable subscription tier prices.
 - OpenAI Codex: Codex models may be listed under GPT-5.x-Codex names on the API pricing page.
 - Mistral: subscription plan prices ($14.99 Pro, $24.99 Team) are in the static HTML. API token rates (per-model input/output) are in a JS-rendered table — use rendering proxy or web search.

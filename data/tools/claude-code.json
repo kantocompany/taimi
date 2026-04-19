@@ -195,5 +195,6 @@
   "benchmarks": {
     "swe_bench_pro": 45.9,
     "measured_at": "2026-02-01"
-  }
+  },
+  "verification_override": "Pricing page is JS-rendered. Use rendering proxy r.jina.ai/https://claude.com/pricing — do not attempt direct fetch. Current subscription tiers: Pro, Max 5x, Max 20x, Teams Standard, Teams Premium, Enterprise Self-Serve, Enterprise Sales-Assisted. API token pricing (Sonnet, Opus, Haiku): also on the pricing page via proxy, or verify via docs.anthropic.com. Do not use platform.claude.com/docs/en/about-claude/pricing — it has unreliable subscription tier data."
 }
