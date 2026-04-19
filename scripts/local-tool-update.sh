@@ -122,6 +122,7 @@ $changes_summary
 Source URL: $source_url
 
 Your task: independently verify each change.
+IMPORTANT: Verify ONLY the specific changes listed above. Do not check other fields or report changes you notice independently on the page.
 1. Fetch $source_url
 2. For each field change, confirm the NEW value is supported by the page
 3. For each new plan ID, verify the plan exists on the vendor page
@@ -200,7 +201,7 @@ run_pipeline_quiet() {
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: (.new_plans // []), removed_plans: [.warnings[]? | select(.type == "plan_removal") | .plan_id]}')
-  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. For new plan IDs, confirm they exist on the page. For removed plan IDs, confirm they are no longer listed. Write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}. For new plans use field=plan_id. For removed plans use field=remove:plan_id." \
+  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. For new plan IDs, confirm they exist on the page. For removed plan IDs, confirm they are no longer listed. Write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}. For new plans use field=plan_id. For removed plans use field=remove:plan_id." \
     --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
     --allowedTools "Write,WebSearch,WebFetch" \
     --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \

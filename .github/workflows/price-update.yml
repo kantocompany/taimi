@@ -131,6 +131,7 @@ jobs:
             Source URL: ${{ steps.diff.outputs.source_url }}
 
             Your task: independently verify each change.
+            IMPORTANT: Verify ONLY the specific changes listed above. Do not check other fields or report changes you notice independently on the page.
             1. Fetch the source URL above
             2. For each change, confirm the NEW value appears on the page
             3. Write your verdict to validated/${{ matrix.tool }}.json with this schema:

@@ -120,6 +120,7 @@ $changes_summary
 Source URL: $source_url
 
 Your task: independently verify each change.
+IMPORTANT: Verify ONLY the specific changes listed above. Do not check other fields or report changes you notice independently on the page.
 1. Fetch $source_url
 2. For each change, confirm the NEW value appears on the page
 3. Write your verdict to validated/${slug}.json with this schema:
@@ -188,7 +189,7 @@ run_pipeline_quiet() {
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '.changes')
-  if ! claude -p "Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change, write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}" \
+  if ! claude -p "Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}" \
     --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
     --allowedTools "Write,WebSearch,WebFetch" \
     --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \

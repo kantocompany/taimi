@@ -135,6 +135,7 @@ jobs:
             Source URL: ${{ steps.diff.outputs.source_url }}
 
             Your task: independently verify each change.
+            IMPORTANT: Verify ONLY the specific changes listed above. Do not check other fields or report changes you notice independently on the page.
             1. Fetch the source URL above
             2. For each field change, confirm the NEW value is supported by the page
             3. For each new plan ID, verify the plan exists on the vendor page
