@@ -105,7 +105,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SSO, usage analytics"
+        "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, usage analytics"
       },
       "overage": {
         "notes": "On-demand usage billed in arrears beyond included limits",

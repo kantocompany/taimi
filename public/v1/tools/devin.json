@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-19",
-    "updated_at": "2026-04-19T00:00:00Z",
+    "version": "2026-04-23",
+    "updated_at": "2026-04-23T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -27,7 +27,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
+          "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
         },
         "overage": null,
         "platform_plan": true

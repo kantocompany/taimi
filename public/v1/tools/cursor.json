@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-19",
-    "updated_at": "2026-04-19T00:00:00Z",
+    "version": "2026-04-23",
+    "updated_at": "2026-04-23T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -116,7 +116,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SSO, usage analytics"
+          "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, usage analytics"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",

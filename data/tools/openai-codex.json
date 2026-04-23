@@ -146,7 +146,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing"
+        "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits (25x through 2026-05-31); priority processing"
       },
       "overage": null
     }

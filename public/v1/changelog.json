@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-04-19",
-    "updated_at": "2026-04-19T06:55:19Z",
+    "version": "2026-04-23",
+    "updated_at": "2026-04-23T16:15:48Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-04-23",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.3.name: Teams Standard → Standard Seat; plans.4.name: Teams Premium → Premium Seat; plans.14.id: added claude-code-education; plans.14.name: added Education; plans.14.category: added enterprise; plans.14.platform_plan: added true",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-04-19",
       "tool": "claude-code",

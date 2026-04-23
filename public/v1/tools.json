@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-19",
-    "updated_at": "2026-04-19T00:00:00Z",
+    "version": "2026-04-23",
+    "updated_at": "2026-04-23T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -239,7 +239,7 @@
         },
         {
           "id": "claude-code-teams-standard",
-          "name": "Teams Standard",
+          "name": "Standard Seat",
           "category": "team",
           "platform_plan": true,
           "base_price": {
@@ -256,7 +256,7 @@
         },
         {
           "id": "claude-code-teams-premium",
-          "name": "Teams Premium",
+          "name": "Premium Seat",
           "category": "team",
           "platform_plan": true,
           "base_price": {
@@ -413,6 +413,19 @@
             "notes": "$0.05 per container-hour; 50 free hours per day",
             "price_per_unit": 0.05
           }
+        },
+        {
+          "id": "claude-code-education",
+          "name": "Education",
+          "category": "enterprise",
+          "platform_plan": true,
+          "base_price": null,
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Institutional pricing; student/faculty access, academic research features; contact for pricing"
+          },
+          "overage": null
         }
       ],
       "capabilities": {
@@ -598,7 +611,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SSO, usage analytics"
+            "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, usage analytics"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -699,7 +712,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
+            "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
           },
           "overage": null,
           "platform_plan": true
@@ -1316,7 +1329,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing"
+            "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits (25x through 2026-05-31); priority processing"
           },
           "overage": null
         }
