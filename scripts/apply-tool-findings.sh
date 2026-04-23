@@ -55,15 +55,26 @@ jq \
     else ($confirmed | index($field) != null)
     end;
 
+  # Helper: strip newly-introduced "Annual billing: $X/mo" from notes.
+  # Preserves existing annual claims (added by price-update). Prevents
+  # tool-update agents from injecting dollar amounts via free text.
+  def strip_new_annual($orig; $new):
+    if (($orig // "") | test("Annual billing:")) then $new
+    elif ($new | test("Annual billing:")) then
+      $new | gsub("[; ]*Annual billing: \\$[0-9.,]+/mo[; ]*"; "; ")
+           | gsub("^[; ]+|[; ]+$"; "")
+    else $new
+    end;
+
   # Merge plans: iterate original plans, overlay from proposed
   .plans = [.plans[] | . as $orig |
     ($proposed.plans // [] | map(select(.id == $orig.id)) | first // null) as $prop |
     if $prop == null then $orig  # not in proposed = keep original
     else
       $orig |
-      # Editorial: notes (confirmed only)
+      # Editorial: notes (confirmed only, annual billing claims filtered)
       (if $prop.includes.notes and $prop.includes.notes != ($orig.includes.notes // null) then
-        if is_confirmed($diff.changes | map(select(.field | endswith(".includes.notes"))) | first | .field // "") then .includes.notes = $prop.includes.notes else . end
+        if is_confirmed($diff.changes | map(select(.field | endswith(".includes.notes"))) | first | .field // "") then .includes.notes = strip_new_annual($orig.includes.notes; $prop.includes.notes) else . end
        else . end) |
       (if $prop.includes then
         .includes.premium_requests = $prop.includes.premium_requests |
@@ -162,7 +173,16 @@ if [[ -n "$new_plans" ]]; then
       echo "  Skipping new plan (no verdict): $plan_id"
       continue
     fi
-    new_plan=$(jq --arg pid "$plan_id" '.proposed.plans[] | select(.id == $pid)' "$FINDINGS")
+    # Add plan structure but null out price fields — price-update fills them in
+    new_plan=$(jq --arg pid "$plan_id" '
+      .proposed.plans[] | select(.id == $pid) |
+      (if .base_price then .base_price.amount = null else . end) |
+      (if .overage then
+        .overage.input_per_million = null |
+        .overage.output_per_million = null |
+        .overage.price_per_unit = null
+      else . end)
+    ' "$FINDINGS")
     if [[ -n "$new_plan" ]]; then
       jq --argjson np "$new_plan" '.plans += [$np]' "$tmpfile" > "${tmpfile}.tmp"
       mv "${tmpfile}.tmp" "$tmpfile"
