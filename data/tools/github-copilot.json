@@ -59,7 +59,7 @@
       "includes": {
         "premium_requests": 1500,
         "tokens_included": null,
-        "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation; Annual billing: $32.50/mo"
+        "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation"
       },
       "overage": {
         "unit": "request",

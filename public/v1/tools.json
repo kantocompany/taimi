@@ -737,7 +737,7 @@
           "overage": {
             "unit": "acu",
             "mechanism": "unverified",
-            "price_per_unit": 2.25,
+            "price_per_unit": null,
             "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
             "input_per_million": null,
             "output_per_million": null
@@ -785,7 +785,7 @@
           "overage": {
             "unit": "acu",
             "mechanism": "unverified",
-            "price_per_unit": 2.00,
+            "price_per_unit": null,
             "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
             "input_per_million": null,
             "output_per_million": null
@@ -950,7 +950,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation; Annual billing: $32.50/mo"
+            "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation"
           },
           "overage": {
             "unit": "request",
