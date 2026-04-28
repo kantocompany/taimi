@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-23",
-    "updated_at": "2026-04-23T00:00:00Z",
+    "version": "2026-04-28",
+    "updated_at": "2026-04-28T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "40K credits, 1 user, Context Engine, MCP & Native Tools"
+          "notes": "40K credits, 1 user, Context Engine, MCP & Native Tools, Code Review"
         },
         "overage": {
           "unit": "request",

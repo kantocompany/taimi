@@ -36,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; 2-week free trial for new users"
+        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; Devin Cloud sessions; 2-week free trial for new users"
       },
       "overage": {
         "unit": "request",
@@ -120,5 +120,5 @@
     "swe_bench_verified": 78.0,
     "measured_at": "2026-03-01"
   },
-  "verification_override": "Base prices: use rendering proxy r.jina.ai/https://windsurf.com/pricing. Current tiers: Free, Pro, Max, Teams, Enterprise. Overage: if page shows specific per-unit rate, use it. If page shows 'at API pricing' without a specific rate, fetch https://devin.ai/pricing — Cognition AI owns both Windsurf and Devin (acquired July 2025) and publishes per-unit rates there. Match overage unit type to what windsurf.com describes (may be acu, request, or token). If neither source yields a rate, keep existing overage data and mark UNVERIFIED_OVERAGE. Feature attribution: the pricing page uses a comparison table with visual markers (checkmarks/dashes) per plan. Web fetch cannot reliably distinguish these — do not add features to plan notes based on the comparison table. Tier-specific features: Teams adds centralized billing, admin dashboard with analytics, priority support, automated zero data retention over Pro. Enterprise adds RBAC, SSO + access control, hybrid deployment, highest priority support, dedicated account management, custom terms over Teams. Previews, deploys, inline edits, and Tab completions are available on all tiers including Free — do not attribute them to specific paid plans."
+  "verification_override": "Base prices: use rendering proxy r.jina.ai/https://windsurf.com/pricing. Current tiers: Free, Pro, Max, Teams, Enterprise. Overage: if page shows specific per-unit rate, use it. If page shows 'at API pricing' without a specific rate, mark UNVERIFIED_OVERAGE — neither windsurf.com nor devin.ai currently publish per-unit rates publicly. Feature attribution: the pricing page uses a comparison table with visual markers (checkmarks/dashes) per plan. Web fetch cannot reliably distinguish these — do not add features to plan notes based on the comparison table. Tier-specific features: Teams adds centralized billing, admin dashboard with analytics, priority support, automated zero data retention over Pro. Enterprise adds RBAC, SSO + access control, hybrid deployment, highest priority support, dedicated account management, custom terms over Teams. Previews, deploys, inline edits, and Tab completions are available on all tiers including Free — do not attribute them to specific paid plans."
 }

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-23",
-    "updated_at": "2026-04-23T00:00:00Z",
+    "version": "2026-04-28",
+    "updated_at": "2026-04-28T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -43,7 +43,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Plus subscription; GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
+          "notes": "ChatGPT Plus subscription; GPT-5.5, GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
         },
         "overage": null
       },
@@ -77,7 +77,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Standard or usage-based seats; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
+          "notes": "Vendor page shows pay-as-you-go pricing (no fixed monthly shown); standard or usage-based seats; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
         },
         "overage": null
       },

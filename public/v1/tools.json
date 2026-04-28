@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-23",
-    "updated_at": "2026-04-23T00:00:00Z",
+    "version": "2026-04-28",
+    "updated_at": "2026-04-28T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -81,7 +81,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "40K credits, 1 user, Context Engine, MCP & Native Tools"
+            "notes": "40K credits, 1 user, Context Engine, MCP & Native Tools, Code Review"
           },
           "overage": {
             "unit": "request",
@@ -882,7 +882,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, up to 100 repos / 1TB indexed, VPC-SC, audit logs, CMEK. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
+            "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, VPC-SC, audit logs, CMEK. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
           },
           "overage": null
         }
@@ -940,7 +940,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "300 premium requests; unlimited completions; Annual billing: $8.33/mo"
+            "notes": "300 premium requests; unlimited completions; Annual billing: $8.33/mo; plan temporarily unavailable — pricing update pending (2026-04-28)"
           },
           "overage": {
             "unit": "request",
@@ -963,7 +963,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation"
+            "notes": "1,500 premium requests; all models incl Claude Opus 4.7; GitHub Spark; third-party agent delegation; plan temporarily unavailable — pricing update pending (2026-04-28)"
           },
           "overage": {
             "unit": "request",
@@ -1215,7 +1215,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Plus subscription; GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
+            "notes": "ChatGPT Plus subscription; GPT-5.5, GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
           },
           "overage": null
         },
@@ -1249,7 +1249,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard or usage-based seats; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
+            "notes": "Vendor page shows pay-as-you-go pricing (no fixed monthly shown); standard or usage-based seats; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
           },
           "overage": null
         },
@@ -1483,7 +1483,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; 2-week free trial for new users"
+            "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; Devin Cloud sessions; 2-week free trial for new users"
           },
           "overage": {
             "unit": "request",

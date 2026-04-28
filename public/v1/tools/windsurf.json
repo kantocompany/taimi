@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-23",
-    "updated_at": "2026-04-23T00:00:00Z",
+    "version": "2026-04-28",
+    "updated_at": "2026-04-28T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; 2-week free trial for new users"
+          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; Devin Cloud sessions; 2-week free trial for new users"
         },
         "overage": {
           "unit": "request",

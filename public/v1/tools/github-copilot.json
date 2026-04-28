@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-04-23",
-    "updated_at": "2026-04-23T00:00:00Z",
+    "version": "2026-04-28",
+    "updated_at": "2026-04-28T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "300 premium requests; unlimited completions; Annual billing: $8.33/mo"
+          "notes": "300 premium requests; unlimited completions; Annual billing: $8.33/mo; plan temporarily unavailable — pricing update pending (2026-04-28)"
         },
         "overage": {
           "unit": "request",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": 1500,
           "tokens_included": null,
-          "notes": "1,500 premium requests; all models incl Claude Opus 4.6; GitHub Spark; third-party agent delegation"
+          "notes": "1,500 premium requests; all models incl Claude Opus 4.7; GitHub Spark; third-party agent delegation; plan temporarily unavailable — pricing update pending (2026-04-28)"
         },
         "overage": {
           "unit": "request",
