@@ -6,6 +6,15 @@
   },
   "changes": [
     {
+      "date": "2026-05-03",
+      "tool": "github-copilot",
+      "type": "feature",
+      "description": "GitHub Copilot migrating to AI Credits (token-based) billing on June 1, 2026; new individual plan signups paused since April 20; Claude Opus 4.5 and 4.6 removed from Pro+, all Claude Opus removed from Pro",
+      "details": {
+        "source": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/"
+      }
+    },
+    {
       "date": "2026-04-23",
       "tool": "claude-code",
       "type": "pricing_change",
