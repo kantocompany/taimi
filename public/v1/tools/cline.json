@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces"
+          "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces, community support"
         },
         "overage": {
           "unit": "token",
@@ -50,7 +50,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, inference provider restrictions"
+          "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, fine-grained permissioning, inference provider restrictions"
         },
         "overage": null
       }

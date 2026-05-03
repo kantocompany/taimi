@@ -82,7 +82,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Standard seat, 5-150 members, admin controls; Annual billing: $20/mo"
+        "notes": "Standard seat, 5-150 members, SSO, admin controls; Annual billing: $20/mo"
       },
       "overage": null
     },

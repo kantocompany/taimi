@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "300 premium requests; unlimited completions; Annual billing: $8.33/mo; new signups paused 2026-04-20; migrates to AI Credits (token-based) billing 2026-06-01"
+          "notes": "300 premium requests; unlimited completions; new signups paused 2026-04-20; migrates to AI Credits (token-based) billing 2026-06-01"
         },
         "overage": {
           "unit": "request",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": 1500,
           "tokens_included": null,
-          "notes": "1,500 premium requests; GitHub Spark; third-party agent delegation; Claude Opus 4.5 and 4.6 removed; new signups paused 2026-04-20; migrates to AI Credits (token-based) billing 2026-06-01"
+          "notes": "1,500 premium requests; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; new signups paused 2026-04-20; migrates to AI Credits (token-based) billing 2026-06-01"
         },
         "overage": {
           "unit": "request",
@@ -93,7 +93,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "300 premium req/user; IP indemnity; org management"
+          "notes": "300 premium req/user; IP indemnity; org management; self-serve signups paused 2026-04-22; migrates to AI Credits (token-based) billing 2026-06-01"
         },
         "overage": {
           "unit": "request",
@@ -116,7 +116,7 @@
         "includes": {
           "premium_requests": 1000,
           "tokens_included": null,
-          "notes": "1K premium req/user; all models incl Claude Opus 4.6; GitHub Spark; IP indemnity; SSO"
+          "notes": "1K premium req/user; all models incl Claude Opus 4.7; GitHub Spark; IP indemnity; SSO; migrates to AI Credits (token-based) billing 2026-06-01"
         },
         "overage": {
           "unit": "request",
