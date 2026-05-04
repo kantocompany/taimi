@@ -11,6 +11,30 @@ Verify pricing for a single tool. The workflow prompt provides today's date and 
 - **Pricing convention:** `base_price.amount` is always the monthly (no-commitment) billing price. If the vendor offers annual billing at a lower rate, note it in the format `Annual billing: $X/mo` — no other phrasing variations.
 - **Plan boundaries:** A plan is a distinct purchasable tier with its own price. Eligibility discounts (student, OSS maintainer) are notes on the qualifying plan, not separate plan objects.
 
+## Universal Rules
+
+These apply to every tool. They supersede any per-tool `verification_override` instructions where they conflict.
+
+### Completion Contract
+
+You are done when: (a) `findings/{slug}.json` is valid JSON matching the schema, (b) `extraction_failures[]` lists every field you could not verify, (c) `source_url` records what you fetched. Exit immediately. Do not re-fetch, re-verify, or polish.
+
+### Visual markers
+
+Web fetch cannot reliably distinguish ✓/✗, dash/checkmark, or color-coded markers in vendor comparison tables. When a price-bearing field's plan attribution depends on these markers, add it to `extraction_failures` rather than guessing.
+
+### Symmetry rule
+
+A row that shows ✓ across every plan column is a tool-wide capability, not a plan differentiator. Do not record it as a price-bearing claim against a single plan.
+
+### Unverified default
+
+If a price-bearing field cannot be extracted from the vendor page, set it to `null` and add it to `extraction_failures`. Do not infer plausible numbers from sibling plans, annual-discount patterns, or third-party sources.
+
+### Plan ID conservatism
+
+Do not propose new plan IDs in price-update findings. New-plan discovery is tool-update scope. If the vendor page lists a plan not present in `data/tools/{slug}.json`, note it in `extraction_failures` and continue.
+
 ## What counts as a verified price
 
 You must extract **specific dollar amounts** for each plan tier. If you can state "Plan X costs $Y/month" from fetched content, the extraction succeeded. Anything else — page skeleton without prices, marketing copy, interactive calculators, plan names without amounts — is a **failed extraction**.
@@ -30,7 +54,7 @@ Overage rates (`overage.price_per_unit`) require the same extraction standard as
 ## Decision rules (mandatory)
 
 1. **Price mismatch → include in findings** with the extracted amount and source evidence. A separate validation agent will verify before any data file changes.
-2. **Missing plan → include it** with whatever price data you extracted.
+2. **New plan on vendor page → do not propose.** See Universal Rules → Plan ID conservatism. Note in `extraction_failures` and continue.
 3. **Removed plan → note it** in findings (the apply script handles removals).
 4. **Renamed plan → note it** in findings.
 5. **When in doubt, include the finding.** The validation phase decides. You are a researcher, not an editor.

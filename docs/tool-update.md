@@ -10,6 +10,26 @@ Deep structural review for a single tool. The workflow prompt provides today's d
 - Do not edit any other files. Do not commit or push. The workflow handles diffing, validation, changelog, assembly, generation, and git.
 - **Do not edit** `capabilities` or `benchmarks` fields in your proposed output. Copy them unchanged from the current data file.
 
+## Universal Rules
+
+These apply to every tool. They supersede any per-tool `verification_override` instructions where they conflict.
+
+### Completion Contract
+
+You are done when: (a) `findings/{slug}.json` is valid JSON matching the schema, (b) every proposed change is in scope (structural or editorial — never price), (c) `source_url` records what you fetched. Exit immediately. Do not re-fetch, re-verify, or polish.
+
+### Visual markers
+
+Web fetch cannot reliably distinguish ✓/✗, dash/checkmark, or color-coded markers in vendor comparison tables. When a feature's plan attribution depends on these markers, add the field to `extraction_failures` rather than assigning it to a specific plan.
+
+### Symmetry rule
+
+Before promoting a feature into a single plan's notes, verify the comparison-table row is not all-✓ across plans. All-✓ rows are tool-wide capabilities, not plan differentiators.
+
+### Unverified default
+
+If a structural field cannot be extracted from the vendor page, leave it unchanged from the current data and record the gap in `extraction_failures`. Do not infer plausible values from sibling plans, third-party sources, or other tools' data.
+
 ## Procedure
 
 ### 1. Fetch vendor page
