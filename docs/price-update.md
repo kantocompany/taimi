@@ -31,6 +31,10 @@ A row that shows ✓ across every plan column is a tool-wide capability, not a p
 
 If a price-bearing field cannot be extracted from the vendor page, set it to `null` and add it to `extraction_failures`. Do not infer plausible numbers from sibling plans, annual-discount patterns, or third-party sources.
 
+### Verification override authority
+
+When a tool's `verification_override` includes explicit tier/feature attribution (e.g., "Team has Admin API"; "Audit logs are Enterprise-only"), treat those statements as authoritative. If your fetch contradicts an attribution claim, the most likely cause is the Visual markers rule above — log the field in `extraction_failures` rather than rewriting the override or moving features between tiers.
+
 ### Plan ID conservatism
 
 Do not propose new plan IDs in price-update findings. New-plan discovery is tool-update scope. If the vendor page lists a plan not present in `data/tools/{slug}.json`, note it in `extraction_failures` and continue.

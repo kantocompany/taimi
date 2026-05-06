@@ -30,6 +30,10 @@ Before promoting a feature into a single plan's notes, verify the comparison-tab
 
 If a structural field cannot be extracted from the vendor page, leave it unchanged from the current data and record the gap in `extraction_failures`. Do not infer plausible values from sibling plans, third-party sources, or other tools' data.
 
+### Verification override authority
+
+When a tool's `verification_override` includes explicit tier/feature attribution (e.g., "Team has Admin API"; "Audit logs are Enterprise-only"), treat those statements as authoritative. If your fetch contradicts an attribution claim, the most likely cause is the Visual markers rule above — log the field in `extraction_failures` rather than rewriting the override or moving features between tiers.
+
 ## Procedure
 
 ### 1. Fetch vendor page
