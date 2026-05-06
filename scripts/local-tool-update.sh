@@ -15,7 +15,7 @@ DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
 MODEL="claude-sonnet-4-6"
 RESEARCH_MAX_TURNS=25
-VALIDATE_MAX_TURNS=10
+VALIDATE_MAX_TURNS=15
 SLUGS=()
 
 while [[ $# -gt 0 ]]; do

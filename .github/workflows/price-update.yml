@@ -144,7 +144,7 @@ jobs:
             If you cannot fetch the page or find the price, set confirmed to false.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 8  # validate-max-turns
+            --max-turns 12  # validate-max-turns
             --max-budget-usd 0.15
             --allowedTools "Write,WebSearch,WebFetch"
             --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep"

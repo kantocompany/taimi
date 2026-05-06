@@ -67,7 +67,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 | Setting | Value |
 |---------|-------|
 | Model | `claude-sonnet-4-6` |
-| Max turns | 8 |
+| Max turns | 12 |
 | Budget cap | $0.15/job |
 | Runs when | Phase 2 diff detects price changes |
 
@@ -92,7 +92,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 | Setting | Value |
 |---------|-------|
 | Model | `claude-sonnet-4-6` |
-| Max turns | 10 |
+| Max turns | 15 |
 | Budget cap | $0.15/job |
 | Runs when | Phase 2 diff detects any changes |
 
