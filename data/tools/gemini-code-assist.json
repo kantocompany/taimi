@@ -7,6 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://cloud.google.com/products/gemini/pricing"
   },
+  "verification_override": "Pricing page at cloud.google.com/products/gemini/pricing truncates mid-page on fetch. When the fetch is incomplete, cross-check feature claims against https://cloud.google.com/gemini/docs/codeassist/overview and the pricing FAQ. Standard and Enterprise show monthly + 12-month commitment prices side by side — preserve the existing 'Annual billing: $X/mo' format in notes if present. If per-day request limits aren't extractable, log an extraction_failure rather than infer.",
   "plans": [
     {
       "id": "gemini-code-assist-individual",
