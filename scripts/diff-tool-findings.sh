@@ -91,6 +91,17 @@ jq -n \
       (if has("price_per_unit") then del(.price_per_unit) else . end)
     else . end);
 
+  # Normalize proposed.plans order to match current.plans order (by .id).
+  # Plans missing from current append at the end in their proposed order.
+  # Removes the agent-side cosmetic-reorder noise that path-based diffs
+  # would otherwise flag as ~N changes per existing plan.
+  ($proposed.plans | map({key: .id, value: .}) | from_entries) as $prop_by_id |
+  ($current.plans | map(.id)) as $orig_ids |
+  ($proposed | .plans = (
+    [$orig_ids[] | $prop_by_id[.] // empty] +
+    [$proposed.plans[] | select(.id as $i | ($orig_ids | index($i)) == null)]
+  )) as $proposed |
+
   ($current | strip_excluded | flatten_leaves) as $cur |
   ($proposed | strip_excluded | flatten_leaves) as $prop |
 
