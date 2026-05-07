@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-03",
-    "updated_at": "2026-05-03T00:00:00Z",
+    "version": "2026-05-07",
+    "updated_at": "2026-05-07T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -127,7 +127,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "450K credits, up to 20 users, credits pooled"
+            "notes": "450K credits, up to 20 users, credits pooled, email support"
           },
           "overage": {
             "unit": "request",
@@ -362,7 +362,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Claude chat access only; Claude Code requires Pro or higher"
+            "notes": "Claude Code requires Pro or higher"
           },
           "overage": null
         },
@@ -484,7 +484,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, fine-grained permissioning, inference provider restrictions"
+            "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, fine-grained permissioning (coming soon), inference provider restrictions"
           },
           "overage": null
         }

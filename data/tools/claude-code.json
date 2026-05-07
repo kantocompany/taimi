@@ -194,7 +194,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Claude chat access only; Claude Code requires Pro or higher"
+        "notes": "Claude Code requires Pro or higher"
       },
       "overage": null
     },
