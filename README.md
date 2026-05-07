@@ -69,6 +69,7 @@ scripts/
 ├── local-price-update.sh      # Run price verification locally
 ├── local-tool-update.sh       # Run structural review locally
 ├── local-market-update.sh     # Run market update locally
+├── diff-summary.sh            # Per-plan changes vs HEAD (printed at end of local runs)
 ├── add-tool.sh                # Add new tool (skeleton + changelog)
 ├── archive-tool.sh            # Archive tool (delete + changelog)
 ├── validate.sh                # Consistency checks

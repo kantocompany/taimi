@@ -273,4 +273,6 @@ ASSEMBLE_DATE="$DATE" ./scripts/assemble.sh
 ./scripts/generate-index.sh
 ./scripts/validate.sh
 echo ""
+./scripts/diff-summary.sh "${SLUGS[@]}"
+echo ""
 echo "Done. Logs in logs/, findings in findings/, verdicts in validated/"
