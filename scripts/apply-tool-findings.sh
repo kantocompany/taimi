@@ -66,48 +66,50 @@ jq \
     else $new
     end;
 
-  # Merge plans: iterate original plans, overlay from proposed
-  .plans = [.plans[] | . as $orig |
+  # Merge plans: iterate original plans (with index), overlay from proposed.
+  # Each per-plan confirmation check uses the actual plan index so that
+  # validator verdicts are scoped per-plan, not picked globally via `first`.
+  .plans = [(.plans | to_entries[]) | .key as $idx | .value as $orig |
     ($proposed.plans // [] | map(select(.id == $orig.id)) | first // null) as $prop |
     if $prop == null then $orig  # not in proposed = keep original
     else
       $orig |
       # Editorial: notes (confirmed only, annual billing claims filtered)
       (if $prop.includes.notes and $prop.includes.notes != ($orig.includes.notes // null) then
-        if is_confirmed($diff.changes | map(select(.field | endswith(".includes.notes"))) | first | .field // "") then .includes.notes = strip_new_annual($orig.includes.notes; $prop.includes.notes) else . end
+        if is_confirmed("plans.\($idx).includes.notes") then .includes.notes = strip_new_annual($orig.includes.notes; $prop.includes.notes) else . end
        else . end) |
       (if $prop.includes then
         .includes.premium_requests = $prop.includes.premium_requests |
         .includes.tokens_included = $prop.includes.tokens_included
        else . end) |
       (if $prop.overage and $prop.overage.notes and $prop.overage.notes != ($orig.overage.notes // null) then
-        if is_confirmed($diff.changes | map(select(.field | endswith(".overage.notes"))) | first | .field // "") then .overage.notes = $prop.overage.notes else . end
+        if is_confirmed("plans.\($idx).overage.notes") then .overage.notes = $prop.overage.notes else . end
        else . end) |
 
       # Structural: plan name, category (confirmed only)
-      (if $prop.name != $orig.name and ($diff.changes | map(select(.field | endswith(".name") and (. != "vendor.name"))) | length > 0) then
-        if is_confirmed($diff.changes | map(select(.new == $prop.name)) | first | .field // "") then .name = $prop.name else . end
+      (if $prop.name != $orig.name then
+        if is_confirmed("plans.\($idx).name") then .name = $prop.name else . end
        else . end) |
       (if $prop.category != $orig.category then
-        if is_confirmed($diff.changes | map(select(.new == $prop.category)) | first | .field // "") then .category = $prop.category else . end
+        if is_confirmed("plans.\($idx).category") then .category = $prop.category else . end
        else . end) |
 
       # Structural: overage unit, mechanism, model (confirmed only)
       (if $prop.overage then
         (if $prop.overage.unit and $prop.overage.unit != ($orig.overage.unit // null) then
-          if is_confirmed($diff.changes | map(select(.field | endswith(".unit"))) | first | .field // "") then .overage.unit = $prop.overage.unit else . end
+          if is_confirmed("plans.\($idx).overage.unit") then .overage.unit = $prop.overage.unit else . end
          else . end) |
         (if $prop.overage.mechanism and $prop.overage.mechanism != ($orig.overage.mechanism // null) then
-          if is_confirmed($diff.changes | map(select(.field | endswith(".mechanism"))) | first | .field // "") then .overage.mechanism = $prop.overage.mechanism else . end
+          if is_confirmed("plans.\($idx).overage.mechanism") then .overage.mechanism = $prop.overage.mechanism else . end
          else . end) |
         (if $prop.overage.model and $prop.overage.model != ($orig.overage.model // null) then
-          if is_confirmed($diff.changes | map(select(.field | endswith(".model"))) | first | .field // "") then .overage.model = $prop.overage.model else . end
+          if is_confirmed("plans.\($idx).overage.model") then .overage.model = $prop.overage.model else . end
          else . end)
        else . end) |
 
       # Platform plan flag (structural — confirmed only)
       (if $prop | has("platform_plan") and ($prop.platform_plan != ($orig.platform_plan // null)) then
-        if is_confirmed($diff.changes | map(select(.field | endswith(".platform_plan"))) | first | .field // "") then .platform_plan = $prop.platform_plan else . end
+        if is_confirmed("plans.\($idx).platform_plan") then .platform_plan = $prop.platform_plan else . end
        else . end) |
 
       # Restore price amount from original (price-update scope).
