@@ -56,7 +56,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Mistral Vibe + Devstral 2, PAYG beyond; student discount available"
+          "notes": "Mistral Vibe (Le Chat web coding), Devstral 2 PAYG beyond; IDE integration requires Enterprise; student discount available"
         },
         "overage": {
           "unit": "token",
@@ -134,7 +134,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom pricing, private deployments, custom models and UI"
+          "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label; Mistral Vibe for IDE, async coding agents"
         },
         "overage": null
       }

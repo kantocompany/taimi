@@ -39,7 +39,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, fine-grained permissioning (coming soon), inference provider restrictions"
+        "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions"
       },
       "overage": null
     }

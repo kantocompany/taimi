@@ -32,7 +32,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "50 agentic requests/mo; unlimited inline completions; Q Chat; error diagnosis in AWS Console; 1,000 lines Java transformation/mo"
+            "notes": "50 agentic requests/mo; inline completions; 1,000 lines Java transformation/mo"
           },
           "overage": null
         },
@@ -48,7 +48,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Unlimited agentic requests; all Free features; admin dashboard; IAM Identity Center; IP indemnity; 4,000 lines Java transformation/mo (pooled at account level)"
+            "notes": "Increased agentic request limit (exact quota unspecified by vendor); admin dashboard; IAM Identity Center; IP indemnity; data collection auto opted-out; 4,000 lines Java transformation/mo (pooled at account level)"
           },
           "overage": {
             "unit": "request",
@@ -143,7 +143,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "450K credits, up to 20 users, credits pooled, email support"
+            "notes": "450K credits, up to 20 users, credits pooled, email support, Cosmos"
           },
           "overage": {
             "unit": "request",
@@ -162,7 +162,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support"
+            "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support, Cosmos"
           },
           "overage": null
         }
@@ -500,7 +500,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, config management, fine-grained permissioning (coming soon), inference provider restrictions"
+            "notes": "JetBrains, SSO/OIDC, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions"
           },
           "overage": null
         }
@@ -1099,7 +1099,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Mistral Vibe + Devstral 2, PAYG beyond; student discount available"
+            "notes": "Mistral Vibe (Le Chat web coding), Devstral 2 PAYG beyond; IDE integration requires Enterprise; student discount available"
           },
           "overage": {
             "unit": "token",
@@ -1177,7 +1177,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom pricing, private deployments, custom models and UI"
+            "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label; Mistral Vibe for IDE, async coding agents"
           },
           "overage": null
         }

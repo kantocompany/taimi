@@ -7,7 +7,6 @@
     "eu_based": false,
     "pricing_url": "https://aws.amazon.com/q/developer/pricing/"
   },
-  "_notes_first_pass": true,
   "plans": [
     {
       "id": "amazon-q-developer-free",
@@ -21,7 +20,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "50 agentic requests/mo; unlimited inline completions; Q Chat; error diagnosis in AWS Console; 1,000 lines Java transformation/mo"
+        "notes": "50 agentic requests/mo; inline completions; 1,000 lines Java transformation/mo"
       },
       "overage": null
     },
@@ -37,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Unlimited agentic requests; all Free features; admin dashboard; IAM Identity Center; IP indemnity; 4,000 lines Java transformation/mo (pooled at account level)"
+        "notes": "Increased agentic request limit (exact quota unspecified by vendor); admin dashboard; IAM Identity Center; IP indemnity; data collection auto opted-out; 4,000 lines Java transformation/mo (pooled at account level)"
       },
       "overage": {
         "unit": "request",
