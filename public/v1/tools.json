@@ -53,7 +53,7 @@
           "overage": {
             "unit": "request",
             "mechanism": "automatic",
-            "price_per_unit": null,
+            "price_per_unit": 0.003,
             "notes": "Code transformation overage: $0.003/line submitted beyond allocation; general agentic overage: mechanism unverified",
             "input_per_million": null,
             "output_per_million": null

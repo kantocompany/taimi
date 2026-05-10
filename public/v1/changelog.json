@@ -1,10 +1,19 @@
 {
   "meta": {
     "version": "2026-05-10",
-    "updated_at": "2026-05-10T00:00:00Z",
+    "updated_at": "2026-05-10T13:57:21Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-05-10",
+      "tool": "amazon-q-developer",
+      "type": "pricing_change",
+      "description": "plans.1.overage.price_per_unit: added 0.003",
+      "details": {
+        "source": "https://aws.amazon.com/q/developer/pricing/"
+      }
+    },
     {
       "date": "2026-05-10",
       "tool": "amazon-q-developer",
