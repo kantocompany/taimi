@@ -1,10 +1,26 @@
 {
   "meta": {
-    "version": "2026-04-23",
-    "updated_at": "2026-04-23T16:15:48Z",
+    "version": "2026-05-10",
+    "updated_at": "2026-05-10T00:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-05-10",
+      "tool": "amazon-q-developer",
+      "type": "new_tool",
+      "description": "AWS-native AI coding agent with inline completions, agentic multi-file edits, and deep AWS context integration",
+      "details": {}
+    },
+    {
+      "date": "2026-05-10",
+      "tool": "aider",
+      "type": "removed_tool",
+      "description": "Archived Aider. Lowest market rank among tracked tools; BYOK terminal segment covered by Cline; no institutional funding or corporate backing",
+      "details": {
+        "reason": "Lowest market rank among tracked tools; BYOK terminal segment covered by Cline; no institutional funding or corporate backing"
+      }
+    },
     {
       "date": "2026-05-03",
       "tool": "github-copilot",

@@ -1,0 +1,65 @@
+{
+  "slug": "amazon-q-developer",
+  "name": "Amazon Q Developer",
+  "vendor": {
+    "name": "Amazon Web Services",
+    "hq_country": "US",
+    "eu_based": false,
+    "pricing_url": "https://aws.amazon.com/q/developer/pricing/"
+  },
+  "plans": [
+    {
+      "id": "amazon-q-developer-free",
+      "name": "Free",
+      "category": "free",
+      "base_price": {
+        "amount": 0,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "50 agentic requests/mo; unlimited inline completions; Q Chat; error diagnosis in AWS Console; 1,000 lines Java transformation/mo"
+      },
+      "overage": null
+    },
+    {
+      "id": "amazon-q-developer-pro",
+      "name": "Pro",
+      "category": "individual",
+      "base_price": {
+        "amount": 19.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "Unlimited agentic requests; all Free features; admin dashboard; IAM Identity Center; IP indemnity; 4,000 lines Java transformation/mo (pooled at account level)"
+      },
+      "overage": {
+        "unit": "request",
+        "mechanism": "automatic",
+        "price_per_unit": null,
+        "notes": "Code transformation overage: $0.003/line submitted beyond allocation; general agentic overage: mechanism unverified",
+        "input_per_million": null,
+        "output_per_million": null
+      }
+    }
+  ],
+  "capabilities": {
+    "autonomy_level": "interactive_to_autonomous",
+    "ide_type": "extension",
+    "model_choice": false,
+    "self_hosted": false,
+    "fedramp": false,
+    "eu_data_residency": false,
+    "soc2": true,
+    "on_premise": false
+  },
+  "benchmarks": {
+    "swe_bench_pro": null,
+    "measured_at": null
+  }
+}
