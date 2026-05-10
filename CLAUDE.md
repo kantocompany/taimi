@@ -80,6 +80,12 @@ Use for vendors where automated fetching produces **wrong results** (e.g., JS-on
 
 Source-only field — `assemble.sh` strips it from public API output.
 
+## First-pass provenance flag (optional field)
+
+**`tool._notes_first_pass`** — boolean. `true` signals that the tool's plan notes were written by an unvalidated source (typically market-update agent on first add). Tool-update reads the flag and treats existing notes as proposed rather than authoritative — verifies each claim against the vendor page, scrubs unverifiable claims, and proposes additions for omitted vendor-page features. Cleared automatically by `apply-tool-findings.sh` after the first tool-update run.
+
+Set automatically by `scripts/add-tool.sh` when creating a new tool skeleton. Source-only field — `assemble.sh` strips it from public API output.
+
 ## Tool cap
 
 Maximum **12 tools** in `data/tools/`. When adding a new tool at cap, archive the lowest-ranked existing tool. See `docs/market-update.md` for ranking criteria and archival process.

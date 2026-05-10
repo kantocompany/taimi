@@ -22,9 +22,10 @@ DESCRIPTION=$(jq -rn \
   --slurpfile new "$NEW" \
   '
   # Strip editorial fields that produce changelog noise but have no value
-  # to API consumers (notes rewording, verification override changes)
+  # to API consumers (notes rewording, verification override changes,
+  # internal provenance flag clears)
   def strip_editorial:
-    walk(if type == "object" then del(.notes, .verification_override) else . end);
+    walk(if type == "object" then del(.notes, .verification_override, ._notes_first_pass) else . end);
 
   def flatten_leaves:
     [paths(scalars) as $p | {key: ($p | map(tostring) | join(".")), value: getpath($p)}]

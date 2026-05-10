@@ -34,6 +34,10 @@ If a structural field cannot be extracted from the vendor page, leave it unchang
 
 When a tool's `verification_override` includes explicit tier/feature attribution (e.g., "Team has Admin API"; "Audit logs are Enterprise-only"), treat those statements as authoritative. If your fetch contradicts an attribution claim, the most likely cause is the Visual markers rule above — log the field in `extraction_failures` rather than rewriting the override or moving features between tiers.
 
+### First-pass scrub
+
+If the data file contains `_notes_first_pass: true`, the existing plan notes were written by market-update without four-phase validation. Treat them as proposed, not authoritative: verify each claim in `includes.notes` against the vendor page, log unverifiable claims to `extraction_failures`, AND propose their removal in your proposed JSON. Additionally, scan the vendor page comparison table for features prominently shown for each plan but absent from current notes — propose them as additions. The flag is cleared by the apply step; subsequent cycles return to the unverified-default rule.
+
 ## Procedure
 
 ### 1. Fetch vendor page

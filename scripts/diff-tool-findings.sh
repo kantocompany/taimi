@@ -83,7 +83,7 @@ jq -n \
 
   # Strip price, protected, and meta fields before comparison
   def strip_excluded:
-    del(.capabilities, .benchmarks) |
+    del(.capabilities, .benchmarks, ._notes_first_pass) |
     walk(if type == "object" then
       del(.amount) |
       (if has("input_per_million") then del(.input_per_million) else . end) |

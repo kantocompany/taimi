@@ -45,6 +45,7 @@ jq -n --arg slug "$SLUG" '{
     eu_based: false,
     pricing_url: "TODO"
   },
+  _notes_first_pass: true,
   plans: [
     {
       id: ($slug + "-free"),

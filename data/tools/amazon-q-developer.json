@@ -7,6 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://aws.amazon.com/q/developer/pricing/"
   },
+  "_notes_first_pass": true,
   "plans": [
     {
       "id": "amazon-q-developer-free",

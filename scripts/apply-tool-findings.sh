@@ -20,6 +20,14 @@ if [[ ! -f "$FINDINGS" ]] || [[ ! -f "$DIFF_RESULTS" ]] || [[ ! -f "$DATA_FILE" 
   exit 1
 fi
 
+# Always clear _notes_first_pass — tool-update has now seen this data,
+# regardless of whether changes are about to land. Subsequent cycles return
+# to standard preserve-existing behavior.
+if jq -e '._notes_first_pass' "$DATA_FILE" >/dev/null 2>&1; then
+  jq 'del(._notes_first_pass)' "$DATA_FILE" > "${DATA_FILE}.tmp" && mv "${DATA_FILE}.tmp" "$DATA_FILE"
+  echo "  Cleared _notes_first_pass flag on $(basename "$DATA_FILE")"
+fi
+
 has_changes=$(jq -r '.has_changes' "$DIFF_RESULTS")
 if [[ "$has_changes" != "true" ]]; then
   echo "No changes to apply"
