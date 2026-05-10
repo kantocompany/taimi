@@ -139,6 +139,10 @@ jobs:
 
             Special rule: any change asserting that a model, plan, or feature is "removed", "unavailable", "deprecated", or "no longer offered" requires a quoted exclusion statement from the page (e.g., "available on Pro and above", "Enterprise only", or an explicit deprecation notice). Absence-of-listing alone is not evidence — mark confirmed: false in that case.
 
+            Symmetry rule: any change adding a feature or capability to a single plan's notes requires scanning the rest of the vendor page (comparison table including ✓/✕ rows, headline cards, feature lists) for the same feature on sibling plans. If the feature appears on the target plan AND ≥1 sibling plan WITHOUT exclusion markers (✕, dash, "not available", greyed cells, or "Enterprise only" wording), mark confirmed: false with evidence — the feature is a tool-wide capability rather than a plan differentiator. This permits scanning the vendor page for cross-plan presence of the specific feature being added, and only that feature; it does not authorize verification of other unrelated fields.
+
+            New-plan rule: any change introducing a new plan ID requires a quoted vendor-page tier header, pricing card, or named tier row in a pricing/comparison table (e.g., "Plus — $20/month", a tile labeled with the plan name, or a comparison-table row whose label is the plan name). Feature mentions in marketing copy, comparison-table feature rows, or sub-bullets are not sufficient evidence — they may describe features within an existing plan rather than constituting a new plan tier. If you cannot quote a tier header, pricing card, or tier row, mark confirmed: false.
+
             1. Fetch the source URL above
             2. For each field change, confirm the NEW value is supported by the page
             3. For each new plan ID, verify the plan exists on the vendor page
