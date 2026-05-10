@@ -7,6 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://developers.openai.com/codex/pricing"
   },
+  "verification_override": "Plus plan model list spans two vendor pages. The Codex-specific models (GPT-5.3-Codex, GPT-5.1-Codex-Mini) appear on developers.openai.com/codex/pricing. The broader ChatGPT models in Plus notes (GPT-5.5, GPT-5.5-pro, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.4-pro) live on chatgpt.com/pricing — Cloudflare-blocked direct, fetch via https://r.jina.ai/https://chatgpt.com/pricing. Do not strip broader ChatGPT models from Plus notes based on a fetch of the Codex page alone — they are listed on the ChatGPT page even though the Codex page is feature-only.",
   "platform": {
     "name": "ChatGPT",
     "bundled_with": [
