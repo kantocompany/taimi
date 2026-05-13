@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-10",
-    "updated_at": "2026-05-10T00:00:00Z",
+    "version": "2026-05-13",
+    "updated_at": "2026-05-13T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Extended Agent limits, frontier models, MCPs, skills, hooks, cloud agents"
+          "notes": "Extended Agent limits, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
@@ -116,7 +116,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, usage analytics"
+          "notes": "Cloud agents with shared team context, security review agent, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
@@ -135,7 +135,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Pooled usage, invoice/PO billing, SCIM, AI code tracking API, audit logs, granular admin and model controls, priority support"
+          "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, granular admin and model controls, priority support, account management, Bugbot on custom plan"
         },
         "overage": null
       },

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-10",
-    "updated_at": "2026-05-10T00:00:00Z",
+    "version": "2026-05-13",
+    "updated_at": "2026-05-13T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -140,7 +140,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Go subscription; lightweight coding tasks"
+          "notes": "ChatGPT Go subscription; lightweight coding tasks; may include ads"
         },
         "overage": null
       },

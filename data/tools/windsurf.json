@@ -36,7 +36,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; Devin Cloud sessions; 2-week free trial for new users"
+        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; 2-week free trial for new users"
       },
       "overage": {
         "unit": "request",
@@ -59,7 +59,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models"
+        "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6"
       },
       "overage": {
         "unit": "request",

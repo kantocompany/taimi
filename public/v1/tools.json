@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-10",
-    "updated_at": "2026-05-10T00:00:00Z",
+    "version": "2026-05-13",
+    "updated_at": "2026-05-13T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.0",
     "source": "https://taimi.market",
@@ -558,7 +558,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Extended Agent limits, frontier models, MCPs, skills, hooks, cloud agents"
+            "notes": "Extended Agent limits, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -627,7 +627,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Shared chats, commands, rules, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, usage analytics"
+            "notes": "Cloud agents with shared team context, security review agent, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -646,7 +646,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Pooled usage, invoice/PO billing, SCIM, AI code tracking API, audit logs, granular admin and model controls, priority support"
+            "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, granular admin and model controls, priority support, account management, Bugbot on custom plan"
           },
           "overage": null
         },
@@ -1328,7 +1328,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Go subscription; lightweight coding tasks"
+            "notes": "ChatGPT Go subscription; lightweight coding tasks; may include ads"
           },
           "overage": null
         },
@@ -1499,7 +1499,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models; Devin Cloud sessions; 2-week free trial for new users"
+            "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; 2-week free trial for new users"
           },
           "overage": {
             "unit": "request",
@@ -1522,7 +1522,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models"
+            "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6"
           },
           "overage": {
             "unit": "request",
