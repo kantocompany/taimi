@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Apply tool-update changes to a data file.
-# Merges proposed JSON but preserves price fields, capabilities, and benchmarks.
+# Merges proposed JSON but preserves price fields and capabilities.
 # Only applies changes confirmed by the validation verdict.
 # All changes (structural and editorial) require confirmation.
 #
@@ -48,7 +48,7 @@ trap 'rm -f "$tmpfile"' EXIT
 # Merge strategy:
 # - All changes (editorial + structural): from proposed only if confirmed
 # - Price fields: always from original
-# - Protected fields (capabilities, benchmarks): always from original
+# - Protected fields (capabilities): always from original
 # - Plan removals: never (conservative)
 jq \
   --argjson proposed "$(jq '.proposed' "$FINDINGS")" \
@@ -163,8 +163,7 @@ jq \
    else . end) |
 
   # ALWAYS restore protected fields from original
-  .capabilities = $original.capabilities |
-  .benchmarks = $original.benchmarks
+  .capabilities = $original.capabilities
   ' "$DATA_FILE" > "$tmpfile"
 
 # Add new plans if confirmed

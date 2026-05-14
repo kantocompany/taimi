@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": "2026-05-13",
-    "updated_at": "2026-05-13T00:00:00Z",
+    "version": "2026-05-14",
+    "updated_at": "2026-05-14T00:00:00Z",
     "currency": "USD",
-    "schema_version": "1.0",
+    "schema_version": "1.1",
     "source": "https://taimi.market",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
@@ -69,10 +69,6 @@
         "eu_data_residency": false,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_pro": null,
-        "measured_at": null
       }
     },
     {
@@ -176,10 +172,6 @@
         "eu_data_residency": false,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_pro": 51.8,
-        "measured_at": "2026-02-01"
       }
     },
     {
@@ -453,10 +445,6 @@
         "eu_data_residency": true,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_pro": 45.9,
-        "measured_at": "2026-02-01"
       }
     },
     {
@@ -514,10 +502,6 @@
         "eu_data_residency": true,
         "soc2": false,
         "on_premise": true
-      },
-      "benchmarks": {
-        "swe_bench_pro": null,
-        "measured_at": null
       }
     },
     {
@@ -704,10 +688,6 @@
         "eu_data_residency": false,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_pro": null,
-        "measured_at": null
       }
     },
     {
@@ -832,10 +812,6 @@
         "soc2": true,
         "on_premise": false
       },
-      "benchmarks": {
-        "swe_bench_pro": null,
-        "measured_at": null
-      },
       "platform": {
         "name": "Cognition AI",
         "bundled_with": [
@@ -912,10 +888,6 @@
         "eu_data_residency": true,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_verified": null,
-        "measured_at": null
       }
     },
     {
@@ -1046,10 +1018,6 @@
         "eu_data_residency": true,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_pro": null,
-        "measured_at": null
       }
     },
     {
@@ -1191,10 +1159,6 @@
         "eu_data_residency": true,
         "soc2": true,
         "on_premise": true
-      },
-      "benchmarks": {
-        "swe_bench_verified": 72.2,
-        "measured_at": "2026-01-01"
       }
     },
     {
@@ -1359,10 +1323,6 @@
         "eu_data_residency": false,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_pro": 48.2,
-        "measured_at": "2026-02-01"
       }
     },
     {
@@ -1455,10 +1415,6 @@
         "eu_data_residency": false,
         "soc2": true,
         "on_premise": false
-      },
-      "benchmarks": {
-        "swe_bench_pro": null,
-        "measured_at": null
       }
     },
     {
@@ -1578,10 +1534,6 @@
         "eu_data_residency": true,
         "soc2": true,
         "on_premise": true
-      },
-      "benchmarks": {
-        "swe_bench_verified": 78.0,
-        "measured_at": "2026-03-01"
       }
     }
   ]

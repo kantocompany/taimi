@@ -8,7 +8,7 @@ Deep structural review for a single tool. The workflow prompt provides today's d
 - **Write:** only `findings/{slug}.json` — your structured output
 - Do **NOT** edit or write to `data/tools/` — a deterministic script applies changes after validation.
 - Do not edit any other files. Do not commit or push. The workflow handles diffing, validation, changelog, assembly, generation, and git.
-- **Do not edit** `capabilities` or `benchmarks` fields in your proposed output. Copy them unchanged from the current data file.
+- **Do not edit** `capabilities` fields in your proposed output. Copy them unchanged from the current data file.
 
 ## Universal Rules
 
@@ -71,7 +71,7 @@ Whether you found changes or not, write your findings to `findings/{slug}.json`.
 
 Key rules:
 - The `proposed` object must be the **complete tool JSON** as you believe it should look — including unchanged fields. The diff script compares it against current data.
-- Copy `capabilities` and `benchmarks` unchanged from the current data file.
+- Copy `capabilities` unchanged from the current data file.
 - Copy all price-bearing fields (`base_price.amount`, overage rates) unchanged — price accuracy is owned by the price-update pipeline.
 - For new plans, include complete plan objects following the schema of existing plans.
 - For plans you believe should be removed, simply omit them from `proposed.plans`. The diff script flags removals as warnings for human review — they are not auto-applied.

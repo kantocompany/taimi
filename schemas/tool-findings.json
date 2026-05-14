@@ -1,6 +1,6 @@
 {
   "_description": "Output schema for tool-update research agents. Write to findings/{slug}.json.",
-  "_note": "The 'proposed' object is the complete tool JSON as it should look. The diff script compares it against current data, filtering out price fields (price-update's scope) and protected fields (capabilities, benchmarks).",
+  "_note": "The 'proposed' object is the complete tool JSON as it should look. The diff script compares it against current data, filtering out price fields (price-update's scope) and protected fields (capabilities).",
   "slug": "{slug}",
   "date": "{YYYY-MM-DD}",
   "status": "reviewed|changes_found|unverified",
@@ -33,8 +33,7 @@
         "overage": null
       }
     ],
-    "capabilities": {},
-    "benchmarks": {}
+    "capabilities": {}
   },
   "extraction_failures": [
     {"method": "direct", "error": "JS-rendered, no plan details in response"}

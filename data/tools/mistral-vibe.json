@@ -138,9 +138,5 @@
     "eu_data_residency": true,
     "soc2": true,
     "on_premise": true
-  },
-  "benchmarks": {
-    "swe_bench_verified": 72.2,
-    "measured_at": "2026-01-01"
   }
 }

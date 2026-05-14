@@ -58,9 +58,9 @@ The hardest comparison problem in this market: Copilot charges per request ($0.0
 
 Devin Team is $500/month flat, not per seat. Most other team plans are per-seat. The `per` field (`user`, `team`, `flat`) resolves this ambiguity, which changes the math completely for a 10-person team.
 
-### Benchmarks are included but secondary
+### Benchmarks are deliberately not tracked
 
-SWE-bench scores are included where available. They're useful for the ROI dimension (cost-per-capability), but they're not the primary purpose. The market is about price transparency first.
+SWE-bench and similar scores are excluded by design. Vendor publications are self-reported with cherry-picked configurations and tuned scaffolds; the SWE-bench leaderboard doesn't cover most consumer agent products (it ranks model+scaffold combos); variants (Verified, Pro, Lite) aren't comparable. The source-rule discipline (`vendor.pricing_url` only) leaves most fields null anyway, and a half-populated benchmark column would imply a ranking the data can't support. The deliberate absence is itself an editorial position — see `data/observations.html`.
 
 ## Visual design decisions
 
@@ -109,7 +109,7 @@ Expose the pricing data as an MCP server so Claude Code, Cursor, and other AI to
 
 ### v3: ROI dimension
 
-Move beyond "what does it cost" to "what do you get per dollar." Track cost-per-task, tokens-per-outcome, benchmark scores normalized by price. The moment you can show "Claude Code solves SWE-bench problems at $X per solve vs Codex at $Y" — that's the signal procurement teams will pay attention to.
+Move beyond "what does it cost" to "what do you get per dollar." Track cost-per-task or tokens-per-outcome if a credible source emerges. (Self-reported benchmark scores are intentionally excluded — see "Benchmarks are deliberately not tracked" above.)
 
 ### Ongoing: curate tool coverage
 
@@ -118,7 +118,7 @@ The weekly market update (`docs/market-update.md`) handles tool discovery and he
 ## What this project is NOT
 
 - Not a review site. No subjective ratings, no "best tool" recommendations.
-- Not a benchmark site. SWE-bench scores are included for context, not as primary data.
+- Not a benchmark site. SWE-bench and similar scores are deliberately not tracked (see above).
 - Not an affiliate play. No referral links, no sponsored placements.
 - Not a real-time feed. Prices update when they change (monthly cadence typically), not continuously.
 

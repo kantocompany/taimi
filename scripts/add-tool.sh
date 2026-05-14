@@ -65,10 +65,6 @@ jq -n --arg slug "$SLUG" '{
     eu_data_residency: false,
     soc2: false,
     on_premise: false
-  },
-  benchmarks: {
-    swe_bench_pro: null,
-    measured_at: null
   }
 }' > "$TOOL_FILE"
 

@@ -60,8 +60,7 @@ jq -n \
   # Protected fields — never auto-modified
   def is_protected_field:
     . as $key |
-    ($key | startswith("capabilities.")) or
-    ($key | startswith("benchmarks."));
+    ($key | startswith("capabilities."));
 
   # Structural fields — verifiable claims, trigger validation
   def is_structural_field:
@@ -83,7 +82,7 @@ jq -n \
 
   # Strip price, protected, and meta fields before comparison
   def strip_excluded:
-    del(.capabilities, .benchmarks, ._notes_first_pass) |
+    del(.capabilities, ._notes_first_pass) |
     walk(if type == "object" then
       del(.amount) |
       (if has("input_per_million") then del(.input_per_million) else . end) |

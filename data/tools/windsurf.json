@@ -116,9 +116,5 @@
     "soc2": true,
     "on_premise": true
   },
-  "benchmarks": {
-    "swe_bench_verified": 78.0,
-    "measured_at": "2026-03-01"
-  },
   "verification_override": "Base prices: use rendering proxy r.jina.ai/https://windsurf.com/pricing. Current tiers: Free, Pro, Max, Teams, Enterprise. Overage: neither windsurf.com nor devin.ai currently publish per-unit rates publicly. Tier-specific features: Teams adds centralized billing, admin dashboard with analytics, priority support, automated zero data retention over Pro. Enterprise adds RBAC, SSO + access control, hybrid deployment, highest priority support, dedicated account management, custom terms over Teams."
 }

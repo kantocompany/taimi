@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": "2026-05-13",
-    "updated_at": "2026-05-13T00:00:00Z",
+    "version": "2026-05-14",
+    "updated_at": "2026-05-14T00:00:00Z",
     "currency": "USD",
-    "schema_version": "1.0",
+    "schema_version": "1.1",
     "source": "https://taimi.market",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
@@ -126,10 +126,6 @@
       "eu_data_residency": true,
       "soc2": true,
       "on_premise": true
-    },
-    "benchmarks": {
-      "swe_bench_verified": 78.0,
-      "measured_at": "2026-03-01"
     }
   }
 }

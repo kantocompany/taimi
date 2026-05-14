@@ -58,7 +58,7 @@ jq -n \
       version: $version,
       updated_at: $updated_at,
       currency: "USD",
-      schema_version: "1.0",
+      schema_version: "1.1",
       source: "https://taimi.market",
       maintainer: "Kanto Company",
       license: "CC BY 4.0",

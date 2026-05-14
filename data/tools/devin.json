@@ -121,10 +121,6 @@
     "soc2": true,
     "on_premise": false
   },
-  "benchmarks": {
-    "swe_bench_pro": null,
-    "measured_at": null
-  },
   "platform": {
     "name": "Cognition AI",
     "bundled_with": [

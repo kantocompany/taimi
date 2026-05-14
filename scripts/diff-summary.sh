@@ -8,8 +8,8 @@ set -euo pipefail
 # Compares: git show HEAD:data/tools/<slug>.json  vs  data/tools/<slug>.json
 # Matches plans by .id (positional reorders are not surfaced as changes).
 # Surfaces: per-plan field changes, added plans, removed plans, top-level
-# changes (vendor.*, verification_override, platform.*). Capabilities and
-# benchmarks are excluded (protected fields, never auto-modified).
+# changes (vendor.*, verification_override, platform.*). Capabilities are
+# excluded (protected field, never auto-modified).
 #
 # Usage: ./scripts/diff-summary.sh <slug> [slug...]
 
@@ -67,8 +67,8 @@ for slug in "$@"; do
     ($existing_diffs + $new_plan_diffs) as $plan_diffs |
 
     diff_obj(
-      ($old | del(.plans, .capabilities, .benchmarks));
-      ($new | del(.plans, .capabilities, .benchmarks))
+      ($old | del(.plans, .capabilities));
+      ($new | del(.plans, .capabilities))
     ) as $top |
 
     if (($plan_diffs | length) == 0) and (($top | length) == 0) then empty

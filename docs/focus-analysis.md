@@ -19,8 +19,8 @@ Taimi is a **pricing catalog** — it answers **"what would I spend if I chose t
 | Data type | Billing line items (retrospective) | Plan definitions (prospective) |
 | Granularity | Individual charge rows per resource/hour | Plan structures per vendor |
 | Schema size | 77 columns | ~15 fields per plan |
-| Concepts modeled | Charges, discounts, resources, billing periods | Plans, tiers, capabilities, benchmarks |
-| Not modeled | Plans, included limits, features, benchmarks | Charge rows, discount waterfalls, allocation |
+| Concepts modeled | Charges, discounts, resources, billing periods | Plans, tiers, capabilities |
+| Not modeled | Plans, included limits, features | Charge rows, discount waterfalls, allocation |
 
 These are adjacent but non-overlapping. FOCUS has no concept of "plans," "tiers," "included limits," or "capabilities." Taimi has no concept of charge rows, billing periods, or resource-level allocation.
 

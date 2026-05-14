@@ -52,10 +52,6 @@
       "eu_data_residency": true,
       "soc2": false,
       "on_premise": true
-    },
-    "benchmarks": {
-      "swe_bench_pro": null,
-      "measured_at": null
     }
   }
 }
