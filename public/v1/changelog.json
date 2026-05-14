@@ -1,10 +1,28 @@
 {
   "meta": {
     "version": "2026-05-14",
-    "updated_at": "2026-05-14T07:20:15Z",
+    "updated_at": "2026-05-14T11:38:18Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-05-14",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans.2.base_price.amount: 30.00 → 25.00",
+      "details": {
+        "source": "https://developers.openai.com/codex/pricing"
+      }
+    },
+    {
+      "date": "2026-05-14",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plans.4.base_price.amount: added 20.00; plans.4.overage.price_per_unit: added 0.04; plans.5.base_price.amount: added 40.00; plans.5.overage.price_per_unit: added 0.04; plans.6.base_price.amount: added 200.00; plans.6.overage.price_per_unit: added 0.04",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-05-14",
       "tool": "kiro",
