@@ -57,10 +57,14 @@ jq -n \
     ($key | test("overage\\.output_per_million$")) or
     ($key | test("overage\\.price_per_unit$"));
 
-  # Protected fields — never auto-modified
+  # Protected fields — never auto-modified, unless first-pass flag is set
   def is_protected_field:
     . as $key |
-    ($key | startswith("capabilities."));
+    if ($current._capabilities_first_pass // false) then
+      false  # When flag set, surface capability diffs for validator review
+    else
+      ($key | startswith("capabilities."))
+    end;
 
   # Structural fields — verifiable claims, trigger validation
   def is_structural_field:
@@ -80,9 +84,14 @@ jq -n \
     [paths(scalars) as $p | {key: ($p | map(tostring) | join(".")), value: getpath($p)}]
     | from_entries;
 
-  # Strip price, protected, and meta fields before comparison
+  # Strip price, protected, and meta fields before comparison.
+  # Capabilities is conditionally protected based on _capabilities_first_pass.
   def strip_excluded:
-    del(.capabilities, ._notes_first_pass) |
+    (if ($current._capabilities_first_pass // false) then
+      del(._notes_first_pass, ._capabilities_first_pass)
+     else
+      del(.capabilities, ._notes_first_pass, ._capabilities_first_pass)
+     end) |
     walk(if type == "object" then
       del(.amount) |
       (if has("input_per_million") then del(.input_per_million) else . end) |

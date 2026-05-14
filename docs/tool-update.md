@@ -8,7 +8,7 @@ Deep structural review for a single tool. The workflow prompt provides today's d
 - **Write:** only `findings/{slug}.json` — your structured output
 - Do **NOT** edit or write to `data/tools/` — a deterministic script applies changes after validation.
 - Do not edit any other files. Do not commit or push. The workflow handles diffing, validation, changelog, assembly, generation, and git.
-- **Do not edit** `capabilities` fields in your proposed output. Copy them unchanged from the current data file.
+- **Do not edit** `capabilities` fields in your proposed output unless `_capabilities_first_pass: true` is set on the tool. When the flag is absent, copy them unchanged from the current data file.
 
 ## Universal Rules
 
@@ -36,7 +36,7 @@ When a tool's `verification_override` includes explicit tier/feature attribution
 
 ### First-pass scrub
 
-If the data file contains `_notes_first_pass: true`, the existing plan notes were written by market-update without four-phase validation. Treat them as proposed, not authoritative: verify each claim in `includes.notes` against the vendor page, log unverifiable claims to `extraction_failures`, AND propose their removal in your proposed JSON. Additionally, scan the vendor page comparison table for features prominently shown for each plan but absent from current notes — propose them as additions. The flag is cleared by the apply step; subsequent cycles return to the unverified-default rule.
+If the data file contains `_notes_first_pass: true`, the existing plan notes were written by market-update without four-phase validation. Treat them as proposed, not authoritative: verify each claim in `includes.notes` against the vendor page, log unverifiable claims to `extraction_failures`, AND propose their removal in your proposed JSON. Additionally, scan the vendor page comparison table for features prominently shown for each plan but absent from current notes — propose them as additions. The flag is cleared by the apply step; subsequent cycles return to the unverified-default rule. When `_capabilities_first_pass: true` is also present, apply the same scrub to `capabilities` fields — verify each against the vendor page, propose corrections in `proposed.capabilities` (or copy unchanged if already correct).
 
 ## Procedure
 

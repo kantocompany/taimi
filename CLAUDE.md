@@ -86,6 +86,8 @@ Source-only field — `assemble.sh` strips it from public API output.
 
 Set automatically by `scripts/add-tool.sh` when creating a new tool skeleton. Source-only field — `assemble.sh` strips it from public API output.
 
+**`tool._capabilities_first_pass`** — boolean. Same mechanism as `_notes_first_pass` but for the `capabilities` block. When set, tool-update may propose capability changes (verified against vendor page) and `apply-tool-findings.sh` applies validator-confirmed changes; when absent, capabilities are protected from edits and preserved from the original data. Set by `add-tool.sh`, cleared by `apply-tool-findings.sh`. Source-only field — `assemble.sh` strips it from public API output.
+
 ## Tool cap
 
 Maximum **12 tools** in `data/tools/`. When adding a new tool at cap, archive the lowest-ranked existing tool. See `docs/market-update.md` for ranking criteria and archival process.

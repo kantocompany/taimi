@@ -20,12 +20,21 @@ if [[ ! -f "$FINDINGS" ]] || [[ ! -f "$DIFF_RESULTS" ]] || [[ ! -f "$DATA_FILE" 
   exit 1
 fi
 
+# Capture _capabilities_first_pass BEFORE clearing — drives merge logic below.
+caps_first_pass=$(jq -r '._capabilities_first_pass // false' "$DATA_FILE")
+
 # Always clear _notes_first_pass — tool-update has now seen this data,
 # regardless of whether changes are about to land. Subsequent cycles return
 # to standard preserve-existing behavior.
 if jq -e '._notes_first_pass' "$DATA_FILE" >/dev/null 2>&1; then
   jq 'del(._notes_first_pass)' "$DATA_FILE" > "${DATA_FILE}.tmp" && mv "${DATA_FILE}.tmp" "$DATA_FILE"
   echo "  Cleared _notes_first_pass flag on $(basename "$DATA_FILE")"
+fi
+
+# Same pattern for _capabilities_first_pass.
+if jq -e '._capabilities_first_pass' "$DATA_FILE" >/dev/null 2>&1; then
+  jq 'del(._capabilities_first_pass)' "$DATA_FILE" > "${DATA_FILE}.tmp" && mv "${DATA_FILE}.tmp" "$DATA_FILE"
+  echo "  Cleared _capabilities_first_pass flag on $(basename "$DATA_FILE")"
 fi
 
 has_changes=$(jq -r '.has_changes' "$DIFF_RESULTS")
@@ -54,6 +63,7 @@ jq \
   --argjson proposed "$(jq '.proposed' "$FINDINGS")" \
   --argjson diff "$(cat "$DIFF_RESULTS")" \
   --argjson confirmed "$confirmed_fields" \
+  --arg caps_first_pass "$caps_first_pass" \
   '
   . as $original |
 
@@ -162,8 +172,20 @@ jq \
     else . end
    else . end) |
 
-  # ALWAYS restore protected fields from original
-  .capabilities = $original.capabilities
+  # Conditional: restore capabilities from original UNLESS _capabilities_first_pass
+  # was set at start of run (captured in $caps_first_pass). When set, apply only
+  # validator-confirmed capability changes from proposed.
+  (if $caps_first_pass == "true" then
+    reduce ($diff.changes[] | select(.field | startswith("capabilities."))) as $c
+      (.;
+        if is_confirmed($c.field) then
+          ($c.field | ltrimstr("capabilities.")) as $key |
+          .capabilities[$key] = $proposed.capabilities[$key]
+        else . end
+      )
+   else
+    .capabilities = $original.capabilities
+   end)
   ' "$DATA_FILE" > "$tmpfile"
 
 # Add new plans if confirmed
