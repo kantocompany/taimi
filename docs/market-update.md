@@ -88,6 +88,7 @@ ALL of these must be true:
 - Has **public pricing** or a free tier (no stealth/waitlist-only products)
 - Shows **adoption signals** from 2+ of: >5K GitHub stars, notable funding round, enterprise customers listed, >10K weekly downloads, featured in major tech press
 - Has been **publicly available for 30+ days** (no launch-day hype)
+- **No vendor sunset announcement on vendor domain** — WebSearch `"{vendor} {tool} end of support OR deprecated OR sunset"`; if any hit returns a vendor-owned URL, do not add (flag for the next health-check pass instead)
 
 ### Part B — Health check existing tools
 
