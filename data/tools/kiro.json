@@ -1,0 +1,108 @@
+{
+  "slug": "kiro",
+  "name": "Kiro",
+  "vendor": {
+    "name": "Amazon Web Services",
+    "hq_country": "US",
+    "eu_based": false,
+    "pricing_url": "https://kiro.dev/pricing/"
+  },
+  "_notes_first_pass": true,
+  "plans": [
+    {
+      "id": "kiro-free",
+      "name": "Free",
+      "category": "free",
+      "base_price": {
+        "amount": 0,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "50 credits/mo; access to open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over"
+      },
+      "overage": null
+    },
+    {
+      "id": "kiro-pro",
+      "name": "Pro",
+      "category": "individual",
+      "base_price": {
+        "amount": 20.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "1,000 credits/mo; access to premium models; credits reset monthly"
+      },
+      "overage": {
+        "unit": "acu",
+        "mechanism": "automatic",
+        "price_per_unit": 0.04,
+        "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum per task",
+        "input_per_million": null,
+        "output_per_million": null
+      }
+    },
+    {
+      "id": "kiro-pro-plus",
+      "name": "Pro+",
+      "category": "individual",
+      "base_price": {
+        "amount": 40.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "2,000 credits/mo; access to premium models; credits reset monthly"
+      },
+      "overage": {
+        "unit": "acu",
+        "mechanism": "automatic",
+        "price_per_unit": 0.04,
+        "notes": "Kiro credits; $0.04/credit beyond monthly allocation",
+        "input_per_million": null,
+        "output_per_million": null
+      }
+    },
+    {
+      "id": "kiro-power",
+      "name": "Power",
+      "category": "individual",
+      "base_price": {
+        "amount": 200.00,
+        "period": "monthly",
+        "per": "user"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "10,000 credits/mo; access to premium models; credits reset monthly"
+      },
+      "overage": {
+        "unit": "acu",
+        "mechanism": "automatic",
+        "price_per_unit": 0.04,
+        "notes": "Kiro credits; $0.04/credit beyond monthly allocation",
+        "input_per_million": null,
+        "output_per_million": null
+      }
+    }
+  ],
+  "capabilities": {
+    "autonomy_level": "interactive_to_autonomous",
+    "ide_type": "ide",
+    "model_choice": false,
+    "self_hosted": false,
+    "fedramp": false,
+    "eu_data_residency": false,
+    "soc2": true,
+    "on_premise": false
+  }
+}

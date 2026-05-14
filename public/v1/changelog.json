@@ -7,6 +7,22 @@
   "changes": [
     {
       "date": "2026-05-14",
+      "tool": "kiro",
+      "type": "new_tool",
+      "description": "Spec-driven agentic IDE from AWS; official successor to Amazon Q Developer with hooks, steering files, and custom subagents",
+      "details": {}
+    },
+    {
+      "date": "2026-05-14",
+      "tool": "amazon-q-developer",
+      "type": "removed_tool",
+      "description": "Archived Amazon Q Developer. AWS end-of-support announced; new signups blocked May 15 2026; IDE plugin + paid tier EoS April 30 2027; AWS directing users to Kiro",
+      "details": {
+        "reason": "AWS end-of-support announced; new signups blocked May 15 2026; IDE plugin + paid tier EoS April 30 2027; AWS directing users to Kiro"
+      }
+    },
+    {
+      "date": "2026-05-14",
       "tool": null,
       "type": "feature",
       "description": "Removed benchmarks field (swe_bench_pro/verified, measured_at) from tool schema; schema_version bumped to 1.1",
