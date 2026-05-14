@@ -48,7 +48,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "5x usage vs Pro; early access to advanced features"
+        "notes": "5x usage vs Pro; higher output limits; early access to advanced features"
       },
       "overage": null
     },
@@ -65,7 +65,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "20x usage vs Pro; priority access during peak traffic"
+        "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
       },
       "overage": null
     },
@@ -82,7 +82,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Standard seat, 5-150 members, SSO, admin controls; Annual billing: $20/mo"
+        "notes": "Standard seat, 5-150 members, SSO, admin controls, no training on user content; Annual billing: $20/mo"
       },
       "overage": null
     },
@@ -99,7 +99,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "5x more usage than Standard; SSO, domain verification, admin controls; Annual billing: $100/mo"
+        "notes": "5x more usage than Standard; SSO, domain verification, admin controls, no training on user content; Annual billing: $100/mo"
       },
       "overage": null
     },
@@ -116,7 +116,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting; API usage billed separately; billed annually"
+        "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging; API usage billed separately; billed annually"
       },
       "overage": null
     },

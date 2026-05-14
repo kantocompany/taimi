@@ -163,7 +163,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5x usage vs Pro; early access to advanced features"
+            "notes": "5x usage vs Pro; higher output limits; early access to advanced features"
           },
           "overage": null
         },
@@ -180,7 +180,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "20x usage vs Pro; priority access during peak traffic"
+            "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
           },
           "overage": null
         },
@@ -197,7 +197,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard seat, 5-150 members, SSO, admin controls; Annual billing: $20/mo"
+            "notes": "Standard seat, 5-150 members, SSO, admin controls, no training on user content; Annual billing: $20/mo"
           },
           "overage": null
         },
@@ -214,7 +214,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5x more usage than Standard; SSO, domain verification, admin controls; Annual billing: $100/mo"
+            "notes": "5x more usage than Standard; SSO, domain verification, admin controls, no training on user content; Annual billing: $100/mo"
           },
           "overage": null
         },
@@ -231,7 +231,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting; API usage billed separately; billed annually"
+            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging; API usage billed separately; billed annually"
           },
           "overage": null
         },
@@ -813,7 +813,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, VPC-SC, audit logs, CMEK. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
+            "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, VPC-SC, audit logs, CMEK, MCP server support in agentic chat. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
           },
           "overage": null
         }
@@ -981,7 +981,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "50 credits/mo; access to open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over"
+            "notes": "50 credits/mo; open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over"
           },
           "overage": null
         },
@@ -997,13 +997,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/mo; access to premium models; credits reset monthly"
+            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly"
           },
           "overage": {
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum per task",
+            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum per task; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1020,13 +1020,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/mo; access to premium models; credits reset monthly"
+            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly"
           },
           "overage": {
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation",
+            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1043,13 +1043,82 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/mo; access to premium models; credits reset monthly"
+            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly"
           },
           "overage": {
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation",
+            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "input_per_million": null,
+            "output_per_million": null
+          }
+        },
+        {
+          "id": "kiro-team-pro",
+          "name": "Team Pro",
+          "category": "team",
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "1,000 credits/user/mo; Claude Sonnet 4.6 and Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+          },
+          "overage": {
+            "unit": "acu",
+            "mechanism": "automatic",
+            "price_per_unit": null,
+            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "input_per_million": null,
+            "output_per_million": null
+          }
+        },
+        {
+          "id": "kiro-team-pro-plus",
+          "name": "Team Pro+",
+          "category": "team",
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "2,000 credits/user/mo; Claude Sonnet 4.6 and Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+          },
+          "overage": {
+            "unit": "acu",
+            "mechanism": "automatic",
+            "price_per_unit": null,
+            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "input_per_million": null,
+            "output_per_million": null
+          }
+        },
+        {
+          "id": "kiro-team-power",
+          "name": "Team Power",
+          "category": "team",
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "10,000 credits/user/mo; Claude Sonnet 4.6 and Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+          },
+          "overage": {
+            "unit": "acu",
+            "mechanism": "automatic",
+            "price_per_unit": null,
+            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1058,7 +1127,7 @@
       "capabilities": {
         "autonomy_level": "interactive_to_autonomous",
         "ide_type": "ide",
-        "model_choice": false,
+        "model_choice": true,
         "self_hosted": false,
         "fedramp": false,
         "eu_data_residency": false,
