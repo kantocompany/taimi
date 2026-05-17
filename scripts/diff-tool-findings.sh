@@ -98,6 +98,17 @@ jq -n \
       (if has("price_per_unit") then del(.price_per_unit) else . end)
     else . end);
 
+  # Extract operator-curated transparency markers from a notes string.
+  # Format: UNVERIFIED:, UNVERIFIED_<UPPER>:, or UNCONFIRMED: followed by text up to ; or end.
+  def operator_markers_in($s):
+    if ($s | type) == "string" then
+      [$s | scan("(?:UNVERIFIED(?:_[A-Z]+)?|UNCONFIRMED):[^;]+")]
+    else [] end;
+
+  # True if every operator marker present in $old is preserved verbatim in $new.
+  def notes_change_safe($old; $new):
+    ((operator_markers_in($old // "")) - (operator_markers_in($new // ""))) | length == 0;
+
   # Normalize proposed.plans order to match current.plans order (by .id).
   # Plans missing from current append at the end in their proposed order.
   # Removes the agent-side cosmetic-reorder noise that path-based diffs
@@ -166,14 +177,22 @@ jq -n \
     )
   ] as $changes |
 
+  # Operator-marker filter: strip notes changes that drop or modify operator markers.
+  [$changes[] | select(
+    if (.field | test("\\.notes$")) then notes_change_safe(.old; .new)
+    else true end)] as $filtered_changes |
+  [$changes[] | select(
+    if (.field | test("\\.notes$")) then notes_change_safe(.old; .new) | not
+    else false end)] as $blocked_marker_changes |
+
   # Warnings for plan removals
   [$removed_plans[] | {type: "plan_removal", plan_id: ., message: "Plan missing from proposed — not auto-removed"}] as $warnings |
 
   # New plan warnings
   [$new_plans[] | {type: "plan_addition", plan_id: ., message: "New plan proposed — requires validation"}] as $new_plan_warnings |
 
-  ($changes | map(select(.category == "structural")) | length > 0) as $has_structural |
-  ($changes | length > 0 or ($new_plans | length > 0)) as $has_changes |
+  ($filtered_changes | map(select(.category == "structural")) | length > 0) as $has_structural |
+  ($filtered_changes | length > 0 or ($new_plans | length > 0)) as $has_changes |
 
   {
     slug: $slug,
@@ -182,8 +201,9 @@ jq -n \
     source_url: $source_url,
     fetch_method: $fetch_method,
     status: (if $has_changes then "changes_found" else "reviewed" end),
-    changes: $changes,
+    changes: $filtered_changes,
     new_plans: $new_plans,
-    warnings: ($warnings + $new_plan_warnings)
+    warnings: ($warnings + $new_plan_warnings),
+    blocked_marker_changes: $blocked_marker_changes
   }
   '

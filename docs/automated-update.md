@@ -31,7 +31,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 1. **Setup job**: cron fires at 03:00 UTC Wednesday (or manual dispatch). Checks for open PR, discovers tool slugs
 2. **Review jobs** (parallel, one per tool): four-phase pipeline per tool:
    - **Phase 1 — Research**: Claude Code agent fetches vendor page and writes complete proposed tool JSON to `findings/{slug}.json`. Agent has no Edit permission — cannot modify data files.
-   - **Phase 2 — Diff**: deterministic jq script (`diff-tool-findings.sh`) compares proposed vs current data. Changes categorized as structural (vendor metadata, plan names/categories, overage mechanisms) or editorial (notes). Price fields, capabilities, and `verification_override` are excluded from comparison.
+   - **Phase 2 — Diff**: deterministic jq script (`diff-tool-findings.sh`) compares proposed vs current data. Changes categorized as structural (vendor metadata, plan names/categories, overage mechanisms) or editorial (notes). Price fields, capabilities, and `verification_override` are excluded from comparison. Changes to `.notes` fields where an operator marker (`UNVERIFIED:`, `UNVERIFIED_<SUFFIX>:`, or `UNCONFIRMED:`) in the old value is missing or modified in the proposed value are stripped (operator-only modification path) and recorded in `blocked_marker_changes[]`.
    - **Phase 3 — Validate**: runs when Phase 2 detects any changes. A clean-slate agent independently verifies all changes (structural and editorial) against the vendor page.
    - **Phase 4 — Apply**: deterministic jq script (`apply-tool-findings.sh`) merges confirmed changes only. Price fields always preserved from original (price-update's scope). Plan additions and removals applied only when independently confirmed by validation agent.
 3. **Finalize job**: downloads artifacts, generates changelog, builds, validates, commits, opens PR
@@ -121,7 +121,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 - Independent labels (`price-update` / `market-update` / `tool-update`) — workflows don't block each other
 - Matrix isolation — one tool's verification failure doesn't affect others
 - **Research/edit separation** (price-update, tool-update) — research agent cannot edit data files (Edit tool disallowed). Data file restored via `git checkout` after research phase as safety net.
-- **Deterministic diff** (price-update, tool-update) — jq script compares findings against current data. Price-update compares only price-bearing fields; tool-update categorizes changes as structural vs editorial and excludes price fields, capabilities, and `verification_override` (operator-only field).
+- **Deterministic diff** (price-update, tool-update) — jq script compares findings against current data. Price-update compares only price-bearing fields; tool-update categorizes changes as structural vs editorial and excludes price fields, capabilities, `verification_override` (operator-only field), and notes changes that drop or modify operator transparency markers (`UNVERIFIED_*:`, `UNCONFIRMED:`).
 - **Clean-slate validation** (price-update, tool-update) — validation agent has no access to research agent's reasoning, runbook, or repo files. Can only fetch web content. Prevents confirmation bias.
 - **Deterministic apply** (price-update, tool-update) — jq script applies only confirmed changes. Tool-update preserves price fields from original and gates all changes — including plan additions, removals, and billing model shifts — on validation verdicts.
 
