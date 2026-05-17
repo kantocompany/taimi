@@ -74,7 +74,7 @@ jobs:
             Read docs/price-update.md and execute.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 18  # research-max-turns
+            --max-turns 25  # research-max-turns
             --max-budget-usd 0.50
             --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
             --disallowedTools "Agent,Edit"

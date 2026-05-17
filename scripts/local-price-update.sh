@@ -14,7 +14,7 @@ set -euo pipefail
 DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
 MODEL="claude-sonnet-4-6"
-RESEARCH_MAX_TURNS=18
+RESEARCH_MAX_TURNS=25
 VALIDATE_MAX_TURNS=12
 SLUGS=()
 
