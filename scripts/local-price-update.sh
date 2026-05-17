@@ -122,7 +122,7 @@ Source URL: $source_url
 Your task: independently verify each change.
 IMPORTANT: Verify ONLY the specific changes listed above. Do not check other fields or report changes you notice independently on the page.
 
-Special rule: any change asserting that a model, plan, or feature is "removed", "unavailable", "deprecated", or "no longer offered" requires a quoted exclusion statement from the page (e.g., "available on Pro and above", "Enterprise only", or an explicit deprecation notice). Absence-of-listing alone is not evidence — mark confirmed: false in that case.
+Special rule: any change asserting that a model, plan, or feature is "removed", "unavailable", "deprecated", or "no longer offered" requires a quoted exclusion statement from the page (e.g., "available on Pro and above", "Enterprise only", or an explicit deprecation notice). Absence-of-listing alone is not evidence — mark confirmed: false in that case. The same standard applies in the other direction: if the OLD notes value contains a date or temporal qualifier (e.g., "paused 2026-04-20", "through 2026-05-31", "(beta)") and the NEW value drops it, require a quoted vendor-page statement that the original condition no longer holds. Different wording covering a different event is not evidence of state reversal — mark confirmed: false.
 
 1. Fetch $source_url
 2. For each change, confirm the NEW value appears on the page
@@ -192,7 +192,7 @@ run_pipeline_quiet() {
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '.changes')
-  if ! claude -p "Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; absence-of-listing alone → confirmed: false. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}" \
+  if ! claude -p "Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; absence-of-listing alone → confirmed: false. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}" \
     --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
     --allowedTools "Write,WebSearch,WebFetch" \
     --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
