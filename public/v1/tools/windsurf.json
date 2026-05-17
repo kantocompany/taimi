@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-14",
-    "updated_at": "2026-05-14T00:00:00Z",
+    "version": "2026-05-17",
+    "updated_at": "2026-05-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -112,7 +112,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All Teams features; RBAC; SSO + access control; hybrid deployment; highest priority support; dedicated account management; custom terms; contact-sales pricing"
+          "notes": "All Teams features; RBAC; SSO + access control; hybrid deployment; highest priority support; dedicated account management; custom terms; volume discounts; contact-sales pricing"
         },
         "overage": null
       }

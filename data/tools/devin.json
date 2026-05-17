@@ -7,7 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://devin.ai/pricing"
   },
-  "verification_override": null,
+  "verification_override": "Overage: devin.ai/pricing confirms Pay-as-you-go for usage past quota on Pro/Max/Teams but does not publish per-ACU rates. Preserve the UNVERIFIED_OVERAGE marker in overage.notes for these plans — operator-curated transparency caveat, not internal annotation.",
   "plans": [
     {
       "id": "devin-enterprise",
@@ -56,7 +56,7 @@
         "unit": "acu",
         "mechanism": "unverified",
         "price_per_unit": null,
-        "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
+        "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
         "input_per_million": null,
         "output_per_million": null
       },
@@ -80,7 +80,7 @@
         "unit": "acu",
         "mechanism": "unverified",
         "price_per_unit": null,
-        "notes": "Pay-as-you-go beyond included quota; rate not shown on pricing page",
+        "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
         "input_per_million": null,
         "output_per_million": null
       },
@@ -104,7 +104,7 @@
         "unit": "acu",
         "mechanism": "unverified",
         "price_per_unit": null,
-        "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
+        "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
         "input_per_million": null,
         "output_per_million": null
       },

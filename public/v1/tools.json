@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-14",
-    "updated_at": "2026-05-14T00:00:00Z",
+    "version": "2026-05-17",
+    "updated_at": "2026-05-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -686,7 +686,7 @@
             "unit": "acu",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
+            "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
             "input_per_million": null,
             "output_per_million": null
           },
@@ -710,7 +710,7 @@
             "unit": "acu",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Pay-as-you-go beyond included quota; rate not shown on pricing page",
+            "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
             "input_per_million": null,
             "output_per_million": null
           },
@@ -734,7 +734,7 @@
             "unit": "acu",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Pay-as-you-go beyond included quota; billing mechanism not explicitly stated on pricing page",
+            "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
             "input_per_million": null,
             "output_per_million": null
           },
@@ -1186,7 +1186,7 @@
           },
           "overage": {
             "unit": "token",
-            "mechanism": "unverified",
+            "mechanism": "automatic",
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
@@ -1635,7 +1635,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features; RBAC; SSO + access control; hybrid deployment; highest priority support; dedicated account management; custom terms; contact-sales pricing"
+            "notes": "All Teams features; RBAC; SSO + access control; hybrid deployment; highest priority support; dedicated account management; custom terms; volume discounts; contact-sales pricing"
           },
           "overage": null
         }

@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-05-14",
-    "updated_at": "2026-05-14T11:38:18Z",
+    "version": "2026-05-17",
+    "updated_at": "2026-05-17T07:15:06Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-05-17",
+      "tool": "mistral-vibe",
+      "type": "pricing_change",
+      "description": "plans.1.overage.mechanism: unverified → automatic",
+      "details": {
+        "source": "https://mistral.ai/pricing"
+      }
+    },
     {
       "date": "2026-05-14",
       "tool": "openai-codex",
