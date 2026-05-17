@@ -75,7 +75,6 @@ jq -n \
     ($key | test("overage\\.unit$")) or
     ($key | test("overage\\.mechanism$")) or
     ($key | test("overage\\.model$")) or
-    ($key | test("^verification_override$")) or
     ($key | test("\\.platform")) or
     ($key | test("^platform\\."));
 
@@ -88,9 +87,9 @@ jq -n \
   # Capabilities is conditionally protected based on _capabilities_first_pass.
   def strip_excluded:
     (if ($current._capabilities_first_pass // false) then
-      del(._notes_first_pass, ._capabilities_first_pass)
+      del(.verification_override, ._notes_first_pass, ._capabilities_first_pass)
      else
-      del(.capabilities, ._notes_first_pass, ._capabilities_first_pass)
+      del(.capabilities, .verification_override, ._notes_first_pass, ._capabilities_first_pass)
      end) |
     walk(if type == "object" then
       del(.amount) |
