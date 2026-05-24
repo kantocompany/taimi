@@ -37,7 +37,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly"
+        "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
       },
       "overage": {
         "unit": "acu",
@@ -61,7 +61,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly"
+        "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
       },
       "overage": {
         "unit": "acu",
@@ -85,7 +85,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly"
+        "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
       },
       "overage": {
         "unit": "acu",
