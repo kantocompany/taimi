@@ -22,7 +22,8 @@
         "tokens_included": null,
         "notes": "50 credits/mo; open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over"
       },
-      "overage": null
+      "overage": null,
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "kiro-pro",
@@ -45,7 +46,8 @@
         "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum per task; overage disabled by default, enable in Settings",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "kiro-pro-plus",
@@ -68,7 +70,8 @@
         "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "kiro-power",
@@ -91,7 +94,8 @@
         "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "kiro-team-pro",
@@ -114,7 +118,8 @@
         "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "kiro-team-pro-plus",
@@ -137,7 +142,8 @@
         "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "kiro-team-power",
@@ -160,7 +166,8 @@
         "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     }
   ],
   "capabilities": {

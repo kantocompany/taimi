@@ -25,6 +25,10 @@ slug=$(jq -r '.slug' "$FINDINGS")
 status=$(jq -r '.status // "unknown"' "$FINDINGS")
 source_url=$(jq -r '.source_url // "unknown"' "$FINDINGS")
 fetch_method=$(jq -r '.fetch_method // "unknown"' "$FINDINGS")
+today="${DATE:-$(date -u +%Y-%m-%d)}"
+# Days a plan must be missing from proposed.plans before auto-remove eligibility.
+# 21 = 3 weekly tool-update cycles; conservative against single-cycle vendor outages.
+removal_threshold_days="${REMOVAL_THRESHOLD_DAYS:-21}"
 
 # Unverified findings — skip comparison
 if [[ "$status" == "unverified" ]]; then
@@ -48,6 +52,9 @@ jq -n \
   --arg slug "$slug" \
   --arg source_url "$source_url" \
   --arg fetch_method "$fetch_method" \
+  --arg today "$today" \
+  --arg finding_status "$status" \
+  --argjson removal_threshold_days "$removal_threshold_days" \
   '
   # Price fields — owned by price-update, skip these
   def is_price_field:
@@ -92,7 +99,7 @@ jq -n \
       del(.capabilities, .verification_override, ._notes_first_pass, ._capabilities_first_pass)
      end) |
     walk(if type == "object" then
-      del(.amount) |
+      del(.amount, ._last_seen_on_page) |
       (if has("input_per_million") then del(.input_per_million) else . end) |
       (if has("output_per_million") then del(.output_per_million) else . end) |
       (if has("price_per_unit") then del(.price_per_unit) else . end)
@@ -130,8 +137,20 @@ jq -n \
   # Detect plan removals (in current but missing from proposed)
   [$current.plans[]? | .id | select($proposed_plan_ids[.] != true)] as $removed_plans |
 
-  # Detect new plans (in proposed but not current)
-  [$proposed.plans[]? | .id | select($current_plan_ids[.] != true)] as $new_plans |
+  # Indices in $current.plans of removed plans — needed to suppress the
+  # field-level diff noise these generate. Paths in the flattened comparison use
+  # array indices (plans.<idx>.X), not plan IDs; the previous filter matched by
+  # ID and silently did nothing. The 2026-05-20 cursor case showed 16 spurious
+  # "field removed" entries reaching the validator as a result.
+  [$current.plans | to_entries[] | select(.value.id as $i | ($removed_plans | index($i)) != null) | .key | tostring] as $removed_indices |
+
+  # Detect new plans (in proposed but not current).
+  # Emit {id, idx} where idx is the position in the reordered $proposed.plans —
+  # this matches the path the validator uses (plans.<idx>.<field>), so the apply
+  # gate can resolve per-field verdicts for new plans the same way it does for
+  # existing ones (the 5eebbe9 pattern).
+  [$proposed.plans | to_entries[] | select($current_plan_ids[.value.id] != true)
+    | {id: .value.id, idx: .key}] as $new_plans |
 
   # Field-level changes (excluding price and protected)
   [
@@ -160,14 +179,19 @@ jq -n \
         category: (if .key | is_structural_field then "structural" else "editorial" end)
       }
     ),
-    # Removed fields (in current, not in proposed) — excluding plan-level removals
+    # Removed fields (in current, not in proposed) — excluding plan-level removals.
+    # Plans missing from proposed.plans get their own plan_removal_pending/eligible
+    # warning; their per-field "removals" are noise and should not reach validator.
     ($cur | to_entries[] |
       select($prop[.key] == null) |
       select(.value != null) |
       select(.key | is_price_field | not) |
       select(.key | is_protected_field | not) |
-      # Skip fields belonging to removed plans (handled separately as warnings)
-      select(.key as $k | [$removed_plans[] | $k | startswith("plans." + .)] | any | not) |
+      # Suppress fields under indices that belong to removed plans.
+      # NOTE: bind the index to a named var ($i) — using bare `.` inside the
+      # pipeline rebinds to $k after `| $k`, which makes the startswith check
+      # silently false. Same shape of bug as the original ID-based filter.
+      select(.key as $k | [$removed_indices[] as $i | $k | startswith("plans." + $i + ".")] | any | not) |
       {
         field: .key,
         old: .value,
@@ -185,19 +209,48 @@ jq -n \
     if (.field | test("\\.notes$")) then notes_change_safe(.old; .new) | not
     else false end)] as $blocked_marker_changes |
 
-  # Warnings for plan removals
-  [$removed_plans[] | {type: "plan_removal", plan_id: ., message: "Plan missing from proposed — not auto-removed"}] as $warnings |
+  # Warnings for plan removals — temporal-persistence gate (Fix 2, 2026-05-24).
+  # A plan missing from the agent proposed.plans is not enough evidence to
+  # auto-remove (vendors rarely publish "X discontinued" text; absence-of-listing
+  # is the same weak evidence the 874523e prompt rule kept failing to constrain).
+  # Instead: compute age vs ._last_seen_on_page on the current data file. Auto-
+  # remove only after the plan has been absent for $removal_threshold_days
+  # consecutive days, AND the current findings successfully fetched the page
+  # (status != unverified — already short-circuited at line 30, but checked here
+  # for clarity).
+  def days_between($from; $to):
+    (($to | strptime("%Y-%m-%d") | mktime) - ($from | strptime("%Y-%m-%d") | mktime)) / 86400 | floor;
+
+  ([$current.plans[]? | {key: .id, value: ._last_seen_on_page}] | from_entries) as $last_seen_by_id |
+
+  [$removed_plans[] | . as $pid |
+    ($last_seen_by_id[$pid] // null) as $last_seen |
+    (if $last_seen == null then null else days_between($last_seen; $today) end) as $days |
+    if $last_seen == null then
+      {type: "plan_removal_pending", plan_id: $pid, last_seen_on_page: null, days_absent: null,
+       message: "Plan missing from proposed; no _last_seen_on_page recorded — pending operator review"}
+    elif ($days >= $removal_threshold_days) and ($finding_status != "unverified") then
+      {type: "plan_removal_eligible", plan_id: $pid, last_seen_on_page: $last_seen, days_absent: $days,
+       message: "Plan absent from page for \($days) days (≥ \($removal_threshold_days)) — auto-remove eligible"}
+    else
+      {type: "plan_removal_pending", plan_id: $pid, last_seen_on_page: $last_seen, days_absent: $days,
+       message: "Plan absent from page for \($days) days (< \($removal_threshold_days)) — pending"}
+    end
+  ] as $warnings |
 
   # New plan warnings
-  [$new_plans[] | {type: "plan_addition", plan_id: ., message: "New plan proposed — requires validation"}] as $new_plan_warnings |
+  [$new_plans[] | {type: "plan_addition", plan_id: .id, message: "New plan proposed — requires validation"}] as $new_plan_warnings |
 
+  # plan_removal_eligible triggers an apply-side removal action, so it counts
+  # toward has_changes. plan_removal_pending is informational only.
+  ([$warnings[] | select(.type == "plan_removal_eligible")] | length) as $eligible_count |
   ($filtered_changes | map(select(.category == "structural")) | length > 0) as $has_structural |
-  ($filtered_changes | length > 0 or ($new_plans | length > 0)) as $has_changes |
+  ($filtered_changes | length > 0 or ($new_plans | length > 0) or ($eligible_count > 0)) as $has_changes |
 
   {
     slug: $slug,
     has_changes: $has_changes,
-    has_structural_changes: ($has_structural or ($new_plans | length > 0)),
+    has_structural_changes: ($has_structural or ($new_plans | length > 0) or ($eligible_count > 0)),
     source_url: $source_url,
     fetch_method: $fetch_method,
     status: (if $has_changes then "changes_found" else "reviewed" end),

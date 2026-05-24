@@ -22,7 +22,8 @@
         "tokens_included": null,
         "notes": "Light quota to code with agents; unlimited inline edits and Tab completions; limited model availability"
       },
-      "overage": null
+      "overage": null,
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "windsurf-pro",
@@ -45,7 +46,8 @@
         "notes": "UNVERIFIED_OVERAGE: page states 'at API pricing' with no specific per-unit rate or unit type; Cognition sibling Devin charges $2.25/ACU (Core) but windsurf.com does not confirm ACUs as Windsurf's overage unit",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "windsurf-max",
@@ -68,7 +70,8 @@
         "notes": "UNVERIFIED_OVERAGE: page states 'Extra usage at API pricing' with no specific per-unit rate",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "windsurf-teams",
@@ -91,7 +94,8 @@
         "notes": "UNVERIFIED_OVERAGE: page states 'Extra usage at API pricing' with no specific per-unit rate",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "windsurf-enterprise",
@@ -103,7 +107,8 @@
         "tokens_included": null,
         "notes": "All Teams features; RBAC; SSO + access control; hybrid deployment; highest priority support; dedicated account management; custom terms; volume discounts; contact-sales pricing"
       },
-      "overage": null
+      "overage": null,
+      "_last_seen_on_page": "2026-05-24"
     }
   ],
   "capabilities": {

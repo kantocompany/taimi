@@ -96,6 +96,13 @@ run_pipeline() {
       echo "  ⚠️ $slug: UNVERIFIED — extraction failed, no comparison"
     else
       echo "  ✅ $slug: reviewed — no structural changes"
+      # Still invoke apply: even with zero changes, the temporal-persistence
+      # bumper must run for every plan the agent successfully enumerated.
+      # Apply short-circuits internally once the bumper completes.
+      ./scripts/apply-tool-findings.sh \
+        "findings/${slug}.json" \
+        "diff-results/${slug}.json" \
+        "data/tools/${slug}.json"
     fi
     echo ""
     return
@@ -111,7 +118,7 @@ run_pipeline() {
   local validated_arg=""
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
-  changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: (.new_plans // []), removed_plans: [.warnings[]? | select(.type == "plan_removal") | .plan_id]}')
+  changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: [(.new_plans // [])[] | .id]}')
 
   if claude -p "$(cat <<PROMPT
 Review verification for $slug.
@@ -133,14 +140,12 @@ New-plan rule: any change introducing a new plan ID requires a quoted vendor-pag
 1. Fetch $source_url
 2. For each field change, confirm the NEW value is supported by the page
 3. For each new plan ID, verify the plan exists on the vendor page
-4. For each removed plan ID, verify the plan is NO LONGER on the vendor page
-5. Write your verdict to validated/${slug}.json with this schema:
+4. Write your verdict to validated/${slug}.json with this schema:
 {
   "slug": "$slug",
   "changes": [
     { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "text from page" },
-    { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" },
-    { "field": "remove:<removed_plan_id>", "confirmed": true/false, "evidence": "plan no longer listed" }
+    { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" }
   ]
 }
 PROMPT
@@ -200,15 +205,23 @@ run_pipeline_quiet() {
   if [[ "$has_changes" != "true" ]]; then
     local status
     status=$(echo "$diff_result" | jq -r '.status // "reviewed"')
-    echo "  $slug: $status — no changes"; return
+    # Even with zero changes, invoke apply so the temporal-persistence bumper
+    # runs for every plan the agent successfully enumerated.
+    if [[ "$status" != "unverified" ]]; then
+      ./scripts/apply-tool-findings.sh \
+        "findings/${slug}.json" \
+        "diff-results/${slug}.json" \
+        "data/tools/${slug}.json" > /dev/null
+    fi
+    echo "  $slug: $status — no changes (last_seen bumped)"; return
   fi
 
   # Phase 3: Validate
   local validated_arg=""
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
-  changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: (.new_plans // []), removed_plans: [.warnings[]? | select(.type == "plan_removal") | .plan_id]}')
-  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Exception for dated dollar citations from this tool's page: confirmed: true when cited rate cannot be reproduced on today's page. Symmetry rule: per-plan notes additions where the same feature shows ✓/included on sibling plans without exclusion markers → confirmed: false (tool-wide, not plan-specific). New-plan rule: new plan IDs need a quoted tier header, pricing card, or named tier row from the page; feature mentions don't count → confirmed: false. For new plan IDs, confirm they exist on the page. For removed plan IDs, confirm they are no longer listed. Write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}. For new plans use field=plan_id. For removed plans use field=remove:plan_id." \
+  changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: [(.new_plans // [])[] | .id]}')
+  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Exception for dated dollar citations from this tool's page: confirmed: true when cited rate cannot be reproduced on today's page. Symmetry rule: per-plan notes additions where the same feature shows ✓/included on sibling plans without exclusion markers → confirmed: false (tool-wide, not plan-specific). New-plan rule: new plan IDs need a quoted tier header, pricing card, or named tier row from the page; feature mentions don't count → confirmed: false. For new plan IDs, confirm they exist on the page. Write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}. For new plans use field=plan_id." \
     --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
     --allowedTools "Write,WebSearch,WebFetch" \
     --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \

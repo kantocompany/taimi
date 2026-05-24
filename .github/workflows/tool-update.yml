@@ -108,7 +108,7 @@ jobs:
           echo "has_structural=$has_structural" >> "$GITHUB_OUTPUT"
           echo "$result" > diff-results/${{ matrix.tool }}.json
           if [[ "$has_changes" == "true" ]]; then
-            echo "changes=$(echo "$result" | jq -c '{changes, new_plans: (.new_plans // []), removed_plans: [.warnings[]? | select(.type == "plan_removal") | .plan_id]}')" >> "$GITHUB_OUTPUT"
+            echo "changes=$(echo "$result" | jq -c '{changes, new_plans: [(.new_plans // [])[] | .id]}')" >> "$GITHUB_OUTPUT"
             echo "source_url=$(echo "$result" | jq -r '.source_url')" >> "$GITHUB_OUTPUT"
             echo "::notice::${{ matrix.tool }}: changes detected (structural=$has_structural)"
             echo "$result" | jq -r '.changes[] | "  \(.category) \(.field): \(.old) → \(.new)"'
@@ -146,14 +146,12 @@ jobs:
             1. Fetch the source URL above
             2. For each field change, confirm the NEW value is supported by the page
             3. For each new plan ID, verify the plan exists on the vendor page
-            4. For each removed plan ID, verify the plan is NO LONGER on the vendor page
-            5. Write your verdict to validated/${{ matrix.tool }}.json with this schema:
+            4. Write your verdict to validated/${{ matrix.tool }}.json with this schema:
             {
               "slug": "${{ matrix.tool }}",
               "changes": [
                 { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "quoted text from page" },
-                { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" },
-                { "field": "remove:<removed_plan_id>", "confirmed": true/false, "evidence": "plan no longer listed" }
+                { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" }
               ]
             }
             If you cannot fetch the page or verify a claim, set confirmed to false.
@@ -166,13 +164,20 @@ jobs:
 
       # ── Phase 4: Deterministic apply ─────────────────────────────
       - name: Apply changes
-        if: steps.diff.outputs.has_changes == 'true'
+        # Run unconditionally — even with no changes, the temporal-persistence
+        # bumper must update _last_seen_on_page for every plan the research
+        # agent successfully enumerated. Apply short-circuits internally after
+        # the bumper when has_changes is false.
         run: |
+          if [[ ! -f findings/${{ matrix.tool }}.json ]]; then
+            echo "::warning::No findings file — skipping apply"
+            exit 0
+          fi
           validated_arg=""
           if [[ -f validated/${{ matrix.tool }}.json ]] && jq empty validated/${{ matrix.tool }}.json 2>/dev/null; then
             validated_arg="validated/${{ matrix.tool }}.json"
-          else
-            echo "::warning::No valid verdict for ${{ matrix.tool }} — skipping apply"
+          elif [[ "${{ steps.diff.outputs.has_changes }}" == "true" ]]; then
+            echo "::warning::No valid verdict for ${{ matrix.tool }} — apply will only run the bumper"
           fi
           ./scripts/apply-tool-findings.sh \
             findings/${{ matrix.tool }}.json \

@@ -22,7 +22,8 @@
         "tokens_included": null,
         "notes": "50 agent mode/chat req/mo, 2K completions"
       },
-      "overage": null
+      "overage": null,
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "copilot-pro",
@@ -45,7 +46,8 @@
         "notes": "$0.04/req beyond limit",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "copilot-pro-plus",
@@ -68,7 +70,8 @@
         "notes": "$0.04/req beyond limit",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "copilot-business",
@@ -91,7 +94,8 @@
         "notes": "$0.04/req beyond limit",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "copilot-enterprise",
@@ -114,7 +118,8 @@
         "notes": "$0.04/req beyond limit",
         "input_per_million": null,
         "output_per_million": null
-      }
+      },
+      "_last_seen_on_page": "2026-05-24"
     }
   ],
   "capabilities": {

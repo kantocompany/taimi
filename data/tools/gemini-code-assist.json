@@ -23,7 +23,8 @@
         "tokens_included": null,
         "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
       },
-      "overage": null
+      "overage": null,
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "gemini-code-assist-standard",
@@ -39,7 +40,8 @@
         "tokens_included": null,
         "notes": "1,500 CLI/Agent mode requests/day. 30-day free trial (up to 50 users). 12-month commitment: $19.00/user/month."
       },
-      "overage": null
+      "overage": null,
+      "_last_seen_on_page": "2026-05-24"
     },
     {
       "id": "gemini-code-assist-enterprise",
@@ -55,7 +57,8 @@
         "tokens_included": null,
         "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, VPC-SC, audit logs, CMEK, MCP server support in agentic chat. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
       },
-      "overage": null
+      "overage": null,
+      "_last_seen_on_page": "2026-05-24"
     }
   ],
   "capabilities": {

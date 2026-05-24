@@ -23,6 +23,19 @@ fi
 # Capture _capabilities_first_pass BEFORE clearing — drives merge logic below.
 caps_first_pass=$(jq -r '._capabilities_first_pass // false' "$DATA_FILE")
 
+# Temporal persistence bumper (Fix 2, 2026-05-24).
+# When the research agent successfully fetched the vendor page, plans it
+# enumerated in proposed.plans get their ._last_seen_on_page set to today.
+# On "unverified" findings, leave _last_seen_on_page untouched — a vendor-page
+# outage shouldn't accelerate the auto-removal clock.
+DATE="${DATE:-$(date -u +%Y-%m-%d)}"
+finding_status=$(jq -r '.status // "unknown"' "$FINDINGS" 2>/dev/null || echo "unknown")
+if [[ "$finding_status" == "reviewed" || "$finding_status" == "changes_found" ]]; then
+  BUMP_DATE="$DATE"
+else
+  BUMP_DATE=""
+fi
+
 # Always clear _notes_first_pass — tool-update has now seen this data,
 # regardless of whether changes are about to land. Subsequent cycles return
 # to standard preserve-existing behavior.
@@ -37,9 +50,26 @@ if jq -e '._capabilities_first_pass' "$DATA_FILE" >/dev/null 2>&1; then
   echo "  Cleared _capabilities_first_pass flag on $(basename "$DATA_FILE")"
 fi
 
+# Bump _last_seen_on_page unconditionally for all plans the agent enumerated —
+# this must run even on no-change cycles, otherwise plans never get re-stamped
+# and would eventually drift into removal-eligibility just because nothing
+# changed for them.
+if [[ -n "$BUMP_DATE" ]]; then
+  jq --arg bump_date "$BUMP_DATE" \
+     --argjson proposed_ids "$(jq '[.proposed.plans[]?.id]' "$FINDINGS")" '
+    .plans |= map(
+      . as $p |
+      if ($proposed_ids | index($p.id)) != null
+      then ._last_seen_on_page = $bump_date
+      else .
+      end
+    )
+  ' "$DATA_FILE" > "${DATA_FILE}.tmp" && mv "${DATA_FILE}.tmp" "$DATA_FILE"
+fi
+
 has_changes=$(jq -r '.has_changes' "$DIFF_RESULTS")
 if [[ "$has_changes" != "true" ]]; then
-  echo "No changes to apply"
+  echo "No changes to apply (last_seen bumped where applicable)"
   exit 0
 fi
 
@@ -64,6 +94,7 @@ jq \
   --argjson diff "$(cat "$DIFF_RESULTS")" \
   --argjson confirmed "$confirmed_fields" \
   --arg caps_first_pass "$caps_first_pass" \
+  --arg bump_date "$BUMP_DATE" \
   '
   . as $original |
 
@@ -89,9 +120,12 @@ jq \
   # validator verdicts are scoped per-plan, not picked globally via `first`.
   .plans = [(.plans | to_entries[]) | .key as $idx | .value as $orig |
     ($proposed.plans // [] | map(select(.id == $orig.id)) | first // null) as $prop |
-    if $prop == null then $orig  # not in proposed = keep original
+    if $prop == null then $orig  # not in proposed = keep original (no _last_seen bump — agent did not enumerate this plan)
     else
       $orig |
+      # Temporal persistence: bump _last_seen_on_page when agent enumerated this plan
+      # in proposed.plans and the page fetch was successful (bump_date populated).
+      (if $bump_date != "" then ._last_seen_on_page = $bump_date else . end) |
       # Editorial: notes (confirmed only, annual billing claims filtered)
       (if $prop.includes.notes and $prop.includes.notes != ($orig.includes.notes // null) then
         if is_confirmed("plans.\($idx).includes.notes") then .includes.notes = strip_new_annual($orig.includes.notes; $prop.includes.notes) else . end
@@ -188,55 +222,94 @@ jq \
    end)
   ' "$DATA_FILE" > "$tmpfile"
 
-# Add new plans if confirmed
-new_plans=$(jq -r '.new_plans // [] | .[]' "$DIFF_RESULTS")
-if [[ -n "$new_plans" ]]; then
-  for plan_id in $new_plans; do
-    # New plans need confirmation
-    if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]]; then
-      is_confirmed=$(jq --arg pid "$plan_id" \
-        '[.changes[]? | select(.confirmed == true) | select((.field == $pid) or (.field | split(".") | any(. == $pid)) or (.new == $pid))] | length > 0' "$VALIDATED")
-      if [[ "$is_confirmed" != "true" ]]; then
-        echo "  Skipping unconfirmed new plan: $plan_id"
-        continue
-      fi
-    else
+# Add new plans — honor per-field verdicts (Fix 1, 2026-05-24).
+# The validator emits per-field rejections at paths like plans.<idx>.<field>.
+# We use the idx carried in $DIFF_RESULTS.new_plans (now {id, idx} objects) to
+# match those rejections, and null out any sub-field the validator did not
+# confirm. Dollar amounts are nulled regardless (price-update's scope).
+new_plans_count=$(jq '.new_plans // [] | length' "$DIFF_RESULTS")
+if [[ "$new_plans_count" -gt 0 ]]; then
+  for i in $(seq 0 $((new_plans_count - 1))); do
+    plan_id=$(jq -r ".new_plans[$i].id" "$DIFF_RESULTS")
+    plan_idx=$(jq -r ".new_plans[$i].idx" "$DIFF_RESULTS")
+
+    if [[ -z "$VALIDATED" ]] || [[ ! -f "$VALIDATED" ]]; then
       echo "  Skipping new plan (no verdict): $plan_id"
       continue
     fi
-    # Add plan structure but null out price fields — price-update fills them in
-    new_plan=$(jq --arg pid "$plan_id" '
+
+    # Plan-level confirmation: validator says this tier exists on the page.
+    # Accept either field=<plan_id> (legacy) or field=plan_id with new=<plan_id>.
+    is_confirmed=$(jq --arg pid "$plan_id" \
+      '[.changes[]? | select(.confirmed == true) | select(.field == $pid or (.field == "plan_id" and .new == $pid))] | length > 0' "$VALIDATED")
+    if [[ "$is_confirmed" != "true" ]]; then
+      echo "  Skipping unconfirmed new plan: $plan_id"
+      continue
+    fi
+
+    # Per-field gate: start with the proposed plan, null out every leaf whose
+    # plans.<idx>.<leaf-path> is not confirmed:true in the verdict. Preserve
+    # .id (implicitly confirmed by plan-level verdict).
+    new_plan=$(jq \
+      --arg pid "$plan_id" \
+      --argjson idx "$plan_idx" \
+      --arg bump_date "$BUMP_DATE" \
+      --slurpfile verdict "$VALIDATED" '
+      ([$verdict[0].changes[]? | select(.confirmed == true) | .field]) as $confirmed_fields |
+      def field_confirmed($f): ($confirmed_fields | index($f)) != null;
+
       .proposed.plans[] | select(.id == $pid) |
+      . as $orig |
+      reduce ([paths(scalars)] | .[]) as $p
+        ($orig;
+          ($p | map(tostring) | join(".")) as $local_path |
+          if $local_path == "id" then .
+          elif field_confirmed("plans.\($idx).\($local_path)") then .
+          else setpath($p; null)
+          end
+        ) |
+      # Price fields always nulled (price-update scope) — overrides any verdict
       (if .base_price then .base_price.amount = null else . end) |
       (if .overage then
         .overage.input_per_million = null |
         .overage.output_per_million = null |
         .overage.price_per_unit = null
-      else . end)
+      else . end) |
+      # Initialize _last_seen_on_page so the temporal-persistence clock starts now.
+      (if $bump_date != "" then ._last_seen_on_page = $bump_date else . end)
     ' "$FINDINGS")
-    if [[ -n "$new_plan" ]]; then
+
+    if [[ -n "$new_plan" ]] && [[ "$new_plan" != "null" ]]; then
       jq --argjson np "$new_plan" '.plans += [$np]' "$tmpfile" > "${tmpfile}.tmp"
       mv "${tmpfile}.tmp" "$tmpfile"
-      echo "  Added new plan: $plan_id"
+      echo "  Added new plan: $plan_id (idx=$plan_idx, per-field verdicts honored)"
     fi
   done
 fi
 
-# Remove confirmed plans
-removed_plans=$(jq -r '[.warnings[]? | select(.type == "plan_removal") | .plan_id] | .[]' "$DIFF_RESULTS")
-if [[ -n "$removed_plans" ]]; then
-  for plan_id in $removed_plans; do
-    if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]]; then
-      is_confirmed=$(jq --arg pid "$plan_id" \
-        '[.changes[]? | select(.confirmed == true) | select(.field == ("remove:" + $pid))] | length > 0' "$VALIDATED")
-      if [[ "$is_confirmed" == "true" ]]; then
-        jq --arg pid "$plan_id" '.plans |= map(select(.id != $pid))' "$tmpfile" > "${tmpfile}.tmp"
-        mv "${tmpfile}.tmp" "$tmpfile"
-        echo "  Removed plan: $plan_id"
-      else
-        echo "  Skipping unconfirmed plan removal: $plan_id"
-      fi
-    fi
+# Remove plans flagged as eligible by the temporal-persistence gate (Fix 2,
+# 2026-05-24). Validator verdicts are no longer consulted for plan removal —
+# the diff script's "absent for ≥ K days" criterion is the only auto-remove
+# trigger. plan_removal_pending warnings are surfaced for operator visibility
+# but produce no apply-side action.
+removal_eligible=$(jq -r '[.warnings[]? | select(.type == "plan_removal_eligible") | .plan_id] | .[]' "$DIFF_RESULTS")
+if [[ -n "$removal_eligible" ]]; then
+  for plan_id in $removal_eligible; do
+    days_absent=$(jq -r --arg pid "$plan_id" \
+      '[.warnings[]? | select(.type == "plan_removal_eligible") | select(.plan_id == $pid) | .days_absent] | first // "?"' "$DIFF_RESULTS")
+    jq --arg pid "$plan_id" '.plans |= map(select(.id != $pid))' "$tmpfile" > "${tmpfile}.tmp"
+    mv "${tmpfile}.tmp" "$tmpfile"
+    echo "  Removed plan: $plan_id (absent for ${days_absent} days, ≥ threshold)"
+  done
+fi
+
+# Surface pending removals (no apply action — operator visibility only)
+removal_pending=$(jq -r '[.warnings[]? | select(.type == "plan_removal_pending") | .plan_id] | .[]' "$DIFF_RESULTS")
+if [[ -n "$removal_pending" ]]; then
+  for plan_id in $removal_pending; do
+    days_absent=$(jq -r --arg pid "$plan_id" \
+      '[.warnings[]? | select(.type == "plan_removal_pending") | select(.plan_id == $pid) | .days_absent // "n/a"] | first // "?"' "$DIFF_RESULTS")
+    echo "  Pending removal (no action): $plan_id (absent for ${days_absent} days, < threshold)"
   done
 fi
 
