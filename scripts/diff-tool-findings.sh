@@ -134,6 +134,27 @@ jq -n \
   ([$current.plans[]? | {(.id): true}] | add // {}) as $current_plan_ids |
   ([$proposed.plans[]? | {(.id): true}] | add // {}) as $proposed_plan_ids |
 
+  # idx → plan_id maps for emitting plan_id sibling on plans-scoped changes.
+  # Apply matches verdicts on (plan_id, leaf-suffix, new) — index becomes
+  # informational. Proposed-side first (reordered to current order, with new
+  # plans appended); current-side as fallback for removed-field branch where
+  # the path comes from $cur (an index in proposed-side may not exist there).
+  ($proposed.plans // [] | to_entries
+    | map({key: (.key|tostring), value: .value.id}) | from_entries) as $idx_to_id_proposed |
+  ($current.plans // [] | to_entries
+    | map({key: (.key|tostring), value: .value.id}) | from_entries) as $idx_to_id_current |
+
+  def plan_id_for($field):
+    ($field | capture("^plans\\.(?<idx>[0-9]+)\\.") // null) as $m
+    | if $m == null then null
+      else ($idx_to_id_proposed[$m.idx] // $idx_to_id_current[$m.idx] // null)
+      end;
+
+  def with_plan_id:
+    . as $c
+    | (plan_id_for($c.field)) as $pid
+    | if $pid == null then $c else $c + {plan_id: $pid} end;
+
   # Detect plan removals (in current but missing from proposed)
   [$current.plans[]? | .id | select($proposed_plan_ids[.] != true)] as $removed_plans |
 
@@ -152,7 +173,10 @@ jq -n \
   [$proposed.plans | to_entries[] | select($current_plan_ids[.value.id] != true)
     | {id: .value.id, idx: .key}] as $new_plans |
 
-  # Field-level changes (excluding price and protected)
+  # Field-level changes (excluding price and protected).
+  # Each plans-scoped change gets a plan_id sibling via with_plan_id (the apply
+  # gate matches on plan_id, not on the numeric index in field — which drifts
+  # whenever proposed/current array lengths differ).
   [
     # Changed fields
     ($cur | to_entries[] |
@@ -164,7 +188,7 @@ jq -n \
         old: .value,
         new: $prop[.key],
         category: (if .key | is_structural_field then "structural" else "editorial" end)
-      }
+      } | with_plan_id
     ),
     # Added fields (in proposed, not in current)
     ($prop | to_entries[] |
@@ -177,7 +201,7 @@ jq -n \
         old: null,
         new: .value,
         category: (if .key | is_structural_field then "structural" else "editorial" end)
-      }
+      } | with_plan_id
     ),
     # Removed fields (in current, not in proposed) — excluding plan-level removals.
     # Plans missing from proposed.plans get their own plan_removal_pending/eligible
@@ -197,7 +221,7 @@ jq -n \
         old: .value,
         new: null,
         category: (if .key | is_structural_field then "structural" else "editorial" end)
-      }
+      } | with_plan_id
     )
   ] as $changes |
 

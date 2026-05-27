@@ -150,10 +150,11 @@ jobs:
             {
               "slug": "${{ matrix.tool }}",
               "changes": [
-                { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "quoted text from page" },
+                { "plan_id": "<copy verbatim from input change if present>", "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "quoted text from page" },
                 { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" }
               ]
             }
+            If the change you are reviewing has a "plan_id" key, copy it verbatim into your verdict entry. If it does not (vendor.*, platform.*, capabilities.*, verification_override changes), omit the plan_id key — do not invent one.
             If you cannot fetch the page or verify a claim, set confirmed to false.
           claude_args: |
             --model claude-sonnet-4-6

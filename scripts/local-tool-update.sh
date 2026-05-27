@@ -144,10 +144,12 @@ New-plan rule: any change introducing a new plan ID requires a quoted vendor-pag
 {
   "slug": "$slug",
   "changes": [
-    { "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "text from page" },
+    { "plan_id": "<copy verbatim from input change if present>", "field": "...", "old": ..., "new": ..., "confirmed": true/false, "evidence": "text from page" },
     { "field": "<new_plan_id>", "confirmed": true/false, "evidence": "plan exists on page" }
   ]
 }
+
+If the change you are reviewing has a "plan_id" key, copy it verbatim into your verdict entry. If it does not (vendor.*, platform.*, capabilities.*, verification_override changes), omit the plan_id key — do not invent one.
 PROMPT
 )" \
     --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
@@ -221,7 +223,7 @@ run_pipeline_quiet() {
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: [(.new_plans // [])[] | .id]}')
-  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Exception for dated dollar citations from this tool's page: confirmed: true when cited rate cannot be reproduced on today's page. Symmetry rule: per-plan notes additions where the same feature shows ✓/included on sibling plans without exclusion markers → confirmed: false (tool-wide, not plan-specific). New-plan rule: new plan IDs need a quoted tier header, pricing card, or named tier row from the page; feature mentions don't count → confirmed: false. For new plan IDs, confirm they exist on the page. Write verdict to validated/${slug}.json with schema: {slug, changes: [{field, old, new, confirmed: bool, evidence}]}. For new plans use field=plan_id." \
+  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Exception for dated dollar citations from this tool's page: confirmed: true when cited rate cannot be reproduced on today's page. Symmetry rule: per-plan notes additions where the same feature shows ✓/included on sibling plans without exclusion markers → confirmed: false (tool-wide, not plan-specific). New-plan rule: new plan IDs need a quoted tier header, pricing card, or named tier row from the page; feature mentions don't count → confirmed: false. For new plan IDs, confirm they exist on the page. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id?, field, old, new, confirmed: bool, evidence}]}. Copy plan_id verbatim from input change when present; omit when input change has no plan_id (vendor/platform/capabilities/verification_override). For new plans use field=plan_id." \
     --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
     --allowedTools "Write,WebSearch,WebFetch" \
     --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \

@@ -73,10 +73,15 @@ if [[ "$has_changes" != "true" ]]; then
   exit 0
 fi
 
-# Build confirmed fields from verdict (empty array if no verdict)
-confirmed_fields="[]"
+# Build confirmed verdicts from validator (empty arrays if no verdict).
+# Plans-scoped verdicts carry plan_id and match on (plan_id, leaf-suffix, new) —
+# the numeric index in field is informational. Vendor/platform/capabilities
+# verdicts have no plan_id and match on the full field path.
+confirmed_plan_triples="[]"
+confirmed_global_fields="[]"
 if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]] && jq empty "$VALIDATED" 2>/dev/null; then
-  confirmed_fields=$(jq '[.changes[]? | select(.confirmed == true) | .field]' "$VALIDATED")
+  confirmed_plan_triples=$(jq '[.changes[]? | select(.confirmed == true) | select(.plan_id != null) | {plan_id, field, new}]' "$VALIDATED")
+  confirmed_global_fields=$(jq '[.changes[]? | select(.confirmed == true) | select(.plan_id == null) | .field]' "$VALIDATED")
 else
   echo "WARNING: Changes detected but no valid verdict — skipping apply"
 fi
@@ -92,17 +97,30 @@ trap 'rm -f "$tmpfile"' EXIT
 jq \
   --argjson proposed "$(jq '.proposed' "$FINDINGS")" \
   --argjson diff "$(cat "$DIFF_RESULTS")" \
-  --argjson confirmed "$confirmed_fields" \
+  --argjson confirmed_plan_triples "$confirmed_plan_triples" \
+  --argjson confirmed_global_fields "$confirmed_global_fields" \
   --arg caps_first_pass "$caps_first_pass" \
   --arg bump_date "$BUMP_DATE" \
   '
   . as $original |
 
-  # Helper: is this field confirmed by the validation verdict?
-  def is_confirmed($field):
-    if ($confirmed | length == 0) then false
-    else ($confirmed | index($field) != null)
-    end;
+  # Strip leading "plans.<idx>." from a field path. Apply matches plans-scoped
+  # verdicts on (plan_id, leaf-suffix, new) — the numeric index drifts when
+  # proposed/original arrays differ in length, so we route around it.
+  def leaf_of($field): $field | sub("^plans\\.[0-9]+\\."; "");
+
+  # Plans-scoped confirmation: validator emitted a {plan_id, field, new} for
+  # exactly this plan, leaf, and proposed value, with confirmed:true.
+  def is_plan_field_confirmed($pid; $leaf; $new):
+    $confirmed_plan_triples
+    | any(.plan_id == $pid
+          and leaf_of(.field) == $leaf
+          and ((.new // null) == ($new // null)));
+
+  # Non-plan-scoped confirmation (vendor.*, platform.*, capabilities.*,
+  # verification_override): match on full field path. No plan_id involved.
+  def is_global_field_confirmed($field):
+    $confirmed_global_fields | index($field) != null;
 
   # Helper: strip newly-introduced "Annual billing: $X/mo" from notes.
   # Preserves existing annual claims (added by price-update). Prevents
@@ -128,47 +146,49 @@ jq \
       (if $bump_date != "" then ._last_seen_on_page = $bump_date else . end) |
       # Editorial: notes (confirmed only, annual billing claims filtered)
       (if $prop.includes.notes and $prop.includes.notes != ($orig.includes.notes // null) then
-        if is_confirmed("plans.\($idx).includes.notes") then .includes.notes = strip_new_annual($orig.includes.notes; $prop.includes.notes) else . end
+        if is_plan_field_confirmed($orig.id; "includes.notes"; $prop.includes.notes) then .includes.notes = strip_new_annual($orig.includes.notes; $prop.includes.notes) else . end
        else . end) |
       (if $prop.includes then
         .includes.premium_requests = $prop.includes.premium_requests |
         .includes.tokens_included = $prop.includes.tokens_included
        else . end) |
       (if $prop.overage and $prop.overage.notes and $prop.overage.notes != ($orig.overage.notes // null) then
-        if is_confirmed("plans.\($idx).overage.notes") then .overage.notes = $prop.overage.notes else . end
+        if is_plan_field_confirmed($orig.id; "overage.notes"; $prop.overage.notes) then .overage.notes = $prop.overage.notes else . end
        else . end) |
 
       # Structural: plan name, category (confirmed only)
       (if $prop.name != $orig.name then
-        if is_confirmed("plans.\($idx).name") then .name = $prop.name else . end
+        if is_plan_field_confirmed($orig.id; "name"; $prop.name) then .name = $prop.name else . end
        else . end) |
       (if $prop.category != $orig.category then
-        if is_confirmed("plans.\($idx).category") then .category = $prop.category else . end
+        if is_plan_field_confirmed($orig.id; "category"; $prop.category) then .category = $prop.category else . end
        else . end) |
 
       # Structural: overage unit, mechanism, model (confirmed only)
       (if $prop.overage then
         (if $prop.overage.unit and $prop.overage.unit != ($orig.overage.unit // null) then
-          if is_confirmed("plans.\($idx).overage.unit") then .overage.unit = $prop.overage.unit else . end
+          if is_plan_field_confirmed($orig.id; "overage.unit"; $prop.overage.unit) then .overage.unit = $prop.overage.unit else . end
          else . end) |
         (if $prop.overage.mechanism and $prop.overage.mechanism != ($orig.overage.mechanism // null) then
-          if is_confirmed("plans.\($idx).overage.mechanism") then .overage.mechanism = $prop.overage.mechanism else . end
+          if is_plan_field_confirmed($orig.id; "overage.mechanism"; $prop.overage.mechanism) then .overage.mechanism = $prop.overage.mechanism else . end
          else . end) |
         (if $prop.overage.model and $prop.overage.model != ($orig.overage.model // null) then
-          if is_confirmed("plans.\($idx).overage.model") then .overage.model = $prop.overage.model else . end
+          if is_plan_field_confirmed($orig.id; "overage.model"; $prop.overage.model) then .overage.model = $prop.overage.model else . end
          else . end)
        else . end) |
 
       # Platform plan flag (structural — confirmed only)
       (if $prop | has("platform_plan") and ($prop.platform_plan != ($orig.platform_plan // null)) then
-        if is_confirmed("plans.\($idx).platform_plan") then .platform_plan = $prop.platform_plan else . end
+        if is_plan_field_confirmed($orig.id; "platform_plan"; $prop.platform_plan) then .platform_plan = $prop.platform_plan else . end
        else . end) |
 
       # Restore price amount from original (price-update scope).
       # Allow base_price nullification (fixed→PAYG) only when confirmed.
+      # base_price.{period,per} are plans-scoped — route through plan-id gate.
       (if $prop.base_price == null and $orig.base_price != null then
-        if ([$diff.changes[] | select(.field | test("base_price\\.(period|per)$"))] | length > 0)
-           and ([$diff.changes[] | select(.field | test("base_price\\.(period|per)$")) | .field] | all(is_confirmed(.)))
+        ([$diff.changes[] | select(.plan_id == $orig.id) | select(.field | test("base_price\\.(period|per)$"))]) as $bp_changes |
+        if ($bp_changes | length > 0)
+           and ($bp_changes | all(is_plan_field_confirmed($orig.id; leaf_of(.field); .new)))
         then .base_price = null
         else .base_price = $orig.base_price end
       elif $orig.base_price != null then
@@ -182,10 +202,11 @@ jq \
     end
   ] |
 
-  # Vendor metadata (structural — per-field confirmed)
+  # Vendor metadata (structural — per-field confirmed). Non-plan-scoped, no
+  # plan_id involved — match on full field path.
   (reduce ($diff.changes[] | select(.field | startswith("vendor."))) as $c
     (.;
-      if is_confirmed($c.field) then
+      if is_global_field_confirmed($c.field) then
         ($c.field | ltrimstr("vendor.")) as $key |
         .vendor[$key] = $proposed.vendor[$key]
       else . end
@@ -194,14 +215,14 @@ jq \
 
   # Verification override (structural — confirmed only)
   (if ($diff.changes | map(select(.field == "verification_override")) | length > 0) then
-    if is_confirmed("verification_override") then
+    if is_global_field_confirmed("verification_override") then
       .verification_override = $proposed.verification_override
     else . end
    else . end) |
 
   # Platform object (structural — all changes must be confirmed)
   (if ($proposed | has("platform")) and ($diff.changes | map(select(.field | startswith("platform."))) | length > 0) then
-    if [$diff.changes[] | select(.field | startswith("platform.")) | .field] | all(is_confirmed(.)) then
+    if [$diff.changes[] | select(.field | startswith("platform.")) | .field] | all(is_global_field_confirmed(.)) then
       .platform = $proposed.platform
     else . end
    else . end) |
@@ -212,7 +233,7 @@ jq \
   (if $caps_first_pass == "true" then
     reduce ($diff.changes[] | select(.field | startswith("capabilities."))) as $c
       (.;
-        if is_confirmed($c.field) then
+        if is_global_field_confirmed($c.field) then
           ($c.field | ltrimstr("capabilities.")) as $key |
           .capabilities[$key] = $proposed.capabilities[$key]
         else . end
@@ -239,9 +260,11 @@ if [[ "$new_plans_count" -gt 0 ]]; then
     fi
 
     # Plan-level confirmation: validator says this tier exists on the page.
-    # Accept either field=<plan_id> (legacy) or field=plan_id with new=<plan_id>.
+    # Accept any of: field=<plan_id> (legacy), field=plan_id with new=<plan_id>,
+    # or plan_id=<plan_id> (current shape — emitted by diff for all plans-scoped
+    # changes, so a per-field confirmation on the new plan implies plan-level).
     is_confirmed=$(jq --arg pid "$plan_id" \
-      '[.changes[]? | select(.confirmed == true) | select(.field == $pid or (.field == "plan_id" and .new == $pid))] | length > 0' "$VALIDATED")
+      '[.changes[]? | select(.confirmed == true) | select(.field == $pid or (.field == "plan_id" and .new == $pid) or .plan_id == $pid)] | length > 0' "$VALIDATED")
     if [[ "$is_confirmed" != "true" ]]; then
       echo "  Skipping unconfirmed new plan: $plan_id"
       continue
@@ -255,8 +278,21 @@ if [[ "$new_plans_count" -gt 0 ]]; then
       --argjson idx "$plan_idx" \
       --arg bump_date "$BUMP_DATE" \
       --slurpfile verdict "$VALIDATED" '
-      ([$verdict[0].changes[]? | select(.confirmed == true) | .field]) as $confirmed_fields |
-      def field_confirmed($f): ($confirmed_fields | index($f)) != null;
+      # Filter verdict to entries scoped to this plan first (plan_id match).
+      # Within a single plan there is no index collision, so leaf-path membership
+      # is sufficient. Tolerate legacy verdict shape (no plan_id) by falling
+      # back to the old plans.<idx>.<leaf> path lookup.
+      ([$verdict[0].changes[]?
+        | select(.confirmed == true)
+        | select(.plan_id == $pid)
+        | (.field | sub("^plans\\.[0-9]+\\."; ""))]) as $confirmed_leaves |
+      ([$verdict[0].changes[]?
+        | select(.confirmed == true)
+        | select(.plan_id == null)
+        | .field]) as $legacy_confirmed_fields |
+      def field_confirmed($leaf):
+        ($confirmed_leaves | index($leaf)) != null
+        or ($legacy_confirmed_fields | index("plans.\($idx).\($leaf)")) != null;
 
       .proposed.plans[] | select(.id == $pid) |
       . as $orig |
@@ -264,7 +300,7 @@ if [[ "$new_plans_count" -gt 0 ]]; then
         ($orig;
           ($p | map(tostring) | join(".")) as $local_path |
           if $local_path == "id" then .
-          elif field_confirmed("plans.\($idx).\($local_path)") then .
+          elif field_confirmed($local_path) then .
           else setpath($p; null)
           end
         ) |

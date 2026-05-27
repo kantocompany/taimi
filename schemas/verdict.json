@@ -1,15 +1,34 @@
 {
   "_description": "Output schema for validation agents. Write to validated/{slug}.json.",
-  "_note": "Shared across price-update and tool-update validation. Only confirmed changes are applied.",
+  "_note_shared": "Shared across price-update and tool-update validation. Only confirmed changes are applied.",
+  "_note_plan_id": "For tool-update plans-scoped changes (field starts with `plans.<idx>.`), copy `plan_id` verbatim from the input change. The numeric index in `field` is informational; apply matches on (plan_id, leaf-suffix, new). For vendor.*, platform.*, capabilities.*, and verification_override changes, omit `plan_id` — apply matches those on the full `field` path.",
   "slug": "{slug}",
   "changes": [
     {
+      "_comment_price_update_example": "Price-update verdict shape — plan_id-keyed price change.",
       "plan_id": "{plan id}",
       "field": "base_price.amount",
       "old": 20.00,
       "new": 25.00,
       "confirmed": true,
       "evidence": "quoted text from vendor page confirming the price"
+    },
+    {
+      "_comment_tool_update_plan_example": "Tool-update verdict shape — plans-scoped change with plan_id.",
+      "plan_id": "claude-code-enterprise-sales",
+      "field": "plans.5.includes.notes",
+      "old": "All self-serve features plus HIPAA-ready ...",
+      "new": "All Team Max features; dedicated support, MSA options, AWS Marketplace; custom pricing; contact sales",
+      "confirmed": false,
+      "evidence": "Page does not mention 'Team Max' tier — named tiers are Free, Pro, Max, Team, Enterprise. The 'AWS Marketplace' phrasing is absent from this plan's section."
+    },
+    {
+      "_comment_tool_update_global_example": "Tool-update verdict shape — non-plan-scoped change, no plan_id.",
+      "field": "vendor.eu_based",
+      "old": false,
+      "new": true,
+      "confirmed": false,
+      "evidence": "Vendor HQ section still lists a US address."
     }
   ]
 }
