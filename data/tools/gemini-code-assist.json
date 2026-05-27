@@ -21,10 +21,10 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
+        "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits. SUNSET 2026-06-18: IDE Extensions and Gemini CLI stop serving requests; migrate to Antigravity."
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-24"
+      "_last_seen_on_page": "2026-05-27"
     },
     {
       "id": "gemini-code-assist-standard",
@@ -41,7 +41,7 @@
         "notes": "1,500 CLI/Agent mode requests/day. 30-day free trial (up to 50 users). 12-month commitment: $19.00/user/month."
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-24"
+      "_last_seen_on_page": "2026-05-27"
     },
     {
       "id": "gemini-code-assist-enterprise",
@@ -58,7 +58,7 @@
         "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, VPC-SC, audit logs, CMEK, MCP server support in agentic chat. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-24"
+      "_last_seen_on_page": "2026-05-27"
     }
   ],
   "capabilities": {

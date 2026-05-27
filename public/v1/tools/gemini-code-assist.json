@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-24",
-    "updated_at": "2026-05-24T00:00:00Z",
+    "version": "2026-05-27",
+    "updated_at": "2026-05-27T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
+          "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits. SUNSET 2026-06-18: IDE Extensions and Gemini CLI stop serving requests; migrate to Antigravity."
         },
         "overage": null
       },

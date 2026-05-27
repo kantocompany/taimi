@@ -24,7 +24,7 @@
         "notes": "Limited daily Agent credits, 1 published app"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-24"
+      "_last_seen_on_page": "2026-05-27"
     },
     {
       "id": "replit-core",
@@ -46,7 +46,7 @@
         "price_per_unit": null,
         "notes": "Effort-based pricing per Agent task"
       },
-      "_last_seen_on_page": "2026-05-24"
+      "_last_seen_on_page": "2026-05-27"
     },
     {
       "id": "replit-pro",
@@ -68,7 +68,7 @@
         "price_per_unit": null,
         "notes": "Effort-based pricing per Agent task"
       },
-      "_last_seen_on_page": "2026-05-24"
+      "_last_seen_on_page": "2026-05-27"
     },
     {
       "id": "replit-enterprise",
@@ -81,7 +81,7 @@
         "notes": "Custom pricing, dedicated support, advanced security"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-24"
+      "_last_seen_on_page": "2026-05-27"
     }
   ],
   "capabilities": {

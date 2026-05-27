@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-24",
-    "updated_at": "2026-05-24T00:00:00Z",
+    "version": "2026-05-27",
+    "updated_at": "2026-05-27T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -97,7 +97,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support, Cosmos"
+            "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support, custom VM sizes, unlimited concurrent sessions, Cosmos"
           },
           "overage": null
         }
@@ -781,7 +781,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits."
+            "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits. SUNSET 2026-06-18: IDE Extensions and Gemini CLI stop serving requests; migrate to Antigravity."
           },
           "overage": null
         },
@@ -997,7 +997,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
+            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
           },
           "overage": {
             "unit": "acu",
@@ -1020,7 +1020,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
+            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
           },
           "overage": {
             "unit": "acu",
@@ -1043,7 +1043,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
+            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
           },
           "overage": {
             "unit": "acu",
@@ -1066,7 +1066,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/user/mo; Claude Sonnet 4.6 and Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "1,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
           },
           "overage": {
             "unit": "acu",
@@ -1089,7 +1089,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/user/mo; Claude Sonnet 4.6 and Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "2,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
           },
           "overage": {
             "unit": "acu",
@@ -1112,7 +1112,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/user/mo; Claude Sonnet 4.6 and Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "10,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
           },
           "overage": {
             "unit": "acu",
@@ -1373,7 +1373,7 @@
             "input_per_million": 1.75,
             "output_per_million": 14.00,
             "model": "gpt-5.3-codex",
-            "notes": "API key mode billed at standard API rates; delayed access to new models; GPT-5.5, GPT-5.5-pro, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.4-pro, GPT-5.3-Codex available; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens; priority tier at $3.50 input / $28.00 output per 1M tokens (developers.openai.com/api/docs/pricing, 2026-03-24); no cloud features",
+            "notes": "API key mode billed at standard API rates; delayed access to new models; GPT-5.5, GPT-5.5-pro, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.4-pro, GPT-5.3-Codex available; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens; priority tier at $3.50 input / $28.00 output per 1M tokens; no cloud features",
             "price_per_unit": null
           }
         },
