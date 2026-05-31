@@ -134,7 +134,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label; Mistral Vibe for IDE, async coding agents"
+          "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
         },
         "overage": null
       }

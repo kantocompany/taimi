@@ -266,7 +266,7 @@
         },
         {
           "id": "claude-code-api-opus",
-          "name": "API (Opus 4.7)",
+          "name": "API (Opus 4.8)",
           "category": "usage",
           "base_price": null,
           "includes": null,
@@ -275,7 +275,7 @@
             "mechanism": "automatic",
             "input_per_million": 5.00,
             "output_per_million": 25.00,
-            "model": "claude-opus-4-7",
+            "model": "claude-opus-4-8",
             "notes": "Available on Max/Teams Premium plans",
             "price_per_unit": null
           }
@@ -569,7 +569,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, granular admin and model controls, priority support, account management, Bugbot on custom plan"
+            "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, granular admin and model controls, priority support, account management, Bugbot on custom plan"
           },
           "overage": null
         },
@@ -997,7 +997,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
+            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly"
           },
           "overage": {
             "unit": "acu",
@@ -1020,7 +1020,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
+            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly"
           },
           "overage": {
             "unit": "acu",
@@ -1043,7 +1043,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; 50% off Kiro Web credits through 2026-05-29"
+            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly"
           },
           "overage": {
             "unit": "acu",
@@ -1260,7 +1260,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label; Mistral Vibe for IDE, async coding agents"
+            "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
           },
           "overage": null
         }

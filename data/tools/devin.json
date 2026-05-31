@@ -21,7 +21,7 @@
       },
       "overage": null,
       "platform_plan": true,
-      "_last_seen_on_page": "2026-05-27"
+      "_last_seen_on_page": "2026-05-31"
     },
     {
       "id": "devin-free",
@@ -38,7 +38,7 @@
         "notes": "Limited Devin usage; Devin Review; DeepWiki; 1 member"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-27"
+      "_last_seen_on_page": "2026-05-31"
     },
     {
       "id": "devin-pro",
@@ -63,7 +63,7 @@
         "output_per_million": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-05-27"
+      "_last_seen_on_page": "2026-05-31"
     },
     {
       "id": "devin-max",
@@ -88,7 +88,7 @@
         "output_per_million": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-05-27"
+      "_last_seen_on_page": "2026-05-31"
     },
     {
       "id": "devin-teams",
@@ -113,7 +113,7 @@
         "output_per_million": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-05-27"
+      "_last_seen_on_page": "2026-05-31"
     }
   ],
   "capabilities": {

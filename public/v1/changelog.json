@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-05-17",
-    "updated_at": "2026-05-17T07:15:06Z",
+    "version": "2026-05-31",
+    "updated_at": "2026-05-31T07:08:09Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-05-31",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.8.name: API (Opus 4.7) → API (Opus 4.8); plans.8.overage.model: claude-opus-4-7 → claude-opus-4-8",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-05-17",
       "tool": "mistral-vibe",

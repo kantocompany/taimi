@@ -135,7 +135,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, granular admin and model controls, priority support, account management, Bugbot on custom plan"
+          "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, granular admin and model controls, priority support, account management, Bugbot on custom plan"
         },
         "overage": null
       },
