@@ -143,6 +143,8 @@ jobs:
 
             New-plan rule: any change introducing a new plan ID requires a quoted vendor-page tier header, pricing card, or named tier row in a pricing/comparison table (e.g., "Plus — $20/month", a tile labeled with the plan name, or a comparison-table row whose label is the plan name). Feature mentions in marketing copy, comparison-table feature rows, or sub-bullets are not sufficient evidence — they may describe features within an existing plan rather than constituting a new plan tier. If you cannot quote a tier header, pricing card, or tier row, mark confirmed: false.
 
+            Plan-boundary rule: a new plan ID whose evidence describes it as a discount on an existing tier (e.g., "Mistral Pro for $5.99/month", "students get Pro for $X", "OSS maintainers get free Team", any wording of the form "<existing-plan-name> for $Y") is an eligibility discount on that tier, not a separate plan — mark confirmed: false for plan_id and every sub-field of the new plan. Discount eligibility belongs in the qualifying plan's includes.notes, not as a separate plan object. This applies even when the discount has its own pricing card or named heading — the discriminator is whether the card grants access to an existing tier vs. a distinct tier with its own feature set.
+
             1. Fetch the source URL above
             2. For each field change, confirm the NEW value is supported by the page
             3. For each new plan ID, verify the plan exists on the vendor page
