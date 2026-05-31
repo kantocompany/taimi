@@ -270,6 +270,27 @@ if [[ "$new_plans_count" -gt 0 ]]; then
       continue
     fi
 
+    # Shell-plan guard (Fix, 2026-05-31). Plan-level confirmation alone is not
+    # enough — the validator can confirm a plan_id based on a Pro-tier discount
+    # mention and reject every sub-field, leaving the per-field nullifier (Fix 1,
+    # 2026-05-24) to produce an id-only shell. Require at least one confirmed
+    # NON-id sub-field with non-null new value before the plan lands. The bare
+    # plan_id field (existence-only confirmation) does not count.
+    non_id_confirmed=$(jq --arg pid "$plan_id" --argjson idx "$plan_idx" \
+      '[.changes[]?
+        | select(.confirmed == true)
+        | select(.new != null)
+        | select(.field != "plan_id")
+        | select(
+            .plan_id == $pid
+            or (.plan_id == null and (.field | startswith("plans.\($idx).")))
+          )
+      ] | length' "$VALIDATED")
+    if [[ "$non_id_confirmed" -eq 0 ]]; then
+      echo "  Skipping shell plan (no confirmed sub-fields): $plan_id"
+      continue
+    fi
+
     # Per-field gate: start with the proposed plan, null out every leaf whose
     # plans.<idx>.<leaf-path> is not confirmed:true in the verdict. Preserve
     # .id (implicitly confirmed by plan-level verdict).
