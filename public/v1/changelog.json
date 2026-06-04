@@ -1,10 +1,19 @@
 {
   "meta": {
     "version": "2026-06-04",
-    "updated_at": "2026-06-04T04:13:07Z",
+    "updated_at": "2026-06-04T04:50:20Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-04",
+      "tool": "github-copilot",
+      "type": "pricing_change",
+      "description": "plans.5.base_price.amount: added 100.00",
+      "details": {
+        "source": "https://github.com/features/copilot/plans"
+      }
+    },
     {
       "date": "2026-06-04",
       "tool": "github-copilot",
