@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-31",
-    "updated_at": "2026-05-31T00:00:00Z",
+    "version": "2026-06-04",
+    "updated_at": "2026-06-04T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -127,7 +127,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging; API usage billed separately; billed annually"
+          "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta); API usage billed separately; billed annually"
         },
         "overage": null
       },

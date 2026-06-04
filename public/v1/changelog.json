@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-05-31",
-    "updated_at": "2026-05-31T07:08:09Z",
+    "version": "2026-06-04",
+    "updated_at": "2026-06-04T04:13:07Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-04",
+      "tool": "github-copilot",
+      "type": "pricing_change",
+      "description": "plans.5.id: added copilot-max; plans.5.name: added Max; plans.5.category: added individual; plans.5.base_price.period: added monthly; plans.5.base_price.per: added user; plans.5.overage.mechanism: added add_on",
+      "details": {
+        "source": "https://github.com/features/copilot/plans"
+      }
+    },
     {
       "date": "2026-05-31",
       "tool": "claude-code",

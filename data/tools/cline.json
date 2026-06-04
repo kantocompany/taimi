@@ -30,7 +30,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     },
     {
       "id": "cline-enterprise",
@@ -43,7 +43,7 @@
         "notes": "JetBrains, SSO/OIDC, SCIM provisioning, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions, VPC deployments, OpenTelemetry"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     }
   ],
   "capabilities": {

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-31",
-    "updated_at": "2026-05-31T00:00:00Z",
+    "version": "2026-06-04",
+    "updated_at": "2026-06-04T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "300 premium requests; unlimited completions; new signups paused 2026-04-20; migrates to AI Credits (token-based) billing 2026-06-01"
+          "notes": "$15/mo AI Credits; unlimited completions; new signups paused 2026-04-20"
         },
         "overage": {
           "unit": "request",
@@ -123,6 +123,29 @@
           "mechanism": "add_on",
           "price_per_unit": 0.04,
           "notes": "$0.04/req beyond limit",
+          "input_per_million": null,
+          "output_per_million": null
+        }
+      },
+      {
+        "id": "copilot-max",
+        "name": "Max",
+        "category": "individual",
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": null
+        },
+        "overage": {
+          "unit": null,
+          "mechanism": "add_on",
+          "price_per_unit": null,
+          "notes": "UNVERIFIED_OVERAGE: add-on mechanism confirmed; rate not shown on pricing page",
           "input_per_million": null,
           "output_per_million": null
         }

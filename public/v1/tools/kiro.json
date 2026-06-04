@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-31",
-    "updated_at": "2026-05-31T00:00:00Z",
+    "version": "2026-06-04",
+    "updated_at": "2026-06-04T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -116,7 +116,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "1,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+          "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
         },
         "overage": {
           "unit": "acu",
@@ -139,7 +139,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "2,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+          "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
         },
         "overage": {
           "unit": "acu",
@@ -162,7 +162,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "10,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+          "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
         },
         "overage": {
           "unit": "acu",

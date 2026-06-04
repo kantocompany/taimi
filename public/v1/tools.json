@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-31",
-    "updated_at": "2026-05-31T00:00:00Z",
+    "version": "2026-06-04",
+    "updated_at": "2026-06-04T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -231,7 +231,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging; API usage billed separately; billed annually"
+            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta); API usage billed separately; billed annually"
           },
           "overage": null
         },
@@ -550,7 +550,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Cloud agents with shared team context, security review agent, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
+            "notes": "Cloud agents with shared team context, Bugbot code reviews, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -647,7 +647,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
+            "notes": "All Teams features; dedicated deployment option, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions"
           },
           "overage": null,
           "platform_plan": true
@@ -664,7 +664,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Limited Devin usage; Devin Review; DeepWiki; 1 member"
+            "notes": "Light quota to code with agents; unlimited inline edits; unlimited Tab completions; limited model availability; 1 member"
           },
           "overage": null
         },
@@ -728,7 +728,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; unlimited concurrent sessions"
+            "notes": "All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited concurrent sessions"
           },
           "overage": {
             "unit": "acu",
@@ -867,7 +867,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "300 premium requests; unlimited completions; new signups paused 2026-04-20; migrates to AI Credits (token-based) billing 2026-06-01"
+            "notes": "$15/mo AI Credits; unlimited completions; new signups paused 2026-04-20"
           },
           "overage": {
             "unit": "request",
@@ -943,6 +943,29 @@
             "mechanism": "add_on",
             "price_per_unit": 0.04,
             "notes": "$0.04/req beyond limit",
+            "input_per_million": null,
+            "output_per_million": null
+          }
+        },
+        {
+          "id": "copilot-max",
+          "name": "Max",
+          "category": "individual",
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": null
+          },
+          "overage": {
+            "unit": null,
+            "mechanism": "add_on",
+            "price_per_unit": null,
+            "notes": "UNVERIFIED_OVERAGE: add-on mechanism confirmed; rate not shown on pricing page",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1066,7 +1089,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
           },
           "overage": {
             "unit": "acu",
@@ -1089,7 +1112,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
           },
           "overage": {
             "unit": "acu",
@@ -1112,7 +1135,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/user/mo; Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
           },
           "overage": {
             "unit": "acu",
@@ -1165,7 +1188,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Le Chat Free — chat, search, image generation"
+            "notes": "Le Chat Free — limited coding sessions, chat, search, image generation"
           },
           "overage": null
         },
@@ -1207,7 +1230,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Collaborative workspace, domain verification, Admin API, data export"
+            "notes": "Collaborative workspace, domain verification, Admin API, data export; $50/mo minimum"
           },
           "overage": {
             "unit": "token",
@@ -1327,7 +1350,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Pro 5x subscription; GPT-5.3-Codex-Spark (research preview); 5x Plus rate limits (10x through 2026-05-31); priority processing"
+            "notes": "ChatGPT Pro 5x subscription; GPT-5.3-Codex-Spark (research preview); 5x Plus rate limits; priority processing"
           },
           "overage": null
         },
@@ -1424,7 +1447,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits (25x through 2026-05-31); priority processing"
+            "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing"
           },
           "overage": null
         }

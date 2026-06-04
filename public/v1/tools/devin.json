@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-31",
-    "updated_at": "2026-05-31T00:00:00Z",
+    "version": "2026-06-04",
+    "updated_at": "2026-06-04T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -27,7 +27,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All Teams features; VPC deploy, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin, dedicated account team, custom terms, teamspace isolation; unlimited concurrent sessions"
+          "notes": "All Teams features; dedicated deployment option, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions"
         },
         "overage": null,
         "platform_plan": true
@@ -44,7 +44,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Limited Devin usage; Devin Review; DeepWiki; 1 member"
+          "notes": "Light quota to code with agents; unlimited inline edits; unlimited Tab completions; limited model availability; 1 member"
         },
         "overage": null
       },
@@ -108,7 +108,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; unlimited concurrent sessions"
+          "notes": "All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited concurrent sessions"
         },
         "overage": {
           "unit": "acu",

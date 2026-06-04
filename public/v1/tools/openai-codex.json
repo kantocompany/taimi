@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-05-31",
-    "updated_at": "2026-05-31T00:00:00Z",
+    "version": "2026-06-04",
+    "updated_at": "2026-06-04T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -60,7 +60,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Pro 5x subscription; GPT-5.3-Codex-Spark (research preview); 5x Plus rate limits (10x through 2026-05-31); priority processing"
+          "notes": "ChatGPT Pro 5x subscription; GPT-5.3-Codex-Spark (research preview); 5x Plus rate limits; priority processing"
         },
         "overage": null
       },
@@ -157,7 +157,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits (25x through 2026-05-31); priority processing"
+          "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing"
         },
         "overage": null
       }

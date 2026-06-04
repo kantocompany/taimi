@@ -23,7 +23,7 @@
         "notes": "Limited Agent requests, limited Tab completions"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     },
     {
       "id": "cursor-pro",
@@ -47,7 +47,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     },
     {
       "id": "cursor-pro-plus",
@@ -71,7 +71,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     },
     {
       "id": "cursor-ultra",
@@ -95,7 +95,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     },
     {
       "id": "cursor-business",
@@ -109,7 +109,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Cloud agents with shared team context, security review agent, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
+        "notes": "Cloud agents with shared team context, Bugbot code reviews, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
       },
       "overage": {
         "notes": "On-demand usage billed in arrears beyond included limits",
@@ -119,7 +119,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     },
     {
       "id": "cursor-enterprise",
@@ -132,7 +132,7 @@
         "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, granular admin and model controls, priority support, account management, Bugbot on custom plan"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-04"
     },
     {
       "id": "cursor-bugbot-pro",
