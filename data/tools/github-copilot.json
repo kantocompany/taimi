@@ -42,7 +42,7 @@
       "overage": {
         "unit": "request",
         "mechanism": "add_on",
-        "price_per_unit": 0.04,
+        "price_per_unit": 0.01,
         "notes": "$0.04/req beyond limit",
         "input_per_million": null,
         "output_per_million": null
@@ -66,7 +66,7 @@
       "overage": {
         "unit": "request",
         "mechanism": "add_on",
-        "price_per_unit": 0.04,
+        "price_per_unit": 0.01,
         "notes": "$0.04/req beyond limit",
         "input_per_million": null,
         "output_per_million": null
@@ -138,7 +138,7 @@
       "overage": {
         "unit": null,
         "mechanism": "add_on",
-        "price_per_unit": null,
+        "price_per_unit": 0.01,
         "notes": "UNVERIFIED_OVERAGE: add-on mechanism confirmed; rate not shown on pricing page",
         "input_per_million": null,
         "output_per_million": null
