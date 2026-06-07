@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-06-05",
-    "updated_at": "2026-06-05T13:02:09Z",
+    "version": "2026-06-07",
+    "updated_at": "2026-06-07T00:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-07",
+      "tool": "windsurf",
+      "type": "feature",
+      "description": "Windsurf rebranded to Devin Desktop by Cognition AI; Cascade engine replaced by Devin Local",
+      "details": {
+        "source": "https://cognition.ai/blog/windsurf"
+      }
+    },
     {
       "date": "2026-06-05",
       "tool": "github-copilot",

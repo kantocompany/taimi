@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-05",
-    "updated_at": "2026-06-05T00:00:00Z",
+    "version": "2026-06-07",
+    "updated_at": "2026-06-07T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -11,7 +11,7 @@
   },
   "tool": {
     "slug": "windsurf",
-    "name": "Windsurf",
+    "name": "Devin Desktop",
     "vendor": {
       "name": "Cognition AI",
       "hq_country": "US",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; 2-week free trial for new users"
+          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; Devin Local engine (replaces Cascade, 2026-06-02 rebrand); 2-week free trial for new users"
         },
         "overage": {
           "unit": "request",

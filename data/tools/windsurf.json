@@ -1,6 +1,6 @@
 {
   "slug": "windsurf",
-  "name": "Windsurf",
+  "name": "Devin Desktop",
   "vendor": {
     "name": "Cognition AI",
     "hq_country": "US",
@@ -37,7 +37,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; 2-week free trial for new users"
+        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; Devin Local engine (replaces Cascade, 2026-06-02 rebrand); 2-week free trial for new users"
       },
       "overage": {
         "unit": "request",
@@ -121,5 +121,5 @@
     "soc2": true,
     "on_premise": true
   },
-  "verification_override": "Base prices: use rendering proxy r.jina.ai/https://windsurf.com/pricing. Current tiers: Free, Pro, Max, Teams, Enterprise. Overage: neither windsurf.com nor devin.ai currently publish per-unit rates publicly. Tier-specific features: Teams adds centralized billing, admin dashboard with analytics, priority support, automated zero data retention over Pro. Enterprise adds RBAC, SSO + access control, hybrid deployment, highest priority support, dedicated account management, custom terms over Teams."
+  "verification_override": "Product rebranded from Windsurf to Devin Desktop on 2026-06-02 (Cognition AI acquisition, Cascade engine replaced by Devin Local). Base prices: use rendering proxy r.jina.ai/https://windsurf.com/pricing (windsurf.com remains the pricing URL; devin.ai may also reflect updated pricing — check both). Current tiers: Free, Pro, Max, Teams, Enterprise. Overage: neither windsurf.com nor devin.ai currently publish per-unit rates publicly. Tier-specific features: Teams adds centralized billing, admin dashboard with analytics, priority support, automated zero data retention over Pro. Enterprise adds RBAC, SSO + access control, hybrid deployment, highest priority support, dedicated account management, custom terms over Teams."
 }
