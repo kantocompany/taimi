@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": 1500,
           "tokens_included": null,
-          "notes": "legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; new signups paused 2026-04-20"
+          "notes": "legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
         },
         "overage": {
           "unit": "request",

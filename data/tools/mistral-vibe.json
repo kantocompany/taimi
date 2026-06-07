@@ -32,7 +32,7 @@
         "notes": "Le Chat Free — limited coding sessions, chat, search, image generation"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-07"
     },
     {
       "id": "mistral-pro",
@@ -47,7 +47,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Mistral Vibe (Le Chat web coding), Devstral 2 PAYG beyond; IDE integration requires Enterprise; student discount available"
+        "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; $5.99/mo for verified students"
       },
       "overage": {
         "unit": "token",
@@ -58,7 +58,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-07"
     },
     {
       "id": "mistral-team",
@@ -84,7 +84,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-07"
     },
     {
       "id": "mistral-api-devstral2",
@@ -101,7 +101,7 @@
         "notes": "123B param, 256K context",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-07"
     },
     {
       "id": "mistral-api-devstral-medium",
@@ -132,7 +132,7 @@
         "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-07"
     }
   ],
   "capabilities": {

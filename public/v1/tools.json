@@ -680,7 +680,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Devin usage quota + Windsurf IDE quota included; Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
+            "notes": "Devin usage quota + Windsurf IDE quota included; full model availability (OpenAI, Claude, Gemini frontier); free SWE 1.6 and open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
           },
           "overage": {
             "unit": "acu",
@@ -890,7 +890,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; new signups paused 2026-04-20"
+            "notes": "legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
           },
           "overage": {
             "unit": "request",
@@ -1004,7 +1004,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "50 credits/mo; open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over"
+            "notes": "50 credits/mo; open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan; unavailable in AWS GovCloud regions"
           },
           "overage": null
         },
@@ -1020,7 +1020,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly"
+            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1043,7 +1043,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly"
+            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1066,7 +1066,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly"
+            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1205,7 +1205,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Mistral Vibe (Le Chat web coding), Devstral 2 PAYG beyond; IDE integration requires Enterprise; student discount available"
+            "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; $5.99/mo for verified students"
           },
           "overage": {
             "unit": "token",
@@ -1639,7 +1639,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
+            "notes": "Unlimited team members; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
           },
           "overage": {
             "unit": "request",
