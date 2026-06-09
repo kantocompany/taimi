@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-06-07",
-    "updated_at": "2026-06-07T00:00:00Z",
+    "version": "2026-06-09",
+    "updated_at": "2026-06-09T05:31:40Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-09",
+      "tool": "github-copilot",
+      "type": "pricing_change",
+      "description": "plans.3.overage.price_per_unit: 0.04 → 0.01; plans.4.overage.price_per_unit: 0.04 → 0.01",
+      "details": {
+        "source": "https://github.com/features/copilot/plans"
+      }
+    },
     {
       "date": "2026-06-07",
       "tool": "windsurf",
