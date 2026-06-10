@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-09",
-    "updated_at": "2026-06-09T00:00:00Z",
+    "version": "2026-06-10",
+    "updated_at": "2026-06-10T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -93,7 +93,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Unlimited team members; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
+          "notes": "Unlimited team members; Share and collaborate; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
         },
         "overage": {
           "unit": "request",

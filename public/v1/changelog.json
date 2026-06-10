@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-06-09",
-    "updated_at": "2026-06-09T05:31:40Z",
+    "version": "2026-06-10",
+    "updated_at": "2026-06-10T06:27:05Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-10",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.6.name: Enterprise Sales-Assisted → Enterprise; plans.15.id: added claude-code-api-fable5; plans.15.name: added API (Fable 5); plans.15.category: added usage; plans.15.overage.unit: added token; plans.15.overage.mechanism: added automatic; plans.15.overage.model: added claude-fable-5",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-06-10",
+      "tool": "devin",
+      "type": "pricing_change",
+      "description": "platform.bundled_with.0: Windsurf → Devin Desktop; platform.note: Paid plans include Windsurf IDE usage quota following Cognition's 2025 acquisition of Windsurf → Paid plans include Devin Desktop (formerly Windsurf IDE) usage quota following Cognition's 2025 acquisition of Windsurf",
+      "details": {
+        "source": "https://devin.ai/pricing"
+      }
+    },
     {
       "date": "2026-06-09",
       "tool": "github-copilot",

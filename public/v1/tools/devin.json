@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-09",
-    "updated_at": "2026-06-09T00:00:00Z",
+    "version": "2026-06-10",
+    "updated_at": "2026-06-10T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -60,13 +60,13 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Devin usage quota + Windsurf IDE quota included; full model availability (OpenAI, Claude, Gemini frontier); free SWE 1.6 and open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
+          "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini frontier); free SWE 1.6 and open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
         },
         "overage": {
           "unit": "acu",
           "mechanism": "unverified",
           "price_per_unit": null,
-          "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
+          "notes": "Purchase extra usage at API pricing beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
           "input_per_million": null,
           "output_per_million": null
         },
@@ -84,13 +84,13 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
+          "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
         },
         "overage": {
           "unit": "acu",
           "mechanism": "unverified",
           "price_per_unit": null,
-          "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
+          "notes": "Purchase extra usage at API pricing beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
           "input_per_million": null,
           "output_per_million": null
         },
@@ -114,7 +114,7 @@
           "unit": "acu",
           "mechanism": "unverified",
           "price_per_unit": null,
-          "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
+          "notes": "Purchase extra usage at API pricing beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
           "input_per_million": null,
           "output_per_million": null
         },
@@ -134,9 +134,9 @@
     "platform": {
       "name": "Cognition AI",
       "bundled_with": [
-        "Windsurf"
+        "Devin Desktop"
       ],
-      "note": "Paid plans include Windsurf IDE usage quota following Cognition's 2025 acquisition of Windsurf"
+      "note": "Paid plans include Devin Desktop (formerly Windsurf IDE) usage quota following Cognition's 2025 acquisition of Windsurf"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-09",
-    "updated_at": "2026-06-09T00:00:00Z",
+    "version": "2026-06-10",
+    "updated_at": "2026-06-10T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -237,7 +237,7 @@
         },
         {
           "id": "claude-code-enterprise-sales",
-          "name": "Enterprise Sales-Assisted",
+          "name": "Enterprise",
           "category": "enterprise",
           "platform_plan": true,
           "base_price": null,
@@ -373,6 +373,22 @@
             "notes": "Institutional pricing; student/faculty access, academic research features; contact for pricing"
           },
           "overage": null
+        },
+        {
+          "id": "claude-code-api-fable5",
+          "name": "API (Fable 5)",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "token",
+            "mechanism": "automatic",
+            "input_per_million": null,
+            "output_per_million": null,
+            "model": "claude-fable-5",
+            "notes": null,
+            "price_per_unit": null
+          }
         }
       ],
       "capabilities": {
@@ -569,7 +585,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, granular admin and model controls, priority support, account management, Bugbot on custom plan"
+            "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, priority support, account management, Bugbot on custom plan"
           },
           "overage": null
         },
@@ -680,13 +696,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Devin usage quota + Windsurf IDE quota included; full model availability (OpenAI, Claude, Gemini frontier); free SWE 1.6 and open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
+            "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini frontier); free SWE 1.6 and open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
           },
           "overage": {
             "unit": "acu",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
+            "notes": "Purchase extra usage at API pricing beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
             "input_per_million": null,
             "output_per_million": null
           },
@@ -704,13 +720,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased Devin + Windsurf IDE quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
+            "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
           },
           "overage": {
             "unit": "acu",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
+            "notes": "Purchase extra usage at API pricing beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
             "input_per_million": null,
             "output_per_million": null
           },
@@ -734,7 +750,7 @@
             "unit": "acu",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Pay-as-you-go beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
+            "notes": "Purchase extra usage at API pricing beyond included quota; UNVERIFIED_OVERAGE: per-ACU rate and billing mechanism not published on pricing page",
             "input_per_million": null,
             "output_per_million": null
           },
@@ -754,9 +770,9 @@
       "platform": {
         "name": "Cognition AI",
         "bundled_with": [
-          "Windsurf"
+          "Devin Desktop"
         ],
-        "note": "Paid plans include Windsurf IDE usage quota following Cognition's 2025 acquisition of Windsurf"
+        "note": "Paid plans include Devin Desktop (formerly Windsurf IDE) usage quota following Cognition's 2025 acquisition of Windsurf"
       }
     },
     {
@@ -890,7 +906,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
+            "notes": "$70/mo AI Credits; legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
           },
           "overage": {
             "unit": "request",
@@ -959,7 +975,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01"
+            "notes": "$200/mo AI Credits; new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01"
           },
           "overage": {
             "unit": null,
@@ -1230,7 +1246,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Collaborative workspace, domain verification, Admin API, data export; $50/mo minimum"
+            "notes": "Collaborative workspace, 30GB storage per user, domain verification, Admin API, data export; $50/mo minimum"
           },
           "overage": {
             "unit": "token",
@@ -1639,7 +1655,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Unlimited team members; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
+            "notes": "Unlimited team members; Share and collaborate; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
           },
           "overage": {
             "unit": "request",

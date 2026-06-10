@@ -34,7 +34,7 @@
         "notes": "Rate-limited; Annual billing: $17/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-max5",
@@ -52,7 +52,7 @@
         "notes": "5x usage vs Pro; higher output limits; early access to advanced features"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-max20",
@@ -70,7 +70,7 @@
         "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-teams-standard",
@@ -88,7 +88,7 @@
         "notes": "Standard seat, 5-150 members, SSO, admin controls, no training on user content; Annual billing: $20/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-teams-premium",
@@ -106,7 +106,7 @@
         "notes": "5x more usage than Standard; SSO, domain verification, admin controls, no training on user content; Annual billing: $100/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-enterprise-selfserve",
@@ -128,7 +128,7 @@
     },
     {
       "id": "claude-code-enterprise-sales",
-      "name": "Enterprise Sales-Assisted",
+      "name": "Enterprise",
       "category": "enterprise",
       "platform_plan": true,
       "base_price": null,
@@ -138,7 +138,7 @@
         "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support; contact sales"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-api-sonnet",
@@ -155,7 +155,7 @@
         "notes": "Default model for Pro/Teams Standard",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-api-opus",
@@ -172,7 +172,7 @@
         "notes": "Available on Max/Teams Premium plans",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-api-haiku",
@@ -189,7 +189,7 @@
         "notes": "Lightweight model; available via API",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-free",
@@ -207,7 +207,7 @@
         "notes": "Claude Code requires Pro or higher"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-api-managed-agents",
@@ -224,7 +224,7 @@
         "notes": "$0.08 per session-hour of active agent runtime",
         "price_per_unit": 0.08
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-api-web-search",
@@ -241,7 +241,7 @@
         "notes": "$10 per 1,000 searches ($0.01/search)",
         "price_per_unit": 0.01
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-api-code-execution",
@@ -258,7 +258,7 @@
         "notes": "$0.05 per container-hour; 50 free hours per day",
         "price_per_unit": 0.05
       },
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
     },
     {
       "id": "claude-code-education",
@@ -272,7 +272,24 @@
         "notes": "Institutional pricing; student/faculty access, academic research features; contact for pricing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-04"
+      "_last_seen_on_page": "2026-06-10"
+    },
+    {
+      "id": "claude-code-api-fable5",
+      "name": "API (Fable 5)",
+      "category": "usage",
+      "base_price": null,
+      "includes": null,
+      "overage": {
+        "unit": "token",
+        "mechanism": "automatic",
+        "input_per_million": null,
+        "output_per_million": null,
+        "model": "claude-fable-5",
+        "notes": null,
+        "price_per_unit": null
+      },
+      "_last_seen_on_page": "2026-06-10"
     }
   ],
   "capabilities": {

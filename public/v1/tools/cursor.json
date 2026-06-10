@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-09",
-    "updated_at": "2026-06-09T00:00:00Z",
+    "version": "2026-06-10",
+    "updated_at": "2026-06-10T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -135,7 +135,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, granular admin and model controls, priority support, account management, Bugbot on custom plan"
+          "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, priority support, account management, Bugbot on custom plan"
         },
         "overage": null
       },
