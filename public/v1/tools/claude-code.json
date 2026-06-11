@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-10",
-    "updated_at": "2026-06-10T00:00:00Z",
+    "version": "2026-06-11",
+    "updated_at": "2026-06-11T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.1",
     "source": "https://taimi.market",
@@ -279,8 +279,8 @@
         "overage": {
           "unit": "token",
           "mechanism": "automatic",
-          "input_per_million": null,
-          "output_per_million": null,
+          "input_per_million": 10.00,
+          "output_per_million": 50.00,
           "model": "claude-fable-5",
           "notes": null,
           "price_per_unit": null
