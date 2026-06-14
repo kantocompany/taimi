@@ -30,7 +30,8 @@
           "tokens_included": null,
           "notes": "terse factual notes"
         },
-        "overage": null
+        "overage": null,
+        "_last_seen_on_page": "{YYYY-MM-DD — set to today ONLY for plans you directly observed on the vendor page this fetch; for plans listed from prior knowledge but not seen, copy the existing value unchanged}"
       }
     ],
     "capabilities": {}

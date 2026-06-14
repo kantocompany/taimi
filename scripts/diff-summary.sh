@@ -118,3 +118,40 @@ if [[ "$any" == "true" ]]; then
 else
   echo "No changes vs HEAD."
 fi
+
+# Plan-coverage gaps from the price-update diff (diff-results/<slug>.json).
+# Only present after a price run; tool-update diff output has no uncovered_plans
+# field, so this section stays silent there.
+cov_lines=""
+for slug in "$@"; do
+  dr="diff-results/${slug}.json"
+  [[ -f "$dr" ]] || continue
+  unc=$(jq -r '.uncovered_plans // [] | join(", ")' "$dr" 2>/dev/null || echo "")
+  if [[ -n "$unc" ]]; then
+    cov_lines="${cov_lines}  ⚠️ ${slug}: not in findings, unchecked this cycle: ${unc}
+"
+  fi
+done
+if [[ -n "$cov_lines" ]]; then
+  echo ""
+  echo "=== Plan coverage gaps (price findings) ==="
+  echo ""
+  printf '%s' "$cov_lines"
+fi
+
+# Conditional-hold markers (_pending) on the current data files — re-presented
+# every run so the deferred decision never goes silent.
+pend_lines=""
+for slug in "$@"; do
+  data="data/tools/${slug}.json"
+  [[ -f "$data" ]] || continue
+  p=$(jq -r --arg s "$slug" '.plans[]? | select(._pending != null) | "  ⏸ \($s)/\(.id): \(._pending)"' "$data" 2>/dev/null || true)
+  [[ -n "$p" ]] && pend_lines="${pend_lines}${p}
+"
+done
+if [[ -n "$pend_lines" ]]; then
+  echo ""
+  echo "=== Conditional-hold markers (_pending) ==="
+  echo ""
+  printf '%s' "$pend_lines"
+fi

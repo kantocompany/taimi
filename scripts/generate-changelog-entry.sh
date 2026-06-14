@@ -25,7 +25,7 @@ DESCRIPTION=$(jq -rn \
   # to API consumers (notes rewording, verification override changes,
   # internal provenance flag clears)
   def strip_editorial:
-    walk(if type == "object" then del(.notes, .verification_override, ._notes_first_pass, ._last_seen_on_page) else . end);
+    walk(if type == "object" then del(.notes, .verification_override, ._notes_first_pass, ._last_seen_on_page, ._pending) else . end);
 
   def flatten_leaves:
     [paths(scalars) as $p | {key: ($p | map(tostring) | join(".")), value: getpath($p)}]

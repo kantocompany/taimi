@@ -23,9 +23,12 @@ fi
 # Capture _capabilities_first_pass BEFORE clearing — drives merge logic below.
 caps_first_pass=$(jq -r '._capabilities_first_pass // false' "$DATA_FILE")
 
-# Temporal persistence bumper (Fix 2, 2026-05-24).
-# When the research agent successfully fetched the vendor page, plans it
-# enumerated in proposed.plans get their ._last_seen_on_page set to today.
+# Temporal persistence bumper (Fix 2, 2026-05-24; observation-gated 2026-06-14).
+# When the research agent successfully fetched the vendor page, only plans it
+# marked observed this fetch (proposed.plans[]._last_seen_on_page == today) get
+# their ._last_seen_on_page advanced to today. Plans listed from prior knowledge
+# but not seen keep their existing value, so the agent's "not visible this cycle"
+# signal stays load-bearing for the auto-removal clock.
 # On "unverified" findings, leave _last_seen_on_page untouched — a vendor-page
 # outage shouldn't accelerate the auto-removal clock.
 DATE="${DATE:-$(date -u +%Y-%m-%d)}"
@@ -50,16 +53,16 @@ if jq -e '._capabilities_first_pass' "$DATA_FILE" >/dev/null 2>&1; then
   echo "  Cleared _capabilities_first_pass flag on $(basename "$DATA_FILE")"
 fi
 
-# Bump _last_seen_on_page unconditionally for all plans the agent enumerated —
-# this must run even on no-change cycles, otherwise plans never get re-stamped
-# and would eventually drift into removal-eligibility just because nothing
-# changed for them.
+# Bump _last_seen_on_page for plans the agent marked observed this fetch
+# (proposed.plans[]._last_seen_on_page == today). Runs even on no-change cycles so
+# observed plans get re-stamped. Plans listed but not observed keep their existing
+# value — their clock keeps aging toward removal-eligibility.
 if [[ -n "$BUMP_DATE" ]]; then
   jq --arg bump_date "$BUMP_DATE" \
-     --argjson proposed_ids "$(jq '[.proposed.plans[]?.id]' "$FINDINGS")" '
+     --argjson observed_ids "$(jq --arg d "$BUMP_DATE" '[.proposed.plans[]? | select(._last_seen_on_page == $d) | .id]' "$FINDINGS")" '
     .plans |= map(
       . as $p |
-      if ($proposed_ids | index($p.id)) != null
+      if ($observed_ids | index($p.id)) != null
       then ._last_seen_on_page = $bump_date
       else .
       end
@@ -141,9 +144,10 @@ jq \
     if $prop == null then $orig  # not in proposed = keep original (no _last_seen bump — agent did not enumerate this plan)
     else
       $orig |
-      # Temporal persistence: bump _last_seen_on_page when agent enumerated this plan
-      # in proposed.plans and the page fetch was successful (bump_date populated).
-      (if $bump_date != "" then ._last_seen_on_page = $bump_date else . end) |
+      # Temporal persistence: advance _last_seen_on_page only when the agent marked
+      # this plan observed on the page this fetch (proposed._last_seen_on_page ==
+      # today). Otherwise keep the existing value so an unobserved plan keeps aging.
+      (if $bump_date != "" and (($prop._last_seen_on_page // null) == $bump_date) then ._last_seen_on_page = $bump_date else . end) |
       # Editorial: notes (confirmed only, annual billing claims filtered)
       (if $prop.includes.notes and $prop.includes.notes != ($orig.includes.notes // null) then
         if is_plan_field_confirmed($orig.id; "includes.notes"; $prop.includes.notes) then .includes.notes = strip_new_annual($orig.includes.notes; $prop.includes.notes) else . end

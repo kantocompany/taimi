@@ -15,7 +15,7 @@ DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
 MODEL="claude-sonnet-4-6"
 RESEARCH_MAX_TURNS=25
-VALIDATE_MAX_TURNS=12
+VALIDATE_MAX_TURNS=18
 SLUGS=()
 
 while [[ $# -gt 0 ]]; do
@@ -85,6 +85,14 @@ run_pipeline() {
   local diff_result
   diff_result=$(./scripts/diff-findings.sh "findings/${slug}.json" "data/tools/${slug}.json")
   echo "$diff_result" > "diff-results/${slug}.json"
+
+  # Coverage gate: plans in data but missing from findings were never checked.
+  local uncovered
+  uncovered=$(echo "$diff_result" | jq -r '.uncovered_plans // [] | join(", ")')
+  if [[ -n "$uncovered" ]]; then
+    echo "  ⚠️ $slug: PLAN COVERAGE GAP — not in findings, unchecked this cycle: $uncovered"
+  fi
+
   local has_changes
   has_changes=$(echo "$diff_result" | jq -r '.has_changes')
   local finding_status
@@ -111,7 +119,7 @@ run_pipeline() {
   local changes_summary
   changes_summary=$(echo "$diff_result" | jq -c '.changes')
 
-  if claude -p "$(cat <<PROMPT
+  local vprompt=$(cat <<PROMPT
 Price verification for $slug.
 
 A research agent reports these price changes:
@@ -134,17 +142,26 @@ Special rule: any change asserting that a model, plan, or feature is "removed", 
   ]
 }
 PROMPT
-)" \
-    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
-    --allowedTools "Write,WebSearch,WebFetch" \
-    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
-    2>&1 | tee "$validate_logfile"; then
-    true
-  else
-    echo "  $slug: validation FAILED (exit $?, see $validate_logfile)"
-    echo ""
-    return
-  fi
+)
+  # Validate with a single auto-retry: a max-turns death writes no verdict and
+  # fails closed, silently holding a likely-correct change. The raised
+  # --max-turns budget is the primary fix; this retry is the backstop.
+  local vattempt
+  for vattempt in 1 2; do
+    claude -p "$vprompt" \
+      --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+      --allowedTools "Write,WebSearch,WebFetch" \
+      --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+      2>&1 | tee "$validate_logfile" || true
+    if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
+      break
+    fi
+    if [[ "$vattempt" -eq 1 ]]; then
+      echo "  $slug: no verdict after validate (possible max-turns) — retrying once"
+    else
+      echo "  $slug: validation incomplete after retry (see $validate_logfile)"
+    fi
+  done
 
   # Phase 4: Deterministic apply
   echo "  [$slug] Phase 4: Apply"
@@ -180,6 +197,11 @@ run_pipeline_quiet() {
   local diff_result has_changes
   diff_result=$(./scripts/diff-findings.sh "findings/${slug}.json" "data/tools/${slug}.json")
   echo "$diff_result" > "diff-results/${slug}.json"
+  local uncovered
+  uncovered=$(echo "$diff_result" | jq -r '.uncovered_plans // [] | join(", ")')
+  if [[ -n "$uncovered" ]]; then
+    echo "  ⚠️ $slug: PLAN COVERAGE GAP — not in findings, unchecked: $uncovered"
+  fi
   has_changes=$(echo "$diff_result" | jq -r '.has_changes')
 
   if [[ "$has_changes" != "true" ]]; then
@@ -192,13 +214,19 @@ run_pipeline_quiet() {
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '.changes')
-  if ! claude -p "Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}" \
-    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
-    --allowedTools "Write,WebSearch,WebFetch" \
-    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
-    > "$validate_logfile" 2>&1; then
-    echo "  $slug: validation FAILED (see $validate_logfile)"; return
-  fi
+  local vprompt="Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}"
+  local vattempt
+  for vattempt in 1 2; do
+    claude -p "$vprompt" \
+      --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+      --allowedTools "Write,WebSearch,WebFetch" \
+      --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+      > "$validate_logfile" 2>&1 || true
+    if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
+      break
+    fi
+    [[ "$vattempt" -eq 1 ]] && echo "  $slug: no verdict after validate (possible max-turns) — retrying once"
+  done
 
   # Phase 4: Apply
   if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then

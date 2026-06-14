@@ -6,6 +6,15 @@
   },
   "changes": [
     {
+      "date": "2026-06-14",
+      "tool": null,
+      "type": "feature",
+      "description": "Plan notes no longer duplicate structured overage rates (price_per_unit, input/output_per_million); validate.sh fails the build if a duplicate is reintroduced. schema_version bumped to 1.2",
+      "details": {
+        "rationale": "Structured fields are authoritative; per-plan prose stops restating numeric rates the page already renders. Source-only _pending conditional-hold marker added. No public field renamed, retyped, or restructured — /v1/ consumers unaffected."
+      }
+    },
+    {
       "date": "2026-06-11",
       "tool": "claude-code",
       "type": "pricing_change",

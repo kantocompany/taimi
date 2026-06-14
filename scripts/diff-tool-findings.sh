@@ -99,7 +99,7 @@ jq -n \
       del(.capabilities, .verification_override, ._notes_first_pass, ._capabilities_first_pass)
      end) |
     walk(if type == "object" then
-      del(.amount, ._last_seen_on_page) |
+      del(.amount, ._last_seen_on_page, ._pending) |
       (if has("input_per_million") then del(.input_per_million) else . end) |
       (if has("output_per_million") then del(.output_per_million) else . end) |
       (if has("price_per_unit") then del(.price_per_unit) else . end)

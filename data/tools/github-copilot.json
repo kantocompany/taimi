@@ -37,13 +37,13 @@
       "includes": {
         "premium_requests": 300,
         "tokens_included": null,
-        "notes": "$15/mo AI Credits; legacy 300 premium req/user; unlimited completions; new signups paused 2026-04-20"
+        "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; new signups paused 2026-04-20"
       },
       "overage": {
         "unit": "request",
         "mechanism": "add_on",
         "price_per_unit": 0.01,
-        "notes": "$0.01/credit beyond limit",
+        "notes": null,
         "input_per_million": null,
         "output_per_million": null
       },
@@ -61,13 +61,13 @@
       "includes": {
         "premium_requests": 1500,
         "tokens_included": null,
-        "notes": "$70/mo AI Credits; legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
+        "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
       },
       "overage": {
         "unit": "request",
         "mechanism": "add_on",
         "price_per_unit": 0.01,
-        "notes": "$0.01/credit beyond limit",
+        "notes": null,
         "input_per_million": null,
         "output_per_million": null
       },
@@ -85,13 +85,13 @@
       "includes": {
         "premium_requests": 300,
         "tokens_included": null,
-        "notes": "legacy 300 premium req/user; IP indemnity; org management; self-serve signups paused 2026-04-22"
+        "notes": "legacy premium req/user; IP indemnity; org management; self-serve signups paused 2026-04-22"
       },
       "overage": {
         "unit": "request",
         "mechanism": "add_on",
         "price_per_unit": 0.01,
-        "notes": "$0.01/credit beyond limit",
+        "notes": null,
         "input_per_million": null,
         "output_per_million": null
       },
@@ -109,13 +109,13 @@
       "includes": {
         "premium_requests": 1000,
         "tokens_included": null,
-        "notes": "legacy 1K premium req/user; all models incl Claude Opus 4.7; GitHub Spark; IP indemnity; SSO"
+        "notes": "legacy premium req/user; all models incl Claude Opus 4.7; GitHub Spark; IP indemnity; SSO"
       },
       "overage": {
         "unit": "request",
         "mechanism": "add_on",
         "price_per_unit": 0.01,
-        "notes": "$0.01/credit beyond limit",
+        "notes": null,
         "input_per_million": null,
         "output_per_million": null
       },
@@ -139,7 +139,7 @@
         "unit": null,
         "mechanism": "add_on",
         "price_per_unit": 0.01,
-        "notes": "$0.01/credit beyond limit",
+        "notes": null,
         "input_per_million": null,
         "output_per_million": null
       },

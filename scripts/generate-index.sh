@@ -106,7 +106,14 @@ generate_rows() {
        else "pb-free" end) as $class |
       (if cat == "team" then ($plan | price_display_team) else ($plan | price_display) end) as $price |
       (if $plan.platform_plan == true then "<span class=\"platform-badge\">P</span>" else "" end) as $badge |
-      (if $plan.includes.notes then $plan.includes.notes else "" end) as $notes |
+      # Render structured premium_requests from the data field (not prose) for non-free plans
+      (if ($plan.includes.premium_requests != null and cat != "free")
+         then "\($plan.includes.premium_requests) premium req/user"
+         else "" end) as $preq |
+      (if $plan.includes.notes then $plan.includes.notes else "" end) as $base_notes |
+      (if $preq != "" and $base_notes != "" then "\($preq); \($base_notes)"
+       elif $preq != "" then $preq
+       else $base_notes end) as $notes |
 
       if cat == "free" then
         "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><div class=\"tier-name\">\($plan.name)\($badge)</div>\(if $notes != "" then "<div class=\"tier-notes\">\($notes)</div>" else "" end)</a>"

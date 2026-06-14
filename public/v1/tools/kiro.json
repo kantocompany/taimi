@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": "2026-06-11",
-    "updated_at": "2026-06-11T00:00:00Z",
+    "version": "2026-06-14",
+    "updated_at": "2026-06-14T00:00:00Z",
     "currency": "USD",
-    "schema_version": "1.1",
+    "schema_version": "1.2",
     "source": "https://taimi.market",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
@@ -53,7 +53,7 @@
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum per task; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum per task; overage disabled by default, enable in Settings",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -76,7 +76,7 @@
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -99,7 +99,7 @@
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -122,7 +122,7 @@
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -145,7 +145,7 @@
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -168,7 +168,7 @@
           "unit": "acu",
           "mechanism": "automatic",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
           "input_per_million": null,
           "output_per_million": null
         }

@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": "2026-06-11",
-    "updated_at": "2026-06-11T00:00:00Z",
+    "version": "2026-06-14",
+    "updated_at": "2026-06-14T00:00:00Z",
     "currency": "USD",
-    "schema_version": "1.1",
+    "schema_version": "1.2",
     "source": "https://taimi.market",
     "maintainer": "Kanto Company",
     "license": "CC BY 4.0",
@@ -883,13 +883,13 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "$15/mo AI Credits; legacy 300 premium req/user; unlimited completions; new signups paused 2026-04-20"
+            "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; new signups paused 2026-04-20"
           },
           "overage": {
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.01,
-            "notes": "$0.01/credit beyond limit",
+            "notes": null,
             "input_per_million": null,
             "output_per_million": null
           }
@@ -906,13 +906,13 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "$70/mo AI Credits; legacy 1,500 premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
+            "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
           },
           "overage": {
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.01,
-            "notes": "$0.01/credit beyond limit",
+            "notes": null,
             "input_per_million": null,
             "output_per_million": null
           }
@@ -929,13 +929,13 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "legacy 300 premium req/user; IP indemnity; org management; self-serve signups paused 2026-04-22"
+            "notes": "legacy premium req/user; IP indemnity; org management; self-serve signups paused 2026-04-22"
           },
           "overage": {
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.01,
-            "notes": "$0.01/credit beyond limit",
+            "notes": null,
             "input_per_million": null,
             "output_per_million": null
           }
@@ -952,13 +952,13 @@
           "includes": {
             "premium_requests": 1000,
             "tokens_included": null,
-            "notes": "legacy 1K premium req/user; all models incl Claude Opus 4.7; GitHub Spark; IP indemnity; SSO"
+            "notes": "legacy premium req/user; all models incl Claude Opus 4.7; GitHub Spark; IP indemnity; SSO"
           },
           "overage": {
             "unit": "request",
             "mechanism": "add_on",
             "price_per_unit": 0.01,
-            "notes": "$0.01/credit beyond limit",
+            "notes": null,
             "input_per_million": null,
             "output_per_million": null
           }
@@ -981,7 +981,7 @@
             "unit": null,
             "mechanism": "add_on",
             "price_per_unit": 0.01,
-            "notes": "$0.01/credit beyond limit",
+            "notes": null,
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1042,7 +1042,7 @@
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum per task; overage disabled by default, enable in Settings",
+            "notes": "Kiro credits; credits metered at 0.01 minimum per task; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1065,7 +1065,7 @@
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1088,7 +1088,7 @@
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1111,7 +1111,7 @@
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1134,7 +1134,7 @@
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1157,7 +1157,7 @@
             "unit": "acu",
             "mechanism": "automatic",
             "price_per_unit": 0.04,
-            "notes": "Kiro credits; $0.04/credit beyond monthly allocation; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1412,7 +1412,7 @@
             "input_per_million": 1.75,
             "output_per_million": 14.00,
             "model": "gpt-5.3-codex",
-            "notes": "API key mode billed at standard API rates; delayed access to new models; GPT-5.5, GPT-5.5-pro, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.4-pro, GPT-5.3-Codex available; gpt-5.3-codex at $1.75 input / $14.00 output per 1M tokens; priority tier at $3.50 input / $28.00 output per 1M tokens; no cloud features",
+            "notes": "API key mode billed at standard API rates; delayed access to new models; GPT-5.5, GPT-5.5-pro, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.4-pro, GPT-5.3-Codex available; priority tier at $3.50 input / $28.00 output per 1M tokens; no cloud features",
             "price_per_unit": null
           }
         },

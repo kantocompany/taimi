@@ -90,6 +90,9 @@ jq -n \
     slug:         $f.slug,
     has_changes:  (length > 0),
     changes:      .,
+    # Plans present in current data but absent from findings: never compared,
+    # so a clean/verified result says nothing about them. Surface, do not modify.
+    uncovered_plans: ([$c.plans[].id] - [$f.plans[]?.id]),
     source_url:   $f.source_url,
     fetch_method: $f.fetch_method,
     status:       $f.status

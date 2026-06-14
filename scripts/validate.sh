@@ -91,6 +91,66 @@ else
   echo "✓ All source files have required fields"
 fi
 
+# --- 3b. Notes must not duplicate structured fields (Fix 6a regression guard) ---
+# Fires only when overage.notes carries a "$N/<word>" fragment whose <word> matches the
+# structured overage.unit AND whose number equals a structured rate (price_per_unit or
+# input/output_per_million). Non-matching unit words (session-hour, container-hour, search,
+# effort) never fire, so unit-carrier prose is left untouched.
+dup_offenders=$(for f in "${source_files[@]}"; do
+  jq -r '
+    def unit_words(u):
+      if u == "request" then ["req","request"]
+      elif u == "token" then ["token","tokens"]
+      elif u == "acu" then ["acu","acus","credit","credits"]
+      else [] end;
+    .slug as $slug
+    | .plans[]?
+    | select(.overage != null and (.overage.notes // null) != null)
+    | . as $p | $p.overage as $ov
+    | (unit_words($ov.unit)) as $words
+    | ([$ov.price_per_unit, $ov.input_per_million, $ov.output_per_million] | map(select(. != null))) as $nums
+    | ($ov.notes | [scan("\\$([0-9]+(?:\\.[0-9]+)?)/([a-zA-Z]+)")])[] as $frag
+    | select(($words | index(($frag[1] | ascii_downcase))) != null
+             and ($nums | index(($frag[0] | tonumber))) != null)
+    | "\($slug)/\($p.id): $\($frag[0])/\($frag[1])"
+  ' "$f"
+done)
+# Also guard includes.notes from restating the structured premium_requests count
+# (the page renders it via the helper in generate-index.sh). Fires only when the
+# plan has a structured premium_requests value, so notes-as-sole-carrier is safe.
+preq_offenders=$(for f in "${source_files[@]}"; do
+  jq -r '
+    .slug as $slug
+    | .plans[]?
+    | select(.includes.premium_requests != null)
+    | select((.includes.notes // "") | test("[0-9][0-9,]*K? *premium req"; "i"))
+    | "\($slug)/\(.id): includes.notes restates premium_requests count"
+  ' "$f"
+done)
+if [[ -n "$dup_offenders" || -n "$preq_offenders" ]]; then
+  echo "FAIL: notes duplicate a structured field (rate in overage.*, or count in premium_requests):"
+  [[ -n "$dup_offenders" ]] && echo "$dup_offenders" | sed 's/^/  /'
+  [[ -n "$preq_offenders" ]] && echo "$preq_offenders" | sed 's/^/  /'
+  ((errors++)) || true
+else
+  echo "✓ No notes duplicate structured fields"
+fi
+
+# --- 3c. Surface _pending conditional-hold markers (operator visibility) ---
+# A deferred "revisit when vendor publishes X" decision encoded as source-only
+# data state. Re-presented every cycle so the open decision never goes silent.
+pending_markers=$(for f in "${source_files[@]}"; do
+  jq -r '.slug as $s | .plans[]? | select(._pending != null) | "  \($s)/\(.id): \(._pending)"' "$f"
+done)
+if [[ -n "$pending_markers" ]]; then
+  echo "NOTE: plans carrying a _pending conditional-hold marker (re-evaluate this cycle):"
+  echo "$pending_markers"
+  pending_count=$(printf '%s\n' "$pending_markers" | grep -c .)
+  ((warnings += pending_count)) || true
+else
+  echo "✓ No _pending conditional-hold markers"
+fi
+
 # --- 4. Observations file exists ---
 if [[ ! -f "$OBSERVATIONS" ]]; then
   echo "FAIL: $OBSERVATIONS not found"
@@ -123,7 +183,7 @@ else
     source_mismatches=0
     for f in "${source_files[@]}"; do
       slug=$(jq -r '.slug' "$f")
-      source_data=$(jq -c 'del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page)))' "$f")
+      source_data=$(jq -c 'del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page, ._pending)))' "$f")
       assembled_data=$(jq -c --arg s "$slug" '.tools[] | select(.slug == $s)' "$TOOLS_JSON")
       if [[ "$source_data" != "$assembled_data" ]]; then
         echo "FAIL: $slug data in tools.json differs from source (run scripts/assemble.sh)"
@@ -157,7 +217,7 @@ if [[ -f "$TOOLS_JSON" ]]; then
     fi
     # Check tool data matches source
     api_tool=$(jq -c '.tool' "$api_file")
-    source_data=$(jq -c 'del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page)))' "$f")
+    source_data=$(jq -c 'del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page, ._pending)))' "$f")
     if [[ "$api_tool" != "$source_data" ]]; then
       echo "FAIL: $slug.json API file tool data differs from source"
       ((api_errors++)) || true

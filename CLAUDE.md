@@ -42,7 +42,7 @@ Validate: `./scripts/validate.sh`
 
 3. **Always record price changes.** Format: date, tool slug, type (pricing_change/feature/new_tool/removed_tool), description, and details with source URL. See the active runbook for where to write the entry.
 
-4. **Preserve the API schema.** The JSON structure is a contract. Don't rename fields, change types, or restructure without updating schema_version in meta. Consumers may depend on the current shape.
+4. **Preserve the API schema.** The JSON structure is a contract. Don't rename fields, change types, or restructure without updating schema_version in meta (current: `1.2`). Consumers may depend on the current shape.
 
 5. **index.html is generated.** Branding (dark background, lime green accent, Space Mono/DM Sans fonts, EU green border) is maintained in `scripts/generate-index.sh`. Do not hand-edit public/index.html.
 
@@ -87,6 +87,20 @@ Source-only field — `assemble.sh` strips it from public API output.
 Set automatically by `scripts/add-tool.sh` when creating a new tool skeleton. Source-only field — `assemble.sh` strips it from public API output.
 
 **`tool._capabilities_first_pass`** — boolean. Same mechanism as `_notes_first_pass` but for the `capabilities` block. When set, tool-update may propose capability changes (verified against vendor page) and `apply-tool-findings.sh` applies validator-confirmed changes; when absent, capabilities are protected from edits and preserved from the original data. Set by `add-tool.sh`, cleared by `apply-tool-findings.sh`. Source-only field — `assemble.sh` strips it from public API output.
+
+## Conditional-hold marker (optional field)
+
+**`plan._pending`** — string. A deferred "revisit when vendor publishes X" decision encoded as source-only data state (e.g. `"vendor-publishes-org-rate"`). Set manually by the operator on a plan whose final shape is blocked on something the vendor has not yet published. Every update cycle re-presents all `_pending` plans (`validate.sh` warning + `diff-summary.sh` section) so the open decision never goes silent. Remove the marker once resolved.
+
+Source-only field — stripped from public API output and from diff/changelog comparison everywhere the other `_`-prefixed fields are stripped.
+
+## Notes must not duplicate structured fields
+
+Plan `notes` carry prose context only. Numeric values that already live in a structured field — `overage.price_per_unit`, `overage.input_per_million` / `output_per_million`, `includes.premium_requests` — must not be restated in notes. `index.html` renders these structured fields directly (premium-request counts via a render helper in `generate-index.sh`); duplicating them in prose causes drift between the two copies. `validate.sh` **fails the build** if an `overage.notes` fragment of the form `$N/<unit>` restates the structured rate for that plan's `overage.unit`. Unit-carrier prose for units with no structured field (session-hour, container-hour, effort) is exempt.
+
+## Plan observation timestamp (`_last_seen_on_page`)
+
+Source-only per-plan field recording when the tool-update agent last saw the plan on the vendor page. The research agent sets it to today **only** for plans it directly observed during this fetch; plans listed from prior knowledge keep their existing value. `apply-tool-findings.sh` honors this — an unobserved plan's clock keeps aging toward the 21-day auto-removal threshold, so the agent's "not visible this cycle" signal stays load-bearing. Stripped from public API output.
 
 ## Tool cap
 

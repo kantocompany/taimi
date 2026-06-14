@@ -52,13 +52,13 @@ jq -n \
   --arg version "$version" \
   --arg updated_at "$updated_at" \
   --argjson tool_count "$tool_count" \
-  --slurpfile tools <(jq -s '[.[] | del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page)))] | sort_by(.slug)' "${files[@]}") \
+  --slurpfile tools <(jq -s '[.[] | del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page, ._pending)))] | sort_by(.slug)' "${files[@]}") \
   '{
     meta: {
       version: $version,
       updated_at: $updated_at,
       currency: "USD",
-      schema_version: "1.1",
+      schema_version: "1.2",
       source: "https://taimi.market",
       maintainer: "Kanto Company",
       license: "CC BY 4.0",
@@ -80,7 +80,7 @@ for file in "${files[@]}"; do
   slug=$(jq -r '.slug' "$file")
   outfile="$OUT_DIR/$slug.json"
 
-  jq -n --argjson meta "$meta" --argjson tool "$(jq 'del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page)))' "$file")" \
+  jq -n --argjson meta "$meta" --argjson tool "$(jq 'del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page, ._pending)))' "$file")" \
     '{ meta: $meta, tool: $tool }' > "$outfile"
 
   echo "  ✓ $outfile"

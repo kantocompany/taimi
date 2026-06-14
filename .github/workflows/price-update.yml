@@ -103,6 +103,10 @@ jobs:
           has_changes=$(echo "$result" | jq -r '.has_changes')
           echo "has_changes=$has_changes" >> "$GITHUB_OUTPUT"
           echo "$result" > diff-results/${{ matrix.tool }}.json
+          uncovered=$(echo "$result" | jq -r '.uncovered_plans // [] | join(", ")')
+          if [[ -n "$uncovered" ]]; then
+            echo "::warning::${{ matrix.tool }}: plan coverage gap — not in findings, unchecked this cycle: $uncovered"
+          fi
           if [[ "$has_changes" == "true" ]]; then
             echo "changes=$(echo "$result" | jq -c '.changes')" >> "$GITHUB_OUTPUT"
             echo "source_url=$(echo "$result" | jq -r '.source_url')" >> "$GITHUB_OUTPUT"
@@ -147,7 +151,7 @@ jobs:
             If you cannot fetch the page or find the price, set confirmed to false.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 12  # validate-max-turns
+            --max-turns 18  # validate-max-turns
             --max-budget-usd 0.15
             --allowedTools "Write,WebSearch,WebFetch"
             --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep"

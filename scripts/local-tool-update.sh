@@ -15,7 +15,7 @@ DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
 MODEL="claude-sonnet-4-6"
 RESEARCH_MAX_TURNS=25
-VALIDATE_MAX_TURNS=15
+VALIDATE_MAX_TURNS=20
 SLUGS=()
 
 while [[ $# -gt 0 ]]; do
@@ -53,7 +53,7 @@ run_pipeline() {
 
   # Phase 1: Research (no Edit permission)
   echo "  [$slug] Phase 1: Research"
-  if claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute." \
+  if claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged." \
     --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \
@@ -120,7 +120,7 @@ run_pipeline() {
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: [(.new_plans // [])[] | .id]}')
 
-  if claude -p "$(cat <<PROMPT
+  local vprompt=$(cat <<PROMPT
 Review verification for $slug.
 
 A research agent proposes these changes:
@@ -153,15 +153,26 @@ Plan-boundary rule: a new plan ID whose evidence describes it as a discount on a
 
 If the change you are reviewing has a "plan_id" key, copy it verbatim into your verdict entry. If it does not (vendor.*, platform.*, capabilities.*, verification_override changes), omit the plan_id key — do not invent one.
 PROMPT
-)" \
-    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
-    --allowedTools "Write,WebSearch,WebFetch" \
-    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
-    2>&1 | tee "$validate_logfile"; then
-    true
-  else
-    echo "  $slug: validation FAILED (exit $?, see $validate_logfile)"
-  fi
+)
+  # Validate with a single auto-retry (see local-price-update.sh): a max-turns
+  # death writes no verdict and fails closed, silently holding a likely-correct
+  # change. The raised --max-turns budget is the primary fix; retry the backstop.
+  local vattempt
+  for vattempt in 1 2; do
+    claude -p "$vprompt" \
+      --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+      --allowedTools "Write,WebSearch,WebFetch" \
+      --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+      2>&1 | tee "$validate_logfile" || true
+    if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
+      break
+    fi
+    if [[ "$vattempt" -eq 1 ]]; then
+      echo "  $slug: no verdict after validate (possible max-turns) — retrying once"
+    else
+      echo "  $slug: validation incomplete after retry (see $validate_logfile)"
+    fi
+  done
 
   if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
     validated_arg="validated/${slug}.json"
@@ -187,7 +198,7 @@ run_pipeline_quiet() {
   echo "→ $slug: starting"
 
   # Phase 1: Research
-  if ! claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute." \
+  if ! claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged." \
     --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \
@@ -225,17 +236,20 @@ run_pipeline_quiet() {
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '{changes, new_plans: [(.new_plans // [])[] | .id]}')
-  if claude -p "Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Exception for dated dollar citations from this tool's page: confirmed: true when cited rate cannot be reproduced on today's page. Symmetry rule: per-plan notes additions where the same feature shows ✓/included on sibling plans without exclusion markers → confirmed: false (tool-wide, not plan-specific). New-plan rule: new plan IDs need a quoted tier header, pricing card, or named tier row from the page; feature mentions don't count → confirmed: false. Plan-boundary rule: a new plan ID whose evidence describes it as a discount on an existing tier (e.g., 'Pro for \$5.99/month', 'students get Pro for \$X', any '<existing-plan> for \$Y' wording) is an eligibility discount on that tier, not a separate plan → confirmed: false for plan_id and every sub-field. For new plan IDs, confirm they exist on the page. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id?, field, old, new, confirmed: bool, evidence}]}. Copy plan_id verbatim from input change when present; omit when input change has no plan_id (vendor/platform/capabilities/verification_override). For new plans use field=plan_id." \
-    --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
-    --allowedTools "Write,WebSearch,WebFetch" \
-    --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
-    > "$validate_logfile" 2>&1; then
+  local vprompt="Review verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Exception for dated dollar citations from this tool's page: confirmed: true when cited rate cannot be reproduced on today's page. Symmetry rule: per-plan notes additions where the same feature shows ✓/included on sibling plans without exclusion markers → confirmed: false (tool-wide, not plan-specific). New-plan rule: new plan IDs need a quoted tier header, pricing card, or named tier row from the page; feature mentions don't count → confirmed: false. Plan-boundary rule: a new plan ID whose evidence describes it as a discount on an existing tier (e.g., 'Pro for \$5.99/month', 'students get Pro for \$X', any '<existing-plan> for \$Y' wording) is an eligibility discount on that tier, not a separate plan → confirmed: false for plan_id and every sub-field. For new plan IDs, confirm they exist on the page. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id?, field, old, new, confirmed: bool, evidence}]}. Copy plan_id verbatim from input change when present; omit when input change has no plan_id (vendor/platform/capabilities/verification_override). For new plans use field=plan_id."
+  local vattempt
+  for vattempt in 1 2; do
+    claude -p "$vprompt" \
+      --model "$MODEL" --max-turns "$VALIDATE_MAX_TURNS" \
+      --allowedTools "Write,WebSearch,WebFetch" \
+      --disallowedTools "Agent,Edit,Read,Bash,Glob,Grep" \
+      > "$validate_logfile" 2>&1 || true
     if [[ -f "validated/${slug}.json" ]] && jq empty "validated/${slug}.json" 2>/dev/null; then
       validated_arg="validated/${slug}.json"
+      break
     fi
-  else
-    echo "  $slug: validation FAILED (see $validate_logfile)"
-  fi
+    [[ "$vattempt" -eq 1 ]] && echo "  $slug: no verdict after validate (possible max-turns) — retrying once"
+  done
 
   # Phase 4: Apply
   ./scripts/apply-tool-findings.sh \
