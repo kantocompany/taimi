@@ -1,10 +1,28 @@
 {
   "meta": {
     "version": "2026-06-14",
-    "updated_at": "2026-06-14T12:57:25Z",
+    "updated_at": "2026-06-14T13:43:21Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-14",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "plans.4.base_price.amount: added 100.00",
+      "details": {
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-06-14",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plans.7.base_price.amount: added 100.00; plans.7.overage.price_per_unit: added 0.04; plans.8.base_price.amount: added 100.00; plans.8.overage.price_per_unit: added 0.04",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-06-14",
       "tool": "augment-code",

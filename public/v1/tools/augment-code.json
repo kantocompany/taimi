@@ -105,7 +105,7 @@
         "name": "Business",
         "category": "team",
         "base_price": {
-          "amount": null,
+          "amount": 100.00,
           "period": null,
           "per": "flat"
         },
