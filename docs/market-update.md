@@ -23,6 +23,17 @@ Do not read or edit `public/v1/tools.json`, `public/v1/tools/*.json`, or `public
 2. **When in doubt, make the change.** A human reviewer will check the PR. False positives are far better than false negatives.
 3. **Never skip a finding silently.** If you identify something that looks wrong but decide not to change it, add a note to the relevant plan's `notes` field explaining why.
 
+## Schema conventions you must follow
+
+Every plan you create or edit must follow these. They are load-bearing for the auto-removal clock, build validation, and page rendering. See `CLAUDE.md` for full field definitions and the category/unit/mechanism enums.
+
+1. **Stamp `_last_seen_on_page` on every plan you create or flesh out.** After `add-tool.sh` creates a skeleton, when you write the tool's real plans set each plan's `_last_seen_on_page` to today's date (given at the top of your prompt). The auto-removal clock depends on it; a plan missing the field starts with no clock. Source-only — stripped from public API output.
+2. **Notes must not duplicate structured fields.** Never restate a value that already lives in `overage.price_per_unit`, `overage.input_per_million` / `output_per_million`, or `includes.premium_requests`. The page renders these from the structured fields (premium-request counts via a helper in `generate-index.sh`), so duplicating them in `notes` causes drift. `validate.sh` **fails the build** if an `overage.notes` `$N/<unit>` fragment restates the structured rate for that plan's `overage.unit`. Unit-carrier prose for units with no structured field (session-hour, container-hour, effort) is exempt.
+3. **Preserve `_pending` markers.** If a plan already carries a `_pending` field (a deferred "revisit when vendor publishes X" decision), copy it unchanged. Do not invent new ones — those are operator-set.
+4. **Match the existing plan schema and enums.** Use the files in `data/tools/` as templates. Plan `category` must be one of `free`/`individual`/`team`/`enterprise`/`usage`; `overage.unit` one of `token`/`request`/`acu`; `overage.mechanism` one of `automatic`/`add_on`/`byok`/`unverified`.
+
+A violation of #2 or #4 will fail `validate.sh` (run after you finish), leaving you a chance to fix before the PR is created.
+
 ## Tool cap
 
 Taimi tracks a maximum of **12 tools**. This cap keeps the dataset focused, CI costs manageable, and the comparison page scannable.

@@ -52,6 +52,7 @@ jobs:
           prompt: |
             Today is ${{ env.DATE }}.
             Read docs/market-update.md and execute.
+            When you add or flesh out a tool, set every plan's _last_seen_on_page to ${{ env.DATE }}; do not restate values that live in structured fields (overage rates, premium_requests counts) in plan notes — validate.sh will fail the build; and preserve any existing _pending markers unchanged.
           claude_args: |
             --model claude-sonnet-4-6
             --max-turns 30
@@ -104,6 +105,7 @@ jobs:
 
           ### Review checklist
           - [ ] New tools meet inclusion criteria (3+ search hits, 30+ days public, public pricing)
+          - [ ] New-tool plans carry `_last_seen_on_page` and notes don't duplicate structured fields
           - [ ] Removed/archived tools confirmed against official sources
           - [ ] Observations in `data/observations.html` are factually correct
           - [ ] `changelog.json` has entries for all changes

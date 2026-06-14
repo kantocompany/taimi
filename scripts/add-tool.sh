@@ -36,7 +36,7 @@ if [[ "$current" -ge "$MAX_TOOLS" ]]; then
   exit 1
 fi
 
-jq -n --arg slug "$SLUG" '{
+jq -n --arg slug "$SLUG" --arg datestr "$DATE" '{
   slug: $slug,
   name: "TODO",
   vendor: {
@@ -54,7 +54,8 @@ jq -n --arg slug "$SLUG" '{
       category: "free",
       base_price: { amount: 0, period: "monthly", per: "user" },
       includes: { premium_requests: null, tokens_included: null, notes: "TODO" },
-      overage: null
+      overage: null,
+      _last_seen_on_page: $datestr
     }
   ],
   capabilities: {

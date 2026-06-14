@@ -26,7 +26,7 @@ echo "Market update $DATE — model: $MODEL, max-turns: $MAX_TURNS"
 echo "Log: $LOGFILE"
 echo ""
 
-claude -p "Today is $DATE. Read docs/market-update.md and execute." \
+claude -p "Today is $DATE. Read docs/market-update.md and execute. When you add or flesh out a tool, set every plan's _last_seen_on_page to $DATE; do not restate values that live in structured fields (overage rates, premium_requests counts) in plan notes — validate.sh will fail the build; and preserve any existing _pending markers unchanged." \
   --model "$MODEL" --max-turns "$MAX_TURNS" --verbose \
   --output-format stream-json \
   --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *),Bash(ls *),Bash(bash scripts/*),Bash(bash ./scripts/*)" \
