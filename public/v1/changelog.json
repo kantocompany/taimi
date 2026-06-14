@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-06-11",
-    "updated_at": "2026-06-11T09:29:05Z",
+    "version": "2026-06-14",
+    "updated_at": "2026-06-14T12:57:25Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-14",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "plans.4.id: added augment-business; plans.4.name: added Business; plans.4.base_price.per: added flat",
+      "details": {
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-06-14",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plans.7.id: added kiro-pro-max; plans.7.name: added Pro Max; plans.7.category: added individual; plans.7.base_price.period: added monthly; plans.7.base_price.per: added user; plans.7.overage.unit: added acu; plans.7.overage.mechanism: added automatic; plans.8.id: added kiro-team-pro-max; plans.8.category: added team; plans.8.base_price.period: added monthly; plans.8.base_price.per: added user; plans.8.overage.unit: added acu; plans.8.overage.mechanism: added automatic",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-06-14",
       "tool": null,
