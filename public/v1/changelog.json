@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-06-14",
-    "updated_at": "2026-06-14T13:43:21Z",
+    "version": "2026-06-17",
+    "updated_at": "2026-06-17T07:06:52Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-17",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "plans.4.overage.mechanism: added add_on",
+      "details": {
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-06-17",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "platform.bundled_with.2: Research → Design; platform.bundled_with.3: Projects → Research; platform.bundled_with.4: added Projects",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-06-14",
       "tool": "augment-code",

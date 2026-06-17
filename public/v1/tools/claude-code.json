@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-14",
-    "updated_at": "2026-06-14T00:00:00Z",
+    "version": "2026-06-17",
+    "updated_at": "2026-06-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -23,6 +23,7 @@
       "bundled_with": [
         "Claude.ai web/desktop",
         "Cowork",
+        "Design",
         "Research",
         "Projects"
       ],

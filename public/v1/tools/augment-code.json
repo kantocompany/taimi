@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-14",
-    "updated_at": "2026-06-14T00:00:00Z",
+    "version": "2026-06-17",
+    "updated_at": "2026-06-17T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -112,11 +112,11 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": null
+          "notes": "50 seats max, $100/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions"
         },
         "overage": {
           "unit": null,
-          "mechanism": null,
+          "mechanism": "add_on",
           "price_per_unit": null,
           "notes": "Pay-as-you-go top-ups; top-up credits expire 12 months",
           "input_per_million": null,
