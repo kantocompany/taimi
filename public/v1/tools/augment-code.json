@@ -112,7 +112,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "50 seats max, $100/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions"
+          "notes": "50 seats max, $100/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions, standard size compute"
         },
         "overage": {
           "unit": null,

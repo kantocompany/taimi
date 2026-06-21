@@ -32,7 +32,7 @@
         "notes": "Le Chat Free — limited coding sessions, chat, search, image generation"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     },
     {
       "id": "mistral-pro",
@@ -47,7 +47,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; $5.99/mo for verified students"
+        "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; up to 15GB document storage; $5.99/mo for verified students"
       },
       "overage": {
         "unit": "token",
@@ -58,7 +58,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     },
     {
       "id": "mistral-team",
@@ -84,7 +84,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     },
     {
       "id": "mistral-api-devstral2",
@@ -101,24 +101,7 @@
         "notes": "123B param, 256K context",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-06-17"
-    },
-    {
-      "id": "mistral-api-devstral-medium",
-      "name": "Devstral Medium API",
-      "category": "usage",
-      "base_price": null,
-      "includes": null,
-      "overage": {
-        "unit": "token",
-        "mechanism": "automatic",
-        "input_per_million": 0.40,
-        "output_per_million": 2.00,
-        "model": "devstral-medium-1",
-        "notes": "Enterprise-grade SWE model, API-only; deprecated 2026-02-27, retiring 2026-05-31, replace with Devstral 2",
-        "price_per_unit": null
-      },
-      "_last_seen_on_page": "2026-05-31"
+      "_last_seen_on_page": "2026-06-21"
     },
     {
       "id": "mistral-enterprise",
@@ -132,7 +115,7 @@
         "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     }
   ],
   "capabilities": {

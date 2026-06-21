@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-06-17",
-    "updated_at": "2026-06-17T07:06:52Z",
+    "version": "2026-06-21",
+    "updated_at": "2026-06-21T10:50:53Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-06-21",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "Renamed Teams plan to Teams Standard; removed 3 Bugbot tiers (Bugbot Pro, Bugbot Teams, Bugbot Enterprise) — absent from pricing page for 21+ days (sunset)",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
+    {
+      "date": "2026-06-21",
+      "tool": "mistral-vibe",
+      "type": "pricing_change",
+      "description": "Removed Devstral Medium API plan (deprecated 2026-02-27, retired 2026-05-31) — absent from pricing page for 21+ days",
+      "details": {
+        "source": "https://mistral.ai/pricing"
+      }
+    },
     {
       "date": "2026-06-17",
       "tool": "augment-code",

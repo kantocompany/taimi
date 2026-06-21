@@ -113,7 +113,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "50 seats max, $100/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions"
+            "notes": "50 seats max, $100/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions, standard size compute"
           },
           "overage": {
             "unit": null,
@@ -580,7 +580,7 @@
         },
         {
           "id": "cursor-business",
-          "name": "Teams",
+          "name": "Teams Standard",
           "category": "team",
           "base_price": {
             "amount": 40.00,
@@ -610,50 +610,6 @@
             "premium_requests": null,
             "tokens_included": null,
             "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, priority support, account management, Bugbot on custom plan"
-          },
-          "overage": null
-        },
-        {
-          "id": "cursor-bugbot-pro",
-          "name": "Bugbot Pro",
-          "category": "individual",
-          "base_price": {
-            "amount": 40.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Automated PR reviews; up to 200 PRs/month, Bugbot rules access, 14-day trial"
-          },
-          "overage": null
-        },
-        {
-          "id": "cursor-bugbot-teams",
-          "name": "Bugbot Teams",
-          "category": "team",
-          "base_price": {
-            "amount": 40.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Automated PR reviews; unlimited PRs/month, advanced rules, analytics, 14-day trial"
-          },
-          "overage": null
-        },
-        {
-          "id": "cursor-bugbot-enterprise",
-          "name": "Bugbot Enterprise",
-          "category": "enterprise",
-          "base_price": null,
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Automated PR reviews; advanced analytics, priority support, 30-day trial"
           },
           "overage": null
         }
@@ -907,7 +863,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; new signups paused 2026-04-20"
+            "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; signups gradually re-enabling (2026-06-21)"
           },
           "overage": {
             "unit": "request",
@@ -930,7 +886,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
+            "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; signups gradually re-enabling (2026-06-21)"
           },
           "overage": {
             "unit": "request",
@@ -1060,7 +1016,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1083,7 +1039,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1106,7 +1062,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1129,7 +1085,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1152,7 +1108,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1175,7 +1131,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.6; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls"
+            "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1198,7 +1154,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": null
+            "notes": "5,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1221,7 +1177,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": null
+            "notes": "5,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1291,7 +1247,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; $5.99/mo for verified students"
+            "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; up to 15GB document storage; $5.99/mo for verified students"
           },
           "overage": {
             "unit": "token",
@@ -1341,22 +1297,6 @@
             "output_per_million": 2.00,
             "model": "devstral-2",
             "notes": "123B param, 256K context",
-            "price_per_unit": null
-          }
-        },
-        {
-          "id": "mistral-api-devstral-medium",
-          "name": "Devstral Medium API",
-          "category": "usage",
-          "base_price": null,
-          "includes": null,
-          "overage": {
-            "unit": "token",
-            "mechanism": "automatic",
-            "input_per_million": 0.40,
-            "output_per_million": 2.00,
-            "model": "devstral-medium-1",
-            "notes": "Enterprise-grade SWE model, API-only; deprecated 2026-02-27, retiring 2026-05-31, replace with Devstral 2",
             "price_per_unit": null
           }
         },
@@ -1419,7 +1359,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Plus subscription; GPT-5.5, GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
+            "notes": "ChatGPT Plus subscription; GPT-5.5, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
           },
           "overage": null
         },

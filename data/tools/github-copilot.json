@@ -23,7 +23,7 @@
         "notes": "50 agent mode/chat req/mo, 2K completions"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     },
     {
       "id": "copilot-pro",
@@ -37,7 +37,7 @@
       "includes": {
         "premium_requests": 300,
         "tokens_included": null,
-        "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; new signups paused 2026-04-20"
+        "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; signups gradually re-enabling (2026-06-21)"
       },
       "overage": {
         "unit": "request",
@@ -47,7 +47,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     },
     {
       "id": "copilot-pro-plus",
@@ -61,7 +61,7 @@
       "includes": {
         "premium_requests": 1500,
         "tokens_included": null,
-        "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
+        "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; signups gradually re-enabling (2026-06-21)"
       },
       "overage": {
         "unit": "request",
@@ -71,7 +71,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     },
     {
       "id": "copilot-business",
@@ -143,7 +143,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-06-17"
+      "_last_seen_on_page": "2026-06-21"
     }
   ],
   "capabilities": {

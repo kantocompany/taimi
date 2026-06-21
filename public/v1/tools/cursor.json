@@ -106,7 +106,7 @@
       },
       {
         "id": "cursor-business",
-        "name": "Teams",
+        "name": "Teams Standard",
         "category": "team",
         "base_price": {
           "amount": 40.00,
@@ -136,50 +136,6 @@
           "premium_requests": null,
           "tokens_included": null,
           "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, priority support, account management, Bugbot on custom plan"
-        },
-        "overage": null
-      },
-      {
-        "id": "cursor-bugbot-pro",
-        "name": "Bugbot Pro",
-        "category": "individual",
-        "base_price": {
-          "amount": 40.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Automated PR reviews; up to 200 PRs/month, Bugbot rules access, 14-day trial"
-        },
-        "overage": null
-      },
-      {
-        "id": "cursor-bugbot-teams",
-        "name": "Bugbot Teams",
-        "category": "team",
-        "base_price": {
-          "amount": 40.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Automated PR reviews; unlimited PRs/month, advanced rules, analytics, 14-day trial"
-        },
-        "overage": null
-      },
-      {
-        "id": "cursor-bugbot-enterprise",
-        "name": "Bugbot Enterprise",
-        "category": "enterprise",
-        "base_price": null,
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Automated PR reviews; advanced analytics, priority support, 30-day trial"
         },
         "overage": null
       }

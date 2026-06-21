@@ -43,7 +43,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Plus subscription; GPT-5.5, GPT-5.4, GPT-5.3-Codex; GPT-5.4-mini with 3.3x higher usage limits; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
+          "notes": "ChatGPT Plus subscription; GPT-5.5, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
         },
         "overage": null
       },

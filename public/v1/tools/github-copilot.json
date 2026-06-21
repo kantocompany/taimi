@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; new signups paused 2026-04-20"
+          "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; signups gradually re-enabling (2026-06-21)"
         },
         "overage": {
           "unit": "request",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": 1500,
           "tokens_included": null,
-          "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; new signups paused 2026-04-20"
+          "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; signups gradually re-enabling (2026-06-21)"
         },
         "overage": {
           "unit": "request",
