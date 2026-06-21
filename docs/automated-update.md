@@ -43,9 +43,10 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 1. Cron fires at **02:00 UTC Sunday** (or manual dispatch)
 2. Checks for open `market-update` PR — skips if one exists
 3. Runs Claude Code agent with `market-update.md` (creates/deletes files in `data/tools/`, edits `data/observations.html`, edits `public/v1/changelog.json`)
-4. Post-agent build: `assemble.sh` + `generate-index.sh` + `validate.sh`
-5. If changes exist, commits `data/` + `public/` and opens a PR
-6. Human reviews and merges
+4. **Scope guard** (`guard-market-update.sh`): deterministic post-agent gate that reverts any intra-file edit to a *surviving* `data/tools/*.json` file (tool-update / price-update scope). Whole-file add/remove — the tool-set changes market-update owns — pass through untouched. Keeps market-update's scope from overlapping the other two workflows.
+5. Post-agent build: `assemble.sh` + `generate-index.sh` + `validate.sh`
+6. If changes exist, commits `data/` + `public/` and opens a PR
+7. Human reviews and merges
 
 ## Agent configuration
 
@@ -123,6 +124,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 - Independent labels (`price-update` / `market-update` / `tool-update`) — workflows don't block each other
 - Matrix isolation — one tool's verification failure doesn't affect others
 - **Research/edit separation** (price-update, tool-update) — research agent cannot edit data files (Edit tool disallowed). Data file restored via `git checkout` after research phase as safety net.
+- **Scope guard** (market-update) — `guard-market-update.sh` runs after the agent and reverts any intra-file edit to a surviving `data/tools/*.json` file via `git checkout HEAD`. Permits whole-file add/remove (`--diff-filter=M` excludes untracked adds and `D` deletes). Deterministic enforcement of the zero-overlap boundary that the runbook alone could not (operational-notes 2026-06-14 → 2026-06-21). Same `git checkout` safety-net idiom as the matrix workflows, applied to the monolithic one.
 - **Deterministic diff** (price-update, tool-update) — jq script compares findings against current data. Price-update compares only price-bearing fields; tool-update categorizes changes as structural vs editorial and excludes price fields, capabilities, `verification_override` (operator-only field), and notes changes that drop or modify operator transparency markers (`UNVERIFIED_*:`, `UNCONFIRMED:`).
 - **Clean-slate validation** (price-update, tool-update) — validation agent has no access to research agent's reasoning, runbook, or repo files. Can only fetch web content. Prevents confirmation bias.
 - **Deterministic apply** (price-update, tool-update) — jq script applies only confirmed changes. Tool-update preserves price fields from original and gates all changes on validation verdicts. Plan-set changes have two stricter sub-gates: (a) new-plan addition honors per-field verdicts — sub-fields the validator rejects are nulled rather than copied from the research agent (closes the apply asymmetry that let a `$0.04/req` overage fabrication into copilot-student on 2026-05-20); (b) plan removals are gated by temporal persistence — every plan carries `_last_seen_on_page`, bumped to the current date whenever the research agent enumerates it on a successful fetch, and auto-removal only fires after the plan has been continuously absent for 21+ days (replaces the LLM "absence-of-listing equals exclusion" path that prematurely removed Cursor's 3 Bugbot tiers on 2026-05-20, 19 days ahead of the announced sunset).

@@ -34,7 +34,13 @@ claude -p "Today is $DATE. Read docs/market-update.md and execute. When you add 
   2>&1 | tee "$LOGFILE"
 
 echo ""
-echo "Agent complete. Building..."
+echo "Agent complete. Enforcing market-update scope..."
+# Revert any intra-file edit to a surviving tool — that is tool-update / price-update
+# scope. Whole-file add/remove (the tool-set changes market-update owns) pass through.
+./scripts/guard-market-update.sh
+
+echo ""
+echo "Building..."
 ASSEMBLE_DATE="$DATE" ./scripts/assemble.sh
 ./scripts/generate-index.sh
 ./scripts/validate.sh

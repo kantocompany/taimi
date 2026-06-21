@@ -19,9 +19,27 @@ Do not read or edit `public/v1/tools.json`, `public/v1/tools/*.json`, or `public
 
 ## Decision rules (mandatory)
 
-1. **Finding → edit immediately.** When the market scan or representation review reveals a change, edit the relevant `data/tools/{slug}.json` file right away. Do not just note it — apply it.
+1. **Finding → act immediately, in the right lane.** When the market scan reveals a tool to **add** or **remove**, do it now (`add-tool.sh` / `archive-tool.sh`) — do not just note it. But intra-file edits to a *surviving* tool (plans, notes, terminology, prices) are **out of scope** — see "Out of scope" below. Flag those for tool-update / price-update; do not edit the file.
 2. **When in doubt, make the change.** A human reviewer will check the PR. False positives are far better than false negatives.
-3. **Never skip a finding silently.** If you identify something that looks wrong but decide not to change it, add a note to the relevant plan's `notes` field explaining why.
+3. **Never skip a finding silently.** If you identify something that looks wrong but decide not to change it, note it in the cycle document (`docs/YYYY-MM-DD-changes.md`) for the right pipeline to pick up.
+
+## Out of scope (other workflows own this)
+
+Market-update changes the **tool set** and the **editorial surfaces** — nothing else.
+
+| Allowed here | How |
+|---|---|
+| Add a whole new tool | `bash scripts/add-tool.sh {slug} "desc"` then fill the new file |
+| Remove a whole tool | `bash scripts/archive-tool.sh {slug} "reason"` |
+| Edit observations | `data/observations.html` |
+| Changelog entries | written by `add-tool.sh` / `archive-tool.sh` |
+
+**Do NOT make intra-file field edits to a surviving tool file** — plan add/remove/rename, category changes, notes, vendor/platform **rebrand or terminology drift**, prices, overage, or `_last_seen_on_page` on an existing tool. Those belong to:
+
+- **tool-update** (`docs/tool-update.md`) — structure, terminology, plan set, notes
+- **price-update** (`docs/price-update.md`) — `base_price.amount`, overage rates
+
+This boundary is **enforced deterministically**: `scripts/guard-market-update.sh` runs after this agent and reverts any modification to a surviving `data/tools/*.json` file before the build. Out-of-scope edits will not reach the PR — so editing them here is wasted work. Flag the finding for the owning pipeline instead.
 
 ## Schema conventions you must follow
 
@@ -110,8 +128,8 @@ For each tool in `data/tools/`:
    - Verify against official source
    - If confirmed: archive the tool (see archival process above)
 3. If the tool has been **rebranded** (name change, new parent company):
-   - Update the tool's `data/tools/{slug}.json` file
-   - Add changelog entry
+   - If the rebrand changes the slug/identity (the tool is effectively a different product): `archive-tool.sh` the old slug + `add-tool.sh` the new one.
+   - If the slug stays the same (e.g., a vendor/product rename within the existing file): this is **terminology drift — tool-update scope** (`tool-update.md` item 4). Do **not** edit the file here; flag it in the cycle document. The guard reverts such edits anyway (see "Out of scope").
 
 ### Part C — Document findings
 
@@ -124,7 +142,7 @@ Create `docs/YYYY-MM-DD-changes.md` as a **working document** during the cycle. 
 
 ## Representation review
 
-Per-tool structural review (annual pricing, missing plans, terminology drift, etc.) is handled by the weekly `tool-update.yml` workflow. See `docs/tool-update.md` for the full checklist. Do not duplicate that work here.
+Per-tool structural review (annual pricing, missing plans, terminology drift, etc.) is handled by the weekly `tool-update.yml` workflow. See `docs/tool-update.md` for the full checklist. Do not duplicate that work here — `scripts/guard-market-update.sh` reverts any such intra-file edit after this run (see "Out of scope").
 
 ## Observations review
 

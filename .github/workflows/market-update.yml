@@ -60,6 +60,13 @@ jobs:
             --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *),Bash(ls *),Bash(bash scripts/*),Bash(bash ./scripts/*)"
             --disallowedTools "Bash(rm *),Bash(curl *),Bash(wget *),Bash(npm *),Bash(pip *),Bash(sudo *)"
 
+      - name: Guard market-update scope
+        if: ${{ !steps.check-pr.outputs.skip }}
+        # Revert any intra-file edit to a surviving tool (tool-update / price-update
+        # scope). Whole-file add/remove — the tool-set changes market-update owns —
+        # pass through. See docs/market-update.md "Out of scope".
+        run: ./scripts/guard-market-update.sh
+
       - name: Build
         if: ${{ !steps.check-pr.outputs.skip }}
         run: |
