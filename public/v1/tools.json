@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-21",
-    "updated_at": "2026-06-21T00:00:00Z",
+    "version": "2026-06-24",
+    "updated_at": "2026-06-24T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -467,7 +467,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "JetBrains, SSO/OIDC, SCIM provisioning, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions, VPC deployments, OpenTelemetry"
+            "notes": "JetBrains, SSO/OIDC, SCIM provisioning, SLA, dedicated support, priority support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions, VPC deployments, OpenTelemetry"
           },
           "overage": null
         }
@@ -955,7 +955,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$200/mo AI Credits; new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01"
+            "notes": "$200/mo AI Credits; new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24)"
           },
           "overage": {
             "unit": null,
@@ -1000,7 +1000,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "50 credits/mo; open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan; unavailable in AWS GovCloud regions"
+            "notes": "50 credits/mo; open-weight models and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
           },
           "overage": null
         },

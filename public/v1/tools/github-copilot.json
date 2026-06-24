@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-21",
-    "updated_at": "2026-06-21T00:00:00Z",
+    "version": "2026-06-24",
+    "updated_at": "2026-06-24T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -139,7 +139,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$200/mo AI Credits; new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01"
+          "notes": "$200/mo AI Credits; new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24)"
         },
         "overage": {
           "unit": null,

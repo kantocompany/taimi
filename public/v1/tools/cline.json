@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-21",
-    "updated_at": "2026-06-21T00:00:00Z",
+    "version": "2026-06-24",
+    "updated_at": "2026-06-24T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -50,7 +50,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "JetBrains, SSO/OIDC, SCIM provisioning, SLA, dedicated support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions, VPC deployments, OpenTelemetry"
+          "notes": "JetBrains, SSO/OIDC, SCIM provisioning, SLA, dedicated support, priority support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions, VPC deployments, OpenTelemetry"
         },
         "overage": null
       }
