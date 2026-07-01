@@ -1,10 +1,19 @@
 {
   "meta": {
     "version": "2026-07-01",
-    "updated_at": "2026-07-01T06:52:00Z",
+    "updated_at": "2026-07-01T07:25:32Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-07-01",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.16.overage.input_per_million: added 2.00; plans.16.overage.output_per_million: added 10.00",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-07-01",
       "tool": "augment-code",

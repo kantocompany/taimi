@@ -301,8 +301,8 @@
       "overage": {
         "unit": "token",
         "mechanism": "automatic",
-        "input_per_million": null,
-        "output_per_million": null,
+        "input_per_million": 2.00,
+        "output_per_million": 10.00,
         "model": null,
         "notes": "Introductory pricing through 2026-08-31; then $3/$15 per 1M tokens",
         "price_per_unit": null
