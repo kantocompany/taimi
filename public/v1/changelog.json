@@ -1,10 +1,37 @@
 {
   "meta": {
-    "version": "2026-06-21",
-    "updated_at": "2026-06-21T10:50:53Z",
+    "version": "2026-07-01",
+    "updated_at": "2026-07-01T06:52:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-07-01",
+      "tool": "augment-code",
+      "type": "pricing_change",
+      "description": "Removed 3 tiers (Indie, Standard, Max) — absent from pricing page for 21+ days after restructure; surviving Business and Enterprise plans unchanged",
+      "details": {
+        "source": "https://www.augmentcode.com/pricing"
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans.16.id: added claude-code-api-sonnet5; plans.16.name: added API (Sonnet 5); plans.16.category: added usage; plans.16.overage.unit: added token; plans.16.overage.mechanism: added automatic",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "tool": "gemini-code-assist",
+      "type": "pricing_change",
+      "description": "Removed Individual (free) tier — sunset 2026-06-18, absent from pricing page for 21+ days; surviving Standard ($22.80) and Enterprise ($54) plans unchanged",
+      "details": {
+        "source": "https://cloud.google.com/products/gemini/pricing"
+      }
+    },
     {
       "date": "2026-06-21",
       "tool": "cursor",

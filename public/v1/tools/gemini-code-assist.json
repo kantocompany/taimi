@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-24",
-    "updated_at": "2026-06-24T00:00:00Z",
+    "version": "2026-07-01",
+    "updated_at": "2026-07-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -19,22 +19,6 @@
       "pricing_url": "https://cloud.google.com/products/gemini/pricing"
     },
     "plans": [
-      {
-        "id": "gemini-code-assist-individual",
-        "name": "Individual",
-        "category": "free",
-        "base_price": {
-          "amount": 0,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Free for individuals. 6,000 code completions and 240 chat requests/day. 1,000 CLI/Agent mode requests/day. No credit card required. Google AI Pro/Ultra subscribers get higher daily limits. SUNSET 2026-06-18: IDE Extensions and Gemini CLI stop serving requests; migrate to Antigravity."
-        },
-        "overage": null
-      },
       {
         "id": "gemini-code-assist-standard",
         "name": "Standard",

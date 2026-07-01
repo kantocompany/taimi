@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-24",
-    "updated_at": "2026-06-24T00:00:00Z",
+    "version": "2026-07-01",
+    "updated_at": "2026-07-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -19,75 +19,6 @@
       "pricing_url": "https://www.augmentcode.com/pricing"
     },
     "plans": [
-      {
-        "id": "augment-indie",
-        "name": "Indie",
-        "category": "individual",
-        "base_price": {
-          "amount": 20.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "40K credits, 1 user, Context Engine, MCP & Native Tools, Code Review"
-        },
-        "overage": {
-          "unit": "request",
-          "mechanism": "automatic",
-          "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits; top-up credits expire 12 months",
-          "input_per_million": null,
-          "output_per_million": null
-        }
-      },
-      {
-        "id": "augment-standard",
-        "name": "Standard",
-        "category": "team",
-        "base_price": {
-          "amount": 60.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "130K credits, up to 20 users, credits pooled"
-        },
-        "overage": {
-          "unit": "request",
-          "mechanism": "automatic",
-          "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits; top-up credits expire 12 months",
-          "input_per_million": null,
-          "output_per_million": null
-        }
-      },
-      {
-        "id": "augment-max",
-        "name": "Max",
-        "category": "team",
-        "base_price": {
-          "amount": 200.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "450K credits, up to 20 users, credits pooled, email support, Cosmos"
-        },
-        "overage": {
-          "unit": "request",
-          "mechanism": "automatic",
-          "price_per_unit": null,
-          "notes": "Auto top-up $15/24K credits; top-up credits expire 12 months",
-          "input_per_million": null,
-          "output_per_million": null
-        }
-      },
       {
         "id": "augment-enterprise",
         "name": "Enterprise",

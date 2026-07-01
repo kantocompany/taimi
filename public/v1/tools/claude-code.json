@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-06-24",
-    "updated_at": "2026-06-24T00:00:00Z",
+    "version": "2026-07-01",
+    "updated_at": "2026-07-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -157,7 +157,7 @@
           "input_per_million": 3.00,
           "output_per_million": 15.00,
           "model": "claude-sonnet-4-6",
-          "notes": "Default model for Pro/Teams Standard",
+          "notes": "Legacy model",
           "price_per_unit": null
         }
       },
@@ -283,7 +283,23 @@
           "input_per_million": 10.00,
           "output_per_million": 50.00,
           "model": "claude-fable-5",
-          "notes": null,
+          "notes": "Marked unavailable on vendor page 2026-07-01",
+          "price_per_unit": null
+        }
+      },
+      {
+        "id": "claude-code-api-sonnet5",
+        "name": "API (Sonnet 5)",
+        "category": "usage",
+        "base_price": null,
+        "includes": null,
+        "overage": {
+          "unit": "token",
+          "mechanism": "automatic",
+          "input_per_million": null,
+          "output_per_million": null,
+          "model": null,
+          "notes": "Introductory pricing through 2026-08-31; then $3/$15 per 1M tokens",
           "price_per_unit": null
         }
       }
