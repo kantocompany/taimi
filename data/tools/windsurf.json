@@ -78,14 +78,14 @@
       "name": "Teams",
       "category": "team",
       "base_price": {
-        "amount": 40.00,
+        "amount": 80.00,
         "period": "monthly",
-        "per": "user"
+        "per": "flat"
       },
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Unlimited team members; Share and collaborate; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
+        "notes": "Unlimited team members; Share and collaborate; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention; $40/month per full developer seat"
       },
       "overage": {
         "unit": "request",
@@ -121,5 +121,5 @@
     "soc2": true,
     "on_premise": true
   },
-  "verification_override": "Product rebranded from Windsurf to Devin Desktop on 2026-06-02 (Cognition AI acquisition, Cascade engine replaced by Devin Local). Base prices: use rendering proxy r.jina.ai/https://windsurf.com/pricing (windsurf.com remains the pricing URL; devin.ai may also reflect updated pricing — check both). Current tiers: Free, Pro, Max, Teams, Enterprise. Overage: neither windsurf.com nor devin.ai currently publish per-unit rates publicly. Tier-specific features: Teams adds centralized billing, admin dashboard with analytics, priority support, automated zero data retention over Pro. Enterprise adds RBAC, SSO + access control, hybrid deployment, highest priority support, dedicated account management, custom terms over Teams."
+  "verification_override": "Product rebranded from Windsurf to Devin Desktop on 2026-06-02 (Cognition AI acquisition, Cascade engine replaced by Devin Local). Base prices: use rendering proxy r.jina.ai/https://windsurf.com/pricing (windsurf.com remains the pricing URL; devin.ai may also reflect updated pricing — check both). Current tiers: Free, Pro, Max, Teams, Enterprise. Teams pricing is two-part ('$80/month for team plan + $40/mo per full dev seat'): base_price carries the $80 flat base with per: flat, the $40 per-seat rate lives in includes.notes — mirrors devin-teams; do not switch base_price back to per-user. Overage: neither windsurf.com nor devin.ai currently publish per-unit rates publicly. Tier-specific features: Teams adds centralized billing, admin dashboard with analytics, priority support, automated zero data retention over Pro. Enterprise adds RBAC, SSO + access control, hybrid deployment, highest priority support, dedicated account management, custom terms over Teams."
 }

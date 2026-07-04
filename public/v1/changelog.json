@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-07-01",
-    "updated_at": "2026-07-01T07:25:32Z",
+    "version": "2026-07-04",
+    "updated_at": "2026-07-04T00:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-07-04",
+      "tool": "windsurf",
+      "type": "pricing_change",
+      "description": "Teams plan corrected to two-part pricing: $80/mo flat team base + $40/mo per full developer seat (was $40/user/mo)",
+      "details": {
+        "source": "https://windsurf.com/pricing"
+      }
+    },
     {
       "date": "2026-07-01",
       "tool": "claude-code",

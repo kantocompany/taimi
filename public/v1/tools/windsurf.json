@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-01",
-    "updated_at": "2026-07-01T00:00:00Z",
+    "version": "2026-07-04",
+    "updated_at": "2026-07-04T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -86,14 +86,14 @@
         "name": "Teams",
         "category": "team",
         "base_price": {
-          "amount": 40.00,
+          "amount": 80.00,
           "period": "monthly",
-          "per": "user"
+          "per": "flat"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Unlimited team members; Share and collaborate; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention"
+          "notes": "Unlimited team members; Share and collaborate; Pro-level quotas; centralized billing; admin dashboard with analytics; priority support; automated zero data retention; $40/month per full developer seat"
         },
         "overage": {
           "unit": "request",
