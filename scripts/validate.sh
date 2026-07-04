@@ -91,6 +91,28 @@ else
   echo "✓ All source files have required fields"
 fi
 
+# --- 3a. Plan-level structural completeness ---
+# A null plan name renders a blank tier label; a null category silently drops
+# the plan from every index.html column (2026-06-14 kiro/augment incident).
+# Backstop behind the apply-gate identity guard — catches any other vector.
+plan_offenders=$(for f in "${source_files[@]}"; do
+  jq -r '
+    .slug as $slug
+    | .plans[]?
+    | . as $p
+    | ("id", "name", "category") as $field
+    | select(($p[$field] // "") == "")
+    | "\($slug)/\($p.id // "?"): null or empty .\($field)"
+  ' "$f"
+done)
+if [[ -n "$plan_offenders" ]]; then
+  echo "FAIL: plans missing id, name, or category (ships as a visible site defect):"
+  echo "$plan_offenders" | sed 's/^/  /'
+  ((errors++)) || true
+else
+  echo "✓ All plans have id, name, and category"
+fi
+
 # --- 3b. Notes must not duplicate structured fields (Fix 6a regression guard) ---
 # Fires only when overage.notes carries a "$N/<word>" fragment whose <word> matches the
 # structured overage.unit AND whose number equals a structured rate (price_per_unit or

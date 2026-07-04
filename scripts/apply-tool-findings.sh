@@ -274,24 +274,28 @@ if [[ "$new_plans_count" -gt 0 ]]; then
       continue
     fi
 
-    # Shell-plan guard (Fix, 2026-05-31). Plan-level confirmation alone is not
-    # enough — the validator can confirm a plan_id based on a Pro-tier discount
-    # mention and reject every sub-field, leaving the per-field nullifier (Fix 1,
-    # 2026-05-24) to produce an id-only shell. Require at least one confirmed
-    # NON-id sub-field with non-null new value before the plan lands. The bare
-    # plan_id field (existence-only confirmation) does not count.
-    non_id_confirmed=$(jq --arg pid "$plan_id" --argjson idx "$plan_idx" \
+    # Structural-identity guard (Fix, 2026-07-04; supersedes the 2026-05-31
+    # shell-plan guard). Plan-level confirmation alone is not enough — the
+    # validator can confirm a plan_id and reject every sub-field, leaving the
+    # per-field nullifier (Fix 1, 2026-05-24) to produce an id-only shell
+    # (mistral-education, 2026-05-31). And a plan admitted with a null name or
+    # category ships as a visible defect: null category drops the plan from
+    # every index.html column, null name renders a blank tier label
+    # (kiro/augment, 2026-06-14). Require confirmed non-null NAME and CATEGORY
+    # before the plan lands; an unconfirmed plan gets re-proposed next cycle.
+    identity_confirmed=$(jq --arg pid "$plan_id" --argjson idx "$plan_idx" \
       '[.changes[]?
         | select(.confirmed == true)
         | select(.new != null)
-        | select(.field != "plan_id")
         | select(
             .plan_id == $pid
             or (.plan_id == null and (.field | startswith("plans.\($idx).")))
           )
-      ] | length' "$VALIDATED")
-    if [[ "$non_id_confirmed" -eq 0 ]]; then
-      echo "  Skipping shell plan (no confirmed sub-fields): $plan_id"
+        | .field | sub("^plans\\.[0-9]+\\."; "")
+      ] as $leaves
+      | (($leaves | index("name")) != null) and (($leaves | index("category")) != null)' "$VALIDATED")
+    if [[ "$identity_confirmed" != "true" ]]; then
+      echo "  Skipping plan without confirmed name/category: $plan_id"
       continue
     fi
 
