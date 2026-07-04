@@ -51,6 +51,15 @@ run_pipeline() {
   local logfile="logs/${slug}-tool-update.log"
   echo "━━━ $slug ━━━"
 
+  # Dirty-tree guard: the post-research safety checkout below reverts the data
+  # file to HEAD, silently wiping uncommitted operator edits (2026-05-17
+  # incident). Commit or stash before re-running this slug.
+  if [[ -n "$(git status --porcelain -- "data/tools/${slug}.json")" ]]; then
+    echo "  $slug: SKIPPED — uncommitted changes on data/tools/${slug}.json; commit or stash operator edits before running tool-update"
+    echo ""
+    return
+  fi
+
   # Phase 1: Research (no Edit permission)
   echo "  [$slug] Phase 1: Research"
   if claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged." \
@@ -196,6 +205,14 @@ run_pipeline_quiet() {
   local logfile="logs/${slug}-tool-update.log"
   local validate_logfile="logs/${slug}-tool-validate.log"
   echo "→ $slug: starting"
+
+  # Dirty-tree guard: the post-research safety checkout below reverts the data
+  # file to HEAD, silently wiping uncommitted operator edits (2026-05-17
+  # incident). Commit or stash before re-running this slug.
+  if [[ -n "$(git status --porcelain -- "data/tools/${slug}.json")" ]]; then
+    echo "  $slug: SKIPPED — uncommitted changes on data/tools/${slug}.json; commit or stash operator edits first"
+    return
+  fi
 
   # Phase 1: Research
   if ! claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged." \
