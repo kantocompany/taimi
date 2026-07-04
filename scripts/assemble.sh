@@ -47,12 +47,13 @@ fi
 echo "Assembling $tool_count tools..."
 
 # --- Build tools.json ---
-# Read all tool files, sort by slug, wrap in meta envelope
+# Read all tool files, sort by display name (slugs can outlive rebrands —
+# e.g. slug "windsurf" is now "Devin Desktop"), wrap in meta envelope
 jq -n \
   --arg version "$version" \
   --arg updated_at "$updated_at" \
   --argjson tool_count "$tool_count" \
-  --slurpfile tools <(jq -s '[.[] | del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page, ._pending)))] | sort_by(.slug)' "${files[@]}") \
+  --slurpfile tools <(jq -s '[.[] | del(.verification_override, ._notes_first_pass, ._capabilities_first_pass) | .plans = (.plans | map(del(._last_seen_on_page, ._pending)))] | sort_by(.name)' "${files[@]}") \
   '{
     meta: {
       version: $version,
