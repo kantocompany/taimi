@@ -172,7 +172,7 @@ generate_rows() {
 
     # Start row
     "        <!-- ============ \($tool.name) ============ -->",
-    "        <div class=\"row\($eu_class)\" data-name=\"\($tool.slug)\" data-individual=\"\($sort_individual | sort_num)\" data-team=\"\($sort_team | sort_num)\" data-free=\"\($sort_free | sort_num)\" data-enterprise=\"\($sort_enterprise)\" data-eu=\"\($sort_eu)\">",
+    "        <div class=\"row\($eu_class)\" data-name=\"\($tool.name)\" data-individual=\"\($sort_individual | sort_num)\" data-team=\"\($sort_team | sort_num)\" data-free=\"\($sort_free | sort_num)\" data-enterprise=\"\($sort_enterprise)\" data-eu=\"\($sort_eu)\">",
 
     # Vendor cell
     "        <div class=\"vendor-cell\">",
