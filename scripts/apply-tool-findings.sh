@@ -131,7 +131,7 @@ jq \
   def strip_new_annual($orig; $new):
     if (($orig // "") | test("Annual billing:")) then $new
     elif ($new | test("Annual billing:")) then
-      $new | gsub("[; ]*Annual billing: \\$[0-9.,]+/mo[; ]*"; "; ")
+      $new | gsub("[; ]*Annual billing: \\$[0-9.,]+(/[a-z]+)*/mo[; ]*"; "; ")
            | gsub("^[; ]+|[; ]+$"; "")
     else $new
     end;
