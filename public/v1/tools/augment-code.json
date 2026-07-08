@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-04",
-    "updated_at": "2026-07-04T00:00:00Z",
+    "version": "2026-07-08",
+    "updated_at": "2026-07-08T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -27,7 +27,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support, custom VM sizes, unlimited concurrent sessions, Cosmos"
+          "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support, custom VM sizes, unlimited concurrent sessions, Cosmos, no AI training"
         },
         "overage": null
       },
@@ -43,7 +43,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "50 seats max, $100/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions, standard size compute"
+          "notes": "50 seats max, $100/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions, standard size compute, no AI training"
         },
         "overage": {
           "unit": null,

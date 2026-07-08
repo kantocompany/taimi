@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-04",
-    "updated_at": "2026-07-04T00:00:00Z",
+    "version": "2026-07-08",
+    "updated_at": "2026-07-08T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -77,7 +77,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Vendor page shows pay-as-you-go pricing (no fixed monthly shown); standard or usage-based seats; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
+          "notes": "Annual billing: $20/user/mo; minimum 2 users; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
         },
         "overage": null
       },
