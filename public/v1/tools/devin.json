@@ -108,7 +108,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited concurrent sessions"
+          "notes": "All Pro features; unlimited team members; shared collaboration; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions"
         },
         "overage": {
           "unit": "acu",

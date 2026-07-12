@@ -8,12 +8,10 @@
     "pricing_url": "https://antigravity.google/pricing"
   },
   "verification_override": "Pricing page at antigravity.google/pricing is JS-rendered; direct WebFetch returns only page title. Use Jina proxy: r.jina.ai/https://antigravity.google/pricing. Tier names confirmed from 2026-07-12 research: Free, AI Pro ($20/mo), AI Ultra ($100/mo), AI Ultra Max ($200/mo), Enterprise. Credits add-on: $25 per block of 2,500 AI credits ($0.01/credit); confirm mechanism is add_on vs automatic. Model availability: Gemini 3.5 Flash confirmed on Free; verify which models are available on paid tiers and whether third-party models (Claude, OpenAI) are offered. Team plan: no dedicated team tier observed — verify whether AI Pro/Ultra/UltraMax cover teams or if a Team plan exists between individual and Enterprise.",
-  "_notes_first_pass": true,
-  "_capabilities_first_pass": true,
   "plans": [
     {
       "id": "antigravity-free",
-      "name": "Free",
+      "name": "Individual",
       "category": "free",
       "base_price": {
         "amount": 0,
@@ -23,14 +21,14 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Limited AI credit quota; Gemini 3.5 Flash; desktop app for macOS/Windows/Linux; open local Git folders or create Git worktrees for complex tasks; autonomous agents plan, write, test, fix, and deploy code; public preview"
+        "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.5 Flash, Gemini 3.1 Pro, Gemini 3 Flash, Claude Sonnet & Opus 4.6, gpt-oss-120b"
       },
       "overage": null,
       "_last_seen_on_page": "2026-07-12"
     },
     {
       "id": "antigravity-pro",
-      "name": "AI Pro",
+      "name": "Google AI Pro",
       "category": "individual",
       "base_price": {
         "amount": 20.00,
@@ -40,13 +38,13 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Higher AI credit quota than Free; full model availability"
+        "notes": "More generous rate limits than Individual; flexible AI credit pool"
       },
       "overage": {
         "unit": null,
         "mechanism": "add_on",
         "price_per_unit": null,
-        "notes": "Additional AI credits purchasable as add-on ($25 per block of 2,500 credits, $0.01/credit); credit unit type (token vs request) not confirmed on vendor page",
+        "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
         "input_per_million": null,
         "output_per_million": null
       },
@@ -54,7 +52,7 @@
     },
     {
       "id": "antigravity-ultra",
-      "name": "AI Ultra",
+      "name": "Google AI Ultra",
       "category": "individual",
       "base_price": {
         "amount": 100.00,
@@ -64,13 +62,13 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Higher AI credit quota than AI Pro; full model availability"
+        "notes": "Enhanced rate limits and credit flexibility vs Google AI Pro"
       },
       "overage": {
         "unit": null,
         "mechanism": "add_on",
         "price_per_unit": null,
-        "notes": "Additional AI credits purchasable as add-on ($25 per block of 2,500 credits, $0.01/credit); credit unit type (token vs request) not confirmed on vendor page",
+        "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
         "input_per_million": null,
         "output_per_million": null
       },
@@ -102,13 +100,13 @@
     },
     {
       "id": "antigravity-enterprise",
-      "name": "Enterprise",
+      "name": "Organization",
       "category": "enterprise",
       "base_price": null,
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Enterprise deployment path; centralized billing; admin controls; contact-sales pricing"
+        "notes": "Consumption-based API pricing via Google Cloud; Google Cloud Project integration; access under Google Cloud Terms of Service"
       },
       "overage": null,
       "_last_seen_on_page": "2026-07-12"
@@ -117,7 +115,7 @@
   "capabilities": {
     "autonomy_level": "interactive_to_autonomous",
     "ide_type": "ide",
-    "model_choice": false,
+    "model_choice": true,
     "self_hosted": false,
     "fedramp": false,
     "eu_data_residency": false,
