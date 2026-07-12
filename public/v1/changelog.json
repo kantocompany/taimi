@@ -1,10 +1,26 @@
 {
   "meta": {
-    "version": "2026-07-04",
-    "updated_at": "2026-07-04T00:00:00Z",
+    "version": "2026-07-12",
+    "updated_at": "2026-07-12T00:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-07-12",
+      "tool": "antigravity",
+      "type": "new_tool",
+      "description": "Google's agent-first development platform — works with existing codebases via local Git folders and worktrees; autonomous agents plan, code, test, and deploy",
+      "details": {}
+    },
+    {
+      "date": "2026-07-12",
+      "tool": "gemini-code-assist",
+      "type": "removed_tool",
+      "description": "Archived Gemini Code Assist. Google's developer tooling pivoted to Antigravity (launched at Google I/O 2026) as the primary agentic development platform; Firebase Studio migrated to Antigravity; Gemini Code Assist individual tier sunset June 18 2026; remaining Standard/Enterprise tiers superseded within Google's lineup by Antigravity which has broader developer presence and a free individual tier",
+      "details": {
+        "reason": "Google's developer tooling pivoted to Antigravity (launched at Google I/O 2026) as the primary agentic development platform; Firebase Studio migrated to Antigravity; Gemini Code Assist individual tier sunset June 18 2026; remaining Standard/Enterprise tiers superseded within Google's lineup by Antigravity which has broader developer presence and a free individual tier"
+      }
+    },
     {
       "date": "2026-07-04",
       "tool": "windsurf",

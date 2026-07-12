@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-08",
-    "updated_at": "2026-07-08T00:00:00Z",
+    "version": "2026-07-12",
+    "updated_at": "2026-07-12T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -822,60 +822,6 @@
       }
     },
     {
-      "slug": "gemini-code-assist",
-      "name": "Gemini Code Assist",
-      "vendor": {
-        "name": "Google",
-        "hq_country": "US",
-        "eu_based": false,
-        "pricing_url": "https://cloud.google.com/products/gemini/pricing"
-      },
-      "plans": [
-        {
-          "id": "gemini-code-assist-standard",
-          "name": "Standard",
-          "category": "team",
-          "base_price": {
-            "amount": 22.80,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "1,500 CLI/Agent mode requests/day. 30-day free trial (up to 50 users). 12-month commitment: $19.00/user/month."
-          },
-          "overage": null
-        },
-        {
-          "id": "gemini-code-assist-enterprise",
-          "name": "Enterprise",
-          "category": "enterprise",
-          "base_price": {
-            "amount": 54.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "2,000 CLI/Agent mode requests/day, code customization from GitHub/GitLab/Bitbucket repos, VPC-SC, audit logs, CMEK, MCP server support in agentic chat. 30-day free trial (up to 50 users). 12-month commitment: $45.00/user/month."
-          },
-          "overage": null
-        }
-      ],
-      "capabilities": {
-        "autonomy_level": "interactive_to_autonomous",
-        "ide_type": "extension",
-        "model_choice": false,
-        "self_hosted": false,
-        "fedramp": false,
-        "eu_data_residency": true,
-        "soc2": true,
-        "on_premise": false
-      }
-    },
-    {
       "slug": "github-copilot",
       "name": "GitHub Copilot",
       "vendor": {
@@ -1025,6 +971,125 @@
         "fedramp": false,
         "eu_data_residency": true,
         "soc2": true,
+        "on_premise": false
+      }
+    },
+    {
+      "slug": "antigravity",
+      "name": "Google Antigravity",
+      "vendor": {
+        "name": "Google",
+        "hq_country": "US",
+        "eu_based": false,
+        "pricing_url": "https://antigravity.google/pricing"
+      },
+      "plans": [
+        {
+          "id": "antigravity-free",
+          "name": "Free",
+          "category": "free",
+          "base_price": {
+            "amount": 0,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Limited AI credit quota; Gemini 3.5 Flash; desktop app for macOS/Windows/Linux; open local Git folders or create Git worktrees for complex tasks; autonomous agents plan, write, test, fix, and deploy code; public preview"
+          },
+          "overage": null
+        },
+        {
+          "id": "antigravity-pro",
+          "name": "AI Pro",
+          "category": "individual",
+          "base_price": {
+            "amount": 20.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Higher AI credit quota than Free; full model availability"
+          },
+          "overage": {
+            "unit": null,
+            "mechanism": "add_on",
+            "price_per_unit": null,
+            "notes": "Additional AI credits purchasable as add-on ($25 per block of 2,500 credits, $0.01/credit); credit unit type (token vs request) not confirmed on vendor page",
+            "input_per_million": null,
+            "output_per_million": null
+          }
+        },
+        {
+          "id": "antigravity-ultra",
+          "name": "AI Ultra",
+          "category": "individual",
+          "base_price": {
+            "amount": 100.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Higher AI credit quota than AI Pro; full model availability"
+          },
+          "overage": {
+            "unit": null,
+            "mechanism": "add_on",
+            "price_per_unit": null,
+            "notes": "Additional AI credits purchasable as add-on ($25 per block of 2,500 credits, $0.01/credit); credit unit type (token vs request) not confirmed on vendor page",
+            "input_per_million": null,
+            "output_per_million": null
+          }
+        },
+        {
+          "id": "antigravity-ultra-max",
+          "name": "AI Ultra Max",
+          "category": "individual",
+          "base_price": {
+            "amount": 200.00,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Highest AI credit quota; full model availability"
+          },
+          "overage": {
+            "unit": null,
+            "mechanism": "add_on",
+            "price_per_unit": null,
+            "notes": "Additional AI credits purchasable as add-on ($25 per block of 2,500 credits, $0.01/credit); credit unit type (token vs request) not confirmed on vendor page",
+            "input_per_million": null,
+            "output_per_million": null
+          }
+        },
+        {
+          "id": "antigravity-enterprise",
+          "name": "Enterprise",
+          "category": "enterprise",
+          "base_price": null,
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Enterprise deployment path; centralized billing; admin controls; contact-sales pricing"
+          },
+          "overage": null
+        }
+      ],
+      "capabilities": {
+        "autonomy_level": "interactive_to_autonomous",
+        "ide_type": "ide",
+        "model_choice": false,
+        "self_hosted": false,
+        "fedramp": false,
+        "eu_data_residency": false,
+        "soc2": false,
         "on_premise": false
       }
     },
