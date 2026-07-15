@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-12",
-    "updated_at": "2026-07-12T00:00:00Z",
+    "version": "2026-07-15",
+    "updated_at": "2026-07-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -51,7 +51,7 @@
         },
         "overage": {
           "unit": null,
-          "mechanism": "add_on",
+          "mechanism": "unverified",
           "price_per_unit": null,
           "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
           "input_per_million": null,
@@ -70,11 +70,11 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Enhanced rate limits and credit flexibility vs Google AI Pro"
+          "notes": "Higher access to latest Gemini models vs Google AI Pro; enhanced rate limits and credit flexibility"
         },
         "overage": {
           "unit": null,
-          "mechanism": "add_on",
+          "mechanism": "unverified",
           "price_per_unit": null,
           "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
           "input_per_million": null,

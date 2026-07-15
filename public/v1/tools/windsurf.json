@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-12",
-    "updated_at": "2026-07-12T00:00:00Z",
+    "version": "2026-07-15",
+    "updated_at": "2026-07-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; Devin Local engine (replaces Cascade, 2026-06-02 rebrand); 2-week free trial for new users"
+          "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE 1.7; Devin Cloud sessions; Devin Local engine (replaces Cascade, 2026-06-02 rebrand); 2-week free trial for new users"
         },
         "overage": {
           "unit": "request",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6"
+          "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models and SWE 1.7"
         },
         "overage": {
           "unit": "request",

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-12",
-    "updated_at": "2026-07-12T00:00:00Z",
+    "version": "2026-07-15",
+    "updated_at": "2026-07-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -51,9 +51,9 @@
         },
         "overage": {
           "unit": "acu",
-          "mechanism": "automatic",
+          "mechanism": "add_on",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; credits metered at 0.01 minimum per task; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; add-on packs $5–$100; unused add-on credits expire 12 months from purchase",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -74,9 +74,9 @@
         },
         "overage": {
           "unit": "acu",
-          "mechanism": "automatic",
+          "mechanism": "add_on",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; add-on packs $5–$100; unused add-on credits expire 12 months from purchase",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -97,9 +97,9 @@
         },
         "overage": {
           "unit": "acu",
-          "mechanism": "automatic",
+          "mechanism": "add_on",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; add-on packs $5–$100; unused add-on credits expire 12 months from purchase",
           "input_per_million": null,
           "output_per_million": null
         }
@@ -189,9 +189,9 @@
         },
         "overage": {
           "unit": "acu",
-          "mechanism": "automatic",
+          "mechanism": "add_on",
           "price_per_unit": 0.04,
-          "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
+          "notes": "Kiro credits; credits metered at 0.01 minimum; add-on packs $5–$100; unused add-on credits expire 12 months from purchase",
           "input_per_million": null,
           "output_per_million": null
         }

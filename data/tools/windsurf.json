@@ -23,7 +23,7 @@
         "notes": "Light quota to code with agents; unlimited inline edits and Tab completions; limited model availability"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     },
     {
       "id": "windsurf-pro",
@@ -37,7 +37,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6; Devin Cloud sessions; Devin Local engine (replaces Cascade, 2026-06-02 rebrand); 2-week free trial for new users"
+        "notes": "Increased quotas; full model availability including OpenAI/Claude/Gemini frontier models and SWE 1.7; Devin Cloud sessions; Devin Local engine (replaces Cascade, 2026-06-02 rebrand); 2-week free trial for new users"
       },
       "overage": {
         "unit": "request",
@@ -47,7 +47,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     },
     {
       "id": "windsurf-max",
@@ -61,7 +61,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models and SWE-1.6"
+        "notes": "Significantly higher quotas than Pro; full model availability including OpenAI/Claude/Gemini frontier models and SWE 1.7"
       },
       "overage": {
         "unit": "request",
@@ -71,7 +71,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     },
     {
       "id": "windsurf-teams",
@@ -95,7 +95,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     },
     {
       "id": "windsurf-enterprise",
@@ -108,7 +108,7 @@
         "notes": "All Teams features; centralized enterprise admin controls; SAML/OIDC SSO; dedicated deployment option; highest priority support; dedicated account management; custom terms; volume discounts; contact-sales pricing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     }
   ],
   "capabilities": {

@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-07-12",
-    "updated_at": "2026-07-12T15:36:50Z",
+    "version": "2026-07-15",
+    "updated_at": "2026-07-15T08:12:07Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-07-15",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plans[antigravity-pro].overage.mechanism: add_on → unverified; plans[antigravity-ultra].overage.mechanism: add_on → unverified",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-07-15",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plans[kiro-pro].overage.mechanism: automatic → add_on; plans[kiro-pro-plus].overage.mechanism: automatic → add_on; plans[kiro-power].overage.mechanism: automatic → add_on; plans[kiro-pro-max].overage.mechanism: automatic → add_on",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-07-12",
       "tool": "antigravity",

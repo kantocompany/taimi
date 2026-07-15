@@ -32,7 +32,7 @@
         "notes": "Le Chat Free — limited coding sessions, chat, search, image generation"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     },
     {
       "id": "mistral-pro",
@@ -58,7 +58,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     },
     {
       "id": "mistral-team",
@@ -84,7 +84,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     },
     {
       "id": "mistral-api-devstral2",
@@ -115,7 +115,7 @@
         "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-12"
+      "_last_seen_on_page": "2026-07-15"
     }
   ],
   "capabilities": {

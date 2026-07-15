@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-12",
-    "updated_at": "2026-07-12T00:00:00Z",
+    "version": "2026-07-15",
+    "updated_at": "2026-07-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -60,7 +60,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini frontier); free SWE 1.6 and open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
+          "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini frontier); free SWE 1.7 and leading open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
         },
         "overage": {
           "unit": "acu",
