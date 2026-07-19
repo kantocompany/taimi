@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-15",
-    "updated_at": "2026-07-15T00:00:00Z",
+    "version": "2026-07-19",
+    "updated_at": "2026-07-19T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
+          "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price; Startup program: up to 1 year free (application required)"
         },
         "overage": {
           "unit": "acu",
