@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-07-15",
-    "updated_at": "2026-07-15T08:12:07Z",
+    "version": "2026-07-22",
+    "updated_at": "2026-07-22T18:38:21Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-07-22",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans[claude-code-api-sonnet5].overage.model: added claude-sonnet-5",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-07-15",
       "tool": "antigravity",

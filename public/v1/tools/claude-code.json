@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-19",
-    "updated_at": "2026-07-19T00:00:00Z",
+    "version": "2026-07-22",
+    "updated_at": "2026-07-22T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -95,7 +95,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Standard seat, 5-150 members, SSO, admin controls, no training on user content; Annual billing: $20/mo"
+          "notes": "Standard seat, 2-150 members, SSO, admin controls, no training on user content; Annual billing: $20/mo"
         },
         "overage": null
       },
@@ -299,7 +299,7 @@
           "mechanism": "automatic",
           "input_per_million": 2.00,
           "output_per_million": 10.00,
-          "model": null,
+          "model": "claude-sonnet-5",
           "notes": "Introductory pricing through 2026-08-31; then $3/$15 per 1M tokens",
           "price_per_unit": null
         }
