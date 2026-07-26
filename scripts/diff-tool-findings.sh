@@ -247,12 +247,21 @@ jq -n \
 
   ([$current.plans[]? | {key: .id, value: ._last_seen_on_page}] | from_entries) as $last_seen_by_id |
 
-  [$removed_plans[] | . as $pid |
+  # Unobserved plans: in current data but NOT observed on the page this fetch.
+  # Two agent encodings mean the same thing: (a) plan omitted from proposed
+  # entirely, (b) plan listed from prior knowledge with its old _last_seen
+  # copied (per the research prompt). Both must age AND surface warnings —
+  # keying on absence-from-proposed alone let encoding (b) stall auto-removal
+  # indefinitely (2026-07-22 gap).
+  ([$proposed.plans[]? | select(._last_seen_on_page == $today) | .id]) as $observed_ids |
+  [$current.plans[]? | .id | select(. as $i | ($observed_ids | index($i)) == null)] as $unobserved_plans |
+
+  [$unobserved_plans[] | . as $pid |
     ($last_seen_by_id[$pid] // null) as $last_seen |
     (if $last_seen == null then null else days_between($last_seen; $today) end) as $days |
     if $last_seen == null then
       {type: "plan_removal_pending", plan_id: $pid, last_seen_on_page: null, days_absent: null,
-       message: "Plan missing from proposed; no _last_seen_on_page recorded — pending operator review"}
+       message: "Plan not observed on page this fetch; no _last_seen_on_page recorded — pending operator review"}
     elif ($days >= $removal_threshold_days) and ($finding_status != "unverified") then
       {type: "plan_removal_eligible", plan_id: $pid, last_seen_on_page: $last_seen, days_absent: $days,
        message: "Plan absent from page for \($days) days (≥ \($removal_threshold_days)) — auto-remove eligible"}
