@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-22",
-    "updated_at": "2026-07-22T00:00:00Z",
+    "version": "2026-07-26",
+    "updated_at": "2026-07-26T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -1078,7 +1078,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Consumption-based API pricing via Google Cloud; Google Cloud Project integration; access under Google Cloud Terms of Service"
+            "notes": "Consumption-based API pricing via Google Cloud; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform"
           },
           "overage": null
         }

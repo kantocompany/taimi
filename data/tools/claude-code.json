@@ -36,7 +36,7 @@
         "notes": "Rate-limited; Annual billing: $17/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-max5",
@@ -54,7 +54,7 @@
         "notes": "5x usage vs Pro; higher output limits; early access to advanced features"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-max20",
@@ -72,7 +72,7 @@
         "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-teams-standard",
@@ -90,7 +90,7 @@
         "notes": "Standard seat, 2-150 members, SSO, admin controls, no training on user content; Annual billing: $20/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-teams-premium",
@@ -126,7 +126,7 @@
         "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta); API usage billed separately; billed annually"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-enterprise-sales",
@@ -191,7 +191,7 @@
         "notes": "Lightweight model; available via API",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-free",
@@ -209,7 +209,7 @@
         "notes": "Claude Code requires Pro or higher"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-api-managed-agents",
@@ -291,7 +291,7 @@
         "notes": "Marked unavailable on vendor page 2026-07-01",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     },
     {
       "id": "claude-code-api-sonnet5",
@@ -308,7 +308,7 @@
         "notes": "Introductory pricing through 2026-08-31; then $3/$15 per 1M tokens",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-07-22"
+      "_last_seen_on_page": "2026-07-26"
     }
   ],
   "capabilities": {
