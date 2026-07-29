@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-26",
-    "updated_at": "2026-07-26T00:00:00Z",
+    "version": "2026-07-29",
+    "updated_at": "2026-07-29T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -138,6 +138,25 @@
           "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, priority support, account management, Bugbot on custom plan"
         },
         "overage": null
+      },
+      {
+        "id": "cursor-teams-premium",
+        "name": "Teams Premium",
+        "category": "team",
+        "base_price": null,
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "5x Standard limits on Agent; includes all Individual plan features"
+        },
+        "overage": {
+          "notes": null,
+          "unit": null,
+          "mechanism": null,
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
+        }
       }
     ],
     "capabilities": {
