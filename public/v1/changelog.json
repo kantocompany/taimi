@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-07-29",
-    "updated_at": "2026-07-29T12:48:14Z",
+    "version": "2026-07-31",
+    "updated_at": "2026-07-31T13:00:22Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-07-31",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "plans[cursor-teams-premium].base_price.amount: added 120.00",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
     {
       "date": "2026-07-29",
       "tool": "cursor",

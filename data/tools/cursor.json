@@ -138,7 +138,9 @@
       "id": "cursor-teams-premium",
       "name": "Teams Premium",
       "category": "team",
-      "base_price": null,
+      "base_price": {
+        "amount": 120.00
+      },
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
