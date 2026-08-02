@@ -73,7 +73,7 @@ jobs:
             Today is ${{ env.DATE }}. Tool: ${{ matrix.tool }}.
             Read docs/price-update.md and execute.
           claude_args: |
-            --model claude-sonnet-4-6
+            --model claude-sonnet-5
             --max-turns 25  # research-max-turns
             --max-budget-usd 0.50
             --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
@@ -150,7 +150,7 @@ jobs:
             }
             If you cannot fetch the page or find the price, set confirmed to false.
           claude_args: |
-            --model claude-sonnet-4-6
+            --model claude-sonnet-5
             --max-turns 18  # validate-max-turns
             --max-budget-usd 0.15
             --allowedTools "Write,WebSearch,WebFetch"

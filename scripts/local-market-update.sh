@@ -3,12 +3,12 @@
 #
 # Usage:
 #   ./scripts/local-market-update.sh                          # defaults
-#   ./scripts/local-market-update.sh --model claude-opus-4-6   # override model
+#   ./scripts/local-market-update.sh --model claude-opus-5   # override model
 #   ./scripts/local-market-update.sh --max-turns 40            # override turns
 set -euo pipefail
 
 DATE=$(date -u +%Y-%m-%d)
-MODEL="claude-sonnet-4-6"
+MODEL="claude-sonnet-5"
 MAX_TURNS=30
 
 while [[ $# -gt 0 ]]; do

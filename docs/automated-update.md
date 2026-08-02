@@ -54,7 +54,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 
 | Setting | Value |
 |---------|-------|
-| Model | `claude-sonnet-4-6` |
+| Model | `claude-sonnet-5` |
 | Max turns | 25 |
 | Budget cap | $0.50/job |
 | Timeout | 15 minutes (includes all phases) |
@@ -67,7 +67,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 
 | Setting | Value |
 |---------|-------|
-| Model | `claude-sonnet-4-6` |
+| Model | `claude-sonnet-5` |
 | Max turns | 18 |
 | Retry | 1 (local scripts re-run validate once if no verdict written, e.g. max-turns) |
 | Budget cap | $0.15/job |
@@ -80,7 +80,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 
 | Setting | Value |
 |---------|-------|
-| Model | `claude-sonnet-4-6` |
+| Model | `claude-sonnet-5` |
 | Max turns | 25 |
 | Budget cap | $1.00/job |
 | Timeout | 15 minutes |
@@ -93,7 +93,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 
 | Setting | Value |
 |---------|-------|
-| Model | `claude-sonnet-4-6` |
+| Model | `claude-sonnet-5` |
 | Max turns | 20 |
 | Retry | 1 (local scripts re-run validate once if no verdict written, e.g. max-turns) |
 | Budget cap | $0.15/job |
@@ -106,7 +106,7 @@ The three workflows have **zero overlap**. Price verification checks amounts. To
 
 | Setting | Value |
 |---------|-------|
-| Model | `claude-sonnet-4-6` |
+| Model | `claude-sonnet-5` |
 | Max turns | 30 |
 | Budget cap | $5/run |
 | Timeout | 60 minutes |

@@ -74,7 +74,7 @@ jobs:
             Read docs/tool-update.md and execute.
             When you write proposed.plans[], set each plan's _last_seen_on_page to ${{ env.DATE }} ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged.
           claude_args: |
-            --model claude-sonnet-4-6
+            --model claude-sonnet-5
             --max-turns 25  # research-max-turns
             --max-budget-usd 1.00
             --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)"
@@ -160,7 +160,7 @@ jobs:
             If the change you are reviewing has a "plan_id" key, copy it verbatim into your verdict entry. If it does not (vendor.*, platform.*, capabilities.*, verification_override changes), omit the plan_id key — do not invent one.
             If you cannot fetch the page or verify a claim, set confirmed to false.
           claude_args: |
-            --model claude-sonnet-4-6
+            --model claude-sonnet-5
             --max-turns 20  # validate-max-turns
             --max-budget-usd 0.15
             --allowedTools "Write,WebSearch,WebFetch"

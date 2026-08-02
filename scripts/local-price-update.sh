@@ -6,14 +6,14 @@
 #   ./scripts/local-price-update.sh                          # all tools, sequential
 #   ./scripts/local-price-update.sh cursor aider              # specific tools only
 #   ./scripts/local-price-update.sh -j4                       # all tools, 4 parallel
-#   ./scripts/local-price-update.sh --model claude-opus-4-6   # override model
+#   ./scripts/local-price-update.sh --model claude-opus-5   # override model
 #   ./scripts/local-price-update.sh --research-max-turns 18 cursor  # override research turns
 #   ./scripts/local-price-update.sh --validate-max-turns 4         # override validation turns
 set -euo pipefail
 
 DATE=$(date -u +%Y-%m-%d)
 PARALLEL=1
-MODEL="claude-sonnet-4-6"
+MODEL="claude-sonnet-5"
 RESEARCH_MAX_TURNS=25
 VALIDATE_MAX_TURNS=18
 SLUGS=()

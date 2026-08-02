@@ -54,7 +54,7 @@ jobs:
             Read docs/market-update.md and execute.
             When you add or flesh out a tool, set every plan's _last_seen_on_page to ${{ env.DATE }}; do not restate values that live in structured fields (overage rates, premium_requests counts) in plan notes — validate.sh will fail the build; and preserve any existing _pending markers unchanged.
           claude_args: |
-            --model claude-sonnet-4-6
+            --model claude-sonnet-5
             --max-turns 30
             --max-budget-usd 5
             --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *),Bash(ls *),Bash(bash scripts/*),Bash(bash ./scripts/*)"
