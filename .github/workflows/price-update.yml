@@ -133,6 +133,7 @@ jobs:
             ${{ steps.diff.outputs.changes }}
 
             Source URL: ${{ steps.diff.outputs.source_url }}
+            If a direct fetch of the source URL returns partial or script-only content, retry it once through the rendering proxy (prepend https://r.jina.ai/ to the URL) before concluding any claim is absent.
 
             Your task: independently verify each change.
             IMPORTANT: Verify ONLY the specific changes listed above. Do not check other fields or report changes you notice independently on the page.

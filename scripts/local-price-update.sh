@@ -126,6 +126,7 @@ A research agent reports these price changes:
 $changes_summary
 
 Source URL: $source_url
+If a direct fetch of the source URL returns partial or script-only content, retry it once through the rendering proxy (prepend https://r.jina.ai/ to the URL) before concluding any claim is absent.
 
 Your task: independently verify each change.
 IMPORTANT: Verify ONLY the specific changes listed above. Do not check other fields or report changes you notice independently on the page.
@@ -214,7 +215,7 @@ run_pipeline_quiet() {
   local source_url changes_summary
   source_url=$(echo "$diff_result" | jq -r '.source_url // "unknown"')
   changes_summary=$(echo "$diff_result" | jq -c '.changes')
-  local vprompt="Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}"
+  local vprompt="Price verification for $slug. Changes: $changes_summary. Source: $source_url. Fetch the source URL, verify each change. If a direct fetch of the source URL returns partial or script-only content, retry it once through the rendering proxy (prepend https://r.jina.ai/ to the URL) before concluding any claim is absent. Verify ONLY the listed changes — do not check or report other fields. Special rule: 'removed/unavailable/deprecated' claims need a quoted exclusion from the page; drops of dated/temporal claims from existing notes need a quoted state-reversal from the page; drops of UPPERCASE_PREFIX: operator markers (UNVERIFIED_OVERAGE:, UNVERIFIED:) need quoted evidence the underlying gap is resolved; absence-of-listing alone → confirmed: false. Write verdict to validated/${slug}.json with schema: {slug, changes: [{plan_id, field, old, new, confirmed: bool, evidence}]}"
   local vattempt
   for vattempt in 1 2; do
     claude -p "$vprompt" \
