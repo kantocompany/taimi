@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-31",
-    "updated_at": "2026-07-31T00:00:00Z",
+    "version": "2026-08-02",
+    "updated_at": "2026-08-02T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -118,7 +118,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom pricing, private deployments, custom models and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
+          "notes": "Custom pricing, private deployments, custom models/agents/workflows and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
         },
         "overage": null
       }

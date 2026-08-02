@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-07-31",
-    "updated_at": "2026-07-31T00:00:00Z",
+    "version": "2026-08-02",
+    "updated_at": "2026-08-02T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": 1500,
           "tokens_included": null,
-          "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark; third-party agent delegation; Claude Opus 4.7 access; Audit logs; signups gradually re-enabling (2026-06-21)"
+          "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark (preview); third-party agent delegation; Claude Opus 4.7 access; Audit logs; signups gradually re-enabling (2026-06-21)"
         },
         "overage": {
           "unit": "request",

@@ -23,7 +23,7 @@
         "notes": "Light quota to code with agents; unlimited inline edits and Tab completions; limited model availability"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-29"
+      "_last_seen_on_page": "2026-08-02"
     },
     {
       "id": "windsurf-pro",
@@ -47,7 +47,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-07-29"
+      "_last_seen_on_page": "2026-08-02"
     },
     {
       "id": "windsurf-max",
@@ -71,7 +71,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-07-29"
+      "_last_seen_on_page": "2026-08-02"
     },
     {
       "id": "windsurf-teams",
@@ -95,7 +95,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-07-29"
+      "_last_seen_on_page": "2026-08-02"
     },
     {
       "id": "windsurf-enterprise",
@@ -108,7 +108,7 @@
         "notes": "All Teams features; centralized enterprise admin controls; SAML/OIDC SSO; dedicated deployment option; highest priority support; dedicated account management; custom terms; volume discounts; contact-sales pricing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-07-29"
+      "_last_seen_on_page": "2026-08-02"
     }
   ],
   "capabilities": {

@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-07-31",
-    "updated_at": "2026-07-31T13:00:22Z",
+    "version": "2026-08-02",
+    "updated_at": "2026-08-02T13:51:10Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-02",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plan removed: antigravity-ultra-max (AI Ultra Max)",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plan added: claude-code-api-opus5 (API (Opus 5))",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-07-31",
       "tool": "cursor",
