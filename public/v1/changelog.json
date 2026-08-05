@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-08-02",
-    "updated_at": "2026-08-02T14:09:28Z",
+    "version": "2026-08-05",
+    "updated_at": "2026-08-05T06:04:31Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-05",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plans[antigravity-enterprise].platform_plan: added true",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
     {
       "date": "2026-08-02",
       "tool": "claude-code",

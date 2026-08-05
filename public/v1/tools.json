@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-02",
-    "updated_at": "2026-08-02T00:00:00Z",
+    "version": "2026-08-05",
+    "updated_at": "2026-08-05T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -187,7 +187,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta); API usage billed separately; billed annually"
+            "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, network-level access control, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta), 500k context window on default model; API usage billed separately; billed annually"
           },
           "overage": null
         },
@@ -374,7 +374,7 @@
             "input_per_million": 5.00,
             "output_per_million": 25.00,
             "model": "claude-opus-5",
-            "notes": "Latest Opus model",
+            "notes": "Latest Opus model; Fast mode: 2x pricing for ~2.5x faster output",
             "price_per_unit": null
           }
         }
@@ -966,7 +966,7 @@
           "includes": {
             "premium_requests": 1000,
             "tokens_included": null,
-            "notes": "legacy premium req/user; all models incl Claude Opus 4.7; GitHub Spark; IP indemnity; SSO"
+            "notes": "legacy premium req/user; all models incl Claude Opus 4.7; GitHub Spark; IP indemnity; SSO; codebase indexing; fine-tuned custom/private models"
           },
           "overage": {
             "unit": "request",
@@ -1092,9 +1092,10 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Consumption-based API pricing via Google Cloud; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform"
+            "notes": "Consumption-based API pricing via Google Cloud; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
           },
-          "overage": null
+          "overage": null,
+          "platform_plan": true
         }
       ],
       "capabilities": {
@@ -1552,7 +1553,7 @@
             "input_per_million": 1.75,
             "output_per_million": 14.00,
             "model": "gpt-5.3-codex",
-            "notes": "API key mode billed at standard API rates; delayed access to new models; GPT-5.5, GPT-5.5-pro, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.4-pro, GPT-5.3-Codex available; priority tier at $3.50 input / $28.00 output per 1M tokens; no cloud features",
+            "notes": "API key mode billed at standard API rates; model availability follows the API models available to your key; GPT-5.6 Sol/Terra/Luna, GPT-5.5, GPT-5.4, GPT-5.4 mini confirmed available; no cloud features",
             "price_per_unit": null
           }
         },
