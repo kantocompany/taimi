@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-08-05",
-    "updated_at": "2026-08-05T06:04:31Z",
+    "version": "2026-08-09",
+    "updated_at": "2026-08-09T11:32:27Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-09",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plans[antigravity-pro].overage.mechanism: unverified → add_on; plans[antigravity-ultra].overage.mechanism: unverified → add_on",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "tool": "windsurf",
+      "type": "pricing_change",
+      "description": "vendor.pricing_url: https://windsurf.com/pricing → https://devin.ai/pricing",
+      "details": {
+        "source": "https://devin.ai/pricing"
+      }
+    },
     {
       "date": "2026-08-05",
       "tool": "antigravity",

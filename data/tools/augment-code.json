@@ -20,7 +20,7 @@
         "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, SIEM Integration, Data Residency Options, Granular Access Controls, Comprehensive Audit Trails, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support, custom VM sizes, unlimited concurrent sessions, multi-region compute, Cosmos, no AI training"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "augment-business",
@@ -40,11 +40,11 @@
         "unit": null,
         "mechanism": "add_on",
         "price_per_unit": null,
-        "notes": "Pay-as-you-go top-ups; top-up credits expire 12 months",
+        "notes": "Pay-as-you-go top-ups; top-up credits expire 12 months; flat 40% service fee on LLM usage (no fee on compute)",
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     }
   ],
   "capabilities": {

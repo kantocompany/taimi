@@ -24,7 +24,7 @@
         "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.5 Flash, Gemini 3.1 Pro, Gemini 3 Flash, Claude Sonnet & Opus 4.6, gpt-oss-120b"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "antigravity-pro",
@@ -42,13 +42,13 @@
       },
       "overage": {
         "unit": null,
-        "mechanism": "unverified",
+        "mechanism": "add_on",
         "price_per_unit": null,
         "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "antigravity-ultra",
@@ -66,13 +66,13 @@
       },
       "overage": {
         "unit": null,
-        "mechanism": "unverified",
+        "mechanism": "add_on",
         "price_per_unit": null,
         "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "antigravity-enterprise",
@@ -85,7 +85,7 @@
         "notes": "Consumption-based API pricing via Google Cloud; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05",
+      "_last_seen_on_page": "2026-08-09",
       "platform_plan": true
     }
   ],

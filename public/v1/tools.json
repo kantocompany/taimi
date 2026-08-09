@@ -50,7 +50,7 @@
             "unit": null,
             "mechanism": "add_on",
             "price_per_unit": null,
-            "notes": "Pay-as-you-go top-ups; top-up credits expire 12 months",
+            "notes": "Pay-as-you-go top-ups; top-up credits expire 12 months; flat 40% service fee on LLM usage (no fee on compute)",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -747,7 +747,7 @@
         "name": "Cognition AI",
         "hq_country": "US",
         "eu_based": false,
-        "pricing_url": "https://windsurf.com/pricing"
+        "pricing_url": "https://devin.ai/pricing"
       },
       "plans": [
         {
@@ -1054,7 +1054,7 @@
           },
           "overage": {
             "unit": null,
-            "mechanism": "unverified",
+            "mechanism": "add_on",
             "price_per_unit": null,
             "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
             "input_per_million": null,
@@ -1077,7 +1077,7 @@
           },
           "overage": {
             "unit": null,
-            "mechanism": "unverified",
+            "mechanism": "add_on",
             "price_per_unit": null,
             "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
             "input_per_million": null,
@@ -1147,7 +1147,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1170,7 +1170,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price; Startup program: up to 1 year free (application required)"
+            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price; Startup program: up to 1 year free (application required)"
           },
           "overage": {
             "unit": "acu",
@@ -1193,7 +1193,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1216,7 +1216,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
+            "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1239,7 +1239,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
+            "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1262,7 +1262,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
+            "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1285,7 +1285,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "5,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1308,7 +1308,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
+            "notes": "5,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1604,7 +1604,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing"
+            "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing; unlimited ChatGPT Voice"
           },
           "overage": null
         }

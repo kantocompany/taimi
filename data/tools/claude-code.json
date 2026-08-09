@@ -36,7 +36,7 @@
         "notes": "Rate-limited; Annual billing: $17/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-max5",
@@ -54,7 +54,7 @@
         "notes": "5x usage vs Pro; higher output limits; early access to advanced features"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-max20",
@@ -72,7 +72,7 @@
         "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-teams-standard",
@@ -90,7 +90,7 @@
         "notes": "Standard seat, 2-150 members, SSO, admin controls, no training on user content; Annual billing: $20/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-teams-premium",
@@ -108,7 +108,7 @@
         "notes": "5x more usage than Standard; SSO, domain verification, admin controls, no training on user content; Annual billing: $100/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-enterprise-selfserve",
@@ -126,7 +126,7 @@
         "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, network-level access control, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta), 500k context window on default model; API usage billed separately; billed annually"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-enterprise-sales",
@@ -140,7 +140,7 @@
         "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support; contact sales"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-sonnet",
@@ -157,7 +157,7 @@
         "notes": "Legacy model",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-opus",
@@ -174,7 +174,7 @@
         "notes": "Legacy model; available on Max/Teams Premium plans",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-haiku",
@@ -191,7 +191,7 @@
         "notes": "Lightweight model; available via API",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-free",
@@ -209,7 +209,7 @@
         "notes": "Claude Code requires Pro or higher"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-managed-agents",
@@ -226,7 +226,7 @@
         "notes": "$0.08 per session-hour of active agent runtime",
         "price_per_unit": 0.08
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-web-search",
@@ -243,7 +243,7 @@
         "notes": "$10 per 1,000 searches ($0.01/search)",
         "price_per_unit": 0.01
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-code-execution",
@@ -260,7 +260,7 @@
         "notes": "$0.05 per container-hour; 50 free hours per day",
         "price_per_unit": 0.05
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-education",
@@ -274,7 +274,7 @@
         "notes": "Institutional pricing; student/faculty access, academic research features, academic learning mode, dedicated API credits; contact for pricing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-fable5",
@@ -291,7 +291,7 @@
         "notes": "Marked unavailable on vendor page 2026-07-01",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-sonnet5",
@@ -308,7 +308,7 @@
         "notes": "Introductory pricing through 2026-08-31; then $3/$15 per 1M tokens",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     },
     {
       "id": "claude-code-api-opus5",
@@ -325,7 +325,7 @@
         "notes": "Latest Opus model; Fast mode: 2x pricing for ~2.5x faster output",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-05"
+      "_last_seen_on_page": "2026-08-09"
     }
   ],
   "capabilities": {
