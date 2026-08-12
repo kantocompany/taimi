@@ -20,7 +20,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces, community support"
+        "notes": "VS Code extension, CLI, secure client-side architecture, BYOK, any provider, MCP Marketplace, multi-root workspaces, community support"
       },
       "overage": {
         "unit": "token",
@@ -30,7 +30,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-12"
     },
     {
       "id": "cline-enterprise",
@@ -43,7 +43,7 @@
         "notes": "JetBrains, SSO/OIDC, SCIM provisioning, SLA, dedicated support, priority support, centralized billing, RBAC, team management, authentication logs, simple config management, advanced config management (coming soon), fine-grained permissioning (coming soon), inference provider restrictions, VPC deployments, OpenTelemetry"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-12"
     }
   ],
   "capabilities": {

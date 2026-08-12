@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-09",
-    "updated_at": "2026-08-09T00:00:00Z",
+    "version": "2026-08-12",
+    "updated_at": "2026-08-12T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces, community support"
+          "notes": "VS Code extension, CLI, secure client-side architecture, BYOK, any provider, MCP Marketplace, multi-root workspaces, community support"
         },
         "overage": {
           "unit": "token",

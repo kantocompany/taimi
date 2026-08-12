@@ -23,7 +23,7 @@
         "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek v3.2, MiniMax 2.1) and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-12"
     },
     {
       "id": "kiro-pro",
@@ -47,7 +47,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-12"
     },
     {
       "id": "kiro-pro-plus",
@@ -71,7 +71,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-12"
     },
     {
       "id": "kiro-power",
@@ -95,7 +95,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-12"
     },
     {
       "id": "kiro-team-pro",
@@ -191,7 +191,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-12"
     },
     {
       "id": "kiro-team-pro-max",

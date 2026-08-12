@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-08-09",
-    "updated_at": "2026-08-09T11:32:27Z",
+    "version": "2026-08-12",
+    "updated_at": "2026-08-12T13:02:20Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-12",
+      "tool": "windsurf",
+      "type": "pricing_change",
+      "description": "plans[windsurf-pro].overage.mechanism: unverified → add_on",
+      "details": {
+        "source": "https://devin.ai/pricing"
+      }
+    },
     {
       "date": "2026-08-09",
       "tool": "antigravity",

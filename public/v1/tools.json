@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-09",
-    "updated_at": "2026-08-09T00:00:00Z",
+    "version": "2026-08-12",
+    "updated_at": "2026-08-12T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -342,7 +342,7 @@
             "input_per_million": 10.00,
             "output_per_million": 50.00,
             "model": "claude-fable-5",
-            "notes": "Marked unavailable on vendor page 2026-07-01",
+            "notes": "Listed as current model on vendor page as of 2026-08-12 (previously marked unavailable 2026-07-01)",
             "price_per_unit": null
           }
         },
@@ -412,7 +412,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "VS Code extension, CLI, BYOK, any provider, MCP Marketplace, multi-root workspaces, community support"
+            "notes": "VS Code extension, CLI, secure client-side architecture, BYOK, any provider, MCP Marketplace, multi-root workspaces, community support"
           },
           "overage": {
             "unit": "token",
@@ -485,7 +485,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Extended Agent limits, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
+            "notes": "Extended Agent limits, generous Grok & Composer limits, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -508,7 +508,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "3× usage on all OpenAI, Claude, Gemini models"
+            "notes": "3× Pro limits on Agent"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -531,7 +531,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "20× usage on all OpenAI, Claude, Gemini models; priority access to new features"
+            "notes": "20× Pro limits on Agent; priority access to new features"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -782,7 +782,7 @@
           },
           "overage": {
             "unit": "request",
-            "mechanism": "unverified",
+            "mechanism": "add_on",
             "price_per_unit": 0.04,
             "notes": "UNVERIFIED_OVERAGE: page states 'at API pricing' with no specific per-unit rate or unit type; Cognition sibling Devin charges $2.25/ACU (Core) but windsurf.com does not confirm ACUs as Windsurf's overage unit",
             "input_per_million": null,
