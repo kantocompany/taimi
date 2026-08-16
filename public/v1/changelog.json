@@ -1,10 +1,28 @@
 {
   "meta": {
     "version": "2026-08-16",
-    "updated_at": "2026-08-16T00:00:00Z",
+    "updated_at": "2026-08-16T07:52:13Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-16",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "plans[cursor-teams-premium].overage.mechanism: added automatic",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plan added: kiro-enterprise (Enterprise)",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-08-16",
       "tool": "windsurf",
