@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-08-12",
-    "updated_at": "2026-08-12T13:02:20Z",
+    "version": "2026-08-16",
+    "updated_at": "2026-08-16T00:00:00Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-16",
+      "tool": "windsurf",
+      "type": "removed_tool",
+      "description": "Archived Devin Desktop. Devin Desktop (formerly Windsurf) has fully merged into Devin's unified subscription: windsurf.com/pricing now permanently 308-redirects to devin.ai/pricing, and the Free/Pro/Max/Teams/Enterprise tiers are identical to devin.json's plans. No longer a separately purchasable product -- Devin Desktop access is bundled into Devin's paid plans (already documented in devin.json's platform.bundled_with field). Tracking both entries double-counted one subscription in the comparison table.",
+      "details": {
+        "reason": "Devin Desktop (formerly Windsurf) has fully merged into Devin's unified subscription: windsurf.com/pricing now permanently 308-redirects to devin.ai/pricing, and the Free/Pro/Max/Teams/Enterprise tiers are identical to devin.json's plans. No longer a separately purchasable product -- Devin Desktop access is bundled into Devin's paid plans (already documented in devin.json's platform.bundled_with field). Tracking both entries double-counted one subscription in the comparison table."
+      }
+    },
     {
       "date": "2026-08-12",
       "tool": "windsurf",
