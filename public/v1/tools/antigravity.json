@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-16",
-    "updated_at": "2026-08-16T00:00:00Z",
+    "version": "2026-08-19",
+    "updated_at": "2026-08-19T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "More generous rate limits than Individual; flexible AI credit pool"
+          "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit"
         },
         "overage": {
           "unit": null,
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Higher access to latest Gemini models vs Google AI Pro; enhanced rate limits and credit flexibility"
+          "notes": "Higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours"
         },
         "overage": {
           "unit": null,

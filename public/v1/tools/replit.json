@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-16",
-    "updated_at": "2026-08-16T00:00:00Z",
+    "version": "2026-08-19",
+    "updated_at": "2026-08-19T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -47,13 +47,15 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$20/mo credits included, full Agent access, 5 collaborators"
+          "notes": "$20/mo credits included, full Agent access, 5 collaborators, up to 2 parallel agents"
         },
         "overage": {
           "unit": "request",
           "mechanism": "unverified",
           "price_per_unit": null,
-          "notes": "Effort-based pricing per Agent task"
+          "notes": "Effort-based pricing per Agent task",
+          "input_per_million": null,
+          "output_per_million": null
         }
       },
       {
@@ -68,13 +70,15 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, premium support"
+          "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, premium support, up to 10 parallel agents"
         },
         "overage": {
           "unit": "request",
           "mechanism": "unverified",
           "price_per_unit": null,
-          "notes": "Effort-based pricing per Agent task"
+          "notes": "Effort-based pricing per Agent task",
+          "input_per_million": null,
+          "output_per_million": null
         }
       },
       {
@@ -85,7 +89,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom pricing, dedicated support, advanced security"
+          "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments"
         },
         "overage": null
       }

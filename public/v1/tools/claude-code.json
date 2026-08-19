@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-16",
-    "updated_at": "2026-08-16T00:00:00Z",
+    "version": "2026-08-19",
+    "updated_at": "2026-08-19T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -46,7 +46,11 @@
           "tokens_included": null,
           "notes": "Rate-limited; Annual billing: $17/mo"
         },
-        "overage": null
+        "overage": {
+          "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
+          "unit": "token",
+          "mechanism": "add_on"
+        }
       },
       {
         "id": "claude-code-max5",
@@ -63,7 +67,11 @@
           "tokens_included": null,
           "notes": "5x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic"
         },
-        "overage": null
+        "overage": {
+          "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
+          "unit": "token",
+          "mechanism": "add_on"
+        }
       },
       {
         "id": "claude-code-max20",
@@ -80,7 +88,11 @@
           "tokens_included": null,
           "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
         },
-        "overage": null
+        "overage": {
+          "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
+          "unit": "token",
+          "mechanism": "add_on"
+        }
       },
       {
         "id": "claude-code-teams-standard",
@@ -142,7 +154,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support; contact sales"
+          "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support, inference hooks; contact sales"
         },
         "overage": null
       },

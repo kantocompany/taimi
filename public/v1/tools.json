@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-16",
-    "updated_at": "2026-08-16T00:00:00Z",
+    "version": "2026-08-19",
+    "updated_at": "2026-08-19T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -104,7 +104,11 @@
             "tokens_included": null,
             "notes": "Rate-limited; Annual billing: $17/mo"
           },
-          "overage": null
+          "overage": {
+            "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
+            "unit": "token",
+            "mechanism": "add_on"
+          }
         },
         {
           "id": "claude-code-max5",
@@ -121,7 +125,11 @@
             "tokens_included": null,
             "notes": "5x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic"
           },
-          "overage": null
+          "overage": {
+            "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
+            "unit": "token",
+            "mechanism": "add_on"
+          }
         },
         {
           "id": "claude-code-max20",
@@ -138,7 +146,11 @@
             "tokens_included": null,
             "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
           },
-          "overage": null
+          "overage": {
+            "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
+            "unit": "token",
+            "mechanism": "add_on"
+          }
         },
         {
           "id": "claude-code-teams-standard",
@@ -200,7 +212,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support; contact sales"
+            "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support, inference hooks; contact sales"
           },
           "overage": null
         },
@@ -469,7 +481,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Limited Agent requests, limited Tab completions"
+            "notes": "Limited Agent requests, limited Tab completions, access to Composer"
           },
           "overage": null
         },
@@ -778,7 +790,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "$15/mo AI Credits; legacy premium req/user; unlimited completions; signups gradually re-enabling (2026-06-21)"
+            "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; signups gradually re-enabling (2026-06-21)"
           },
           "overage": {
             "unit": "request",
@@ -801,7 +813,7 @@
           "includes": {
             "premium_requests": 1500,
             "tokens_included": null,
-            "notes": "$70/mo AI Credits; legacy premium req/user; GitHub Spark (preview); third-party agent delegation; Claude Opus 4.7 access; Audit logs; signups gradually re-enabling (2026-06-21)"
+            "notes": "$70/mo AI Credits ($39 base + $31 flex); legacy premium req/user; GitHub Spark (preview); third-party agent delegation; Claude Opus 4.7 access; Audit logs; signups gradually re-enabling (2026-06-21)"
           },
           "overage": {
             "unit": "request",
@@ -870,7 +882,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$200/mo AI Credits; new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24)"
+            "notes": "$200/mo AI Credits ($100 base + $100 flex); new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24)"
           },
           "overage": {
             "unit": null,
@@ -931,7 +943,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "More generous rate limits than Individual; flexible AI credit pool"
+            "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit"
           },
           "overage": {
             "unit": null,
@@ -954,7 +966,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Higher access to latest Gemini models vs Google AI Pro; enhanced rate limits and credit flexibility"
+            "notes": "Higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours"
           },
           "overage": {
             "unit": null,
@@ -1558,13 +1570,15 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$20/mo credits included, full Agent access, 5 collaborators"
+            "notes": "$20/mo credits included, full Agent access, 5 collaborators, up to 2 parallel agents"
           },
           "overage": {
             "unit": "request",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Effort-based pricing per Agent task"
+            "notes": "Effort-based pricing per Agent task",
+            "input_per_million": null,
+            "output_per_million": null
           }
         },
         {
@@ -1579,13 +1593,15 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, premium support"
+            "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, premium support, up to 10 parallel agents"
           },
           "overage": {
             "unit": "request",
             "mechanism": "unverified",
             "price_per_unit": null,
-            "notes": "Effort-based pricing per Agent task"
+            "notes": "Effort-based pricing per Agent task",
+            "input_per_million": null,
+            "output_per_million": null
           }
         },
         {
@@ -1596,7 +1612,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom pricing, dedicated support, advanced security"
+            "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments"
           },
           "overage": null
         }

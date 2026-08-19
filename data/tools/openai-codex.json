@@ -36,7 +36,7 @@
         "notes": "ChatGPT Plus subscription; GPT-5.6 Sol/Terra/Luna, GPT-5.5, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     },
     {
       "id": "codex-pro",
@@ -54,7 +54,7 @@
         "notes": "ChatGPT Pro 5x subscription; GPT-5.3-Codex-Spark (research preview); 5x Plus rate limits; priority processing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     },
     {
       "id": "codex-team",
@@ -72,7 +72,7 @@
         "notes": "Annual billing: $20/user/mo; minimum 2 users; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     },
     {
       "id": "codex-enterprise",
@@ -86,7 +86,7 @@
         "notes": "Custom pricing; priority request processing; SCIM, EKM, RBAC, domain verification, user analytics, audit logs via Compliance API, data residency controls"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     },
     {
       "id": "codex-api",
@@ -103,7 +103,7 @@
         "notes": "API key mode billed at standard API rates; model availability follows the API models available to your key; GPT-5.6 Sol/Terra/Luna, GPT-5.5, GPT-5.4, GPT-5.4 mini confirmed available; no cloud features",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     },
     {
       "id": "codex-free",
@@ -121,7 +121,7 @@
         "notes": "ChatGPT Free subscription; basic exploration of Codex capabilities"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     },
     {
       "id": "codex-go",
@@ -139,7 +139,7 @@
         "notes": "ChatGPT Go subscription; lightweight coding tasks; may include ads"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     },
     {
       "id": "codex-pro-20x",
@@ -157,7 +157,7 @@
         "notes": "ChatGPT Pro 20x subscription; GPT-5.3-Codex-Spark (research preview); 20x Plus rate limits; priority processing; unlimited ChatGPT Voice"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-16"
+      "_last_seen_on_page": "2026-08-19"
     }
   ],
   "capabilities": {
