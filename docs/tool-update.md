@@ -18,13 +18,9 @@ These apply to every tool. They supersede any per-tool `verification_override` i
 
 You are done when: (a) `findings/{slug}.json` is valid JSON matching the schema, (b) every proposed change is in scope (structural or editorial — never price), (c) `source_url` records what you fetched. Exit immediately. Do not re-fetch, re-verify, or polish.
 
-### Visual markers
+### Card-not-table rule
 
-Web fetch cannot reliably distinguish ✓/✗, dash/checkmark, or color-coded markers in vendor comparison tables. When a feature's plan attribution depends on these markers, add the field to `extraction_failures` rather than assigning it to a specific plan.
-
-### Symmetry rule
-
-Before promoting a feature into a single plan's notes, verify the comparison-table row is not all-✓ across plans. All-✓ rows are tool-wide capabilities, not plan differentiators.
+A feature claim may enter a plan's notes only if sourced from that plan's own card or section on the vendor page — linear content the fetch renders reliably. Comparison-table attribution (✓/✗, dash/checkmark, color, column position) is never written to notes: the render flattens columns, making table-derived attribution unreliable — log it to `extraction_failures` instead. Tables may corroborate a card-sourced claim, never originate one.
 
 ### Unverified default
 
@@ -32,11 +28,11 @@ If a structural field cannot be extracted from the vendor page, leave it unchang
 
 ### Verification override authority
 
-When a tool's `verification_override` includes explicit tier/feature attribution (e.g., "Team has Admin API"; "Audit logs are Enterprise-only"), treat those statements as authoritative. If your fetch contradicts an attribution claim, the most likely cause is the Visual markers rule above — log the field in `extraction_failures` rather than rewriting the override or moving features between tiers.
+Treat `verification_override` instructions as authoritative. If your fetch contradicts them, log the field in `extraction_failures` rather than rewriting the override.
 
 ### First-pass scrub
 
-If the data file contains `_notes_first_pass: true`, the existing plan notes were written by market-update without four-phase validation. Treat them as proposed, not authoritative: verify each claim in `includes.notes` against the vendor page, log unverifiable claims to `extraction_failures`, AND propose their removal in your proposed JSON. Additionally, scan the vendor page comparison table for features prominently shown for each plan but absent from current notes — propose them as additions. The flag is cleared by the apply step; subsequent cycles return to the unverified-default rule. When `_capabilities_first_pass: true` is also present, apply the same scrub to `capabilities` fields — verify each against the vendor page, propose corrections in `proposed.capabilities` (or copy unchanged if already correct).
+If the data file contains `_notes_first_pass: true`, the existing plan notes were written by market-update without four-phase validation. Treat them as proposed, not authoritative: verify each claim in `includes.notes` against the vendor page, log unverifiable claims to `extraction_failures`, AND propose their removal in your proposed JSON. Additionally, scan each plan's own card on the vendor page for features prominently shown but absent from current notes — propose them as additions. The flag is cleared by the apply step; subsequent cycles return to the unverified-default rule. When `_capabilities_first_pass: true` is also present, apply the same scrub to `capabilities` fields — verify each against the vendor page, propose corrections in `proposed.capabilities` (or copy unchanged if already correct).
 
 ## Procedure
 

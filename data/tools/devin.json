@@ -7,7 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://devin.ai/pricing"
   },
-  "verification_override": "Overage: devin.ai/pricing confirms Pay-as-you-go for usage past quota on Pro/Max/Teams but does not publish per-ACU rates. Preserve the UNVERIFIED_OVERAGE marker in overage.notes for these plans — operator-curated transparency caveat, not internal annotation. Feature attribution (comparison table renders without column alignment via proxy — do not trust flattened rows): concurrent-sessions limit (up to 10) applies to Pro and Max only, NOT Free; Devin API access applies to all paid plans, not any single tier. Free plan card lists only: light agent quota, inline edits, Tab completions, limited models, 1 member.",
+  "verification_override": "Overage: devin.ai/pricing confirms Pay-as-you-go for usage past quota on Pro/Max/Teams but does not publish per-ACU rates. Preserve the UNVERIFIED_OVERAGE marker in overage.notes for these plans — operator-curated transparency caveat, not internal annotation.",
   "plans": [
     {
       "id": "devin-enterprise",
