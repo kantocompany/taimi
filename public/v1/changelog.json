@@ -9,7 +9,7 @@
       "date": "2026-08-19",
       "tool": "claude-code",
       "type": "pricing_change",
-      "description": "vendor.name: Anthropic → Anthropic PBC; plans[claude-code-pro].overage.unit: added token; plans[claude-code-pro].overage.mechanism: added add_on; plans[claude-code-max5].overage.unit: added token; plans[claude-code-max5].overage.mechanism: added add_on; plans[claude-code-max20].overage.unit: added token; plans[claude-code-max20].overage.mechanism: added add_on",
+      "description": "plans[claude-code-pro].overage.unit: added token; plans[claude-code-pro].overage.mechanism: added add_on; plans[claude-code-max5].overage.unit: added token; plans[claude-code-max5].overage.mechanism: added add_on; plans[claude-code-max20].overage.unit: added token; plans[claude-code-max20].overage.mechanism: added add_on",
       "details": {
         "source": "https://claude.com/pricing"
       }
