@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-08-19",
-    "updated_at": "2026-08-19T16:29:37Z",
+    "version": "2026-08-23",
+    "updated_at": "2026-08-23T08:36:03Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-23",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plans[kiro-enterprise].overage.price_per_unit: added 0.04",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-08-19",
       "tool": "claude-code",
