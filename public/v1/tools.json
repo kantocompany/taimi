@@ -107,7 +107,10 @@
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
             "unit": "token",
-            "mechanism": "add_on"
+            "mechanism": "add_on",
+            "input_per_million": null,
+            "output_per_million": null,
+            "price_per_unit": null
           }
         },
         {
@@ -128,7 +131,10 @@
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
             "unit": "token",
-            "mechanism": "add_on"
+            "mechanism": "add_on",
+            "input_per_million": null,
+            "output_per_million": null,
+            "price_per_unit": null
           }
         },
         {
@@ -144,12 +150,15 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "20x usage vs Pro; higher output limits; priority access during peak traffic"
+            "notes": "20x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic"
           },
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
             "unit": "token",
-            "mechanism": "add_on"
+            "mechanism": "add_on",
+            "input_per_million": null,
+            "output_per_million": null,
+            "price_per_unit": null
           }
         },
         {
@@ -165,7 +174,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard seat, 2-150 members, SSO, admin controls, no training on user content, 200k context window; Annual billing: $20/mo"
+            "notes": "Standard seat, 2-150 members, enterprise search, central billing, SSO, admin controls, desktop app deployment, no training on user content, 200k context window; Annual billing: $20/mo"
           },
           "overage": null
         },
@@ -182,7 +191,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5x more usage than Standard; SSO, domain verification, admin controls, no training on user content, 200k context window; Annual billing: $100/mo"
+            "notes": "5x more usage than Standard; enterprise search, central billing, SSO, domain verification, admin controls, desktop app deployment, no training on user content, 200k context window; Annual billing: $100/mo"
           },
           "overage": null
         },
@@ -370,7 +379,7 @@
             "input_per_million": 2.00,
             "output_per_million": 10.00,
             "model": "claude-sonnet-5",
-            "notes": "Introductory pricing through 2026-08-31; then $3/$15 per 1M tokens",
+            "notes": "Introductory $2/$10 pricing made standard; scheduled 2026-09-01 increase to $3/$15 per 1M tokens will not occur (vendor confirmed)",
             "price_per_unit": null
           }
         },
@@ -1024,7 +1033,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek v3.2, MiniMax 2.1) and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
+            "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
           },
           "overage": null
         },
@@ -1040,7 +1049,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "1,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "1,000 credits/mo; Auto, Claude Sonnet 5 and Claude Opus 5; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1063,7 +1072,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "2,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price; Startup program: up to 1 year free (application required)"
+            "notes": "2,000 credits/mo; Auto, Claude Sonnet 5 and Claude Opus 5; credits reset monthly; GovCloud regions: ~20% higher price; Startup program: up to 1 year free (application required)"
           },
           "overage": {
             "unit": "acu",
@@ -1086,7 +1095,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "10,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "10,000 credits/mo; Auto, Claude Sonnet 5 and Claude Opus 5; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1178,7 +1187,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5,000 credits/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; credits reset monthly; GovCloud regions: ~20% higher price"
+            "notes": "5,000 credits/mo; Auto, Claude Sonnet 5 and Claude Opus 5; credits reset monthly; GovCloud regions: ~20% higher price"
           },
           "overage": {
             "unit": "acu",
@@ -1220,7 +1229,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": null
+            "notes": "Centralized billing, SSO, usage analytics, enterprise security controls"
           },
           "overage": {
             "unit": null,
