@@ -23,7 +23,7 @@
         "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-23"
+      "_last_seen_on_page": "2026-08-26"
     },
     {
       "id": "kiro-pro",
@@ -47,7 +47,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-23"
+      "_last_seen_on_page": "2026-08-26"
     },
     {
       "id": "kiro-pro-plus",
@@ -71,7 +71,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-23"
+      "_last_seen_on_page": "2026-08-26"
     },
     {
       "id": "kiro-power",
@@ -95,7 +95,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-23"
+      "_last_seen_on_page": "2026-08-26"
     },
     {
       "id": "kiro-team-pro",
@@ -191,7 +191,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-23"
+      "_last_seen_on_page": "2026-08-26"
     },
     {
       "id": "kiro-team-pro-max",
@@ -225,17 +225,17 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Centralized billing, SSO, usage analytics, enterprise security controls"
+        "notes": "Centralized billing, SSO, usage analytics, enterprise security controls; billed through AWS"
       },
       "overage": {
         "unit": null,
         "mechanism": null,
         "price_per_unit": 0.04,
-        "notes": null,
+        "notes": "Kiro credits; overage disabled by default, configurable by admins",
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-23"
+      "_last_seen_on_page": "2026-08-26"
     }
   ],
   "capabilities": {

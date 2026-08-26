@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-23",
-    "updated_at": "2026-08-23T00:00:00Z",
+    "version": "2026-08-26",
+    "updated_at": "2026-08-26T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -227,13 +227,13 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Centralized billing, SSO, usage analytics, enterprise security controls"
+          "notes": "Centralized billing, SSO, usage analytics, enterprise security controls; billed through AWS"
         },
         "overage": {
           "unit": null,
           "mechanism": null,
           "price_per_unit": 0.04,
-          "notes": null,
+          "notes": "Kiro credits; overage disabled by default, configurable by admins",
           "input_per_million": null,
           "output_per_million": null
         }
