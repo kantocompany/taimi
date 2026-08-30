@@ -24,7 +24,7 @@
         "notes": "Limited daily Agent credits, 1 published app"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "replit-core",
@@ -48,7 +48,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "replit-pro",
@@ -72,7 +72,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "replit-enterprise",
@@ -85,7 +85,7 @@
         "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     }
   ],
   "capabilities": {

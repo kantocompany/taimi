@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-26",
-    "updated_at": "2026-08-26T00:00:00Z",
+    "version": "2026-08-30",
+    "updated_at": "2026-08-30T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Extended Agent limits, generous Grok & Composer limits, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
+          "notes": "Extended Agent limits, generous Grok & Composer limits, Grok Bot access, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "3× Pro limits on Agent"
+          "notes": "3× Pro limits on Agent, higher Grok Bot usage limits"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
@@ -93,7 +93,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "20× Pro limits on Agent; priority access to new features"
+          "notes": "20× Pro limits on Agent, highest Grok Bot usage limits; priority access to new features"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
@@ -116,7 +116,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Cloud agents with shared team context, Bugbot code reviews, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
+          "notes": "Cloud agents with shared team context, Bugbot code reviews, Grok Bot access, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",
@@ -149,7 +149,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "5x Standard limits on Agent; includes all Individual plan features"
+          "notes": "5x Standard limits on Agent, higher Grok Bot usage limits; includes all Individual plan features"
         },
         "overage": {
           "notes": "On-demand usage billed in arrears beyond included limits",

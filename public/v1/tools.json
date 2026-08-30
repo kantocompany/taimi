@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-08-26",
-    "updated_at": "2026-08-26T00:00:00Z",
+    "version": "2026-08-30",
+    "updated_at": "2026-08-30T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -506,7 +506,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Extended Agent limits, generous Grok & Composer limits, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
+            "notes": "Extended Agent limits, generous Grok & Composer limits, Grok Bot access, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -529,7 +529,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "3× Pro limits on Agent"
+            "notes": "3× Pro limits on Agent, higher Grok Bot usage limits"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -552,7 +552,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "20× Pro limits on Agent; priority access to new features"
+            "notes": "20× Pro limits on Agent, highest Grok Bot usage limits; priority access to new features"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -575,7 +575,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Cloud agents with shared team context, Bugbot code reviews, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
+            "notes": "Cloud agents with shared team context, Bugbot code reviews, Grok Bot access, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -608,7 +608,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5x Standard limits on Agent; includes all Individual plan features"
+            "notes": "5x Standard limits on Agent, higher Grok Bot usage limits; includes all Individual plan features"
           },
           "overage": {
             "notes": "On-demand usage billed in arrears beyond included limits",
@@ -952,13 +952,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit"
+            "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit; flexible AI credit pool"
           },
           "overage": {
             "unit": null,
             "mechanism": "add_on",
             "price_per_unit": null,
-            "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
+            "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; docs page confirms credits are purchased for overage, consumed at Gemini Enterprise Agent Platform consumption pricing (rate undisclosed); prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -975,13 +975,13 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours"
+            "notes": "Higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool"
           },
           "overage": {
             "unit": null,
             "mechanism": "add_on",
             "price_per_unit": null,
-            "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
+            "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; docs page confirms credits are purchased for overage, consumed at Gemini Enterprise Agent Platform consumption pricing (rate undisclosed); prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1107,75 +1107,6 @@
           }
         },
         {
-          "id": "kiro-team-pro",
-          "name": "Team Pro",
-          "category": "team",
-          "base_price": {
-            "amount": 20.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-          },
-          "overage": {
-            "unit": "acu",
-            "mechanism": "automatic",
-            "price_per_unit": 0.04,
-            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
-            "input_per_million": null,
-            "output_per_million": null
-          }
-        },
-        {
-          "id": "kiro-team-pro-plus",
-          "name": "Team Pro+",
-          "category": "team",
-          "base_price": {
-            "amount": 40.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-          },
-          "overage": {
-            "unit": "acu",
-            "mechanism": "automatic",
-            "price_per_unit": 0.04,
-            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
-            "input_per_million": null,
-            "output_per_million": null
-          }
-        },
-        {
-          "id": "kiro-team-power",
-          "name": "Team Power",
-          "category": "team",
-          "base_price": {
-            "amount": 200.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-          },
-          "overage": {
-            "unit": "acu",
-            "mechanism": "automatic",
-            "price_per_unit": 0.04,
-            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
-            "input_per_million": null,
-            "output_per_million": null
-          }
-        },
-        {
           "id": "kiro-pro-max",
           "name": "Pro Max",
           "category": "individual",
@@ -1194,29 +1125,6 @@
             "mechanism": "add_on",
             "price_per_unit": 0.04,
             "notes": "Kiro credits; credits metered at 0.01 minimum; add-on packs $5–$100; unused add-on credits expire 12 months from purchase",
-            "input_per_million": null,
-            "output_per_million": null
-          }
-        },
-        {
-          "id": "kiro-team-pro-max",
-          "name": "Team Pro Max",
-          "category": "team",
-          "base_price": {
-            "amount": 100.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "5,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-          },
-          "overage": {
-            "unit": "acu",
-            "mechanism": "automatic",
-            "price_per_unit": 0.04,
-            "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
             "input_per_million": null,
             "output_per_million": null
           }

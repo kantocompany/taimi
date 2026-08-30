@@ -23,7 +23,7 @@
         "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "kiro-pro",
@@ -47,7 +47,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "kiro-pro-plus",
@@ -71,7 +71,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "kiro-power",
@@ -95,79 +95,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-26"
-    },
-    {
-      "id": "kiro-team-pro",
-      "name": "Team Pro",
-      "category": "team",
-      "base_price": {
-        "amount": 20.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "1,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-      },
-      "overage": {
-        "unit": "acu",
-        "mechanism": "automatic",
-        "price_per_unit": 0.04,
-        "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
-        "input_per_million": null,
-        "output_per_million": null
-      },
-      "_last_seen_on_page": "2026-08-09"
-    },
-    {
-      "id": "kiro-team-pro-plus",
-      "name": "Team Pro+",
-      "category": "team",
-      "base_price": {
-        "amount": 40.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "2,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-      },
-      "overage": {
-        "unit": "acu",
-        "mechanism": "automatic",
-        "price_per_unit": 0.04,
-        "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
-        "input_per_million": null,
-        "output_per_million": null
-      },
-      "_last_seen_on_page": "2026-08-09"
-    },
-    {
-      "id": "kiro-team-power",
-      "name": "Team Power",
-      "category": "team",
-      "base_price": {
-        "amount": 200.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "10,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-      },
-      "overage": {
-        "unit": "acu",
-        "mechanism": "automatic",
-        "price_per_unit": 0.04,
-        "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
-        "input_per_million": null,
-        "output_per_million": null
-      },
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "kiro-pro-max",
@@ -191,31 +119,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-26"
-    },
-    {
-      "id": "kiro-team-pro-max",
-      "name": "Team Pro Max",
-      "category": "team",
-      "base_price": {
-        "amount": 100.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "5,000 credits/user/mo; Auto, Claude Sonnet 4.6 and Claude Opus 4.8; Sonnet 4.6 costs 1.3x Auto credits; centralized billing, usage analytics, SAML/SCIM SSO via AWS IAM Identity Center, org dashboard, enterprise security controls; GovCloud regions: ~20% higher price"
-      },
-      "overage": {
-        "unit": "acu",
-        "mechanism": "automatic",
-        "price_per_unit": 0.04,
-        "notes": "Kiro credits; credits metered at 0.01 minimum; overage disabled by default, enable in Settings",
-        "input_per_million": null,
-        "output_per_million": null
-      },
-      "_last_seen_on_page": "2026-08-09"
+      "_last_seen_on_page": "2026-08-30"
     },
     {
       "id": "kiro-enterprise",
@@ -235,7 +139,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-08-26"
+      "_last_seen_on_page": "2026-08-30"
     }
   ],
   "capabilities": {

@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-08-23",
-    "updated_at": "2026-08-23T08:36:03Z",
+    "version": "2026-08-30",
+    "updated_at": "2026-08-30T15:30:17Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-08-30",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plan removed: kiro-team-pro (Team Pro); plan removed: kiro-team-pro-plus (Team Pro+); plan removed: kiro-team-power (Team Power); plan removed: kiro-team-pro-max (Team Pro Max)",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-08-23",
       "tool": "kiro",
