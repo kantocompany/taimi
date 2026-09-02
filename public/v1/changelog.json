@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-08-30",
-    "updated_at": "2026-08-30T15:30:17Z",
+    "version": "2026-09-02",
+    "updated_at": "2026-09-02T06:13:30Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-09-02",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plan added: claude-code-api-fable51 (API (Fable 5.1))",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-09-02",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plans[kiro-enterprise].overage.mechanism: added automatic",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-08-30",
       "tool": "kiro",

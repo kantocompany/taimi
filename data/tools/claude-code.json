@@ -43,7 +43,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-max5",
@@ -68,7 +68,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-max20",
@@ -93,7 +93,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-teams-standard",
@@ -111,7 +111,7 @@
         "notes": "Standard seat, 2-150 members, enterprise search, central billing, SSO, admin controls, desktop app deployment, no training on user content, 200k context window; Annual billing: $20/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-teams-premium",
@@ -129,7 +129,7 @@
         "notes": "5x more usage than Standard; enterprise search, central billing, SSO, domain verification, admin controls, desktop app deployment, no training on user content, 200k context window; Annual billing: $100/mo"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-enterprise-selfserve",
@@ -147,7 +147,7 @@
         "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, network-level access control, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta), 500k context window on default model; API usage billed separately; billed annually"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-enterprise-sales",
@@ -161,7 +161,7 @@
         "notes": "All self-serve features plus HIPAA-ready, custom contract terms, usage commitments, PO/MSA support, inference hooks; contact sales"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-sonnet",
@@ -178,7 +178,7 @@
         "notes": "Legacy model",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-opus",
@@ -195,7 +195,7 @@
         "notes": "Legacy model; available on Max/Teams Premium plans",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-haiku",
@@ -212,7 +212,7 @@
         "notes": "Lightweight model; available via API",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-free",
@@ -230,7 +230,7 @@
         "notes": "Claude Code requires Pro or higher"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-managed-agents",
@@ -247,7 +247,7 @@
         "notes": "$0.08 per session-hour of active agent runtime",
         "price_per_unit": 0.08
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-web-search",
@@ -264,7 +264,7 @@
         "notes": "$10 per 1,000 searches ($0.01/search)",
         "price_per_unit": 0.01
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-code-execution",
@@ -281,7 +281,7 @@
         "notes": "$0.05 per container-hour; 50 free hours per day",
         "price_per_unit": 0.05
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-education",
@@ -295,7 +295,7 @@
         "notes": "Institutional pricing; student/faculty access, academic research features, academic learning mode, dedicated API credits; contact for pricing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-fable5",
@@ -309,10 +309,10 @@
         "input_per_million": 10.00,
         "output_per_million": 50.00,
         "model": "claude-fable-5",
-        "notes": "Listed as current model on vendor page as of 2026-08-12 (previously marked unavailable 2026-07-01)",
+        "notes": "Legacy model as of 2026-09-02 (superseded by Fable 5.1); listed as current model on vendor page as of 2026-08-12 (previously marked unavailable 2026-07-01)",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-sonnet5",
@@ -329,7 +329,7 @@
         "notes": "Introductory $2/$10 pricing made standard; scheduled 2026-09-01 increase to $3/$15 per 1M tokens will not occur (vendor confirmed)",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
     },
     {
       "id": "claude-code-api-opus5",
@@ -346,7 +346,24 @@
         "notes": "Latest Opus model; Fast mode: 2x pricing for ~2.5x faster output",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-08-30"
+      "_last_seen_on_page": "2026-09-02"
+    },
+    {
+      "id": "claude-code-api-fable51",
+      "name": "API (Fable 5.1)",
+      "category": "usage",
+      "base_price": null,
+      "includes": null,
+      "overage": {
+        "unit": "token",
+        "mechanism": "automatic",
+        "input_per_million": null,
+        "output_per_million": null,
+        "model": "claude-fable-5-1",
+        "notes": "Current flagship model as of 2026-09-02; cache reads priced at 0.025x base input rate vs standard 0.1x for other models",
+        "price_per_unit": null
+      },
+      "_last_seen_on_page": "2026-09-02"
     }
   ],
   "capabilities": {
