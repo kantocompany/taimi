@@ -350,8 +350,8 @@
         "overage": {
           "unit": "token",
           "mechanism": "automatic",
-          "input_per_million": null,
-          "output_per_million": null,
+          "input_per_million": 10.00,
+          "output_per_million": 50.00,
           "model": "claude-fable-5-1",
           "notes": "Current flagship model as of 2026-09-02; cache reads priced at 0.025x base input rate vs standard 0.1x for other models",
           "price_per_unit": null
