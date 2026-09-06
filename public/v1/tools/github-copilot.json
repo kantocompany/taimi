@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; signups gradually re-enabling (2026-06-21)"
+          "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; third-party agent access (Claude Code, Codex); Cloud agent; code review; signups gradually re-enabling (2026-06-21)"
         },
         "overage": {
           "unit": "request",

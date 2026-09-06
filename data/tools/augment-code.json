@@ -20,7 +20,7 @@
         "notes": "Custom credits, unlimited users, SSO/OIDC/SCIM, CMEK, ISO 42001, SIEM Integration, Data Residency Options, Granular Access Controls, Comprehensive Audit Trails, Slack integration, GitHub Multi Org, Usage Analytics, Advanced Analytics, User allowlist, volume discounts, dedicated support, custom VM sizes, unlimited concurrent sessions, multi-region compute, Cosmos, no AI training"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-09-02"
+      "_last_seen_on_page": "2026-09-06"
     },
     {
       "id": "augment-business",
@@ -44,7 +44,31 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-09-02"
+      "_last_seen_on_page": "2026-09-06"
+    },
+    {
+      "id": "augment-standard",
+      "name": "Standard",
+      "category": "team",
+      "base_price": {
+        "amount": null,
+        "period": null,
+        "per": "flat"
+      },
+      "includes": {
+        "premium_requests": null,
+        "tokens_included": null,
+        "notes": "50 seats max, $20/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions, standard size compute, no AI training"
+      },
+      "overage": {
+        "unit": null,
+        "mechanism": "add_on",
+        "price_per_unit": null,
+        "notes": "Pay-as-you-go top-ups; top-up credits expire 12 months",
+        "input_per_million": null,
+        "output_per_million": null
+      },
+      "_last_seen_on_page": "2026-09-06"
     }
   ],
   "capabilities": {

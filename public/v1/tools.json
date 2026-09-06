@@ -54,6 +54,29 @@
             "input_per_million": null,
             "output_per_million": null
           }
+        },
+        {
+          "id": "augment-standard",
+          "name": "Standard",
+          "category": "team",
+          "base_price": {
+            "amount": null,
+            "period": null,
+            "per": "flat"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "50 seats max, $20/mo usage pooled, Cosmos, CLI, MCP & Native Tools, daemon mode, 50 concurrent sessions, standard size compute, no AI training"
+          },
+          "overage": {
+            "unit": null,
+            "mechanism": "add_on",
+            "price_per_unit": null,
+            "notes": "Pay-as-you-go top-ups; top-up credits expire 12 months",
+            "input_per_million": null,
+            "output_per_million": null
+          }
         }
       ],
       "capabilities": {
@@ -815,7 +838,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; signups gradually re-enabling (2026-06-21)"
+            "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; third-party agent access (Claude Code, Codex); Cloud agent; code review; signups gradually re-enabling (2026-06-21)"
           },
           "overage": {
             "unit": "request",
@@ -952,7 +975,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.5 Flash, Gemini 3.1 Pro, Gemini 3 Flash, Claude Sonnet & Opus 4.6, gpt-oss-120b"
+            "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.1 Pro, Claude Sonnet & Opus 4.6, gpt-oss-120b"
           },
           "overage": null
         },
@@ -1206,7 +1229,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Le Chat Free — limited coding sessions, chat, search, image generation; $10/mo API credits included"
+            "notes": "Le Chat Free — limited coding sessions, chat, search, image generation, Mistral Studio access; $10/mo API credits included; 100+ connectors"
           },
           "overage": null
         },
@@ -1223,7 +1246,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; up to 15GB document storage; $30/mo API credits included; $5.99/mo for verified students"
+            "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; up to 15GB document storage; $30/mo API credits included; $5.99/mo for verified students; chat and email support"
           },
           "overage": {
             "unit": "token",

@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.5 Flash, Gemini 3.1 Pro, Gemini 3 Flash, Claude Sonnet & Opus 4.6, gpt-oss-120b"
+          "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.1 Pro, Claude Sonnet & Opus 4.6, gpt-oss-120b"
         },
         "overage": null
       },
