@@ -51,7 +51,7 @@
       "name": "Standard",
       "category": "team",
       "base_price": {
-        "amount": null,
+        "amount": 20.00,
         "period": null,
         "per": "flat"
       },
