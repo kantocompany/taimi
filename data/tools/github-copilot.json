@@ -20,10 +20,10 @@
       "includes": {
         "premium_requests": 50,
         "tokens_included": null,
-        "notes": "50 agent mode/chat req/mo, 2K completions"
+        "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     },
     {
       "id": "copilot-pro",
@@ -47,7 +47,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     },
     {
       "id": "copilot-pro-plus",
@@ -71,7 +71,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     },
     {
       "id": "copilot-business",
@@ -143,7 +143,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     }
   ],
   "capabilities": {

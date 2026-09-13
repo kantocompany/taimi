@@ -32,7 +32,7 @@
         "notes": "Le Chat Free — limited coding sessions, chat, search, image generation, Mistral Studio access; $10/mo API credits included; 100+ connectors"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     },
     {
       "id": "mistral-pro",
@@ -47,7 +47,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Mistral Vibe (CLI/IDE/web coding), Devstral 2 PAYG beyond; up to 15GB document storage; $30/mo API credits included; $5.99/mo for verified students; chat and email support"
+        "notes": "Mistral Vibe (CLI/IDE/web coding); up to 15GB document storage; $30/mo API credits included; $5.99/mo for verified students; chat and email support"
       },
       "overage": {
         "unit": "token",
@@ -58,7 +58,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     },
     {
       "id": "mistral-team",
@@ -84,7 +84,7 @@
         "notes": "API rates after included usage",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     },
     {
       "id": "mistral-api-devstral2",
@@ -115,7 +115,7 @@
         "notes": "Custom pricing, private deployments, custom models/agents/workflows and UI; SAML SSO, audit logs, white label, custom SLAs; Mistral Vibe for IDE, async coding agents"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-09-06"
+      "_last_seen_on_page": "2026-09-13"
     }
   ],
   "capabilities": {

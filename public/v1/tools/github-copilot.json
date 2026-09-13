@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-09-11",
-    "updated_at": "2026-09-11T00:00:00Z",
+    "version": "2026-09-13",
+    "updated_at": "2026-09-13T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": 50,
           "tokens_included": null,
-          "notes": "50 agent mode/chat req/mo, 2K completions"
+          "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access"
         },
         "overage": null
       },
