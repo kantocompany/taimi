@@ -142,7 +142,7 @@ generate_rows() {
           else "varied" end) as $usage_price |
           (if $plan.overage.unit == "token" then "per M tokens"
            elif $plan.overage.unit == "request" then "per request"
-           elif $plan.overage.unit == "acu" then "per ACU (~minutes)"
+           elif $plan.overage.unit == "acu" then "per ACU (normalized compute)"
            else "varies by provider" end) as $unit_text |
           "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><div class=\"tier-row\"><span class=\"tier-name\">\($plan.name)\($badge)</span><span class=\"tier-price\">\($usage_price)</span></div>\(if $ovnotes != "" then "<div class=\"tier-notes\">\($ovnotes)</div>" else "" end)<div class=\"tier-unit\">\($unit_text)</div></a>"
         else
@@ -714,7 +714,10 @@ cat << 'BANNEREOF'
     <!-- Warning -->
     <div class="warning">
       ⚠ <strong>Usage-based units differ across vendors</strong> — not directly comparable.
-      Tokens (per 1M), requests (per call), and ACUs (agent compute minutes) measure fundamentally different things.
+      Tokens (per 1M), credits (vendor-defined billing units), requests (per call), and ACUs (normalized agent-compute units) measure fundamentally different things.
+      Credit-based plans add a second layer: the per-credit price is usually fixed, but how many credits a task
+      consumes varies by vendor, model, and task complexity — and consumption rates and included allowances can change
+      without any listed price changing. Included credits typically don't roll over; purchased top-ups often expire.
       Click any price block to visit official pricing.
     </div>
 
