@@ -122,7 +122,7 @@ generate_rows() {
           "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><div class=\"tier-row\"><span class=\"tier-name\">\($plan.name)\($badge)</span><span class=\"tier-price\">\($price)</span></div>\(if $notes != "" then "<div class=\"tier-notes\">\($notes)</div>" else "" end)</a>"
         else
           (if $plan.includes.notes then $plan.includes.notes else $plan.name end) as $ent_text |
-          "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><span class=\"tier-name\">\($ent_text)</span></a>"
+          "          <a class=\"price-block \($class)\" href=\"\($plan._pricing_url)\" target=\"_blank\" rel=\"noopener\"><span class=\"tier-name\">\($ent_text)\($badge)</span></a>"
         end
       elif cat == "usage" then
         (if $plan.overage then
@@ -722,7 +722,7 @@ cat << 'BANNEREOF'
     </div>
 
     <div class="warning-platform">
-      <strong>Platform plans<sup>P</sup>:</strong> Claude Code, OpenAI Codex, Mistral Vibe, and Google Antigravity subscription prices include their full platforms (Claude.ai, ChatGPT, Le Chat, Google AI) — not just the coding tool. API/usage plans are standalone.
+      <strong>Platform plans<sup>P</sup>:</strong> Claude Code, OpenAI Codex, Mistral Vibe, and Devin subscription prices include their full platforms (Claude.ai, ChatGPT, Le Chat, the Devin platform) — not just the coding tool. API/usage plans are standalone.
     </div>
 
     <!-- Scroll hint for mobile -->
