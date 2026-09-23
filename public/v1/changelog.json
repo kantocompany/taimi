@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-09-06",
-    "updated_at": "2026-09-06T10:58:35Z",
+    "version": "2026-09-23",
+    "updated_at": "2026-09-23T04:42:14Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-09-23",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plan added: claude-code-api-opus55 (API (Opus 5.5))",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-09-06",
       "tool": "augment-code",
