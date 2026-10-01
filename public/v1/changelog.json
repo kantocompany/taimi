@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-09-30",
-    "updated_at": "2026-09-30T11:27:58Z",
+    "version": "2026-10-01",
+    "updated_at": "2026-10-01T16:24:39Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-10-01",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plans[antigravity-pro].base_price.amount: 20.00 → 19.99; plans[antigravity-ultra].base_price.amount: 100.00 → 99.99",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
     {
       "date": "2026-09-30",
       "tool": "claude-code",

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-09-30",
-    "updated_at": "2026-09-30T00:00:00Z",
+    "version": "2026-10-01",
+    "updated_at": "2026-10-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -1016,7 +1016,7 @@
           "name": "Google AI Pro",
           "category": "individual",
           "base_price": {
-            "amount": 20.00,
+            "amount": 19.99,
             "period": "monthly",
             "per": "user"
           },
@@ -1039,7 +1039,7 @@
           "name": "Google AI Ultra",
           "category": "individual",
           "base_price": {
-            "amount": 100.00,
+            "amount": 99.99,
             "period": "monthly",
             "per": "user"
           },

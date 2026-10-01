@@ -31,7 +31,7 @@
       "name": "Google AI Pro",
       "category": "individual",
       "base_price": {
-        "amount": 20.00,
+        "amount": 19.99,
         "period": "monthly",
         "per": "user"
       },
@@ -55,7 +55,7 @@
       "name": "Google AI Ultra",
       "category": "individual",
       "base_price": {
-        "amount": 100.00,
+        "amount": 99.99,
         "period": "monthly",
         "per": "user"
       },
