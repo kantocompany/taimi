@@ -8,7 +8,7 @@
 set -euo pipefail
 
 DATE=$(date -u +%Y-%m-%d)
-MODEL="claude-sonnet-5"
+MODEL="claude-sonnet-5-5"
 MAX_TURNS=45
 
 while [[ $# -gt 0 ]]; do
