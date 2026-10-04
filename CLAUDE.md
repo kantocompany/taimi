@@ -90,7 +90,7 @@ Set automatically by `scripts/add-tool.sh` when creating a new tool skeleton. So
 
 ## Conditional-hold marker (optional field)
 
-**`plan._pending`** — string. A deferred "revisit when vendor publishes X" decision encoded as source-only data state (e.g. `"vendor-publishes-org-rate"`). Set manually by the operator on a plan whose final shape is blocked on something the vendor has not yet published. Every update cycle re-presents all `_pending` plans (`validate.sh` warning + `diff-summary.sh` section) so the open decision never goes silent. Remove the marker once resolved.
+**`plan._pending`** — string. A deferred "revisit when vendor publishes X" decision encoded as source-only data state (e.g. `"vendor-publishes-org-rate"`). Set manually by the operator on a plan whose final shape is blocked on something the vendor has not yet published. Every update cycle re-presents all `_pending` plans (`validate.sh` warning + `diff-summary.sh` section) so the open decision never goes silent. Plans carrying `_pending` are exempt from the 21-day auto-removal (unobserved warnings still surface). Remove the marker once resolved.
 
 Source-only field — stripped from public API output and from diff/changelog comparison everywhere the other `_`-prefixed fields are stripped.
 

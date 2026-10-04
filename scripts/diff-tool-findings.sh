@@ -246,6 +246,7 @@ jq -n \
     (($to | strptime("%Y-%m-%d") | mktime) - ($from | strptime("%Y-%m-%d") | mktime)) / 86400 | floor;
 
   ([$current.plans[]? | {key: .id, value: ._last_seen_on_page}] | from_entries) as $last_seen_by_id |
+  ([$current.plans[]? | {key: .id, value: ._pending}] | from_entries) as $pending_by_id |
 
   # Unobserved plans: in current data but NOT observed on the page this fetch.
   # Two agent encodings mean the same thing: (a) plan omitted from proposed
@@ -263,8 +264,13 @@ jq -n \
       {type: "plan_removal_pending", plan_id: $pid, last_seen_on_page: null, days_absent: null,
        message: "Plan not observed on page this fetch; no _last_seen_on_page recorded — pending operator review"}
     elif ($days >= $removal_threshold_days) and ($finding_status != "unverified") then
-      {type: "plan_removal_eligible", plan_id: $pid, last_seen_on_page: $last_seen, days_absent: $days,
-       message: "Plan absent from page for \($days) days (≥ \($removal_threshold_days)) — auto-remove eligible"}
+      (if ($pending_by_id[$pid] // null) != null then
+        {type: "plan_removal_pending", plan_id: $pid, last_seen_on_page: $last_seen, days_absent: $days,
+         message: "Plan unobserved \($days) days — auto-removal suppressed by _pending (operator hold)"}
+      else
+        {type: "plan_removal_eligible", plan_id: $pid, last_seen_on_page: $last_seen, days_absent: $days,
+         message: "Plan absent from page for \($days) days (≥ \($removal_threshold_days)) — auto-remove eligible"}
+      end)
     else
       {type: "plan_removal_pending", plan_id: $pid, last_seen_on_page: $last_seen, days_absent: $days,
        message: "Plan absent from page for \($days) days (< \($removal_threshold_days)) — pending"}
