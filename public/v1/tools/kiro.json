@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5; credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
+          "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5 (social login or AWS Builder ID sign-ups only); credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
         },
         "overage": null
       },

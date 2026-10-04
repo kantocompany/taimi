@@ -89,7 +89,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Consumption-based API pricing via Google Cloud; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
+          "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans $30/seat/mo, pay-as-you-go has $0 seat fee; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
         },
         "overage": null,
         "platform_plan": true

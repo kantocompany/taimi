@@ -48,7 +48,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-09-30"
+      "_last_seen_on_page": "2026-10-04"
     },
     {
       "id": "replit-pro",
@@ -62,7 +62,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, premium support, up to 10 parallel agents"
+        "notes": "$100/mo credits, up to 15 collaborators, 50 viewers, premium support, up to 10 parallel agents, database rollback up to 28 days"
       },
       "overage": {
         "unit": "request",
@@ -72,7 +72,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-09-30"
+      "_last_seen_on_page": "2026-10-04"
     },
     {
       "id": "replit-enterprise",
@@ -82,10 +82,10 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments"
+        "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments, custom seat limits, static outbound IPs"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-09-30"
+      "_last_seen_on_page": "2026-10-04"
     }
   ],
   "capabilities": {

@@ -43,7 +43,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Plus subscription; GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.5 (retires 2026-10-14), GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
+          "notes": "ChatGPT Plus subscription; GPT-6.1 Sol, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.5 (retires 2026-10-14), GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
         },
         "overage": null
       },
@@ -90,7 +90,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom pricing; priority request processing; SCIM, EKM, RBAC, domain verification, user analytics, audit logs via Compliance API, data residency controls"
+          "notes": "Custom pricing; priority request processing; SCIM, EKM, RBAC, domain verification, user analytics, audit logs via Compliance API, data retention and residency controls"
         },
         "overage": null
       },

@@ -381,11 +381,11 @@
         "includes": null,
         "overage": {
           "unit": "token",
-          "mechanism": null,
+          "mechanism": "unverified",
           "input_per_million": 2.00,
           "output_per_million": 10.00,
-          "model": null,
-          "notes": null,
+          "model": "claude-sonnet-5-5",
+          "notes": "Latest Sonnet model",
           "price_per_unit": null
         }
       }
