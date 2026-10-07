@@ -167,7 +167,7 @@
         "category": "individual",
         "platform_plan": true,
         "base_price": {
-          "amount": null,
+          "amount": 500.00,
           "period": "monthly",
           "per": null
         },
