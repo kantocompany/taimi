@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-10-04",
-    "updated_at": "2026-10-04T15:17:18Z",
+    "version": "2026-10-07",
+    "updated_at": "2026-10-07T04:49:29Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-10-07",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plan added: codex-pro-500 (Pro $500)",
+      "details": {
+        "source": "https://learn.chatgpt.com/docs/pricing"
+      }
+    },
     {
       "date": "2026-10-04",
       "tool": "claude-code",
