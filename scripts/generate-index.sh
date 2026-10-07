@@ -60,7 +60,7 @@ generate_rows() {
       elif .base_price.amount == 0 then ""
       elif .base_price.per == "team" or .base_price.per == "flat" then
         "\(.base_price.amount | format_price)/mo flat"
-      elif .base_price.per == "user" then
+      elif .base_price.per == "user" or .base_price.per == null then
         "\(.base_price.amount | format_price)/mo"
       else
         "\(.base_price.amount | format_price)/\(.base_price.per)"
@@ -71,6 +71,8 @@ generate_rows() {
       if .base_price == null then ""
       elif .base_price.per == "team" or .base_price.per == "flat" then
         "\(.base_price.amount | format_price)/mo flat"
+      elif .base_price.per == null then
+        "\(.base_price.amount | format_price)/mo"
       else
         "\(.base_price.amount | format_price)/seat"
       end;
