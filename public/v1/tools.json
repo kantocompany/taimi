@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-07",
-    "updated_at": "2026-10-07T00:00:00Z",
+    "version": "2026-10-11",
+    "updated_at": "2026-10-11T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -149,7 +149,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic"
+            "notes": "5x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic; Platform API credits included ($100-$200/mo across Max tiers)"
           },
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
@@ -173,7 +173,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "20x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic"
+            "notes": "20x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic; Platform API credits included ($100-$200/mo across Max tiers)"
           },
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
@@ -1278,7 +1278,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Mistral Vibe (CLI/IDE/web coding); up to 15GB document storage; $30/mo API credits included; $5.99/mo for verified students; chat and email support"
+            "notes": "Mistral Vibe (CLI/IDE/web coding); up to 15GB document storage; $25.5/mo API credits included; $5.99/mo for verified students; chat and email support"
           },
           "overage": {
             "unit": "token",
