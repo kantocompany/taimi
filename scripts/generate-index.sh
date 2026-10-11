@@ -35,11 +35,9 @@ updated_month=$(date -d "${updated_at}" '+%B %Y' 2>/dev/null || date -jf '%Y-%m-
 # Collect tool names for meta description
 tool_names=$(jq -r '[.tools[].name] | join(", ")' "$TOOLS_JSON")
 
-# --- Generate tool rows via jq ---
-# This jq filter produces one HTML row per tool.
-# It groups plans by category and computes data-* sort attributes.
-generate_rows() {
-  jq -r '
+# jq helpers shared by the tool rows and the observations render
+# shellcheck disable=SC2016  # jq program text: $ is jq syntax, must not expand
+JQ_DEFS='
     # Helper: format price for display (strip trailing .00)
     def format_price:
       if . == null then ""
@@ -47,7 +45,73 @@ generate_rows() {
       elif (. == (. | floor)) then "$\(. | floor)"
       else "$\(.)"
       end;
+'
 
+# --- Render observations ---
+# Numbers in observations that duplicate plan data are written as double-brace
+# tokens and computed here, so they cannot drift from data/tools between market
+# runs. Fails the build (before index.html is opened) on an unknown, malformed,
+# or overwritten token, or when the data no longer supports the claim.
+render_observations() {
+  jq -r --rawfile obs "$OBSERVATIONS" "$JQ_DEFS"'
+    # "$19 (GitHub Copilot Business)"; a tie lists every plan at that price
+    def price_group_label:
+      "\(.[0].base_price.amount | format_price) (\(map("\(.tool) \(.name)") | join(", ")))" | @html;
+
+    # Team plans with a known price. Null amounts (new plans awaiting
+    # price-update) are skipped. per-seat = per user, billed monthly;
+    # flat = flat/team base price; anything else is unclassified.
+    [.tools[] as $t | $t.plans[]
+      | select(.category == "team" and (.base_price.amount | type) == "number" and .base_price.amount > 0)
+      | . + {tool: $t.name}] as $team
+    | [$team[] | select(.base_price.per == "user" and .base_price.period == "monthly")] as $seat
+    | [$team[] | select(.base_price.per == "flat" or .base_price.per == "team")] as $flat
+    | ($team - $seat - $flat) as $unclassified
+    | ($seat | group_by(.base_price.amount)) as $tiers
+    | (if ($tiers | length) >= 2 then $tiers[0][0].base_price.amount else null end) as $lo
+    | (if ($tiers | length) >= 2 then $tiers[-1][0].base_price.amount else null end) as $hi
+    | [$unclassified[]
+        | select($lo == null or .base_price.amount < $lo or .base_price.amount > $hi)
+        | "\(.tool) \(.name) (per=\(.base_price.per), period=\(.base_price.period))"] as $outliers
+    | (if $lo == null then "fewer than 2 per-seat team price points"
+       elif ($outliers | length) > 0 then
+         "unclassified team plan(s) outside the per-seat range: \($outliers | join("; ")) — set base_price.per/period in data/tools"
+       else null end) as $range_blocker
+    | (if $range_blocker then {err: $range_blocker} else null end) as $range_err
+    | {
+        team_seat_min:   ($range_err // {v: ($tiers[0] | price_group_label)}),
+        team_seat_max:   ($range_err // {v: ($tiers[-1] | price_group_label)}),
+        team_seat_ratio: ($range_err // {v: ($hi / $lo * 10 | round / 10 | tostring)}),
+        team_flat_tools: (if ($flat | length) > 0
+                          then {v: ([$flat[].tool] | unique | join(", ") | @html)}
+                          else {err: "no flat-priced team plans"} end)
+      } as $facts
+
+    | ([$obs | scan("\\{\\{([^{}]*)\\}\\}")[0]] | unique) as $used
+    | [$used[] | select($facts[.] == null)] as $unknown
+    | [$used[] | select($facts[.].err != null)] as $blocked
+    | [$facts | to_entries[] | .key as $k
+        | select(.value.v != null and (($used | index($k)) == null)) | $k] as $dropped
+    | if ($unknown | length) > 0 then
+        error("data/observations.html: unknown token(s) \($unknown | join(", ")) — tokens are defined in scripts/generate-index.sh")
+      elif ($blocked | length) > 0 then
+        error("data/observations.html: data no longer supports \($blocked | join(", ")): \([$blocked[] | $facts[.].err] | unique | join("; ")) — reword the observation or fix the data")
+      elif ($dropped | length) > 0 then
+        error("data/observations.html: computed token(s) \($dropped | join(", ")) missing — restore them (do not type numbers in their place)")
+      else
+        reduce ($facts | to_entries[] | select(.value.v != null)) as $e
+          ($obs; split("{{" + $e.key + "}}") | join($e.value.v))
+      end
+    | if test("\\{\\{|\\}\\}") then error("data/observations.html: malformed token left after rendering") else . end
+  ' "$TOOLS_JSON"
+}
+obs_html=$(render_observations)
+
+# --- Generate tool rows via jq ---
+# This jq filter produces one HTML row per tool.
+# It groups plans by category and computes data-* sort attributes.
+generate_rows() {
+  jq -r "$JQ_DEFS"'
     # Helper: format number for sort attributes (strip trailing .00)
     def sort_num:
       if . == (. | floor) then (. | floor | tostring)
@@ -754,8 +818,9 @@ cat << 'GRIDEOF'
 
 GRIDEOF
 
-# Observations are editorial content — market-update agent edits data/observations.html
-cat "$OBSERVATIONS"
+# Observations are editorial content — market-update agent edits data/observations.html.
+# Rendered above by render_observations (double-brace tokens computed from data).
+printf '%s\n' "$obs_html"
 echo ""
 
 cat << 'FOOTEREOF'
