@@ -479,8 +479,8 @@
           "overage": {
             "unit": "token",
             "mechanism": "unverified",
-            "input_per_million": null,
-            "output_per_million": null,
+            "input_per_million": 0.10,
+            "output_per_million": 0.50,
             "model": "claude-haiku-5-5",
             "notes": "Latest Haiku model; listed rates apply to prompts up to 100K tokens; prompts over 100K tokens: $0.50 input, $2.50 output per 1M",
             "price_per_unit": null
