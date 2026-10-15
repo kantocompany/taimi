@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-11",
-    "updated_at": "2026-10-11T00:00:00Z",
+    "version": "2026-10-15",
+    "updated_at": "2026-10-15T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -60,7 +60,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Pro 5x subscription; GPT-6 Sol and Luna (same as Plus); 5x Plus rate limits; priority processing"
+          "notes": "ChatGPT Pro 5x subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); 5x Plus rate limits; priority processing"
         },
         "overage": null
       },
@@ -157,7 +157,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Pro 20x subscription; GPT-6 Sol and Luna (same as Plus); 20x Plus rate limits; priority processing; unlimited ChatGPT Voice"
+          "notes": "ChatGPT Pro 20x subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); 20x Plus rate limits; priority processing; unlimited ChatGPT Voice"
         },
         "overage": null
       },

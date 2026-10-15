@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-10-07",
-    "updated_at": "2026-10-07T10:05:32Z",
+    "version": "2026-10-15",
+    "updated_at": "2026-10-15T05:20:29Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-10-15",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plan added: claude-code-api-haiku55 (API (Haiku 5.5))",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-10-07",
       "tool": "openai-codex",
