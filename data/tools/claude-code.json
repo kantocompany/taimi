@@ -427,5 +427,5 @@
     "soc2": true,
     "on_premise": false
   },
-  "verification_override": "Pricing page is JS-rendered. Use rendering proxy r.jina.ai/https://claude.com/pricing — do not attempt direct fetch. Current subscription tiers: Pro, Max 5x, Max 20x, Standard Seat, Premium Seat, Enterprise Self-Serve, Enterprise Sales-Assisted, Education. API token pricing (Sonnet, Opus, Haiku): also on the pricing page via proxy, or verify via docs.anthropic.com. Do not use platform.claude.com/docs/en/about-claude/pricing — it has unreliable subscription tier data."
+  "verification_override": "Pricing page is JS-rendered. Use rendering proxy r.jina.ai/https://claude.com/pricing — do not attempt direct fetch. Current subscription tiers: Pro, Max 5x, Max 20x, Standard Seat, Premium Seat, Enterprise Self-Serve, Enterprise Sales-Assisted, Education. API token rates (current and legacy models, incl. prompt-size tiers): use the model pricing table at platform.claude.com/docs/en/about-claude/pricing — API rates only, not subscription tiers."
 }
