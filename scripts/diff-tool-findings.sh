@@ -120,10 +120,13 @@ jq -n \
   # Plans missing from current append at the end in their proposed order.
   # Removes the agent-side cosmetic-reorder noise that path-based diffs
   # would otherwise flag as ~N changes per existing plan.
+  # A plan the agent omitted keeps its slot (as its current object), so later
+  # plans are compared against their own counterpart, not a shifted one.
+  # Removal is decided by the _last_seen_on_page age gate below, not here.
   ($proposed.plans | map({key: .id, value: .}) | from_entries) as $prop_by_id |
   ($current.plans | map(.id)) as $orig_ids |
   ($proposed | .plans = (
-    [$orig_ids[] | $prop_by_id[.] // empty] +
+    [$current.plans[] | . as $c | ($prop_by_id[$c.id] // $c)] +
     [$proposed.plans[] | select(.id as $i | ($orig_ids | index($i)) == null)]
   )) as $proposed |
 
