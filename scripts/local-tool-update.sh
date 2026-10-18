@@ -62,7 +62,8 @@ run_pipeline() {
 
   # Phase 1: Research (no Edit permission)
   echo "  [$slug] Phase 1: Research"
-  if claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged." \
+  ./scripts/fetch-render.sh "$slug"
+  if claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged. A verbatim render of vendor.pricing_url is at fetched/${slug}.md if present." \
     --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \
@@ -216,7 +217,8 @@ run_pipeline_quiet() {
   fi
 
   # Phase 1: Research
-  if ! claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged." \
+  ./scripts/fetch-render.sh "$slug"
+  if ! claude -p "Today is $DATE. Tool: $slug. Read docs/tool-update.md and execute. When you write proposed.plans[], set each plan's _last_seen_on_page to $DATE ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged. A verbatim render of vendor.pricing_url is at fetched/${slug}.md if present." \
     --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \

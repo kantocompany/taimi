@@ -53,7 +53,8 @@ run_pipeline() {
 
   # Phase 1: Research (no Edit permission)
   echo "  [$slug] Phase 1: Research"
-  if claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
+  ./scripts/fetch-render.sh "$slug"
+  if claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute. A verbatim render of vendor.pricing_url is at fetched/${slug}.md if present." \
     --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \
@@ -182,7 +183,8 @@ run_pipeline_quiet() {
   echo "→ $slug: starting"
 
   # Phase 1: Research
-  if ! claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute." \
+  ./scripts/fetch-render.sh "$slug"
+  if ! claude -p "Today is $DATE. Tool: $slug. Read docs/price-update.md and execute. A verbatim render of vendor.pricing_url is at fetched/${slug}.md if present." \
     --model "$MODEL" --max-turns "$RESEARCH_MAX_TURNS" \
     --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch,Bash(jq *)" \
     --disallowedTools "Agent,Edit" \

@@ -63,6 +63,9 @@ jobs:
       - name: Create working directories
         run: mkdir -p findings diff-results validated
 
+      - name: Fetch page render
+        run: ./scripts/fetch-render.sh ${{ matrix.tool }}
+
       # ── Phase 1: Research (AI — no Edit permission) ──────────────
       - name: Research ${{ matrix.tool }}
         uses: anthropics/claude-code-action@v1
@@ -72,6 +75,7 @@ jobs:
           prompt: |
             Today is ${{ env.DATE }}. Tool: ${{ matrix.tool }}.
             Read docs/price-update.md and execute.
+            A verbatim render of vendor.pricing_url is at fetched/${{ matrix.tool }}.md if present.
           claude_args: |
             --model claude-sonnet-5-5
             --max-turns 25  # research-max-turns

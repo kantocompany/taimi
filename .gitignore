@@ -6,5 +6,6 @@ logs/
 
 # Price update pipeline working directories
 findings/
+fetched/
 diff-results/
 validated/
