@@ -20,7 +20,7 @@ You are done when: (a) `findings/{slug}.json` is valid JSON matching the schema,
 
 ### Card-not-table rule
 
-A feature claim may enter a plan's notes only if sourced from that plan's own card or section on the vendor page — linear content the fetch renders reliably. Comparison-table attribution (✓/✗, dash/checkmark, color, column position) is never written to notes: the render flattens columns, making table-derived attribution unreliable — log it to `extraction_failures` instead. Tables may corroborate a card-sourced claim, never originate one.
+A feature claim may enter a plan's notes only if sourced from that plan's own card or section on the vendor page — linear content the fetch renders reliably. Comparison-table attribution (✓/✗, dash/checkmark, color, column position) is never written to notes: the render flattens columns, making table-derived attribution unreliable — log it to `extraction_failures` instead. Tables may corroborate a card-sourced claim, never originate one. Plan existence is not a feature claim: a tier the page names with a price — card, table header or tier row — belongs in `proposed.plans`.
 
 ### Unverified default
 
