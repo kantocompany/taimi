@@ -167,7 +167,7 @@
         "name": "Plus",
         "category": "individual",
         "base_price": {
-          "amount": null,
+          "amount": 8,
           "period": "monthly",
           "per": "user"
         },
@@ -184,7 +184,7 @@
         "name": "Premium",
         "category": "individual",
         "base_price": {
-          "amount": null,
+          "amount": 30,
           "period": "monthly",
           "per": "user"
         },
@@ -208,7 +208,7 @@
         "name": "Super",
         "category": "individual",
         "base_price": {
-          "amount": null,
+          "amount": 100,
           "period": "monthly",
           "per": "user"
         },
@@ -232,7 +232,7 @@
         "name": "Teams",
         "category": "team",
         "base_price": {
-          "amount": null,
+          "amount": 30,
           "period": "monthly",
           "per": "user"
         },

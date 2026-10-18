@@ -1,10 +1,19 @@
 {
   "meta": {
     "version": "2026-10-18",
-    "updated_at": "2026-10-18T13:56:23Z",
+    "updated_at": "2026-10-18T14:11:45Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-10-18",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "plans[cursor-plus].base_price.amount: added 8; plans[cursor-premium].base_price.amount: added 30; plans[cursor-super].base_price.amount: added 100; plans[cursor-teams].base_price.amount: added 30",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
     {
       "date": "2026-10-18",
       "tool": "cursor",
