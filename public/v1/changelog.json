@@ -1,10 +1,28 @@
 {
   "meta": {
-    "version": "2026-10-15",
-    "updated_at": "2026-10-15T11:29:32Z",
+    "version": "2026-10-18",
+    "updated_at": "2026-10-18T13:56:23Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-10-18",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "platform.bundled_with.0: added Grok; plans[cursor-hobby].name: Hobby → Free; plans[cursor-hobby].platform_plan: added true; plans[cursor-ultra].overage.mechanism: automatic → unverified; plans[cursor-ultra].platform_plan: added true; plan added: cursor-plus (Plus); plan added: cursor-premium (Premium); plan added: cursor-super (Super); plan added: cursor-teams (Teams)",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
+    {
+      "date": "2026-10-18",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plans[antigravity-enterprise].name: Organization → Business plan",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
     {
       "date": "2026-10-15",
       "tool": "claude-code",

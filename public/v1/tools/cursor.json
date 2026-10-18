@@ -21,7 +21,7 @@
     "plans": [
       {
         "id": "cursor-hobby",
-        "name": "Hobby",
+        "name": "Free",
         "category": "free",
         "base_price": {
           "amount": 0,
@@ -31,9 +31,10 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Limited Agent requests, limited Tab completions, access to Composer"
+          "notes": "Limited Agent requests, limited Chat requests, limited Tab completions, access to Composer"
         },
-        "overage": null
+        "overage": null,
+        "platform_plan": true
       },
       {
         "id": "cursor-pro",
@@ -93,16 +94,17 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "20× Pro limits on Agent, highest Grok Bot usage limits; priority access to new features"
+          "notes": "50x Plus usage, everything in Super, earliest access to all products & models"
         },
         "overage": {
-          "notes": "On-demand usage billed in arrears beyond included limits",
+          "notes": "Third-party models in Cursor billed separately by usage",
           "unit": "request",
-          "mechanism": "automatic",
+          "mechanism": "unverified",
           "input_per_million": null,
           "output_per_million": null,
           "price_per_unit": null
-        }
+        },
+        "platform_plan": true
       },
       {
         "id": "cursor-business",
@@ -159,6 +161,95 @@
           "output_per_million": null,
           "price_per_unit": null
         }
+      },
+      {
+        "id": "cursor-plus",
+        "name": "Plus",
+        "category": "individual",
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Introductory plan, shared AI usage pool, Grok models only, Grok Chat/Voice/Imagine/Build, Grok API access, Premium checkmark, less timeline ads, enhanced creator tools, Advanced Analytics"
+        },
+        "overage": null,
+        "platform_plan": true
+      },
+      {
+        "id": "cursor-premium",
+        "name": "Premium",
+        "category": "individual",
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "4x Plus usage, everything in Plus, latest Grok models, cloud agents & automations, code hosting & AI code reviews, third-party models at API list price, Grok Bot, faster Chat responses, AI image/video generation, ad-free scrolling on most surfaces, preferred @handle, higher reply boost"
+        },
+        "overage": {
+          "notes": "Third-party models in Cursor billed separately by usage",
+          "unit": null,
+          "mechanism": "unverified",
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
+        },
+        "platform_plan": true
+      },
+      {
+        "id": "cursor-super",
+        "name": "Super",
+        "category": "individual",
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "15x Plus usage, everything in Premium, priority model access at peak times"
+        },
+        "overage": {
+          "notes": "Third-party models in Cursor billed separately by usage",
+          "unit": null,
+          "mechanism": "unverified",
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
+        },
+        "platform_plan": true
+      },
+      {
+        "id": "cursor-teams",
+        "name": "Teams",
+        "category": "team",
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Starting price per seat, higher seat tiers available"
+        },
+        "overage": {
+          "notes": "Third-party models in Cursor billed separately by usage",
+          "unit": null,
+          "mechanism": "unverified",
+          "input_per_million": null,
+          "output_per_million": null,
+          "price_per_unit": null
+        },
+        "platform_plan": null
       }
     ],
     "capabilities": {
@@ -170,6 +261,11 @@
       "eu_data_residency": false,
       "soc2": true,
       "on_premise": false
+    },
+    "platform": {
+      "bundled_with": [
+        "Grok"
+      ]
     }
   }
 }

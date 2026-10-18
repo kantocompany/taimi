@@ -116,7 +116,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Standard seat, 2-150 members, enterprise search, central billing, SSO, admin controls, desktop app deployment, no training on user content, 200k context window; Annual billing: $20/mo"
+          "notes": "Standard seat, 2-150 members, enterprise search, central billing, SSO, admin controls, desktop app deployment, no training on user content, mix and match seat types, up to $500/mo pooled API credits; Annual billing: $20/mo"
         },
         "overage": null
       },
@@ -133,7 +133,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "5x more usage than Standard; enterprise search, central billing, SSO, domain verification, admin controls, desktop app deployment, no training on user content, 200k context window; Annual billing: $100/mo"
+          "notes": "5x more usage than Standard; enterprise search, central billing, SSO, domain verification, admin controls, desktop app deployment, no training on user content, mix and match seat types, up to $500/mo pooled API credits; Annual billing: $100/mo"
         },
         "overage": null
       },
@@ -150,7 +150,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, network-level access control, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta), 500k context window on default model; API usage billed separately; billed annually; 20 seat minimum"
+          "notes": "SSO, domain capture, SCIM, audit logs, RBAC, data retention controls, Compliance API, network-level access control, IP allowlisting, spend controls, Google Docs cataloging, HIPAA-ready, Claude Security (beta); API usage billed separately; billed annually; 20 seat minimum"
         },
         "overage": null
       },
