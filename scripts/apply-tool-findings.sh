@@ -224,12 +224,19 @@ jq \
     else . end
    else . end) |
 
-  # Platform object (structural — all changes must be confirmed)
-  (if ($proposed | has("platform")) and ($diff.changes | map(select(.field | startswith("platform."))) | length > 0) then
-    if [$diff.changes[] | select(.field | startswith("platform.")) | .field] | all(is_global_field_confirmed(.)) then
-      .platform = $proposed.platform
-    else . end
-   else . end) |
+  # Platform object (structural — per-field confirmed, like vendor). Rejected
+  # fields keep their current value, so one rejected entry no longer blocks the
+  # confirmed ones. Removals are applied in one delpaths so array indices
+  # do not shift between deletions; null holes left in bundled_with are dropped.
+  ([$diff.changes[] | select(.field | startswith("platform.")) | select(is_global_field_confirmed(.field))
+    | .field | ltrimstr("platform.") | split(".") | map(if test("^[0-9]+$") then tonumber else . end)
+  ]) as $pf_paths |
+  (reduce ($pf_paths[] | . as $p | select(($proposed.platform // {}) | getpath($p) != null)) as $p
+    (.; .platform = ((.platform // {}) | setpath($p; $proposed.platform | getpath($p))))) |
+  ([$pf_paths[] | . as $p | select(($proposed.platform // {}) | getpath($p) == null)]) as $pf_del |
+  (if ($pf_del | length) > 0 and .platform != null then .platform |= delpaths($pf_del) else . end) |
+  (if (.platform | type) == "object" and (.platform.bundled_with | type) == "array"
+   then .platform.bundled_with |= map(select(. != null)) else . end) |
 
   # Conditional: restore capabilities from original UNLESS _capabilities_first_pass
   # was set at start of run (captured in $caps_first_pass). When set, apply only
