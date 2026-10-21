@@ -12,6 +12,7 @@
     "name": "ChatGPT",
     "bundled_with": [
       "ChatGPT web/mobile",
+      "ChatGPT Work",
       "DALL-E",
       "Sora",
       "research tools",
@@ -36,7 +37,7 @@
         "notes": "ChatGPT Plus subscription; GPT-6.1 Sol, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.5 (retires 2026-10-14), GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "codex-pro",
@@ -72,7 +73,7 @@
         "notes": "Annual billing: $20/user/mo; minimum 2 users; desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "codex-enterprise",
@@ -86,7 +87,7 @@
         "notes": "Custom pricing; priority request processing; SCIM, EKM, RBAC, domain verification, user analytics, audit logs via Compliance API, data retention and residency controls"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "codex-api",
@@ -103,7 +104,7 @@
         "notes": "API key mode billed at standard API rates; model availability follows the API models available to your key; GPT-5.6 Sol/Terra/Luna, GPT-5.5, GPT-5.4, GPT-5.4 mini confirmed available; no cloud features",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "codex-free",
@@ -121,7 +122,7 @@
         "notes": "ChatGPT Free subscription; basic exploration of Codex capabilities; GPT-6 Luna, desktop app (subject to rollout)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "codex-go",
@@ -139,7 +140,7 @@
         "notes": "ChatGPT Go subscription; lightweight coding tasks; may include ads; GPT-6 Luna, desktop app (subject to rollout)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "codex-pro-20x",
@@ -175,7 +176,7 @@
         "notes": "ChatGPT Pro $500 subscription; everything in Plus; Astra Ultrafast access"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     }
   ],
   "capabilities": {

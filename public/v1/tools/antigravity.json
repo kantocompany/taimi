@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-18",
-    "updated_at": "2026-10-18T00:00:00Z",
+    "version": "2026-10-21",
+    "updated_at": "2026-10-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -89,7 +89,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
+          "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; IDE extensions; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
         },
         "overage": null,
         "platform_plan": true

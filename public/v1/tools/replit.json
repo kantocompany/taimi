@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-18",
-    "updated_at": "2026-10-18T00:00:00Z",
+    "version": "2026-10-21",
+    "updated_at": "2026-10-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -19,22 +19,6 @@
       "pricing_url": "https://replit.com/pricing"
     },
     "plans": [
-      {
-        "id": "replit-starter",
-        "name": "Starter",
-        "category": "free",
-        "base_price": {
-          "amount": 0,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Limited daily Agent credits, 1 published app"
-        },
-        "overage": null
-      },
       {
         "id": "replit-core",
         "name": "Core",
@@ -89,7 +73,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments, custom seat limits, static outbound IPs"
+          "notes": "Custom pricing, dedicated support, SSO/SAML, SCIM, audit logs, single-tenant environments, custom seat limits, static outbound IPs"
         },
         "overage": null
       }

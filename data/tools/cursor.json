@@ -23,7 +23,7 @@
         "notes": "Limited Agent requests, limited Chat requests, limited Tab completions, access to Composer"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18",
+      "_last_seen_on_page": "2026-10-21",
       "platform_plan": true
     },
     {
@@ -51,30 +51,6 @@
       "_last_seen_on_page": "2026-10-11"
     },
     {
-      "id": "cursor-pro-plus",
-      "name": "Pro+",
-      "category": "individual",
-      "base_price": {
-        "amount": 60.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "3× Pro limits on Agent, higher Grok Bot usage limits"
-      },
-      "overage": {
-        "notes": "On-demand usage billed in arrears beyond included limits",
-        "unit": "request",
-        "mechanism": "automatic",
-        "input_per_million": null,
-        "output_per_million": null,
-        "price_per_unit": null
-      },
-      "_last_seen_on_page": "2026-09-30"
-    },
-    {
       "id": "cursor-ultra",
       "name": "Ultra",
       "category": "individual",
@@ -96,7 +72,7 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-10-18",
+      "_last_seen_on_page": "2026-10-21",
       "platform_plan": true
     },
     {
@@ -134,29 +110,7 @@
         "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, access/network/audit controls for Grok Bot, priority support, account management, Bugbot on custom plan"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
-    },
-    {
-      "id": "cursor-teams-premium",
-      "name": "Teams Premium",
-      "category": "team",
-      "base_price": {
-        "amount": 120.00
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "5x Standard limits on Agent, higher Grok Bot usage limits; includes all Individual plan features"
-      },
-      "overage": {
-        "notes": "On-demand usage billed in arrears beyond included limits",
-        "unit": null,
-        "mechanism": "automatic",
-        "input_per_million": null,
-        "output_per_million": null,
-        "price_per_unit": null
-      },
-      "_last_seen_on_page": "2026-09-30"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "cursor-plus",
@@ -174,7 +128,7 @@
       },
       "overage": null,
       "platform_plan": true,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "cursor-premium",
@@ -199,7 +153,7 @@
         "price_per_unit": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "cursor-super",
@@ -224,7 +178,7 @@
         "price_per_unit": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "cursor-teams",
@@ -249,7 +203,7 @@
         "price_per_unit": null
       },
       "platform_plan": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     }
   ],
   "capabilities": {

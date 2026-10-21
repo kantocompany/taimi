@@ -1,10 +1,55 @@
 {
   "meta": {
-    "version": "2026-10-18",
-    "updated_at": "2026-10-18T14:11:45Z",
+    "version": "2026-10-21",
+    "updated_at": "2026-10-21T04:34:18Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-10-21",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "platform.note: Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use → Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use; Cowork being renamed to Claude, rolling out to Pro/Max as of 2026-10-21",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "plan removed: cursor-pro-plus (Pro+); plan removed: cursor-teams-premium (Teams Premium)",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "tool": "mistral-vibe",
+      "type": "pricing_change",
+      "description": "plan removed: mistral-api-devstral2 (Devstral 2 API)",
+      "details": {
+        "source": "https://mistral.ai/pricing"
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "platform.bundled_with.1: DALL-E → ChatGPT Work; platform.bundled_with.2: Sora → DALL-E; platform.bundled_with.3: research tools → Sora; platform.bundled_with.4: custom GPTs → research tools; platform.bundled_with.5: added custom GPTs",
+      "details": {
+        "source": "https://learn.chatgpt.com/docs/pricing"
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "tool": "replit",
+      "type": "pricing_change",
+      "description": "plan removed: replit-starter (Starter)",
+      "details": {
+        "source": "https://replit.com/pricing"
+      }
+    },
     {
       "date": "2026-10-18",
       "tool": "cursor",

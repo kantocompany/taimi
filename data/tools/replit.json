@@ -10,23 +10,6 @@
   "verification_override": "Replit pricing is not reliably extractable by automated tools. The pricing page defaults to annual billing with a JS-only toggle, and third-party web sources frequently show outdated prices. Do NOT change any existing prices. Only check for structural changes (new plans, removed plans, renamed plans) via WebSearch 'replit plans [current-year]'. If a new plan is found, add it with prices from 3+ agreeing sources. If no structural changes, report as verified with no edits. Static-HTML fetches return stale discount math (observed 2026-05-09: '20% off' badge in HTML vs 'Up to 10% off' on the live page); do not derive monthly prices from yearly + discount calculations. Maintainer-verified prices: $20/mo Core, $100/mo Pro (2026-05-09 screenshot).",
   "plans": [
     {
-      "id": "replit-starter",
-      "name": "Starter",
-      "category": "free",
-      "base_price": {
-        "amount": 0,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "Limited daily Agent credits, 1 published app"
-      },
-      "overage": null,
-      "_last_seen_on_page": "2026-09-30"
-    },
-    {
       "id": "replit-core",
       "name": "Core",
       "category": "individual",
@@ -48,7 +31,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "replit-pro",
@@ -72,7 +55,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     },
     {
       "id": "replit-enterprise",
@@ -82,10 +65,10 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments, custom seat limits, static outbound IPs"
+        "notes": "Custom pricing, dedicated support, SSO/SAML, SCIM, audit logs, single-tenant environments, custom seat limits, static outbound IPs"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-18"
+      "_last_seen_on_page": "2026-10-21"
     }
   ],
   "capabilities": {

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-18",
-    "updated_at": "2026-10-18T00:00:00Z",
+    "version": "2026-10-21",
+    "updated_at": "2026-10-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -28,7 +28,7 @@
         "Research",
         "Projects"
       ],
-      "note": "Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use"
+      "note": "Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use; Cowork being renamed to Claude, rolling out to Pro/Max as of 2026-10-21"
     },
     "plans": [
       {

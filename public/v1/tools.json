@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-18",
-    "updated_at": "2026-10-18T00:00:00Z",
+    "version": "2026-10-21",
+    "updated_at": "2026-10-21T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -109,7 +109,7 @@
           "Research",
           "Projects"
         ],
-        "note": "Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use"
+        "note": "Pro/Max/Teams are platform subscriptions; API plan is standalone pay-per-use; Cowork being renamed to Claude, rolling out to Pro/Max as of 2026-10-21"
       },
       "plans": [
         {
@@ -606,29 +606,6 @@
           }
         },
         {
-          "id": "cursor-pro-plus",
-          "name": "Pro+",
-          "category": "individual",
-          "base_price": {
-            "amount": 60.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "3× Pro limits on Agent, higher Grok Bot usage limits"
-          },
-          "overage": {
-            "notes": "On-demand usage billed in arrears beyond included limits",
-            "unit": "request",
-            "mechanism": "automatic",
-            "input_per_million": null,
-            "output_per_million": null,
-            "price_per_unit": null
-          }
-        },
-        {
           "id": "cursor-ultra",
           "name": "Ultra",
           "category": "individual",
@@ -686,27 +663,6 @@
             "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, access/network/audit controls for Grok Bot, priority support, account management, Bugbot on custom plan"
           },
           "overage": null
-        },
-        {
-          "id": "cursor-teams-premium",
-          "name": "Teams Premium",
-          "category": "team",
-          "base_price": {
-            "amount": 120.00
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "5x Standard limits on Agent, higher Grok Bot usage limits; includes all Individual plan features"
-          },
-          "overage": {
-            "notes": "On-demand usage billed in arrears beyond included limits",
-            "unit": null,
-            "mechanism": "automatic",
-            "input_per_million": null,
-            "output_per_million": null,
-            "price_per_unit": null
-          }
         },
         {
           "id": "cursor-plus",
@@ -1177,7 +1133,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
+            "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; IDE extensions; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
           },
           "overage": null,
           "platform_plan": true
@@ -1428,22 +1384,6 @@
           }
         },
         {
-          "id": "mistral-api-devstral2",
-          "name": "Devstral 2 API",
-          "category": "usage",
-          "base_price": null,
-          "includes": null,
-          "overage": {
-            "unit": "token",
-            "mechanism": "automatic",
-            "input_per_million": 0.40,
-            "output_per_million": 2.00,
-            "model": "devstral-2",
-            "notes": "123B param, 256K context; DEPRECATED: Mistral docs (docs.mistral.ai, 2026-08-16) list Devstral 2 as retired 2026-07-31, alternative Mistral Medium 3.5 (general-purpose, not a coding successor)",
-            "price_per_unit": null
-          }
-        },
-        {
           "id": "mistral-enterprise",
           "name": "Enterprise",
           "category": "enterprise",
@@ -1481,6 +1421,7 @@
         "name": "ChatGPT",
         "bundled_with": [
           "ChatGPT web/mobile",
+          "ChatGPT Work",
           "DALL-E",
           "Sora",
           "research tools",
@@ -1660,22 +1601,6 @@
       },
       "plans": [
         {
-          "id": "replit-starter",
-          "name": "Starter",
-          "category": "free",
-          "base_price": {
-            "amount": 0,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Limited daily Agent credits, 1 published app"
-          },
-          "overage": null
-        },
-        {
           "id": "replit-core",
           "name": "Core",
           "category": "individual",
@@ -1729,7 +1654,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Custom pricing, dedicated support, SSO/SAML, single-tenant environments, custom seat limits, static outbound IPs"
+            "notes": "Custom pricing, dedicated support, SSO/SAML, SCIM, audit logs, single-tenant environments, custom seat limits, static outbound IPs"
           },
           "overage": null
         }
