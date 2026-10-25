@@ -31,7 +31,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-10-21"
+      "_last_seen_on_page": "2026-10-25"
     },
     {
       "id": "replit-pro",
@@ -55,7 +55,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-10-21"
+      "_last_seen_on_page": "2026-10-25"
     },
     {
       "id": "replit-enterprise",
@@ -68,7 +68,7 @@
         "notes": "Custom pricing, dedicated support, SSO/SAML, SCIM, audit logs, single-tenant environments, custom seat limits, static outbound IPs"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-21"
+      "_last_seen_on_page": "2026-10-25"
     }
   ],
   "capabilities": {
