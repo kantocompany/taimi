@@ -21,6 +21,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0  # observations brief diffs against the last market-update commit
 
       - name: Check for existing market-update PR
         id: check-pr
@@ -43,6 +45,13 @@ jobs:
           git checkout -B "market-update/${{ env.DATE }}"
           echo "BRANCH=market-update/${{ env.DATE }}" >> "$GITHUB_ENV"
 
+      - name: Observations brief
+        if: ${{ !steps.check-pr.outputs.skip }}
+        run: |
+          mkdir -p fetched
+          ./scripts/observations-brief.sh > fetched/observations-brief.md
+          cat fetched/observations-brief.md
+
       - name: Run Claude Code agent
         if: ${{ !steps.check-pr.outputs.skip }}
         uses: anthropics/claude-code-action@v1
@@ -53,6 +62,7 @@ jobs:
             Today is ${{ env.DATE }}.
             Read docs/market-update.md and execute.
             When you add or flesh out a tool, set every plan's _last_seen_on_page to ${{ env.DATE }}; do not restate values that live in structured fields (overage rates, premium_requests counts) in plan notes — validate.sh will fail the build; and preserve any existing _pending markers unchanged.
+            Data changes since the last market update, mapped to observation bullets: fetched/observations-brief.md.
           claude_args: |
             --model claude-sonnet-5-5
             --max-turns 45
@@ -76,6 +86,13 @@ jobs:
       - name: Validate
         if: ${{ !steps.check-pr.outputs.skip }}
         run: ./scripts/validate.sh
+
+      - name: Unresolved observation flags
+        if: ${{ !steps.check-pr.outputs.skip }}
+        # Non-fatal: re-checks the edited observations against the brief for the reviewer.
+        run: |
+          flags=$(./scripts/observations-brief.sh --flags-only)
+          if [ -n "$flags" ]; then echo "::warning::Unresolved observation flags"; echo "$flags"; else echo "No unresolved observation flags"; fi
 
       - name: Check for changes
         if: ${{ !steps.check-pr.outputs.skip }}
