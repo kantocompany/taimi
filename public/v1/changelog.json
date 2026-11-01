@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-10-21",
-    "updated_at": "2026-10-21T04:34:18Z",
+    "version": "2026-11-01",
+    "updated_at": "2026-11-01T09:58:37Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-11-01",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "vendor.pricing_url: https://learn.chatgpt.com/docs/pricing → https://chatgpt.com/pricing; plans[codex-pro].name: Pro 5x → Pro 100; plans[codex-pro-20x].name: Pro 20x → Pro 200; plans[codex-pro-500].name: Pro $500 → Pro 500; plans[codex-pro-500].base_price.per: added user",
+      "details": {
+        "source": "https://chatgpt.com/pricing"
+      }
+    },
     {
       "date": "2026-10-21",
       "tool": "claude-code",

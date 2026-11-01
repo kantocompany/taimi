@@ -16,7 +16,7 @@
       "name": "OpenAI",
       "hq_country": "US",
       "eu_based": false,
-      "pricing_url": "https://learn.chatgpt.com/docs/pricing"
+      "pricing_url": "https://chatgpt.com/pricing"
     },
     "platform": {
       "name": "ChatGPT",
@@ -50,7 +50,7 @@
       },
       {
         "id": "codex-pro",
-        "name": "Pro 5x",
+        "name": "Pro 100",
         "category": "individual",
         "platform_plan": true,
         "base_price": {
@@ -61,7 +61,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Pro 5x subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); 5x Plus rate limits; priority processing"
+          "notes": "ChatGPT Pro 100 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing"
         },
         "overage": null
       },
@@ -147,7 +147,7 @@
       },
       {
         "id": "codex-pro-20x",
-        "name": "Pro 20x",
+        "name": "Pro 200",
         "category": "individual",
         "platform_plan": true,
         "base_price": {
@@ -158,24 +158,24 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Pro 20x subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); 20x Plus rate limits; priority processing; unlimited ChatGPT Voice"
+          "notes": "ChatGPT Pro 200 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing; unlimited ChatGPT Voice"
         },
         "overage": null
       },
       {
         "id": "codex-pro-500",
-        "name": "Pro $500",
+        "name": "Pro 500",
         "category": "individual",
         "platform_plan": true,
         "base_price": {
           "amount": 500.00,
           "period": "monthly",
-          "per": null
+          "per": "user"
         },
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "ChatGPT Pro $500 subscription; everything in Plus; Astra Ultrafast access"
+          "notes": "ChatGPT Pro 500 subscription; everything in Plus; Astra Ultrafast access"
         },
         "overage": null
       }

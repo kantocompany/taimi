@@ -5,9 +5,9 @@
     "name": "OpenAI",
     "hq_country": "US",
     "eu_based": false,
-    "pricing_url": "https://learn.chatgpt.com/docs/pricing"
+    "pricing_url": "https://chatgpt.com/pricing"
   },
-  "verification_override": "Plus plan model list spans two vendor pages. The Codex-specific models (GPT-5.3-Codex, GPT-5.1-Codex-Mini) appear on developers.openai.com/codex/pricing. The broader ChatGPT models in Plus notes (GPT-5.5, GPT-5.5-pro, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.4-pro) live on chatgpt.com/pricing — Cloudflare-blocked direct, fetch via https://r.jina.ai/https://chatgpt.com/pricing. Do not strip broader ChatGPT models from Plus notes based on a fetch of the Codex page alone — they are listed on the ChatGPT page even though the Codex page is feature-only.",
+  "verification_override": "Subscription prices (USD) come from first-party OpenAI Help Center articles (static; fetch directly or via r.jina.ai): Plus — help.openai.com/en/articles/6950777-what-is-chatgpt-plus; Pro tiers — help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers (one table row per Pro plan with its monthly price); Business seats — help.openai.com/en/articles/8792828-what-is-chatgpt-team (seat-type table, monthly vs annual billing). chatgpt.com/pricing (vendor.pricing_url) localizes currency and renders without amounts through the proxy — use it for plan names and card features only, never for amounts. Codex-specific plan content and usage limits: learn.chatgpt.com/docs/pricing. API token rates: developers.openai.com/api/docs/pricing. Plus notes may list ChatGPT models shown on chatgpt.com/pricing but not on learn.chatgpt.com — do not strip them based on learn.chatgpt.com alone.",
   "platform": {
     "name": "ChatGPT",
     "bundled_with": [
@@ -41,7 +41,7 @@
     },
     {
       "id": "codex-pro",
-      "name": "Pro 5x",
+      "name": "Pro 100",
       "category": "individual",
       "platform_plan": true,
       "base_price": {
@@ -52,10 +52,10 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "ChatGPT Pro 5x subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); 5x Plus rate limits; priority processing"
+        "notes": "ChatGPT Pro 100 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-15"
+      "_last_seen_on_page": "2026-11-01"
     },
     {
       "id": "codex-team",
@@ -144,7 +144,7 @@
     },
     {
       "id": "codex-pro-20x",
-      "name": "Pro 20x",
+      "name": "Pro 200",
       "category": "individual",
       "platform_plan": true,
       "base_price": {
@@ -155,25 +155,25 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "ChatGPT Pro 20x subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); 20x Plus rate limits; priority processing; unlimited ChatGPT Voice"
+        "notes": "ChatGPT Pro 200 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing; unlimited ChatGPT Voice"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-15"
+      "_last_seen_on_page": "2026-11-01"
     },
     {
       "id": "codex-pro-500",
-      "name": "Pro $500",
+      "name": "Pro 500",
       "category": "individual",
       "platform_plan": true,
       "base_price": {
         "amount": 500.00,
         "period": "monthly",
-        "per": null
+        "per": "user"
       },
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "ChatGPT Pro $500 subscription; everything in Plus; Astra Ultrafast access"
+        "notes": "ChatGPT Pro 500 subscription; everything in Plus; Astra Ultrafast access"
       },
       "overage": null,
       "_last_seen_on_page": "2026-10-29"
