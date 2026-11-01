@@ -141,9 +141,10 @@ generate_rows() {
       else tostring
       end;
 
-    # Helper: format price with period
+    # Helper: format price with period. Null amount (awaiting price-update) → "—"
     def price_display:
       if .base_price == null then ""
+      elif .base_price.amount == null then "—"
       elif .base_price.amount == 0 then ""
       elif .base_price.per == "team" or .base_price.per == "flat" then
         "\(.base_price.amount | format_price)/mo flat"
@@ -156,6 +157,7 @@ generate_rows() {
     # Helper: format price with /seat for team plans
     def price_display_team:
       if .base_price == null then ""
+      elif .base_price.amount == null then "—"
       elif .base_price.per == "team" or .base_price.per == "flat" then
         "\(.base_price.amount | format_price)/mo flat"
       elif .base_price.per == null then
@@ -219,9 +221,7 @@ generate_rows() {
           (if $plan.overage.unit == "token" then
             (if $plan.overage.input_per_million != null and $plan.overage.output_per_million != null then
               "\($plan.overage.input_per_million | format_price)/\($plan.overage.output_per_million | format_price)/M"
-            else
-              ($ovnotes | split(" ") | first // "varied")
-            end)
+            else "—" end)
           elif $plan.overage.unit == "request" then
             (if $plan.overage.price_per_unit != null then "$\($plan.overage.price_per_unit)/req"
             else "Effort-based" end)
