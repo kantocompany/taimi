@@ -127,7 +127,7 @@ for slug in "$@"; do
   [[ -f "$dr" ]] || continue
   unc=$(jq -r '.uncovered_plans // [] | join(", ")' "$dr" 2>/dev/null || echo "")
   if [[ -n "$unc" ]]; then
-    cov_lines="${cov_lines}  ⚠️ ${slug}: not in findings, unchecked this cycle: ${unc}
+    cov_lines="${cov_lines}  ⚠️ ${slug}: no price extracted, unchecked this cycle: ${unc}
 "
   fi
 done

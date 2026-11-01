@@ -27,21 +27,14 @@ if ! jq empty "$CURRENT" 2>/dev/null; then
   exit 1
 fi
 
-# If findings status is "unverified", skip all comparison
-status=$(jq -r '.status // "unknown"' "$FINDINGS")
-if [[ "$status" == "unverified" ]]; then
-  slug=$(jq -r '.slug' "$FINDINGS")
-  jq -n --arg slug "$slug" \
-    '{ slug: $slug, has_changes: false, changes: [], status: "unverified" }'
-  exit 0
-fi
-
+# Unverified findings compare nothing: every stored price is reported unchecked.
 jq -n \
   --slurpfile findings "$FINDINGS" \
   --slurpfile current "$CURRENT" \
   '
   $findings[0] as $f |
   $current[0] as $c |
+  (($f.status // "unknown") == "unverified") as $unverified |
 
   # Build lookup of current plans by id
   ($c.plans | map({key: .id, value: .}) | from_entries) as $current_plans |
@@ -77,28 +70,45 @@ jq -n \
     ]
     | map(select(. != null and .old != .new));
 
-  # Compare each findings plan against current data
-  [
-    $f.plans[] |
-    . as $fp |
-    ($current_plans[$fp.id] // null) as $cp |
-    price_changes($fp; $cp)[] |
-    . + { plan_id: $fp.id }
-  ] |
+  # Overage rate fields with a value on this plan (data) or finding
+  def rate_fields:
+    [("input_per_million", "output_per_million", "price_per_unit") as $k
+      | select((.overage // {})[$k] != null) | "overage.\($k)"];
 
-  {
-    slug:         $f.slug,
-    has_changes:  (length > 0),
-    changes:      .,
-    # Plans in current data with no price extracted this run (absent from
-    # findings, or listed with every price field null): never compared, so a
-    # clean/verified result says nothing about them. Surface, do not modify.
-    uncovered_plans: ([$c.plans[].id] - [$f.plans[]? | select(
-      .base_price_amount != null
-      or ((.overage // {}) | .input_per_million != null or .output_per_million != null or .price_per_unit != null)
-    ) | .id]),
-    source_url:   $f.source_url,
-    fetch_method: $f.fetch_method,
-    status:       $f.status
-  }
+  # Price fields a data plan stores: base price whenever a base_price object
+  # exists (a plan awaiting its price stays flagged), overage rates when set.
+  # Contact-sales plans (no base_price, no rates) have nothing to check.
+  def stored_fields: (if .base_price != null then ["base_price.amount"] else [] end) + rate_fields;
+  def extracted_fields: (if .base_price_amount != null then ["base_price.amount"] else [] end) + rate_fields;
+
+  # Stored price fields with no extracted value this run were never compared,
+  # so a clean/verified result says nothing about them. Surface, do not modify.
+  # "id" = nothing extracted; "id (fields)" = some fields extracted, these not.
+  ([$f.plans[]? | {key: .id, value: (if $unverified then [] else extracted_fields end)}] | from_entries) as $extracted |
+  [$c.plans[] | stored_fields as $req | ($req - ($extracted[.id] // [])) as $miss
+    | select($miss | length > 0)
+    | if $miss == $req then .id else "\(.id) (\($miss | join(", ")))" end] as $uncovered |
+
+  if $unverified then
+    { slug: $f.slug, has_changes: false, changes: [], uncovered_plans: $uncovered, status: "unverified" }
+  else
+    # Compare each findings plan against current data
+    [
+      $f.plans[] |
+      . as $fp |
+      ($current_plans[$fp.id] // null) as $cp |
+      price_changes($fp; $cp)[] |
+      . + { plan_id: $fp.id }
+    ] |
+
+    {
+      slug:            $f.slug,
+      has_changes:     (length > 0),
+      changes:         .,
+      uncovered_plans: $uncovered,
+      source_url:      $f.source_url,
+      fetch_method:    $f.fetch_method,
+      status:          $f.status
+    }
+  end
   '

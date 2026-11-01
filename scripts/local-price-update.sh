@@ -87,7 +87,7 @@ run_pipeline() {
   diff_result=$(./scripts/diff-findings.sh "findings/${slug}.json" "data/tools/${slug}.json")
   echo "$diff_result" > "diff-results/${slug}.json"
 
-  # Coverage gate: plans in data but missing from findings were never checked.
+  # Coverage gate: stored price fields with no extracted value were never checked.
   local uncovered
   uncovered=$(echo "$diff_result" | jq -r '.uncovered_plans // [] | join(", ")')
   if [[ -n "$uncovered" ]]; then
