@@ -7,7 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://replit.com/pricing"
   },
-  "verification_override": "replit.com/pricing defaults to the Yearly toggle; Monthly is JS-only. In the verbatim render (fetched/replit.md or r.jina.ai) each paid card reads \"$<monthly> $<annual> / month, billed annually\": the first figure (struck through on the page) is the monthly no-commitment price (base_price.amount); the second is the annual rate. Never record the second figure, a discount badge (\"Up to 10% off\", \"Save $X\") or a derived number as the monthly price. Use only replit.com/pricing — third-party sources show outdated prices.",
+  "verification_override": "replit.com/pricing is unreliable for automated price extraction: it defaults to the Yearly toggle (Monthly is JS-only) and its static HTML has carried stale discount math (2026-05-09: struck-through $25 vs live $20). Do NOT propose price changes for Replit. Read the verbatim render (fetched/replit.md or r.jina.ai), where each paid card reads \"$<monthly> $<annual> / month, billed annually\". If the first figure equals the stored base_price.amount, report it; otherwise report null and quote the card text in extraction_failures. Never use the second figure, discount badges or third-party sources. Plan additions and removals are tool-update scope.",
   "plans": [
     {
       "id": "replit-core",
