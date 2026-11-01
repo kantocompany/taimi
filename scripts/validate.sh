@@ -173,6 +173,28 @@ else
   echo "✓ No _pending conditional-hold markers"
 fi
 
+# --- 3d. plan.platform_plan and tool.platform agree ---
+# A P-badged plan (also listed in the index.html platform banner) bundles more
+# than the coding tool; tool.platform says what. Warn, not fail: filling in the
+# missing side is tool-update scope.
+platform_gaps=$(for f in "${source_files[@]}"; do
+  jq -r '
+    ([.plans[]? | select(.platform_plan == true) | .id]) as $pp
+    | ((.platform | type) == "object") as $has_platform
+    | if ($pp | length) > 0 and ($has_platform | not) then "  \(.slug): platform_plan on \($pp | join(", ")) but no tool.platform"
+      elif ($pp | length) == 0 and $has_platform then "  \(.slug): tool.platform set but no plan has platform_plan"
+      else empty end
+  ' "$f"
+done)
+if [[ -n "$platform_gaps" ]]; then
+  echo "WARN: plan.platform_plan and tool.platform disagree:"
+  echo "$platform_gaps"
+  gap_count=$(printf '%s\n' "$platform_gaps" | grep -c .)
+  ((warnings += gap_count)) || true
+else
+  echo "✓ plan.platform_plan and tool.platform agree"
+fi
+
 # --- 4. Observations file exists ---
 if [[ ! -f "$OBSERVATIONS" ]]; then
   echo "FAIL: $OBSERVATIONS not found"
