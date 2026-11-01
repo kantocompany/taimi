@@ -91,7 +91,7 @@ run_pipeline() {
   local uncovered
   uncovered=$(echo "$diff_result" | jq -r '.uncovered_plans // [] | join(", ")')
   if [[ -n "$uncovered" ]]; then
-    echo "  ⚠️ $slug: PLAN COVERAGE GAP — not in findings, unchecked this cycle: $uncovered"
+    echo "  ⚠️ $slug: PLAN COVERAGE GAP — no price extracted, unchecked this cycle: $uncovered"
   fi
 
   local has_changes
@@ -203,7 +203,7 @@ run_pipeline_quiet() {
   local uncovered
   uncovered=$(echo "$diff_result" | jq -r '.uncovered_plans // [] | join(", ")')
   if [[ -n "$uncovered" ]]; then
-    echo "  ⚠️ $slug: PLAN COVERAGE GAP — not in findings, unchecked: $uncovered"
+    echo "  ⚠️ $slug: PLAN COVERAGE GAP — no price extracted, unchecked: $uncovered"
   fi
   has_changes=$(echo "$diff_result" | jq -r '.has_changes')
 

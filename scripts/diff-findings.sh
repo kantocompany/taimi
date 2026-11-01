@@ -90,9 +90,13 @@ jq -n \
     slug:         $f.slug,
     has_changes:  (length > 0),
     changes:      .,
-    # Plans present in current data but absent from findings: never compared,
-    # so a clean/verified result says nothing about them. Surface, do not modify.
-    uncovered_plans: ([$c.plans[].id] - [$f.plans[]?.id]),
+    # Plans in current data with no price extracted this run (absent from
+    # findings, or listed with every price field null): never compared, so a
+    # clean/verified result says nothing about them. Surface, do not modify.
+    uncovered_plans: ([$c.plans[].id] - [$f.plans[]? | select(
+      .base_price_amount != null
+      or ((.overage // {}) | .input_per_million != null or .output_per_million != null or .price_per_unit != null)
+    ) | .id]),
     source_url:   $f.source_url,
     fetch_method: $f.fetch_method,
     status:       $f.status
