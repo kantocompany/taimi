@@ -47,16 +47,31 @@ JQ_DEFS='
       end;
 '
 
-# --- Render observations ---
+# Platform banner copy; its double-brace token is computed like the observation
+# tokens below.
+PLATFORM_BANNER='<strong>Platform plans<sup>P</sup>:</strong> {{platform_tools}} sell some or all plans as platform subscriptions — the price covers more than the coding tool. Plans without the P mark, including API/usage plans, are standalone.'
+
+# --- Render computed tokens (observations + platform banner) ---
 # Numbers in observations that duplicate plan data are written as double-brace
 # tokens and computed here, so they cannot drift from data/tools between market
-# runs. Fails the build (before index.html is opened) on an unknown, malformed,
-# or overwritten token, or when the data no longer supports the claim.
-render_observations() {
-  jq -r --rawfile obs "$OBSERVATIONS" "$JQ_DEFS"'
+# runs. Both templates are checked together. Fails the build (before index.html
+# is opened) on an unknown, malformed, or overwritten token, or when the data no
+# longer supports the claim.
+render_tokens() {  # $1: obs | banner
+  jq -r --rawfile obs "$OBSERVATIONS" --arg banner "$PLATFORM_BANNER" --arg part "$1" "$JQ_DEFS"'
     # "$19 (GitHub Copilot Business)"; a tie lists every plan at that price
     def price_group_label:
       "\(.[0].base_price.amount | format_price) (\(map("\(.tool) \(.name)") | join(", ")))" | @html;
+
+    # "A", "A and B", "A, B, and C"
+    def human_join:
+      if length < 3 then join(" and ") else "\(.[:-1] | join(", ")), and \(.[-1])" end;
+
+    # Labels of the templates that contain any of $toks, for error messages
+    def used_in($tpl; $label; $toks):
+      [$tpl | to_entries[] | .key as $k
+        | select(any($toks[]; . as $t | $tpl[$k] | contains("{{" + $t + "}}"))) | $label[$k]]
+      | join(", ");
 
     # Team plans with a known price. Null amounts (new plans awaiting
     # price-update) are skipped. per-seat = per user, billed monthly;
@@ -78,34 +93,42 @@ render_observations() {
          "unclassified team plan(s) outside the per-seat range: \($outliers | join("; ")) — set base_price.per/period in data/tools"
        else null end) as $range_blocker
     | (if $range_blocker then {err: $range_blocker} else null end) as $range_err
+    # Tools with at least one platform plan (the P badge), in tools.json order
+    | [.tools[] | select(any(.plans[]; .platform_plan == true)) | .name] as $platform
     | {
         team_seat_min:   ($range_err // {v: ($tiers[0] | price_group_label)}),
         team_seat_max:   ($range_err // {v: ($tiers[-1] | price_group_label)}),
         team_seat_ratio: ($range_err // {v: ($hi / $lo * 10 | round / 10 | tostring)}),
         team_flat_tools: (if ($flat | length) > 0
                           then {v: ([$flat[].tool] | unique | join(", ") | @html)}
-                          else {err: "no flat-priced team plans"} end)
+                          else {err: "no flat-priced team plans"} end),
+        platform_tools:  (if ($platform | length) > 0
+                          then {v: ($platform | human_join | @html)}
+                          else {err: "no plans marked platform_plan"} end)
       } as $facts
 
-    | ([$obs | scan("\\{\\{([^{}]*)\\}\\}")[0]] | unique) as $used
+    | {obs: $obs, banner: $banner} as $tpl
+    | {obs: "data/observations.html", banner: "platform banner (scripts/generate-index.sh)"} as $label
+    | ([$tpl[] | scan("\\{\\{([^{}]*)\\}\\}")[0]] | unique) as $used
     | [$used[] | select($facts[.] == null)] as $unknown
     | [$used[] | select($facts[.].err != null)] as $blocked
     | [$facts | to_entries[] | .key as $k
         | select(.value.v != null and (($used | index($k)) == null)) | $k] as $dropped
     | if ($unknown | length) > 0 then
-        error("data/observations.html: unknown token(s) \($unknown | join(", ")) — tokens are defined in scripts/generate-index.sh")
+        error("\(used_in($tpl; $label; $unknown)): unknown token(s) \($unknown | join(", ")) — tokens are defined in scripts/generate-index.sh")
       elif ($blocked | length) > 0 then
-        error("data/observations.html: data no longer supports \($blocked | join(", ")): \([$blocked[] | $facts[.].err] | unique | join("; ")) — reword the observation or fix the data")
+        error("\(used_in($tpl; $label; $blocked)): data no longer supports \($blocked | join(", ")): \([$blocked[] | $facts[.].err] | unique | join("; ")) — reword the text or fix the data")
       elif ($dropped | length) > 0 then
         error("data/observations.html: computed token(s) \($dropped | join(", ")) missing — restore them (do not type numbers in their place)")
       else
         reduce ($facts | to_entries[] | select(.value.v != null)) as $e
-          ($obs; split("{{" + $e.key + "}}") | join($e.value.v))
+          ($tpl[$part]; split("{{" + $e.key + "}}") | join($e.value.v))
       end
-    | if test("\\{\\{|\\}\\}") then error("data/observations.html: malformed token left after rendering") else . end
+    | if test("\\{\\{|\\}\\}") then error("\($label[$part]): malformed token left after rendering") else . end
   ' "$TOOLS_JSON"
 }
-obs_html=$(render_observations)
+obs_html=$(render_tokens obs)
+platform_banner=$(render_tokens banner)
 
 # --- Generate tool rows via jq ---
 # This jq filter produces one HTML row per tool.
@@ -787,9 +810,13 @@ cat << 'BANNEREOF'
       Click any price block to visit official pricing.
     </div>
 
-    <div class="warning-platform">
-      <strong>Platform plans<sup>P</sup>:</strong> Claude Code, OpenAI Codex, Mistral Vibe, and Devin subscription prices include their full platforms (Claude.ai, ChatGPT, Le Chat, the Devin platform) — not just the coding tool. API/usage plans are standalone.
-    </div>
+BANNEREOF
+
+echo "    <div class=\"warning-platform\">"
+echo "      ${platform_banner}"
+echo "    </div>"
+
+cat << 'MATRIXEOF'
 
     <!-- Scroll hint for mobile -->
     <div class="scroll-hint">← scroll horizontally →</div>
@@ -806,7 +833,7 @@ cat << 'BANNEREOF'
         <div class="col-header h-usage">Usage-Based (PAYG)</div>
         <div class="col-header h-enterprise">Enterprise</div>
 
-BANNEREOF
+MATRIXEOF
 
 # ==================== TOOL ROWS (dynamic) ====================
 generate_rows
