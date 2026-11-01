@@ -29,21 +29,20 @@ for slug in "$@"; do
   old=$(git show "HEAD:${data}" 2>/dev/null || echo '{}')
   new=$(cat "$data")
 
-  block=$(jq -rn \
+  block=$(jq -rn -L "$REPO_ROOT/scripts/lib" \
     --argjson old "$old" \
     --argjson new "$new" \
     --arg slug "$slug" '
-    def flat:
-      [paths(scalars) as $p | {key: ($p|map(tostring)|join(".")), value: getpath($p)}]
-      | from_entries;
+    include "flatten";  # flatten_leaves (scripts/lib/flatten.jq)
 
     def diff_obj($o; $n):
-      ($o | flat) as $of |
-      ($n | flat) as $nf |
+      ($o | flatten_leaves) as $of |
+      ($n | flatten_leaves) as $nf |
       [
         ($of | to_entries[] | select($nf[.key] != .value)
           | {field: .key, old: .value, new: $nf[.key]}),
-        ($nf | to_entries[] | select(($of[.key] // null) == null and .value != null)
+        # has(), not "// null": a false leaf is present, not missing
+        ($nf | to_entries[] | .key as $k | select(($of | has($k) | not) and .value != null)
           | {field: .key, old: null, new: .value})
       ];
 
@@ -88,7 +87,7 @@ for slug in "$@"; do
                         "        + \(.new | tostring)")
         elif .kind == "added" then
           "  + \(.id) (new plan)",
-          (.plan | flat | to_entries[]
+          (.plan | flatten_leaves | to_entries[]
             | select(.value != null and (.key != "id"))
             | "      \(.key): \(.value | tostring)")
         else

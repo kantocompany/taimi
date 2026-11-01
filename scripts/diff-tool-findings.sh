@@ -10,6 +10,7 @@ set -euo pipefail
 
 FINDINGS="$1"
 DATA_FILE="$2"
+LIB_DIR="$(cd "$(dirname "$0")" && pwd)/lib"
 
 if [[ ! -f "$FINDINGS" ]] || [[ ! -f "$DATA_FILE" ]]; then
   echo "ERROR: Missing input file" >&2
@@ -46,7 +47,7 @@ fi
 
 # Compare proposed against current data
 # Output: {has_changes, has_structural_changes, changes[], warnings[]}
-jq -n \
+jq -n -L "$LIB_DIR" \
   --argjson proposed "$(jq '.proposed' "$FINDINGS")" \
   --argjson current "$(cat "$DATA_FILE")" \
   --arg slug "$slug" \
@@ -56,6 +57,8 @@ jq -n \
   --arg finding_status "$status" \
   --argjson removal_threshold_days "$removal_threshold_days" \
   '
+  include "flatten";  # flatten_leaves (scripts/lib/flatten.jq)
+
   # Price fields — owned by price-update, skip these
   def is_price_field:
     . as $key |
@@ -84,15 +87,6 @@ jq -n \
     ($key | test("overage\\.model$")) or
     ($key | test("\\.platform")) or
     ($key | test("^platform\\."));
-
-  # Flatten JSON to key-value pairs (leaf nodes only). platform.bundled_with is
-  # a set: one sorted value, so an insertion is one change, not one per shifted
-  # index (2026-10-21 Codex). Apply sets the whole array on path ["bundled_with"].
-  def flatten_leaves:
-    (if (.platform.bundled_with | type) == "array"
-     then {"platform.bundled_with": (.platform.bundled_with | unique)} else {} end)
-    + ([paths(scalars) as $p | select($p[:2] != ["platform", "bundled_with"])
-        | {key: ($p | map(tostring) | join(".")), value: getpath($p)}] | from_entries);
 
   # Strip price, protected, and meta fields before comparison.
   # Capabilities is conditionally protected based on _capabilities_first_pass.

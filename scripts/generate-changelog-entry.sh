@@ -9,6 +9,7 @@ OLD="$1"
 NEW="$2"
 SLUG="$3"
 DATE="$4"
+LIB_DIR="$(cd "$(dirname "$0")" && pwd)/lib"
 
 # Fast path: identical JSON = no entry (normalize to ignore whitespace differences)
 if diff -q <(jq -S . "$OLD") <(jq -S . "$NEW") >/dev/null 2>&1; then
@@ -17,24 +18,19 @@ fi
 
 SOURCE=$(jq -r '.vendor.pricing_url // "unknown"' "$NEW")
 
-DESCRIPTION=$(jq -rn \
+DESCRIPTION=$(jq -rn -L "$LIB_DIR" \
   --slurpfile old "$OLD" \
   --slurpfile new "$NEW" \
   '
+  include "flatten";  # flatten_leaves (scripts/lib/flatten.jq)
+
   # Strip editorial fields that produce changelog noise but have no value
   # to API consumers (notes rewording, verification override changes,
   # internal provenance flag clears)
   def strip_editorial:
     walk(if type == "object" then del(.notes, .verification_override, ._notes_first_pass, ._capabilities_first_pass, ._last_seen_on_page, ._pending) else . end);
 
-  # platform.bundled_with is a set: one sorted value, logged as added/removed
-  # entries rather than one positional rename per shifted index.
-  def flatten_leaves:
-    (if (.platform.bundled_with | type) == "array"
-     then {"platform.bundled_with": (.platform.bundled_with | unique)} else {} end)
-    + ([paths(scalars) as $p | select($p[:2] != ["platform", "bundled_with"])
-        | {key: ($p | map(tostring) | join(".")), value: getpath($p)}] | from_entries);
-
+  # Array leaves (platform.bundled_with, a set) log as added/removed entries
   def diff_lines($o; $n; $prefix):
     ($o | flatten_leaves) as $of |
     ($n | flatten_leaves) as $nf |
