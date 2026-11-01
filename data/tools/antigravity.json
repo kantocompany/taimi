@@ -7,7 +7,7 @@
     "eu_based": false,
     "pricing_url": "https://antigravity.google/pricing"
   },
-  "verification_override": "Pricing page at antigravity.google/pricing is JS-rendered; direct WebFetch returns only page title. Use Jina proxy: r.jina.ai/https://antigravity.google/pricing. Tier names confirmed from 2026-07-12 research: Free, AI Pro ($20/mo), AI Ultra ($100/mo), AI Ultra Max ($200/mo), Enterprise. Credits add-on: $25 per block of 2,500 AI credits ($0.01/credit); confirm mechanism is add_on vs automatic. Model availability: Gemini 3.5 Flash confirmed on Free; verify which models are available on paid tiers and whether third-party models (Claude, OpenAI) are offered. Team plan: no dedicated team tier observed — verify whether AI Pro/Ultra/UltraMax cover teams or if a Team plan exists between individual and Enterprise.",
+  "verification_override": "antigravity.google/pricing (JS-rendered: use fetched/antigravity.md or r.jina.ai) names the tiers but its paid Google AI cards carry no dollar amounts. USD monthly prices are on gemini.google/subscriptions — fetch https://r.jina.ai/https://gemini.google/subscriptions/ and take the USD \"$X/ month\" figure from the card whose Google Antigravity row matches the plan; a card listing several usage tiers maps each tier to its own plan — never substitute one tier's price for another. Business plan is contact-sales. Use only these two pages — no blog posts, news coverage or non-USD prices.",
   "plans": [
     {
       "id": "antigravity-free",
