@@ -35,7 +35,7 @@ DESCRIPTION=$(jq -rn -L "$LIB_DIR" \
     ($o | flatten_leaves) as $of |
     ($n | flatten_leaves) as $nf |
     ([$of | to_entries[] | select($nf[.key] != null and $nf[.key] != .value) |
-      if (.value | type) == "array" then
+      if (.value | type) == "array" and ($nf[.key] | type) == "array" then
         "\($prefix)\(.key): \([($nf[.key] - .value)[] | "added \(.)"] + [(.value - $nf[.key])[] | "removed \(.)"] | join(", "))"
       else
         "\($prefix)\(.key): \(.value) → \($nf[.key])"
