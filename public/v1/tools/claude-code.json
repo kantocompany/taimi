@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-29",
-    "updated_at": "2026-10-29T00:00:00Z",
+    "version": "2026-11-01",
+    "updated_at": "2026-11-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -44,7 +44,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Rate-limited; Annual billing: $17/mo"
+          "notes": "Rate-limited; Fable via usage credits; Annual billing: $17/mo"
         },
         "overage": {
           "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
@@ -57,7 +57,7 @@
       },
       {
         "id": "claude-code-max5",
-        "name": "Max 5x",
+        "name": "Max",
         "category": "individual",
         "platform_plan": true,
         "base_price": {
@@ -68,7 +68,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "5x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic; Platform API credits included ($100-$200/mo across Max tiers)"
+          "notes": "5x usage vs Pro; Fable included up to half weekly limit; early access to advanced features; priority access during peak traffic; $100/mo Platform API credits"
         },
         "overage": {
           "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
@@ -81,7 +81,7 @@
       },
       {
         "id": "claude-code-max20",
-        "name": "Max 20x",
+        "name": "Ultra",
         "category": "individual",
         "platform_plan": true,
         "base_price": {
@@ -92,7 +92,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "20x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic; Platform API credits included ($100-$200/mo across Max tiers)"
+          "notes": "10x weekly usage vs Pro; no 5-hour limit for verified accounts; Fable included up to half weekly limit; early access to advanced features; priority access during peak traffic; $200/mo Platform API credits"
         },
         "overage": {
           "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",

@@ -23,32 +23,8 @@
         "notes": "Limited Agent requests, limited Chat requests, limited Tab completions, access to Composer"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-29",
+      "_last_seen_on_page": "2026-11-01",
       "platform_plan": true
-    },
-    {
-      "id": "cursor-pro",
-      "name": "Pro",
-      "category": "individual",
-      "base_price": {
-        "amount": 20.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "Extended Agent limits, generous Grok & Composer limits, Grok Bot access, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
-      },
-      "overage": {
-        "notes": "On-demand usage billed in arrears beyond included limits",
-        "unit": "request",
-        "mechanism": "automatic",
-        "input_per_million": null,
-        "output_per_million": null,
-        "price_per_unit": null
-      },
-      "_last_seen_on_page": "2026-10-11"
     },
     {
       "id": "cursor-ultra",
@@ -72,32 +48,8 @@
         "output_per_million": null,
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-10-29",
+      "_last_seen_on_page": "2026-11-01",
       "platform_plan": true
-    },
-    {
-      "id": "cursor-business",
-      "name": "Teams Standard",
-      "category": "team",
-      "base_price": {
-        "amount": 40.00,
-        "period": "monthly",
-        "per": "user"
-      },
-      "includes": {
-        "premium_requests": null,
-        "tokens_included": null,
-        "notes": "Cloud agents with shared team context, Bugbot code reviews, Grok Bot access, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
-      },
-      "overage": {
-        "notes": "On-demand usage billed in arrears beyond included limits",
-        "unit": "request",
-        "mechanism": "automatic",
-        "input_per_million": null,
-        "output_per_million": null,
-        "price_per_unit": null
-      },
-      "_last_seen_on_page": "2026-10-11"
     },
     {
       "id": "cursor-enterprise",
@@ -110,7 +62,7 @@
         "notes": "Pooled usage, invoice/PO billing, SCIM seat management, AI code tracking API, audit logs, service accounts, auto-run/browser/network controls, repository/model/MCP access controls, access/network/audit controls for Grok Bot, priority support, account management, Bugbot on custom plan"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-10-29"
+      "_last_seen_on_page": "2026-11-01"
     },
     {
       "id": "cursor-plus",
@@ -128,7 +80,7 @@
       },
       "overage": null,
       "platform_plan": true,
-      "_last_seen_on_page": "2026-10-29"
+      "_last_seen_on_page": "2026-11-01"
     },
     {
       "id": "cursor-premium",
@@ -153,7 +105,7 @@
         "price_per_unit": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-10-29"
+      "_last_seen_on_page": "2026-11-01"
     },
     {
       "id": "cursor-super",
@@ -178,7 +130,7 @@
         "price_per_unit": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-10-29"
+      "_last_seen_on_page": "2026-11-01"
     },
     {
       "id": "cursor-teams",
@@ -203,7 +155,7 @@
         "price_per_unit": null
       },
       "platform_plan": null,
-      "_last_seen_on_page": "2026-10-29"
+      "_last_seen_on_page": "2026-11-01"
     }
   ],
   "capabilities": {

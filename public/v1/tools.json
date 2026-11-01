@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-29",
-    "updated_at": "2026-10-29T00:00:00Z",
+    "version": "2026-11-01",
+    "updated_at": "2026-11-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -125,7 +125,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Rate-limited; Annual billing: $17/mo"
+            "notes": "Rate-limited; Fable via usage credits; Annual billing: $17/mo"
           },
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
@@ -138,7 +138,7 @@
         },
         {
           "id": "claude-code-max5",
-          "name": "Max 5x",
+          "name": "Max",
           "category": "individual",
           "platform_plan": true,
           "base_price": {
@@ -149,7 +149,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "5x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic; Platform API credits included ($100-$200/mo across Max tiers)"
+            "notes": "5x usage vs Pro; Fable included up to half weekly limit; early access to advanced features; priority access during peak traffic; $100/mo Platform API credits"
           },
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
@@ -162,7 +162,7 @@
         },
         {
           "id": "claude-code-max20",
-          "name": "Max 20x",
+          "name": "Ultra",
           "category": "individual",
           "platform_plan": true,
           "base_price": {
@@ -173,7 +173,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "20x usage vs Pro; higher output limits; early access to advanced features; priority access during peak traffic; Platform API credits included ($100-$200/mo across Max tiers)"
+            "notes": "10x weekly usage vs Pro; no 5-hour limit for verified accounts; Fable included up to half weekly limit; early access to advanced features; priority access during peak traffic; $200/mo Platform API credits"
           },
           "overage": {
             "notes": "Usage credits at standard API rates once included usage exhausted (opt-in)",
@@ -583,29 +583,6 @@
           "platform_plan": true
         },
         {
-          "id": "cursor-pro",
-          "name": "Pro",
-          "category": "individual",
-          "base_price": {
-            "amount": 20.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Extended Agent limits, generous Grok & Composer limits, Grok Bot access, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
-          },
-          "overage": {
-            "notes": "On-demand usage billed in arrears beyond included limits",
-            "unit": "request",
-            "mechanism": "automatic",
-            "input_per_million": null,
-            "output_per_million": null,
-            "price_per_unit": null
-          }
-        },
-        {
           "id": "cursor-ultra",
           "name": "Ultra",
           "category": "individual",
@@ -628,29 +605,6 @@
             "price_per_unit": null
           },
           "platform_plan": true
-        },
-        {
-          "id": "cursor-business",
-          "name": "Teams Standard",
-          "category": "team",
-          "base_price": {
-            "amount": 40.00,
-            "period": "monthly",
-            "per": "user"
-          },
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Cloud agents with shared team context, Bugbot code reviews, Grok Bot access, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
-          },
-          "overage": {
-            "notes": "On-demand usage billed in arrears beyond included limits",
-            "unit": "request",
-            "mechanism": "automatic",
-            "input_per_million": null,
-            "output_per_million": null,
-            "price_per_unit": null
-          }
         },
         {
           "id": "cursor-enterprise",
@@ -922,7 +876,7 @@
           "includes": {
             "premium_requests": 50,
             "tokens_included": null,
-            "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access"
+            "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access; Student plan for verified students"
           },
           "overage": null
         },
@@ -938,7 +892,7 @@
           "includes": {
             "premium_requests": 300,
             "tokens_included": null,
-            "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; third-party agent access (Claude Code, Codex); Cloud agent; code review; signups gradually re-enabling (2026-06-21)"
+            "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; third-party agent access (Claude Code, Codex); Cloud agent; code review; signups gradually re-enabling (2026-06-21); free for verified teachers and popular OSS maintainers"
           },
           "overage": {
             "unit": "request",

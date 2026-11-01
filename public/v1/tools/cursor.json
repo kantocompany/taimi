@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-29",
-    "updated_at": "2026-10-29T00:00:00Z",
+    "version": "2026-11-01",
+    "updated_at": "2026-11-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -37,29 +37,6 @@
         "platform_plan": true
       },
       {
-        "id": "cursor-pro",
-        "name": "Pro",
-        "category": "individual",
-        "base_price": {
-          "amount": 20.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Extended Agent limits, generous Grok & Composer limits, Grok Bot access, frontier models, MCPs, skills, hooks, cloud agents, Bugbot on usage-based billing"
-        },
-        "overage": {
-          "notes": "On-demand usage billed in arrears beyond included limits",
-          "unit": "request",
-          "mechanism": "automatic",
-          "input_per_million": null,
-          "output_per_million": null,
-          "price_per_unit": null
-        }
-      },
-      {
         "id": "cursor-ultra",
         "name": "Ultra",
         "category": "individual",
@@ -82,29 +59,6 @@
           "price_per_unit": null
         },
         "platform_plan": true
-      },
-      {
-        "id": "cursor-business",
-        "name": "Teams Standard",
-        "category": "team",
-        "base_price": {
-          "amount": 40.00,
-          "period": "monthly",
-          "per": "user"
-        },
-        "includes": {
-          "premium_requests": null,
-          "tokens_included": null,
-          "notes": "Cloud agents with shared team context, Bugbot code reviews, Grok Bot access, shared chats, commands, team-wide rules/skills/automations, centralized billing, privacy mode, RBAC, SAML/OIDC SSO, team plugin marketplace, usage analytics"
-        },
-        "overage": {
-          "notes": "On-demand usage billed in arrears beyond included limits",
-          "unit": "request",
-          "mechanism": "automatic",
-          "input_per_million": null,
-          "output_per_million": null,
-          "price_per_unit": null
-        }
       },
       {
         "id": "cursor-enterprise",

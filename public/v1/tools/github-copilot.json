@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-10-29",
-    "updated_at": "2026-10-29T00:00:00Z",
+    "version": "2026-11-01",
+    "updated_at": "2026-11-01T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": 50,
           "tokens_included": null,
-          "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access"
+          "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access; Student plan for verified students"
         },
         "overage": null
       },
@@ -47,7 +47,7 @@
         "includes": {
           "premium_requests": 300,
           "tokens_included": null,
-          "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; third-party agent access (Claude Code, Codex); Cloud agent; code review; signups gradually re-enabling (2026-06-21)"
+          "notes": "$15/mo AI Credits ($10 base + $5 flex); legacy premium req/user; unlimited completions; third-party agent access (Claude Code, Codex); Cloud agent; code review; signups gradually re-enabling (2026-06-21); free for verified teachers and popular OSS maintainers"
         },
         "overage": {
           "unit": "request",

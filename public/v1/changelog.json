@@ -1,10 +1,28 @@
 {
   "meta": {
     "version": "2026-11-01",
-    "updated_at": "2026-11-01T09:58:37Z",
+    "updated_at": "2026-11-01T13:20:45Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-11-01",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans[claude-code-max5].name: Max 5x → Max; plans[claude-code-max20].name: Max 20x → Ultra",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "tool": "cursor",
+      "type": "pricing_change",
+      "description": "plan removed: cursor-pro (Pro); plan removed: cursor-business (Teams Standard)",
+      "details": {
+        "source": "https://cursor.com/pricing"
+      }
+    },
     {
       "date": "2026-11-01",
       "tool": "openai-codex",
