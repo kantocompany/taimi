@@ -27,17 +27,25 @@ DESCRIPTION=$(jq -rn \
   def strip_editorial:
     walk(if type == "object" then del(.notes, .verification_override, ._notes_first_pass, ._capabilities_first_pass, ._last_seen_on_page, ._pending) else . end);
 
+  # platform.bundled_with is a set: one sorted value, logged as added/removed
+  # entries rather than one positional rename per shifted index.
   def flatten_leaves:
-    [paths(scalars) as $p | {key: ($p | map(tostring) | join(".")), value: getpath($p)}]
-    | from_entries;
+    (if (.platform.bundled_with | type) == "array"
+     then {"platform.bundled_with": (.platform.bundled_with | unique)} else {} end)
+    + ([paths(scalars) as $p | select($p[:2] != ["platform", "bundled_with"])
+        | {key: ($p | map(tostring) | join(".")), value: getpath($p)}] | from_entries);
 
   def diff_lines($o; $n; $prefix):
     ($o | flatten_leaves) as $of |
     ($n | flatten_leaves) as $nf |
     ([$of | to_entries[] | select($nf[.key] != null and $nf[.key] != .value) |
-      "\($prefix)\(.key): \(.value) → \($nf[.key])"] ) +
+      if (.value | type) == "array" then
+        "\($prefix)\(.key): \([($nf[.key] - .value)[] | "added \(.)"] + [(.value - $nf[.key])[] | "removed \(.)"] | join(", "))"
+      else
+        "\($prefix)\(.key): \(.value) → \($nf[.key])"
+      end] ) +
     ([$nf | to_entries[] | select($of[.key] == null) |
-      "\($prefix)\(.key): added \(.value)"] ) +
+      "\($prefix)\(.key): added \(if (.value | type) == "array" then .value | join(", ") else .value end)"] ) +
     ([$of | to_entries[] | select($nf[.key] == null) |
       "\($prefix)\(.key): removed"] );
 

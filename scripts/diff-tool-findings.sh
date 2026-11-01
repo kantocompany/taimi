@@ -85,10 +85,14 @@ jq -n \
     ($key | test("\\.platform")) or
     ($key | test("^platform\\."));
 
-  # Flatten JSON to key-value pairs (leaf nodes only)
+  # Flatten JSON to key-value pairs (leaf nodes only). platform.bundled_with is
+  # a set: one sorted value, so an insertion is one change, not one per shifted
+  # index (2026-10-21 Codex). Apply sets the whole array on path ["bundled_with"].
   def flatten_leaves:
-    [paths(scalars) as $p | {key: ($p | map(tostring) | join(".")), value: getpath($p)}]
-    | from_entries;
+    (if (.platform.bundled_with | type) == "array"
+     then {"platform.bundled_with": (.platform.bundled_with | unique)} else {} end)
+    + ([paths(scalars) as $p | select($p[:2] != ["platform", "bundled_with"])
+        | {key: ($p | map(tostring) | join(".")), value: getpath($p)}] | from_entries);
 
   # Strip price, protected, and meta fields before comparison.
   # Capabilities is conditionally protected based on _capabilities_first_pass.
