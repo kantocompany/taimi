@@ -119,7 +119,7 @@ render_tokens() {  # $1: obs | banner
       elif ($blocked | length) > 0 then
         error("\(used_in($tpl; $label; $blocked)): data no longer supports \($blocked | join(", ")): \([$blocked[] | $facts[.].err] | unique | join("; ")) — reword the text or fix the data")
       elif ($dropped | length) > 0 then
-        error("data/observations.html: computed token(s) \($dropped | join(", ")) missing — restore them (do not type numbers in their place)")
+        error("computed token(s) \($dropped | join(", ")) missing from both data/observations.html and the platform banner — restore them (do not type numbers in their place)")
       else
         reduce ($facts | to_entries[] | select(.value.v != null)) as $e
           ($tpl[$part]; split("{{" + $e.key + "}}") | join($e.value.v))
@@ -224,10 +224,10 @@ generate_rows() {
             else "—" end)
           elif $plan.overage.unit == "request" then
             (if $plan.overage.price_per_unit != null then "$\($plan.overage.price_per_unit)/req"
-            else "Effort-based" end)
+            else "—" end)
           elif $plan.overage.unit == "acu" then
             (if $plan.overage.price_per_unit != null then "$\($plan.overage.price_per_unit)/unit"
-            else "varied" end)
+            else "—" end)
           else "varied" end) as $usage_price |
           (if $plan.overage.unit == "token" then "per M tokens"
            elif $plan.overage.unit == "request" then "per request"
