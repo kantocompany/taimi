@@ -5,6 +5,7 @@ set -euo pipefail
 # Merges proposed JSON but preserves price fields and capabilities.
 # Only applies changes confirmed by the validation verdict.
 # All changes (structural and editorial) require confirmation.
+# Verdict entries may omit new; it is filled from the diff (see below).
 #
 # Usage: ./scripts/apply-tool-findings.sh <findings.json> <diff-results.json> <data-file.json> [validated.json]
 # Exit 0: success (changes applied or nothing to apply).
@@ -76,6 +77,39 @@ if [[ "$has_changes" != "true" ]]; then
   exit 0
 fi
 
+# Normalize the verdict (2026-11-05 Kiro: 14 changes confirmed without old/new
+# echoed, so the (plan_id, leaf, new) match dropped them all). A plans-scoped
+# entry with no new value takes the diff's proposed value for the same plan and
+# leaf — the change the validator was shown. Apply writes from findings, so new
+# is only a match key; an echoed new must still match exactly.
+verdict_norm=$(mktemp)
+trap 'rm -f "$verdict_norm"' EXIT
+if [[ -n "$VALIDATED" ]] && [[ -f "$VALIDATED" ]] && jq empty "$VALIDATED" 2>/dev/null; then
+  jq --slurpfile d "$DIFF_RESULTS" '
+    def leaf: (. // "") | sub("^plans\\.[0-9]+\\."; "");
+    .changes |= (. // [] | map(. as $v |
+      if $v.plan_id != null and (($v | has("new") | not) or $v.new == null) then
+        ([$d[0].changes[] | select(.plan_id == $v.plan_id and (.field | leaf) == ($v.field | leaf)) | .new] | first) as $n
+        | if $n != null then . + {new: $n} else . end
+      else . end))
+  ' "$VALIDATED" > "$verdict_norm"
+  VALIDATED="$verdict_norm"
+
+  # Confirmed plans-scoped verdicts that match no proposed change are never
+  # applied — say so instead of folding them into "no changes applied".
+  unmatched=$(jq -r --slurpfile d "$DIFF_RESULTS" '
+    def leaf: (. // "") | sub("^plans\\.[0-9]+\\."; "");
+    [.changes[] | select(.confirmed == true and .plan_id != null and .field != "plan_id" and .field != .plan_id)
+      | . as $v
+      | select(any($d[0].changes[]; .plan_id == $v.plan_id and (.field | leaf) == ($v.field | leaf) and .new == $v.new) | not)
+      | "\(.plan_id) \(.field | leaf)"]
+    | select(length > 0) | "\(length) confirmed verdict(s) match no proposed change — not applied: \(join(", "))"
+  ' "$VALIDATED")
+  if [[ -n "$unmatched" ]]; then
+    echo "WARNING: $unmatched"
+  fi
+fi
+
 # Build confirmed verdicts from validator (empty arrays if no verdict).
 # Plans-scoped verdicts carry plan_id and match on (plan_id, leaf-suffix, new) —
 # the numeric index in field is informational. Vendor/platform/capabilities
@@ -90,7 +124,7 @@ else
 fi
 
 tmpfile=$(mktemp "${DATA_FILE}.XXXXXX")
-trap 'rm -f "$tmpfile"' EXIT
+trap 'rm -f "$tmpfile" "$verdict_norm"' EXIT
 
 # Merge strategy:
 # - All changes (editorial + structural): from proposed only if confirmed
@@ -387,6 +421,6 @@ if diff -q <(jq -S . "$DATA_FILE") <(jq -S . "$tmpfile") >/dev/null 2>&1; then
   echo "No changes applied (all filtered or unconfirmed)"
 else
   mv "$tmpfile" "$DATA_FILE"
-  trap - EXIT
+  trap 'rm -f "$verdict_norm"' EXIT
   echo "Applied changes to $(basename "$DATA_FILE")"
 fi

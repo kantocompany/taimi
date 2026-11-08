@@ -22,8 +22,12 @@ if ! jq empty "$VALIDATED" 2>/dev/null; then
   exit 1
 fi
 
+# A confirmed entry without a new value has nothing to write: skip it instead
+# of nulling the price (diff-findings.sh never proposes null).
+jq -r '.changes[] | select(.confirmed == true and .new == null) | "WARNING: confirmed verdict has no new value — skipped: \(.plan_id) \(.field)"' "$VALIDATED"
+
 # Count confirmed changes
-confirmed=$(jq '[.changes[] | select(.confirmed == true)] | length' "$VALIDATED")
+confirmed=$(jq '[.changes[] | select(.confirmed == true and .new != null)] | length' "$VALIDATED")
 
 if [[ "$confirmed" -eq 0 ]]; then
   echo "No confirmed changes to apply"
@@ -36,7 +40,7 @@ trap 'rm -f "$tmpfile"' EXIT
 
 jq --argjson validated "$(cat "$VALIDATED")" '
   # Filter to confirmed changes
-  ($validated.changes | map(select(.confirmed == true))) as $confirmed |
+  ($validated.changes | map(select(.confirmed == true and .new != null))) as $confirmed |
 
   # Apply each change via reduce
   reduce $confirmed[] as $c (.;

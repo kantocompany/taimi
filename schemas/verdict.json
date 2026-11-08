@@ -1,7 +1,7 @@
 {
   "_description": "Output schema for validation agents. Write to validated/{slug}.json.",
   "_note_shared": "Shared across price-update and tool-update validation. Only confirmed changes are applied.",
-  "_note_plan_id": "For tool-update plans-scoped changes (field starts with `plans.<idx>.`), copy `plan_id` verbatim from the input change. The numeric index in `field` is informational; apply matches on (plan_id, leaf-suffix, new). For vendor.*, platform.*, capabilities.*, and verification_override changes, omit `plan_id` — apply matches those on the full `field` path.",
+  "_note_plan_id": "For tool-update plans-scoped changes (field starts with `plans.<idx>.`), copy `plan_id` verbatim from the input change. The numeric index in `field` is informational; apply matches on (plan_id, leaf-suffix, new); a missing `new` is filled from the diff for the same plan and leaf. Price-update entries must carry `new` (apply writes it); confirmed entries without it are skipped. For vendor.*, platform.*, capabilities.*, and verification_override changes, omit `plan_id` — apply matches those on the full `field` path.",
   "slug": "{slug}",
   "changes": [
     {
