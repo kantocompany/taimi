@@ -185,7 +185,7 @@
         "category": "team",
         "platform_plan": true,
         "base_price": {
-          "amount": null,
+          "amount": 125.00,
           "period": "monthly",
           "per": "user"
         },

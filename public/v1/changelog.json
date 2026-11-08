@@ -1,10 +1,37 @@
 {
   "meta": {
     "version": "2026-11-08",
-    "updated_at": "2026-11-08T06:18:32Z",
+    "updated_at": "2026-11-08T09:25:47Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-11-08",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plans[antigravity-ultra-20x].base_price.amount: added 199.99",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plans[kiro-credit-pooling].base_price.amount: added 20.0; plans[kiro-credit-pooling].overage.price_per_unit: added 0.04",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plans[codex-team-premium].base_price.amount: added 125.00",
+      "details": {
+        "source": "https://chatgpt.com/pricing"
+      }
+    },
     {
       "date": "2026-11-08",
       "tool": "antigravity",

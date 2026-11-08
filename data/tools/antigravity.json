@@ -93,7 +93,7 @@
       "name": "Google AI Ultra (20x)",
       "category": "individual",
       "base_price": {
-        "amount": null,
+        "amount": 199.99,
         "period": "monthly",
         "per": "user"
       },
