@@ -78,6 +78,8 @@ In index.html, platform plans are marked with a superscript `P` badge and explai
 
 Use for vendors where automated fetching produces **wrong results** (e.g., JS-only toggle showing annual prices, unresolvable "at API pricing" requiring cross-tool lookup). Do not use for simple fetch failures — those belong in the "Known fetch hints" table in `docs/price-update.md`.
 
+Pages written as full `https://` URLs in the override are rendered by `scripts/fetch-render.sh` to `fetched/<slug>__*.md`; plans seen there count as observed for `_last_seen_on_page`.
+
 Source-only field — `assemble.sh` strips it from public API output.
 
 ## First-pass provenance flag (optional field)

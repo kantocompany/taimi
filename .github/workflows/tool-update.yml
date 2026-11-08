@@ -75,8 +75,9 @@ jobs:
           prompt: |
             Today is ${{ env.DATE }}. Tool: ${{ matrix.tool }}.
             Read docs/tool-update.md and execute.
-            When you write proposed.plans[], set each plan's _last_seen_on_page to ${{ env.DATE }} ONLY for plans you directly observed on the vendor page this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged.
+            When you write proposed.plans[], set each plan's _last_seen_on_page to ${{ env.DATE }} ONLY for plans you directly observed on the vendor page, or a rendered verification_override page, this fetch; for any plan you list from prior knowledge or the existing data file but did not see on the page this fetch, copy its existing _last_seen_on_page value unchanged.
             A verbatim render of vendor.pricing_url is at fetched/${{ matrix.tool }}.md if present.
+            Pages named with https:// in verification_override are rendered to fetched/${{ matrix.tool }}__*.md (file name = page URL).
           claude_args: |
             --model claude-sonnet-5-5
             --max-turns 25  # research-max-turns

@@ -76,6 +76,7 @@ jobs:
             Today is ${{ env.DATE }}. Tool: ${{ matrix.tool }}.
             Read docs/price-update.md and execute.
             A verbatim render of vendor.pricing_url is at fetched/${{ matrix.tool }}.md if present.
+            Pages named with https:// in verification_override are rendered to fetched/${{ matrix.tool }}__*.md (file name = page URL).
           claude_args: |
             --model claude-sonnet-5-5
             --max-turns 25  # research-max-turns
