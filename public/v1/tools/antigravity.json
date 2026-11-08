@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-05",
-    "updated_at": "2026-11-05T00:00:00Z",
+    "version": "2026-11-08",
+    "updated_at": "2026-11-08T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -70,7 +70,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool"
+          "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool"
         },
         "overage": {
           "unit": null,
@@ -93,6 +93,29 @@
         },
         "overage": null,
         "platform_plan": true
+      },
+      {
+        "id": "antigravity-ultra-20x",
+        "name": "Google AI Ultra (20x)",
+        "category": "individual",
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool"
+        },
+        "overage": {
+          "unit": null,
+          "mechanism": "add_on",
+          "price_per_unit": null,
+          "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; docs page confirms credits are purchased for overage, consumed at Gemini Enterprise Agent Platform consumption pricing (rate undisclosed); prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
+          "input_per_million": null,
+          "output_per_million": null
+        }
       }
     ],
     "capabilities": {

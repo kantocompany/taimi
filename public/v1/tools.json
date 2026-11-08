@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-05",
-    "updated_at": "2026-11-05T00:00:00Z",
+    "version": "2026-11-08",
+    "updated_at": "2026-11-08T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -876,7 +876,7 @@
           "includes": {
             "premium_requests": 50,
             "tokens_included": null,
-            "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access; Student plan for verified students"
+            "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access; Copilot CLI; Student plan for verified students"
           },
           "overage": null
         },
@@ -984,7 +984,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "$200/mo AI Credits ($100 base + $100 flex); new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24)"
+            "notes": "$200/mo AI Credits ($100 base + $100 flex); new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24); priority access to new models and features"
           },
           "overage": {
             "unit": null,
@@ -1068,7 +1068,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool"
+            "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool"
           },
           "overage": {
             "unit": null,
@@ -1091,6 +1091,29 @@
           },
           "overage": null,
           "platform_plan": true
+        },
+        {
+          "id": "antigravity-ultra-20x",
+          "name": "Google AI Ultra (20x)",
+          "category": "individual",
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool"
+          },
+          "overage": {
+            "unit": null,
+            "mechanism": "add_on",
+            "price_per_unit": null,
+            "notes": "UNVERIFIED_OVERAGE: credit add-on pricing not confirmed on vendor page; docs page confirms credits are purchased for overage, consumed at Gemini Enterprise Agent Platform consumption pricing (rate undisclosed); prior research: $25/2,500 credits ($0.01/credit); credit unit type undetermined",
+            "input_per_million": null,
+            "output_per_million": null
+          }
         }
       ],
       "capabilities": {
@@ -1126,7 +1149,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5 (social login or AWS Builder ID sign-ups only); credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
+            "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5 (social login or AWS Builder ID sign-ups only); credits reset monthly, unused credits do not roll over; first upgrade to Pro: rest of month free plus 500 trial credits usable within 12 months; unavailable in AWS GovCloud regions"
           },
           "overage": null
         },
@@ -1240,6 +1263,29 @@
             "input_per_million": null,
             "output_per_million": null
           }
+        },
+        {
+          "id": "kiro-credit-pooling",
+          "name": "Teams (credit pooling)",
+          "category": "team",
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": "Credit pooling for teams of 2 or more seats; each seat adds 500 included credits/mo to a shared pool; included credits expire at end of monthly cycle; admin usage limits, dashboards and alerts; centralized billing, SSO, enterprise security controls"
+          },
+          "overage": {
+            "unit": "acu",
+            "mechanism": "add_on",
+            "price_per_unit": null,
+            "notes": "Kiro credits; admins purchase add-on credits for the pool; credit pooling does not use overages; add-on credits expire 12 months from purchase",
+            "input_per_million": null,
+            "output_per_million": null
+          }
         }
       ],
       "capabilities": {
@@ -1308,7 +1354,7 @@
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
-            "notes": "API rates after included usage",
+            "notes": "API rates after included usage; devstral-2 retired 2026-07-31 per docs.mistral.ai (alternative: Mistral Medium 3.5)",
             "price_per_unit": null
           }
         },
@@ -1333,7 +1379,7 @@
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
-            "notes": "API rates after included usage",
+            "notes": "API rates after included usage; devstral-2 retired 2026-07-31 per docs.mistral.ai (alternative: Mistral Medium 3.5)",
             "price_per_unit": null
           }
         },
@@ -1431,7 +1477,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Annual billing: $20/user/mo; minimum 2 users; desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
+            "notes": "Standard seat; annual billing: $20/user/mo; minimum 2 seats (Standard or Premium); desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
           },
           "overage": null
         },
@@ -1529,6 +1575,23 @@
             "premium_requests": null,
             "tokens_included": null,
             "notes": "ChatGPT Pro 500 subscription; everything in Plus; Astra Ultrafast access"
+          },
+          "overage": null
+        },
+        {
+          "id": "codex-team-premium",
+          "name": "Business Premium",
+          "category": "team",
+          "platform_plan": true,
+          "base_price": {
+            "amount": null,
+            "period": "monthly",
+            "per": "user"
+          },
+          "includes": {
+            "premium_requests": null,
+            "tokens_included": null,
+            "notes": null
           },
           "overage": null
         }

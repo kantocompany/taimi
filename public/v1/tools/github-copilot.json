@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-05",
-    "updated_at": "2026-11-05T00:00:00Z",
+    "version": "2026-11-08",
+    "updated_at": "2026-11-08T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": 50,
           "tokens_included": null,
-          "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access; Student plan for verified students"
+          "notes": "50 agent mode/chat req/mo, 2K completions, Haiku 4.5/GPT-5 mini access; Copilot CLI; Student plan for verified students"
         },
         "overage": null
       },
@@ -139,7 +139,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "$200/mo AI Credits ($100 base + $100 flex); new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24)"
+          "notes": "$200/mo AI Credits ($100 base + $100 flex); new signups paused 2026-04-20; for existing Copilot subscribers only from 2026-06-01; signups gradually re-enabling (2026-06-24); priority access to new models and features"
         },
         "overage": {
           "unit": null,

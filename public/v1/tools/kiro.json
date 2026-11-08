@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-05",
-    "updated_at": "2026-11-05T00:00:00Z",
+    "version": "2026-11-08",
+    "updated_at": "2026-11-08T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -31,7 +31,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5 (social login or AWS Builder ID sign-ups only); credits reset monthly, unused credits do not roll over; $20 credit on first upgrade to any paid plan (social login or AWS Builder ID only); unavailable in AWS GovCloud regions"
+          "notes": "50 credits/mo; open-weight models (Qwen3 Coder Next, DeepSeek 3.2, MiniMax M2.1) and Claude Sonnet 4.5 (social login or AWS Builder ID sign-ups only); credits reset monthly, unused credits do not roll over; first upgrade to Pro: rest of month free plus 500 trial credits usable within 12 months; unavailable in AWS GovCloud regions"
         },
         "overage": null
       },
@@ -142,6 +142,29 @@
           "mechanism": "automatic",
           "price_per_unit": 0.04,
           "notes": "Kiro credits; overage disabled by default, configurable by admins",
+          "input_per_million": null,
+          "output_per_million": null
+        }
+      },
+      {
+        "id": "kiro-credit-pooling",
+        "name": "Teams (credit pooling)",
+        "category": "team",
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": "Credit pooling for teams of 2 or more seats; each seat adds 500 included credits/mo to a shared pool; included credits expire at end of monthly cycle; admin usage limits, dashboards and alerts; centralized billing, SSO, enterprise security controls"
+        },
+        "overage": {
+          "unit": "acu",
+          "mechanism": "add_on",
+          "price_per_unit": null,
+          "notes": "Kiro credits; admins purchase add-on credits for the pool; credit pooling does not use overages; add-on credits expire 12 months from purchase",
           "input_per_million": null,
           "output_per_million": null
         }

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-05",
-    "updated_at": "2026-11-05T00:00:00Z",
+    "version": "2026-11-08",
+    "updated_at": "2026-11-08T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -78,7 +78,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Annual billing: $20/user/mo; minimum 2 users; desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
+          "notes": "Standard seat; annual billing: $20/user/mo; minimum 2 seats (Standard or Premium); desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
         },
         "overage": null
       },
@@ -176,6 +176,23 @@
           "premium_requests": null,
           "tokens_included": null,
           "notes": "ChatGPT Pro 500 subscription; everything in Plus; Astra Ultrafast access"
+        },
+        "overage": null
+      },
+      {
+        "id": "codex-team-premium",
+        "name": "Business Premium",
+        "category": "team",
+        "platform_plan": true,
+        "base_price": {
+          "amount": null,
+          "period": "monthly",
+          "per": "user"
+        },
+        "includes": {
+          "premium_requests": null,
+          "tokens_included": null,
+          "notes": null
         },
         "overage": null
       }

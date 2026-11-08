@@ -1,10 +1,37 @@
 {
   "meta": {
-    "version": "2026-11-01",
-    "updated_at": "2026-11-01T13:20:45Z",
+    "version": "2026-11-08",
+    "updated_at": "2026-11-08T06:18:32Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-11-08",
+      "tool": "antigravity",
+      "type": "pricing_change",
+      "description": "plan added: antigravity-ultra-20x (Google AI Ultra (20x))",
+      "details": {
+        "source": "https://antigravity.google/pricing"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plan added: kiro-credit-pooling (Teams (credit pooling))",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "tool": "openai-codex",
+      "type": "pricing_change",
+      "description": "plan added: codex-team-premium (Business Premium)",
+      "details": {
+        "source": "https://chatgpt.com/pricing"
+      }
+    },
     {
       "date": "2026-11-01",
       "tool": "claude-code",
