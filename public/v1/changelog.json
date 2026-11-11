@@ -1,10 +1,19 @@
 {
   "meta": {
     "version": "2026-11-11",
-    "updated_at": "2026-11-11T04:30:33Z",
+    "updated_at": "2026-11-11T16:43:47Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-11-11",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plans[claude-code-api-fable52].overage.input_per_million: added 8.0; plans[claude-code-api-fable52].overage.output_per_million: added 40.0",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-11-11",
       "tool": "claude-code",
