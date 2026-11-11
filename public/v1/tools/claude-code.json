@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-08",
-    "updated_at": "2026-11-08T00:00:00Z",
+    "version": "2026-11-11",
+    "updated_at": "2026-11-11T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -289,7 +289,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Institutional pricing; student/faculty access, academic research features, academic learning mode, dedicated API credits; contact for pricing"
+          "notes": "Institutional pricing; student/faculty access, academic research features, academic learning mode, dedicated API credits, training and enablement resources; contact for pricing"
         },
         "overage": null
       },
@@ -353,7 +353,7 @@
           "input_per_million": 10.00,
           "output_per_million": 50.00,
           "model": "claude-fable-5-1",
-          "notes": "Current flagship model as of 2026-09-02; cache reads priced at 0.025x base input rate vs standard 0.1x for other models",
+          "notes": "Legacy model as of 2026-11-11 (superseded by Fable 5.2); flagship from 2026-09-02; cache reads priced at 0.025x base input rate",
           "price_per_unit": null
         }
       },
@@ -402,6 +402,22 @@
           "output_per_million": 0.50,
           "model": "claude-haiku-5-5",
           "notes": "Latest Haiku model; listed rates apply to prompts up to 100K tokens; prompts over 100K tokens: $0.50 input, $2.50 output per 1M",
+          "price_per_unit": null
+        }
+      },
+      {
+        "id": "claude-code-api-fable52",
+        "name": "API (Fable 5.2)",
+        "category": "usage",
+        "base_price": null,
+        "includes": null,
+        "overage": {
+          "unit": "token",
+          "mechanism": "unverified",
+          "input_per_million": null,
+          "output_per_million": null,
+          "model": "claude-fable-5-2",
+          "notes": "Current flagship model; Fast mode: 2x pricing for up to 2.5x faster output; cache reads priced at 0.025x base input rate",
           "price_per_unit": null
         }
       }

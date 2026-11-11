@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-11-08",
-    "updated_at": "2026-11-08T09:25:47Z",
+    "version": "2026-11-11",
+    "updated_at": "2026-11-11T04:30:33Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-11-11",
+      "tool": "claude-code",
+      "type": "pricing_change",
+      "description": "plan added: claude-code-api-fable52 (API (Fable 5.2))",
+      "details": {
+        "source": "https://claude.com/pricing"
+      }
+    },
     {
       "date": "2026-11-08",
       "tool": "antigravity",

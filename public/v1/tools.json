@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-08",
-    "updated_at": "2026-11-08T00:00:00Z",
+    "version": "2026-11-11",
+    "updated_at": "2026-11-11T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -370,7 +370,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Institutional pricing; student/faculty access, academic research features, academic learning mode, dedicated API credits; contact for pricing"
+            "notes": "Institutional pricing; student/faculty access, academic research features, academic learning mode, dedicated API credits, training and enablement resources; contact for pricing"
           },
           "overage": null
         },
@@ -434,7 +434,7 @@
             "input_per_million": 10.00,
             "output_per_million": 50.00,
             "model": "claude-fable-5-1",
-            "notes": "Current flagship model as of 2026-09-02; cache reads priced at 0.025x base input rate vs standard 0.1x for other models",
+            "notes": "Legacy model as of 2026-11-11 (superseded by Fable 5.2); flagship from 2026-09-02; cache reads priced at 0.025x base input rate",
             "price_per_unit": null
           }
         },
@@ -483,6 +483,22 @@
             "output_per_million": 0.50,
             "model": "claude-haiku-5-5",
             "notes": "Latest Haiku model; listed rates apply to prompts up to 100K tokens; prompts over 100K tokens: $0.50 input, $2.50 output per 1M",
+            "price_per_unit": null
+          }
+        },
+        {
+          "id": "claude-code-api-fable52",
+          "name": "API (Fable 5.2)",
+          "category": "usage",
+          "base_price": null,
+          "includes": null,
+          "overage": {
+            "unit": "token",
+            "mechanism": "unverified",
+            "input_per_million": null,
+            "output_per_million": null,
+            "model": "claude-fable-5-2",
+            "notes": "Current flagship model; Fast mode: 2x pricing for up to 2.5x faster output; cache reads priced at 0.025x base input rate",
             "price_per_unit": null
           }
         }
@@ -742,7 +758,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features; highest priority support; dedicated deployment option, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions"
+            "notes": "All Teams features; highest priority support; dedicated deployment option, SAML/OIDC SSO, SCIM and role-based access control, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions"
           },
           "overage": null,
           "platform_plan": true
@@ -775,7 +791,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini, SpaceXAI frontier); free SWE-2 in Devin Desktop/CLI through 2026-10-16; leading open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
+            "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini, SpaceXAI frontier); free SWE-2 in Devin Desktop/CLI through 2026-10-16; leading open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; use your ChatGPT plan; 1 member"
           },
           "overage": {
             "unit": "acu",
@@ -799,7 +815,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
+            "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; use your ChatGPT plan; 1 member"
           },
           "overage": {
             "unit": "acu",
@@ -823,7 +839,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Pro features; up to 200 users; shared collaboration; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions"
+            "notes": "All Pro features; up to 100 users; shared collaboration; multiplayer sessions; SAML/OIDC SSO; cost controls with 3 usage tiers; Slack channel support; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions; 2 concurrent sessions in Free mode per user; use your ChatGPT plan"
           },
           "overage": {
             "unit": "acu",
@@ -1346,7 +1362,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Mistral Vibe (CLI/IDE/web coding); up to 15GB document storage; $25.5/mo API credits included; $5.99/mo for verified students; chat and email support"
+            "notes": "Mistral Vibe (CLI/IDE/web coding); spreadsheets and slides generation; up to 15GB document storage; $25.5/mo API credits included; $5.99/mo for verified students; chat and email support"
           },
           "overage": {
             "unit": "token",
@@ -1354,7 +1370,7 @@
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
-            "notes": "API rates after included usage; devstral-2 retired 2026-07-31 per docs.mistral.ai (alternative: Mistral Medium 3.5)",
+            "notes": "API rates after included usage; devstral-2 retired 2026-07-31 per docs.mistral.ai (alternative: Mistral Medium 3.5, itself deprecated 2026-10-31, retires 2027-04-30, alternative: Mistral Large 4)",
             "price_per_unit": null
           }
         },
@@ -1379,7 +1395,7 @@
             "input_per_million": 0.40,
             "output_per_million": 2.00,
             "model": "devstral-2",
-            "notes": "API rates after included usage; devstral-2 retired 2026-07-31 per docs.mistral.ai (alternative: Mistral Medium 3.5)",
+            "notes": "API rates after included usage; devstral-2 retired 2026-07-31 per docs.mistral.ai (alternative: Mistral Medium 3.5, itself deprecated 2026-10-31, retires 2027-04-30, alternative: Mistral Large 4)",
             "price_per_unit": null
           }
         },
@@ -1443,7 +1459,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Plus subscription; GPT-6.1 Sol, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.5 (retires 2026-10-14), GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases"
+            "notes": "ChatGPT Plus subscription; GPT-6.1 Sol, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases; GPT-5.5 retired 2026-10-14 from ChatGPT sign-in"
           },
           "overage": null
         },
@@ -1574,7 +1590,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Pro 500 subscription; everything in Plus; Astra Ultrafast access"
+            "notes": "ChatGPT Pro 500 subscription; everything in Plus; GPT-6 Astra and GPT-6.1 Sol Ultrafast (Pro 500 only)"
           },
           "overage": null
         },
@@ -1591,7 +1607,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": null
+            "notes": "Premium seat; annual billing: $100/user/mo; minimum 2 seats (Standard or Premium); higher Work and Codex usage than Standard; no five-hour usage limit"
           },
           "overage": null
         }

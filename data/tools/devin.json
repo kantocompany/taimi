@@ -17,11 +17,11 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "All Teams features; highest priority support; dedicated deployment option, SAML/OIDC SSO, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions"
+        "notes": "All Teams features; highest priority support; dedicated deployment option, SAML/OIDC SSO, SCIM and role-based access control, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions"
       },
       "overage": null,
       "platform_plan": true,
-      "_last_seen_on_page": "2026-11-08"
+      "_last_seen_on_page": "2026-11-11"
     },
     {
       "id": "devin-free",
@@ -38,7 +38,7 @@
         "notes": "Light quota to code with agents; unlimited inline edits; unlimited Tab completions; limited model availability; 1 member"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-08"
+      "_last_seen_on_page": "2026-11-11"
     },
     {
       "id": "devin-pro",
@@ -52,7 +52,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini, SpaceXAI frontier); free SWE-2 in Devin Desktop/CLI through 2026-10-16; leading open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; 1 member"
+        "notes": "Devin usage quota + Devin Desktop (formerly Windsurf IDE) quota included; full model availability (OpenAI, Claude, Gemini, SpaceXAI frontier); free SWE-2 in Devin Desktop/CLI through 2026-10-16; leading open source models; Devin Cloud (cloud agents); Slack, Linear, MCP integrations; up to 10 concurrent sessions; use your ChatGPT plan; 1 member"
       },
       "overage": {
         "unit": "acu",
@@ -63,7 +63,7 @@
         "output_per_million": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-11-08"
+      "_last_seen_on_page": "2026-11-11"
     },
     {
       "id": "devin-max",
@@ -77,7 +77,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; 1 member"
+        "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; use your ChatGPT plan; 1 member"
       },
       "overage": {
         "unit": "acu",
@@ -88,7 +88,7 @@
         "output_per_million": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-11-08"
+      "_last_seen_on_page": "2026-11-11"
     },
     {
       "id": "devin-teams",
@@ -102,7 +102,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "All Pro features; up to 200 users; shared collaboration; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions"
+        "notes": "All Pro features; up to 100 users; shared collaboration; multiplayer sessions; SAML/OIDC SSO; cost controls with 3 usage tiers; Slack channel support; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions; 2 concurrent sessions in Free mode per user; use your ChatGPT plan"
       },
       "overage": {
         "unit": "acu",
@@ -113,7 +113,7 @@
         "output_per_million": null
       },
       "platform_plan": true,
-      "_last_seen_on_page": "2026-11-08"
+      "_last_seen_on_page": "2026-11-11"
     }
   ],
   "capabilities": {
