@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-15",
-    "updated_at": "2026-11-15T00:00:00Z",
+    "version": "2026-11-18",
+    "updated_at": "2026-11-18T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -815,7 +815,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; use your ChatGPT plan; 1 member"
+            "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; use your ChatGPT plan; 1 member; Devin Bots"
           },
           "overage": {
             "unit": "acu",
@@ -839,7 +839,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Pro features; up to 100 users; shared collaboration; multiplayer sessions; SAML/OIDC SSO; cost controls with 3 usage tiers; Slack channel support; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions; 2 concurrent sessions in Free mode per user; use your ChatGPT plan"
+            "notes": "All Pro features; up to 100 users; shared collaboration; multiplayer sessions; SAML/OIDC SSO; cost controls with 3 usage tiers; Slack channel support; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions; 2 concurrent sessions in Free mode per user; use your ChatGPT plan; Devin Bots"
           },
           "overage": {
             "unit": "acu",
@@ -1061,7 +1061,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit; flexible AI credit pool"
+            "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit; flexible AI credit pool; /boost deep reasoning, multi-agent teamwork, Remote Control; Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator (Argon), Gemini 3.8 Flash; Claude Sonnet 5.5 & Opus 5.5 on non-trial subscriptions only"
           },
           "overage": {
             "unit": null,
@@ -1084,7 +1084,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool"
+            "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool; Gemini 4 Carbon and Orchestrator (Carbon); full access to third-party partner models"
           },
           "overage": {
             "unit": null,
@@ -1103,7 +1103,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; IDE extensions; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
+            "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; first-party Gemini models draw from pooled seat credits ($10/mo Standard, $15/mo Plus) or pay-as-you-go; Claude Sonnet 5.5 & Opus 5.5 require administrator opt-in, billed by token consumption; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; IDE extensions; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
           },
           "overage": null,
           "platform_plan": true
@@ -1120,7 +1120,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool"
+            "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool; Gemini 4 Carbon and Orchestrator (Carbon); full access to third-party partner models"
           },
           "overage": {
             "unit": null,

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-15",
-    "updated_at": "2026-11-15T00:00:00Z",
+    "version": "2026-11-18",
+    "updated_at": "2026-11-18T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -84,7 +84,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; use your ChatGPT plan; 1 member"
+          "notes": "Increased Devin + Devin Desktop (formerly Windsurf IDE) quotas vs Pro; all Pro features; up to 10 concurrent sessions; use your ChatGPT plan; 1 member; Devin Bots"
         },
         "overage": {
           "unit": "acu",
@@ -108,7 +108,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "All Pro features; up to 100 users; shared collaboration; multiplayer sessions; SAML/OIDC SSO; cost controls with 3 usage tiers; Slack channel support; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions; 2 concurrent sessions in Free mode per user; use your ChatGPT plan"
+          "notes": "All Pro features; up to 100 users; shared collaboration; multiplayer sessions; SAML/OIDC SSO; cost controls with 3 usage tiers; Slack channel support; centralized billing; admin dashboard with analytics; priority support; $40/month per full developer seat; unlimited flex seats; unlimited concurrent sessions; 2 concurrent sessions in Free mode per user; use your ChatGPT plan; Devin Bots"
         },
         "overage": {
           "unit": "acu",
