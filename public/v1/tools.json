@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-18",
-    "updated_at": "2026-11-18T00:00:00Z",
+    "version": "2026-11-22",
+    "updated_at": "2026-11-22T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -450,7 +450,7 @@
             "input_per_million": 4.00,
             "output_per_million": 20.00,
             "model": "claude-opus-5-5",
-            "notes": "Latest Opus model; Fast mode: 2x pricing for ~2.5x faster output; cache reads priced at 0.05x base input rate vs standard 0.1x for other models",
+            "notes": "Latest Opus model; Fast mode: 2x pricing for ~2.5x faster output; cache reads priced at 0.05x base input rate",
             "price_per_unit": null
           }
         },
@@ -466,7 +466,7 @@
             "input_per_million": 2.00,
             "output_per_million": 10.00,
             "model": "claude-sonnet-5-5",
-            "notes": "Latest Sonnet model",
+            "notes": "Latest Sonnet model; cache reads priced at 0.05x base input rate",
             "price_per_unit": null
           }
         },
@@ -1045,7 +1045,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.1 Pro, Claude Sonnet & Opus 4.6, gpt-oss-120b"
+            "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.1 Pro, Claude Sonnet & Opus 4.6, gpt-oss-120b; Claude Sonnet & Opus 4.6 and gpt-oss-120b to be removed 2026-11-30"
           },
           "overage": null
         },
@@ -1103,7 +1103,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; first-party Gemini models draw from pooled seat credits ($10/mo Standard, $15/mo Plus) or pay-as-you-go; Claude Sonnet 5.5 & Opus 5.5 require administrator opt-in, billed by token consumption; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; IDE extensions; included in select Gemini Enterprise app subscriptions; rolling out to select customers (2026-08-05)"
+            "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; first-party Gemini models draw from pooled seat credits ($10/mo Standard, $15/mo Plus) or pay-as-you-go; Claude Sonnet 5.5 & Opus 5.5 require administrator opt-in, billed by token consumption; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; IDE extensions; included in select Gemini Enterprise app subscriptions; Orchestrator fixed to Gemini 4 Carbon (planner) with Gemini 4 Hydrogen (executor); rolling out to select customers (2026-08-05)"
           },
           "overage": null,
           "platform_plan": true
@@ -1257,25 +1257,6 @@
             "mechanism": "add_on",
             "price_per_unit": 0.04,
             "notes": "Kiro credits; credits metered at 0.01 minimum; add-on packs $5–$100; unused add-on credits expire 12 months from purchase",
-            "input_per_million": null,
-            "output_per_million": null
-          }
-        },
-        {
-          "id": "kiro-enterprise",
-          "name": "Enterprise",
-          "category": "enterprise",
-          "base_price": null,
-          "includes": {
-            "premium_requests": null,
-            "tokens_included": null,
-            "notes": "Centralized billing, SSO, usage analytics, enterprise security controls; billed through AWS"
-          },
-          "overage": {
-            "unit": null,
-            "mechanism": "automatic",
-            "price_per_unit": 0.04,
-            "notes": "Kiro credits; overage disabled by default, configurable by admins",
             "input_per_million": null,
             "output_per_million": null
           }
@@ -1459,7 +1440,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Plus subscription; GPT-6.1 Sol, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases; GPT-5.5 retired 2026-10-14 from ChatGPT sign-in"
+            "notes": "ChatGPT Plus subscription; GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases; GPT-5.5 retired 2026-10-14 from ChatGPT sign-in"
           },
           "overage": null
         },

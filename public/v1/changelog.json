@@ -1,10 +1,19 @@
 {
   "meta": {
-    "version": "2026-11-11",
-    "updated_at": "2026-11-11T16:43:47Z",
+    "version": "2026-11-22",
+    "updated_at": "2026-11-22T07:52:12Z",
     "source": "https://taimi.market"
   },
   "changes": [
+    {
+      "date": "2026-11-22",
+      "tool": "kiro",
+      "type": "pricing_change",
+      "description": "plan removed: kiro-enterprise (Enterprise)",
+      "details": {
+        "source": "https://kiro.dev/pricing/"
+      }
+    },
     {
       "date": "2026-11-11",
       "tool": "claude-code",

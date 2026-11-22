@@ -34,10 +34,10 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "ChatGPT Plus subscription; GPT-6.1 Sol, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases; GPT-5.5 retired 2026-10-14 from ChatGPT sign-in"
+        "notes": "ChatGPT Plus subscription; GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, GPT-6 Astra, GPT-5.6 Sol/Terra/Luna, GPT-5.4, GPT-5.4 mini; web, CLI, IDE extension, iOS; cloud integrations: code review, Slack; flexible credit purchases; GPT-5.5 retired 2026-10-14 from ChatGPT sign-in"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-pro",
@@ -55,7 +55,7 @@
         "notes": "ChatGPT Pro 100 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-team",
@@ -73,7 +73,7 @@
         "notes": "Standard seat; annual billing: $20/user/mo; minimum 2 seats (Standard or Premium); desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-enterprise",
@@ -87,7 +87,7 @@
         "notes": "Custom pricing; priority request processing; SCIM, EKM, RBAC, domain verification, user analytics, audit logs via Compliance API, data retention and residency controls"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-api",
@@ -104,7 +104,7 @@
         "notes": "API key mode billed at standard API rates; model availability follows the API models available to your key; GPT-5.6 Sol/Terra/Luna, GPT-5.5, GPT-5.4, GPT-5.4 mini confirmed available; no cloud features",
         "price_per_unit": null
       },
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-free",
@@ -122,7 +122,7 @@
         "notes": "ChatGPT Free subscription; basic exploration of Codex capabilities; GPT-6 Luna, desktop app (subject to rollout)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-go",
@@ -140,7 +140,7 @@
         "notes": "ChatGPT Go subscription; lightweight coding tasks; may include ads; GPT-6 Luna, desktop app (subject to rollout)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-pro-20x",
@@ -158,7 +158,7 @@
         "notes": "ChatGPT Pro 200 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing; unlimited ChatGPT Voice"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-pro-500",
@@ -176,7 +176,7 @@
         "notes": "ChatGPT Pro 500 subscription; everything in Plus; GPT-6 Astra and GPT-6.1 Sol Ultrafast (Pro 500 only)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     },
     {
       "id": "codex-team-premium",
@@ -194,7 +194,7 @@
         "notes": "Premium seat; annual billing: $100/user/mo; minimum 2 seats (Standard or Premium); higher Work and Codex usage than Standard; no five-hour usage limit"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-18"
+      "_last_seen_on_page": "2026-11-22"
     }
   ],
   "capabilities": {
