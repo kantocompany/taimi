@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-22",
-    "updated_at": "2026-11-22T00:00:00Z",
+    "version": "2026-11-26",
+    "updated_at": "2026-11-26T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -84,7 +84,7 @@
         "includes": {
           "premium_requests": null,
           "tokens_included": null,
-          "notes": "Introductory plan, shared AI usage pool, Grok models only, Grok Chat/Voice/Imagine/Build, Grok API access, Premium checkmark, less timeline ads, enhanced creator tools, Advanced Analytics"
+          "notes": "Introductory plan, shared AI usage pool, Grok models only, Cursor, Grok Chat/Voice/Imagine/Build, Grok API access, Premium checkmark, less timeline ads, enhanced creator tools, Advanced Analytics"
         },
         "overage": null,
         "platform_plan": true

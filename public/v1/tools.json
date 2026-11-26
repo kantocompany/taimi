@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026-11-22",
-    "updated_at": "2026-11-22T00:00:00Z",
+    "version": "2026-11-26",
+    "updated_at": "2026-11-26T00:00:00Z",
     "currency": "USD",
     "schema_version": "1.2",
     "source": "https://taimi.market",
@@ -646,7 +646,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Introductory plan, shared AI usage pool, Grok models only, Grok Chat/Voice/Imagine/Build, Grok API access, Premium checkmark, less timeline ads, enhanced creator tools, Advanced Analytics"
+            "notes": "Introductory plan, shared AI usage pool, Grok models only, Cursor, Grok Chat/Voice/Imagine/Build, Grok API access, Premium checkmark, less timeline ads, enhanced creator tools, Advanced Analytics"
           },
           "overage": null,
           "platform_plan": true
@@ -758,7 +758,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "All Teams features; highest priority support; dedicated deployment option, SAML/OIDC SSO, SCIM and role-based access control, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions"
+            "notes": "All Teams features; highest priority support; dedicated deployment option, SAML/OIDC SSO, SCIM and role-based access control, dedicated Slack Connect, early feature releases, centralized enterprise admin controls, dedicated account management, custom terms, teamspace isolation; unlimited concurrent sessions; Devin Bots"
           },
           "overage": null,
           "platform_plan": true
@@ -1061,7 +1061,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit; flexible AI credit pool; /boost deep reasoning, multi-agent teamwork, Remote Control; Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator (Argon), Gemini 3.8 Flash; Claude Sonnet 5.5 & Opus 5.5 on non-trial subscriptions only"
+            "notes": "Generous agent quota refreshed every 5 hours and higher weekly limits than Individual; optional AI credit overages above baseline quota; /boost deep reasoning, multi-agent teamwork, Remote Control; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator, Gemini 3.8 Flash; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon and Orchestrator on paid plans or eligible premium-device trials; Claude Sonnet 5.5 & Opus 5.5 on non-trial subscriptions only; Gemini 4 Argon, Gemini 3.8 Flash, Claude Sonnet & Opus 4.6 (trial only) and GPT-OSS-120b to be removed 2026-11-30"
           },
           "overage": {
             "unit": null,
@@ -1084,7 +1084,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool; Gemini 4 Carbon and Orchestrator (Carbon); full access to third-party partner models"
+            "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; highest agent quota refreshed every 5 hours and maximum weekly limits; flexible AI credit pool; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator, Gemini 3.8 Flash; full access to third-party partner models (Claude Sonnet 5.5 & Opus 5.5, GPT-OSS-120b); Gemini 4 Argon, Gemini 3.8 Flash and GPT-OSS-120b to be removed 2026-11-30"
           },
           "overage": {
             "unit": null,
@@ -1120,7 +1120,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool; Gemini 4 Carbon and Orchestrator (Carbon); full access to third-party partner models"
+            "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator, Gemini 3.8 Flash; full access to third-party partner models (Claude Sonnet 5.5 & Opus 5.5, GPT-OSS-120b); Gemini 4 Argon, Gemini 3.8 Flash and GPT-OSS-120b to be removed 2026-11-30"
           },
           "overage": {
             "unit": null,
@@ -1474,7 +1474,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Standard seat; annual billing: $20/user/mo; minimum 2 seats (Standard or Premium); desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date)"
+            "notes": "Standard seat; annual billing: $20/user/mo; minimum 2 seats (Standard or Premium); desktop and mobile access; larger VMs for faster tasks; same usage limits as Plus; secure workspace; SAML SSO; MFA; no training on business data by default; credit flexibility; limited-time: up to $500 credits for new Codex teams (no published end date); sign up by 2026-11-30 for 2x included usage and fast mode through 2026-12-31"
           },
           "overage": null
         },
@@ -1554,7 +1554,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "ChatGPT Pro 200 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing; unlimited ChatGPT Voice"
+            "notes": "ChatGPT Pro 200 subscription; GPT-6.1 Sol and GPT-6 Luna (same as Plus); priority processing; Ultrafast for GPT-6.2 Sol in Codex only; unlimited ChatGPT Voice"
           },
           "overage": null
         },
@@ -1588,7 +1588,7 @@
           "includes": {
             "premium_requests": null,
             "tokens_included": null,
-            "notes": "Premium seat; annual billing: $100/user/mo; minimum 2 seats (Standard or Premium); higher Work and Codex usage than Standard; no five-hour usage limit"
+            "notes": "Premium seat; annual billing: $100/user/mo; minimum 2 seats (Standard or Premium); higher Work and Codex usage than Standard; no five-hour usage limit; sign up by 2026-11-30 for 2x included usage and fast mode through 2026-12-31"
           },
           "overage": null
         }

@@ -24,7 +24,7 @@
         "notes": "Basic weekly rate limits; unlimited Tab completions; unlimited Command requests; Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.1 Pro, Claude Sonnet & Opus 4.6, gpt-oss-120b; Claude Sonnet & Opus 4.6 and gpt-oss-120b to be removed 2026-11-30"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-22"
+      "_last_seen_on_page": "2026-11-26"
     },
     {
       "id": "antigravity-pro",
@@ -38,7 +38,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "More generous rate limits than Individual; quota refreshes every 5 hours until weekly limit; flexible AI credit pool; /boost deep reasoning, multi-agent teamwork, Remote Control; Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator (Argon), Gemini 3.8 Flash; Claude Sonnet 5.5 & Opus 5.5 on non-trial subscriptions only"
+        "notes": "Generous agent quota refreshed every 5 hours and higher weekly limits than Individual; optional AI credit overages above baseline quota; /boost deep reasoning, multi-agent teamwork, Remote Control; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator, Gemini 3.8 Flash; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon and Orchestrator on paid plans or eligible premium-device trials; Claude Sonnet 5.5 & Opus 5.5 on non-trial subscriptions only; Gemini 4 Argon, Gemini 3.8 Flash, Claude Sonnet & Opus 4.6 (trial only) and GPT-OSS-120b to be removed 2026-11-30"
       },
       "overage": {
         "unit": null,
@@ -48,7 +48,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-11-22"
+      "_last_seen_on_page": "2026-11-26"
     },
     {
       "id": "antigravity-ultra",
@@ -62,7 +62,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; higher access to latest Gemini models vs Google AI Pro; highest weekly rate limits; quota refreshes every 5 hours; flexible AI credit pool; Gemini 4 Carbon and Orchestrator (Carbon); full access to third-party partner models"
+        "notes": "Ultra 5x tier: 5x usage limits vs Google AI Pro; highest agent quota refreshed every 5 hours and maximum weekly limits; flexible AI credit pool; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator, Gemini 3.8 Flash; full access to third-party partner models (Claude Sonnet 5.5 & Opus 5.5, GPT-OSS-120b); Gemini 4 Argon, Gemini 3.8 Flash and GPT-OSS-120b to be removed 2026-11-30"
       },
       "overage": {
         "unit": null,
@@ -72,7 +72,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-11-22"
+      "_last_seen_on_page": "2026-11-26"
     },
     {
       "id": "antigravity-enterprise",
@@ -85,7 +85,7 @@
         "notes": "Consumption-based API pricing via Google Cloud; Standard/Plus plans starting at $30/seat/mo, pay-as-you-go has $0 seat fee; first-party Gemini models draw from pooled seat credits ($10/mo Standard, $15/mo Plus) or pay-as-you-go; Claude Sonnet 5.5 & Opus 5.5 require administrator opt-in, billed by token consumption; spend caps across API and subscription plans; centralized admin controls with eligible subscription plans; Google Cloud Project integration; access under Google Cloud Terms of Service; Antigravity 2.0 and CLI via Gemini Enterprise Agent Platform; IDE extensions; included in select Gemini Enterprise app subscriptions; Orchestrator fixed to Gemini 4 Carbon (planner) with Gemini 4 Hydrogen (executor); rolling out to select customers (2026-08-05)"
       },
       "overage": null,
-      "_last_seen_on_page": "2026-11-22",
+      "_last_seen_on_page": "2026-11-26",
       "platform_plan": true
     },
     {
@@ -100,7 +100,7 @@
       "includes": {
         "premium_requests": null,
         "tokens_included": null,
-        "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool; Gemini 4 Carbon and Orchestrator (Carbon); full access to third-party partner models"
+        "notes": "Ultra 20x tier: 20x usage limits vs Google AI Pro; highest rate limits to agent model in Antigravity; flexible AI credit pool; Gemini 4 Neon, Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Orchestrator, Gemini 3.8 Flash; full access to third-party partner models (Claude Sonnet 5.5 & Opus 5.5, GPT-OSS-120b); Gemini 4 Argon, Gemini 3.8 Flash and GPT-OSS-120b to be removed 2026-11-30"
       },
       "overage": {
         "unit": null,
@@ -110,7 +110,7 @@
         "input_per_million": null,
         "output_per_million": null
       },
-      "_last_seen_on_page": "2026-11-22"
+      "_last_seen_on_page": "2026-11-26"
     }
   ],
   "capabilities": {
